@@ -92,6 +92,12 @@ class Characters(commands.Cog):
             return
         
         data = await cc.get_character_data(name)
+        if data == 1:
+            await ctx.send(f'No data found for {name}')
+            return
+        elif data == 2:
+            await ctx.send(f'Error reading data for {name}')
+            return
         
         id = data.get('id')
         desc = data.get('description')
