@@ -23,7 +23,7 @@ async def get_weapon_data(weapon_name: str):
             weapon_name = weapon_name.replace(char, '_')
             
         # Create a reference to the node "Char_[character-name]"
-        ref = db.reference(f"Weapon_{weapon_name.lower().capitalize()}")
+        ref = db.reference(f"Weapon_{weapon_name}")
         
         data = ref.get()
 

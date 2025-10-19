@@ -58,7 +58,7 @@ class Weapons(commands.Cog):
         quality = data.get('weapon_quality')
         stars = await wc.convert_quality_to_star(quality)
         base_attack = data.get('base_attack')
-        secondary_attribute_type = data.get('seconday_attribute_type')
+        # secondary_attribute_type = data.get('secondary_attribute_type')
         secondary_attribute = data.get('secondary_attribute')
         weapon_description = data.get('weapon_description')
         weapon_skill_name = data.get('weapon_skill_name')
@@ -79,7 +79,7 @@ class Weapons(commands.Cog):
         # embed_color = await wc.get_color_based_on_quality(id)
         
         weapon_info_field = f'Name : {weapon}\nWeapon Type : {weapon_type}\nWeapon Quality : {stars}'
-        weapon_base_stats_field = f'Base ATK : {base_attack}\nSecondary Attribute : {secondary_attribute} {secondary_attribute_type}'
+        weapon_base_stats_field = f'Base ATK : {base_attack}\nSecondary Attribute : {secondary_attribute}'
         weapon_skill_field = f'{weapon_skill_description}'
         
         embed.description = weapon_description
