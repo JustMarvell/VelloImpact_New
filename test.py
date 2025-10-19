@@ -77,6 +77,53 @@ def read_char_data(char_name):
         print(f"Error reading data for {char_name}: {e}")
         return None
     
+def create_weapon_name_list(output_file):
+    """
+    Retrieves all character names from Firebase nodes starting with 'Char_' and saves them to a JSON file.
+    
+    Args:
+        output_file (str): Path to the output JSON file where the list of names will be saved.
+    
+    Returns:
+        bool: True if the file was created successfully, False otherwise.
+    """
+    try:
+        # Get a reference to the root of the database
+        ref = db.reference('/')
+        
+        # Fetch all data at the root
+        all_data = ref.get()
+        
+        if not all_data:
+            print("No data found in the database.")
+            return False
+        
+        # List to store weapon names
+        weapon_names = []
+        
+        # Iterate through all top-level nodes
+        for key, value in all_data.items():
+            if key.startswith('Weapon_') and isinstance(value, dict):
+                # Extract the name field from the node
+                name = value.get('weapon_name')
+                if name:
+                    weapon_names.append(name)
+        
+        if not weapon_names:
+            print("No weapon names found in nodes starting with 'Weapon_'.")
+            return False
+        
+        # Save the list of names to a JSON file
+        with open(output_file, 'w') as f:
+            json.dump(weapon_names, f, indent=4)
+        
+        print(f"Weapon name list saved to {output_file}: {weapon_names}")
+        return True
+    
+    except Exception as e:
+        print(f"Error creating character name list: {e}")
+        return False
+    
 def create_char_name_list(output_file):
     """
     Retrieves all character names from Firebase nodes starting with 'Char_' and saves them to a JSON file.
@@ -125,14 +172,15 @@ def create_char_name_list(output_file):
         return False
     
 def get_character_list():
-    with open(settings.JSON_CHARACTER_DIR, 'r') as f:
+    with open(f'{settings.BASE_DIR}/json_data/character_list.json', 'r') as f:
         data = json.load(f)
     return data
 
 
 # upload_json_file()
 # data = read_char_data("Citlali")
-create_char_name_list(f'{settings.BASE_DIR}/json_data/character_list.json')
+# create_char_name_list(f'{settings.BASE_DIR}/json_data/character_list.json')
+# create_weapon_name_list(f'{settings.BASE_DIR}/json_data/weapon_list.json')
 # print(get_character_list())
 
 
