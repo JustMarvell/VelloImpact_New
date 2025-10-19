@@ -20,11 +20,11 @@ class Characters(commands.Cog):
         
         field1 = ""
         
-        data = await cc.get_character_list()
+        list_data = await cc.get_character_list()
         
         char_index = 1
         
-        for char in data:
+        for char in list_data:
             field1 += f'{char_index}. {char}\n'
             char_index += 1
             
@@ -45,7 +45,7 @@ class Characters(commands.Cog):
         
         status = await wb.PostWebhook(data)
         
-        if status != True:
+        if status == False:
             await ctx.send("Failed to Get the list. Please try again in a few moments")
         
     

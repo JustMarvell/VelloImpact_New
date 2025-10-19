@@ -2,8 +2,8 @@ import requests
 import settings
 
 async def PostWebhook(json : dict):
-    try:
-        requests.post(settings.DISCORD_WEBHOOK_URL_SECRET, json=json)
+    req = requests.post(settings.DISCORD_WEBHOOK_URL_SECRET, json=json)
+    if 200 <= req.status_code < 300:
         return True
-    except Exception as e:
-        return e
+    else:
+        return False

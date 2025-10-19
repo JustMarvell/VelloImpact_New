@@ -43,7 +43,7 @@ class Weapons(commands.Cog):
         await ctx.send("Showing List....", delete_after=3)
         
         status = await wb.PostWebhook(data)
-        if status != True:
+        if status == False:
             await ctx.send("Failed to Get the list. Please try again in a few moments.")
         
     async def weapon_autocomplete(
