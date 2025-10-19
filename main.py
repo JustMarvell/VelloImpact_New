@@ -2,6 +2,7 @@ import settings
 import discord
 from discord import app_commands
 from discord.ext import commands
+import connections.firebase as fb
 
 logger = settings.logging.getLogger("bot")
 cogs_logger = settings.logging.getLogger("cogs")
@@ -39,4 +40,5 @@ async def reload_commands(interaction: discord.Interaction):
             reloaded_cogs += 1
     await interaction.response.send_message(f'Reloaded : {reloaded_cogs} cogs. Auto delete after 4 Seconds', delete_after=4)
 
+fb.initialize_app()
 client.run(settings.DISCORD_API_SECRET, root_logger = True)
