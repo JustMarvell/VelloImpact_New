@@ -8,7 +8,7 @@ import os
 import discord
 
 cred = credentials.Certificate(f'{settings.BASE_DIR}/key.json')
-char_list_dir = f'{settings.BASE_DIR}/json_data/list.json'
+char_list_dir = f'{settings.BASE_DIR}/json_data/character_list.json'
 
 firebase_admin.initialize_app(cred, {
     'databaseURL': f'{settings.FIREBASE_API_SECRET}'
