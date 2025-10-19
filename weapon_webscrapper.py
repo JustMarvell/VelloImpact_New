@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json, os, random, settings, test
 
 # Making a GET request
-#link = 'https://genshin-impact.fandom.com/wiki/Talking_Stick'
+#link = 'https://genshin-impact.fandom.com/wiki/Weapon/List'
 
 
 def scrape_weapon(url: str):
@@ -23,9 +23,14 @@ def scrape_weapon(url: str):
         i.unwrap()
     for i in weapon_description.find_all('b'):
         i.unwrap()
-    
-    weapon_passive_name = soup.find('th', class_ = 'pi-horizontal-group-item pi-data-label pi-secondary-font pi-border-color pi-item-spacing').decode_contents()
         
+    weapon_description = weapon_description.decode_contents()
+    
+    try:
+        weapon_passive_name = soup.find('th', class_ = 'pi-horizontal-group-item pi-data-label pi-secondary-font pi-border-color pi-item-spacing').decode_contents()
+    except Exception as e:
+        weapon_passive_name = "None"    
+    
     url = []
     for a in soup.find('div', class_ = 'pi-image-collection wds-tabber').find_all('a', href = True):
         url.append(a['href'])
@@ -35,16 +40,33 @@ def scrape_weapon(url: str):
     weapon_base_atk = soup.find('div', class_ = 'pi-smart-data-value pi-data-value pi-font pi-item-spacing pi-border-color').decode_contents().strip()[5:]
     weapon_type = soup.find_all('section', class_ = 'pi-item pi-panel pi-border-color wds-tabber')[0].find('a', title = True)['title']
     weapon_quality = soup.find_all('section', class_ = 'pi-item pi-panel pi-border-color wds-tabber')[0].find_all('div', class_ = 'pi-item pi-data pi-item-spacing pi-border-color')[1].find('img', alt = True)['alt'][0]
-    weapon_sct = soup.find_all('div', class_ = 'pi-smart-data-value pi-data-value pi-font pi-item-spacing pi-border-color')[1].find('a', title = True)['title']
-    weapon_sct_atr = soup.find_all('div', class_ = 'pi-smart-data-value pi-data-value pi-font pi-item-spacing pi-border-color')[2].decode_contents().strip()[5:]
-    weapon_atr_dec = soup.find_all('td', class_ = 'pi-horizontal-group-item pi-data-value pi-font pi-border-color pi-item-spacing')
+    
+    try:
+        weapon_sct = soup.find_all('div', class_ = 'pi-smart-data-value pi-data-value pi-font pi-item-spacing pi-border-color')[1].find('a', title = True)['title']
+    except Exception as e:
+        weapon_sct = "None"
+        
+    if (weapon_sct == "None"):
+        weapon_sct_atr = ""
+    else:
+        weapon_sct_atr = soup.find_all('div', class_ = 'pi-smart-data-value pi-data-value pi-font pi-item-spacing pi-border-color')[2].decode_contents().strip()[5:]
 
-    for i in weapon_atr_dec[4].find_all('span'):
-        i.unwrap()
-    for i in weapon_atr_dec[4].find_all('a'):
-        i.unwrap()
-    for i in weapon_atr_dec[4].find_all('b'):
-        i.unwrap()
+    try:
+        weapon_atr_dec = soup.find_all('td', class_ = 'pi-horizontal-group-item pi-data-value pi-font pi-border-color pi-item-spacing')[4]
+    except Exception as e:
+        weapon_atr_dec = soup.find('td', class_ = 'pi-horizontal-group-item pi-data-value pi-font pi-border-color pi-item-spacing')
+
+    if (weapon_atr_dec != None):
+        for i in weapon_atr_dec.find_all('span'):
+            i.unwrap()
+        for i in weapon_atr_dec.find_all('a'):
+            i.unwrap()
+        for i in weapon_atr_dec.find_all('b'):
+            i.unwrap()
+            
+        weapon_atr_dec = weapon_atr_dec.decode_contents()
+    else:
+        weapon_atr_dec = "None"
         
     weapon_release_date_ = soup.find_all('section', class_ = 'pi-item pi-panel pi-border-color wds-tabber')[0].find('div', attrs = {'data-source' : 'releaseDate'}).find('div', class_ = 'pi-data-value pi-font')
 
@@ -67,7 +89,7 @@ def scrape_weapon(url: str):
     # print(f'Secondary Attribute : {weapon_sct_atr} {weapon_sct}')
 
         
-    weapon_icon = soup.find('div', class_ = 'pi-image-collection wds-tabber').findAll('div', class_ = 'wds-tab__content')[1].find('a', href = True)['href']
+    weapon_icon = soup.find('div', class_ = 'pi-image-collection wds-tabber').find_all('div', class_ = 'wds-tab__content')[1].find('a', href = True)['href']
 
     def set_id(quality: str, weapon_type: str):
         if weapon_type == "Sword":
@@ -89,6 +111,8 @@ def scrape_weapon(url: str):
         return res
     id = set_id(weapon_quality, weapon_type)
     
+    
+    
     def add_to_json():
         data = {
             "id" : id,
@@ -98,10 +122,11 @@ def scrape_weapon(url: str):
             "base_attack" : weapon_base_atk,
             "secondary_attribute_type" : weapon_sct,
             "secondary_attribute" : f'{weapon_sct} {weapon_sct_atr}',
-            "weapon_description" : weapon_description.decode_contents(),
+            "weapon_description" : weapon_description,
             "weapon_skill_name" : weapon_passive_name,
-            "weapon_skill_description" : weapon_atr_dec[4].decode_contents(),
-            "weapon_icon" : weapon_icon
+            "weapon_skill_description" : weapon_atr_dec,
+            "weapon_icon" : weapon_icon,
+            "weapon_release_date" : weapon_release_date
         }
         
         dir = settings.JSON_WEAPON_DIR
@@ -154,4 +179,4 @@ def input_automatically(limit : int):
     start_scrapping(link_list)
     test.upload_weapon_json_file()
 
-input_automatically(2)
+input_automatically(0)
