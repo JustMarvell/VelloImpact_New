@@ -41,11 +41,11 @@ async def get_character_data(char_name):
             return data
         else:
             print(f"No data found for {char_name}")
-            return None
+            return 1
     
     except Exception as e:
         print(f"Error reading data for {char_name}: {e}")
-        return None
+        return 2
     
 async def get_character_list():
     with open(char_list_dir, 'r') as f:
