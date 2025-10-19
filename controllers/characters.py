@@ -27,7 +27,7 @@ async def get_character_data(char_name: str):
             char_name = char_name.replace(char, '_')
         
         # Create a reference to the node "Char_[character-name]"
-        ref = db.reference(f"Char_{char_name.lower().capitalize()}")
+        ref = db.reference(f"Char_{char_name}")
         
         # Get the data
         data = ref.get()
