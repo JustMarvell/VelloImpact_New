@@ -48,4 +48,28 @@ def random_music():
     
     print(f"Here's a random music video: {url}")
 
-random_music()
+def random_meme():
+    # List of meme-related search terms to ensure meme videos
+    meme_terms = [
+        "meme", "funny meme", "meme compilation", "viral meme", 
+        "internet meme", "meme video", "funny video"
+    ]
+    
+    # Combine a random meme term with a random string for variety
+    query = f"{random.choice(meme_terms)} {''.join(random.choice(string.ascii_letters) for _ in range(random.randint(3, 5)))}"
+    
+    # Search for meme videos
+    search = VideosSearch(query, limit=5)
+    results = search.result()['result']
+    
+    if not results:
+        random_meme()  # Recurse, but be careful with stack
+        return
+    
+    # Pick a random meme video from the results
+    video = random.choice(results)
+    url = video['link']
+    
+    print(f"Here's a random meme video: {url}")
+    
+random_meme()
