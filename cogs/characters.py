@@ -20,10 +20,12 @@ class Characters(commands.Cog):
         
         field1 = ""
         
+        data = await cc.get_character_list()
+        
         char_index = 1
         
-        for char in char_index:
-            field1 += f'{char_index}. {char}'
+        for char in data:
+            field1 += f'{char_index}. {char}\n'
             char_index += 1
             
         data = {
@@ -38,6 +40,8 @@ class Characters(commands.Cog):
                 "username": "[/] BUFF_VelloImpact",
                 "attachments": []
             }
+        
+        await ctx.send("Showing List....", delete_after=3)
         
         if await wb.PostWebhook(data) == False:
             await ctx.send("Failed to Get the list. Please try again in a few moments")
