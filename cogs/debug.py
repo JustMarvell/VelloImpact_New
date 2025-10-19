@@ -12,7 +12,7 @@ class Debug(commands.Cog) :
         self.bot = bot
         
     @commands.hybrid_command()
-    async def say_hello(self, ctx : commands.Context, action: str):
+    async def say(self, ctx : commands.Context, action: str):
         await ctx.send(action)
         
     bad_ping = 15606812
