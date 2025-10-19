@@ -13,6 +13,39 @@ class Weapons(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
+    @commands.hybrid_command()
+    async def show_weapon_list(self, ctx : commands.Context):
+        """ Return a list of available weapons """
+        
+        field1 = ""
+        
+        data = await wc.get_weapon_list()
+        
+        weapon_index = 1
+        
+        for weapon in data:
+            field1 += f'{weapon_index}. {weapon}\n'
+            weapon_index += 1
+            
+        data = {
+            "embeds": [
+                {
+                    "title": "WEAPON LIST"
+                },
+                {
+                    "description": field1
+                }
+            ],
+                "username": "[/] BUFF_VelloImpact",
+                "attachments": []
+            }
+        
+        await ctx.send("Showing List....", delete_after=3)
+        
+        status = await wb.PostWebhook(data)
+        if status != True:
+            await ctx.send("Failed to Get the list. Please try again in a few moments.")
+        
     async def weapon_autocomplete(
         self,
         ctx : commands.Context,
