@@ -43,7 +43,9 @@ class Characters(commands.Cog):
         
         await ctx.send("Showing List....", delete_after=3)
         
-        if await wb.PostWebhook(data) == False:
+        status = await wb.PostWebhook(data)
+        
+        if status != True:
             await ctx.send("Failed to Get the list. Please try again in a few moments")
         
     
