@@ -24,7 +24,7 @@ cryo = discord.Color.dark_grey()
 anemo = discord.Color.teal()
 #endregion
 
-async def get_character_data(char_name):
+async def get_character_data(char_name: str):
     try:
         # Sanitize character name for Firebase key
         invalid_chars = ['.', '#', '$', '/', '[', ']']
@@ -32,7 +32,7 @@ async def get_character_data(char_name):
             char_name = char_name.replace(char, '_')
         
         # Create a reference to the node "Char_[character-name]"
-        ref = db.reference(f"Char_{char_name}")
+        ref = db.reference(f"Char_{char_name.lower().capitalize()}")
         
         # Get the data
         data = ref.get()
