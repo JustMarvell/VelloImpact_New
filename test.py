@@ -12,10 +12,10 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': f'{settings.FIREBASE_API_SECRET}'
 })
 
-json_dir = f'{settings.BASE_DIR}/json_data/'
+# json_dir = f'{settings.BASE_DIR}/json_data/'
 
-def upload_json_file():
-    for json_file in glob.glob(os.path.join(json_dir, '*.json')):
+def upload_character_json_file():
+    for json_file in glob.glob(os.path.join(settings.JSON_CHARACTER_DIR, '*.json')):
         try:
             with open(json_file, 'r') as f:
                 data = json.load(f)
@@ -105,7 +105,7 @@ def create_char_name_list(output_file):
         return False
     
 def get_character_list():
-    with open(f'{json_dir}/list.json', 'r') as f:
+    with open(settings.JSON_CHARACTER_DIR, 'r') as f:
         data = json.load(f)
     return data
 

@@ -12,6 +12,8 @@ DISCORD_WEBHOOK_URL_SECRET = os.getenv("WEBHOOK_URL")
 HEADERS = {"Content-Type" : "application/json"}
 BASE_DIR = pathlib.Path(__file__).parent
 COGS_DIR = BASE_DIR / "cogs"
+JSON_WEAPON_DIR = BASE_DIR / "json_data/weapons/"
+JSON_CHARACTER_DIR = BASE_DIR / "json_data/characters/"
 
 LOGGING_CONFIG = {
     "version" : 1,
