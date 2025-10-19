@@ -209,7 +209,7 @@ def scrape_data(url : str):
             "icon" : icon
         }
         
-        dir = f'{settings.BASE_DIR}/json_data/'
+        dir = settings.JSON_CHARACTER_DIR
         file_path = os.path.join(dir, f"{name}.json")
 
         os.makedirs(dir, exist_ok=True)
@@ -257,6 +257,6 @@ def input_automatically(limit : int):
         link_list.append(url)
     
     start_scrapping(link_list)
-    test.upload_json_file()
+    test.upload_character_json_file()
 
 input_automatically(0)
