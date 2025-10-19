@@ -18,22 +18,13 @@ class Characters(commands.Cog):
     async def show_characters_list(self, ctx : commands.Context):
         """ Return a list of available characters """
         
-        fourstarchar = await cc.get_character_list_based_on_quality(4)
-        fivestarchar = await cc.get_character_list_based_on_quality(5)
-        
         field1 = ""
-        field2 = ""
-
-        fourindex = 1
-        fiveindex = 1
-
-        for char in fourstarchar:
-            field1 += f'{fourindex}. {char}\n'
-            fourindex += 1
-            
-        for char in fivestarchar:
-            field2 += f'{fiveindex}. {char}\n'
-            fiveindex += 1
+        
+        char_index = 1
+        
+        for char in char_index:
+            field1 += f'{char_index}. {char}'
+            char_index += 1
             
         data = {
             "embeds": [
@@ -41,19 +32,13 @@ class Characters(commands.Cog):
                     "title": "CHARACTER LIST"
                 },
                 {
-                    "title": "4 STAR CHARACTERS",
                     "description": field1
-                },
-                {
-                    "title": "5 STAR CHARACTERS",
-                    "description" : field2
                 }
             ],
                 "username": "[/] BUFF_VelloImpact",
                 "attachments": []
             }
         
-        await ctx.send("Showing List....")
         if await wb.PostWebhook(data) == False:
             await ctx.send("Failed to Get the list. Please try again in a few moments")
         

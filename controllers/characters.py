@@ -52,6 +52,7 @@ async def get_character_list():
         data = json.load(f)
     return data
 
+
 async def convert_quality_to_star(quality : int):
     star = "⭐"
     result = ""
