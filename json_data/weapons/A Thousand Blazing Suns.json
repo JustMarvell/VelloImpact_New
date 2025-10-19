@@ -1,0 +1,13 @@
+{
+    "id": "52558346",
+    "weapon_name": "A Thousand Blazing Suns",
+    "weapon_type": "Claymore",
+    "weapon_quality": "5",
+    "base_attack": "741",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 11.0%",
+    "weapon_description": "A greatsword that dazzles like the rising sun. It has witnessed the extinguishing and rekindling of innumerable suns.",
+    "weapon_skill_name": "Sunset Reignites the Dawn",
+    "weapon_skill_description": "Gain the \"Scorching Brilliance\" effect when using an Elemental Skill or Burst: CRIT DMG increased by 40% and ATK increased by 56% for 6s. This effect can trigger once every 10s.<br/>While a \"Scorching Brilliance\" instance is active, its duration is increased by 2s after Normal or Charged attacks deal Elemental DMG. This effect can trigger once every second, and the max duration increase is 6s.<br/>Additionally, when the equipping character is in the Nightsoul's Blessing state, \"Scorching Brilliance\" effects are increased by 75%, and its duration will not count down when the equipping character is off\u2014field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/2b/Weapon_A_Thousand_Blazing_Suns_2nd.png/revision/latest?cb=20250102021245"
+}
