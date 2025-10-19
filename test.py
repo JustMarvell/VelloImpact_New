@@ -132,7 +132,7 @@ def get_character_list():
 
 # upload_json_file()
 # data = read_char_data("Citlali")
-# create_char_name_list(f'{settings.BASE_DIR}/json_data/list.json')
+create_char_name_list(f'{settings.BASE_DIR}/json_data/character_list.json')
 # print(get_character_list())
 
 
