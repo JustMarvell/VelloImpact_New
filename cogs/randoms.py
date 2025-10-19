@@ -18,3 +18,11 @@ class Randoms(commands.Cog):
         url = await rc.get_random_video()
         
         await ctx.send(url)
+        
+    @commands.hybrid_command()
+    async def get_random_music_video(self, ctx : commands.Context):
+        """ Return a random youtube music video """
+        
+        url = await rc.get_random_music()
+        
+        await ctx.send(url)
