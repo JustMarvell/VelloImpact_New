@@ -34,6 +34,26 @@ def upload_character_json_file():
         except Exception as e:
             print(f"Error processing {json_file}: {e}")
             
+def upload_weapon_json_file():
+    for json_file in glob.glob(os.path.join(settings.JSON_WEAPON_DIR, '*.json')):
+        try:
+            with open(json_file, 'r') as f:
+                data = json.load(f)
+
+            weapon_name = data.get('weapon_name')
+            if not weapon_name:
+                print("name not found, skipping")
+                continue
+            
+            ref = db.reference(f'Weapon_{weapon_name}')
+
+            ref.set(data)
+            
+            print(f"Successfully uploaded data for {weapon_name} from {json_file}")
+        
+        except Exception as e:
+            print(f"Error processing {json_file}: {e}")
+            
 def read_char_data(char_name):
     try:
         # Sanitize character name for Firebase key
