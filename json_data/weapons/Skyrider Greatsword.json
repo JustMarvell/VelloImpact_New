@@ -1,0 +1,14 @@
+{
+    "id": "32844159",
+    "weapon_name": "Skyrider Greatsword",
+    "weapon_type": "Claymore",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "Physical DMG Bonus",
+    "secondary_attribute": "Physical DMG Bonus - 43.9%",
+    "weapon_description": "A reliable steel sword. The legendary Skyrider once tried to ride it as a flying sword... for the second time.",
+    "weapon_skill_name": "Courage",
+    "weapon_skill_description": "On hit, Normal or Charged Attacks increase ATK by 10% for 6s. Max 4 stacks. Can only occur once every 0.5s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Weapon_Skyrider_Greatsword_2nd.png/revision/latest?cb=20201116032713",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

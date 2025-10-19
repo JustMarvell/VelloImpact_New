@@ -1,0 +1,14 @@
+{
+    "id": "41183303",
+    "weapon_name": "Serenity's Call",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 61.3%",
+    "weapon_description": "A longsword forged from metal that makes a mournful sound when swung.",
+    "weapon_skill_name": "Solemn Silence",
+    "weapon_skill_description": "Upon causing an Elemental Reaction, increases Max HP by 32% for 12s. Moonsign: Ascendant Gleam: Max HP from this effect is further increased by 32%. This effect can be triggered even if the equipping character is off-field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Serenity%27s_Call_2nd.png/revision/latest?cb=20250910060046",
+    "weapon_release_date": "September 10, 2025 | 1 month ago"
+}

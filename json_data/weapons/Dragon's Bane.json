@@ -1,0 +1,14 @@
+{
+    "id": "45500568",
+    "weapon_name": "Dragon's Bane",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 221",
+    "weapon_description": "A polearm decorated with an entwining golden dragon. Light and sharp, this weapon may very well kill dragons with ease.",
+    "weapon_skill_name": "Bane of Flame and Water",
+    "weapon_skill_description": "Increases DMG against opponents affected by Hydro or Pyro by 36%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_Dragon%27s_Bane_2nd.png/revision/latest?cb=20201116032656",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

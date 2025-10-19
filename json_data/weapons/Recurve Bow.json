@@ -1,0 +1,14 @@
+{
+    "id": "33116143",
+    "weapon_name": "Recurve Bow",
+    "weapon_type": "Bow",
+    "weapon_quality": "3",
+    "base_attack": "354",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP  - 46.9%",
+    "weapon_description": "It is said that this bow can shoot down eagles in flight, but ultimately how true that is depends on the skill of the archer.",
+    "weapon_skill_name": "Cull the Weak",
+    "weapon_skill_description": "Defeating an opponent restores 16% HP.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/8/82/Weapon_Recurve_Bow_2nd.png/revision/latest?cb=20201116034856",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

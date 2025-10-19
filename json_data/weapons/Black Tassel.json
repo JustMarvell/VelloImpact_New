@@ -1,0 +1,14 @@
+{
+    "id": "35849975",
+    "weapon_name": "Black Tassel",
+    "weapon_type": "Polearm",
+    "weapon_quality": "3",
+    "base_attack": "354",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP  - 46.9%",
+    "weapon_description": "An exceptionally powerful polearm that also offers a simple but elegant solution to the issue of the easily stained white tassel.",
+    "weapon_skill_name": "Bane of the Soft",
+    "weapon_skill_description": "Increases DMG against slimes by 80%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Weapon_Black_Tassel_2nd.png/revision/latest?cb=20201116154751",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

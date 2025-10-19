@@ -1,0 +1,14 @@
+{
+    "id": "41851109",
+    "weapon_name": "Prototype Rancour",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Physical DMG Bonus",
+    "secondary_attribute": "Physical DMG Bonus - 34.5%",
+    "weapon_description": "An ancient longsword discovered in the Blackcliff Forge that cuts through rocks like a hot knife through butter.",
+    "weapon_skill_name": "Smashed Stone",
+    "weapon_skill_description": "On hit, Normal or Charged Attacks increase ATK and DEF by 8% for 6s. Max 4 stacks. This effect can only occur once every 0.3s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Weapon_Prototype_Rancour_2nd.png/revision/latest?cb=20201119235212",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

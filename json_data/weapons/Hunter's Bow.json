@@ -1,0 +1,14 @@
+{
+    "id": "13136752",
+    "weapon_name": "Hunter's Bow",
+    "weapon_type": "Bow",
+    "weapon_quality": "1",
+    "base_attack": "185",
+    "secondary_attribute_type": "None",
+    "secondary_attribute": "None ",
+    "weapon_description": "A hunter's music consists of but two sounds: the twang of the bowstring and the whoosh of soaring arrows.",
+    "weapon_skill_name": "None",
+    "weapon_skill_description": "None",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/3/31/Weapon_Hunter%27s_Bow_2nd.png/revision/latest?cb=20201116034033",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

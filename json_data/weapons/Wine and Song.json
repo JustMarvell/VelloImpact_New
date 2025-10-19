@@ -1,0 +1,14 @@
+{
+    "id": "44985895",
+    "weapon_name": "Wine and Song",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge - 30.6%",
+    "weapon_description": "A songbook from the bygone aristocratic era, whose composer has become forgotten. It chronicles the tale of a certain heroic outlaw.",
+    "weapon_skill_name": "Ever-Changing",
+    "weapon_skill_description": "Hitting an opponent with a Normal Attack decreases the Stamina consumption of Sprint or Alternate Sprint by 22% for 5s. Additionally, using a Sprint or Alternate Sprint ability increases ATK by 40% for 5s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/57/Weapon_Wine_and_Song_2nd.png/revision/latest?cb=20210317205015",
+    "weapon_release_date": "March 17, 2021 | 4 years, 7 months ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "44696427",
+    "weapon_name": "Etherlight Spindlelute",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 45.9%",
+    "weapon_description": "A lute whose golden strings are as radiant as sunlight. It appears to be a relic from the Seelie of old.",
+    "weapon_skill_name": "Last Singer",
+    "weapon_skill_description": "For 20s after using an Elemental Skill, the equipping character's Elemental Mastery is increased by 200.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/19/Weapon_Etherlight_Spindlelute_2nd.png/revision/latest?cb=20250912040605",
+    "weapon_release_date": "September 12, 2025 | 1 month ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "43207924",
+    "weapon_name": "Flower-Wreathed Feathers",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "A longbow that burns like a flame. The feathers that adorn it are said to have come from the ancient tyrant Ngoubou.",
+    "weapon_skill_name": "Inflorescence Unattainable",
+    "weapon_skill_description": "Decreases Gliding Stamina consumption by 15%. When using Aimed Shots, the DMG dealt by Charged Attacks increases by 12% every 0.5s. This effect can stack up to 6 times and will be removed 10s after leaving Aiming Mode.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/09/Weapon_Flower-Wreathed_Feathers_2nd.png/revision/latest?cb=20241123034758",
+    "weapon_release_date": "November 20, 2024 | 10 months ago"
+}

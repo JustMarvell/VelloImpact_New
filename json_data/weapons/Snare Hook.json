@@ -1,0 +1,14 @@
+{
+    "id": "43482692",
+    "weapon_name": "Snare Hook",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 61.3%",
+    "weapon_description": "The stave of this bow is comprised of metal alloy and yet remains surprisingly light. Even when faced with thick, heavy snares, the arrows it fires can pass through unhindered.",
+    "weapon_skill_name": "Phantom Flash",
+    "weapon_skill_description": "Upon causing an Elemental Reaction, increases Elemental Mastery by 120 for 12s. Moonsign: Ascendant Gleam: Elemental Mastery from this effect is further increased by 120. This effect can be triggered even if the equipping character is off-field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/26/Weapon_Snare_Hook_2nd.png/revision/latest?cb=20250910061721",
+    "weapon_release_date": "September 10, 2025 | 1 month ago"
+}

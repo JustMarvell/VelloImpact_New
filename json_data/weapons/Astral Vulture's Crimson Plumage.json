@@ -1,0 +1,14 @@
+{
+    "id": "53236606",
+    "weapon_name": "Astral Vulture's Crimson Plumage",
+    "weapon_type": "Bow",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 66.2%",
+    "weapon_description": "An ancient longbow crested with red feathers, a sacred relic of the Flower-Feather Clan that has been passed down from generation to generation.",
+    "weapon_skill_name": "The Moonring Sighted",
+    "weapon_skill_description": "For 12s after triggering a Swirl reaction, ATK increases by 48%. In addition, when 1/2 or more characters in the party are of a different Elemental Type from the equipping character, the DMG dealt by the equipping character's Charged Attacks is increased by 40%/96% and Elemental Burst DMG dealt is increased by 20%/48%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/c7/Weapon_Astral_Vulture%27s_Crimson_Plumage_2nd.png/revision/latest?cb=20241123040024",
+    "weapon_release_date": "November 20, 2024 | 10 months ago"
+}

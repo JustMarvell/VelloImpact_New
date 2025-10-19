@@ -1,0 +1,14 @@
+{
+    "id": "45630311",
+    "weapon_name": "Royal Spear",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "This polearm was once cherished by a member of the old nobility that governed Mondstadt long ago. Although it has never seen the light of day, it is still incomparably sharp.",
+    "weapon_skill_name": "Focus",
+    "weapon_skill_description": "Upon dealing damage to an opponent, increases CRIT Rate by 16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Weapon_Royal_Spear_2nd.png/revision/latest?cb=20201202041628",
+    "weapon_release_date": "December 01, 2020 | 4 years, 10 months ago"
+}

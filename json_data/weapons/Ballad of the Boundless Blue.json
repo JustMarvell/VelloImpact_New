@@ -1,0 +1,14 @@
+{
+    "id": "44839531",
+    "weapon_name": "Ballad of the Boundless Blue",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge - 30.6%",
+    "weapon_description": "An anthology of exquisite poetry. It contains quite a few poems beloved by Mondstadters, concerning the skies, dandelions, and other such topics.",
+    "weapon_skill_name": "Azure Skies",
+    "weapon_skill_description": "Within 6s after Normal or Charged Attacks hit an opponent, Normal Attack DMG will be increased by 16% and Charged Attack DMG will be increased by 12%. Max 3 stacks. This effect can be triggered once every 0.3s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/1d/Weapon_Ballad_of_the_Boundless_Blue_2nd.png/revision/latest?cb=20231012042247",
+    "weapon_release_date": "October 12, 2023 | 2 years ago"
+}

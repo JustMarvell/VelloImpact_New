@@ -1,0 +1,14 @@
+{
+    "id": "42245196",
+    "weapon_name": "Snow-Tombed Starsilver",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Physical DMG Bonus",
+    "secondary_attribute": "Physical DMG Bonus - 34.5%",
+    "weapon_description": "An ancient greatsword that was stored between frescoes. Forged from Starsilver, it has the power to cleave through ice and snow.",
+    "weapon_skill_name": "Frost Burial",
+    "weapon_skill_description": "Hitting an opponent with Normal and Charged Attacks has a 100% chance of forming and dropping an Everfrost Icicle above them, dealing AoE DMG equal to 140% of ATK. Opponents affected by Cryo are instead dealt DMG equal to 360% of ATK. Can only occur once every 10s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/a1/Weapon_Snow-Tombed_Starsilver_2nd.png/revision/latest?cb=20201225233130",
+    "weapon_release_date": "December 23, 2020 | 4 years, 9 months ago"
+}

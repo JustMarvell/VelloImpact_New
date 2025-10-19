@@ -1,0 +1,14 @@
+{
+    "id": "32569744",
+    "weapon_name": "Ferrous Shadow",
+    "weapon_type": "Claymore",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP - 35.2%",
+    "weapon_description": "A replica of the famed sword of Arundolyn, the Lion of Light. Feel the power of a legendary hero as you hold this sword in your hand! Imagine yourself as the great warrior himself! Note: Daydreaming not recommended in live combat.",
+    "weapon_skill_name": "Unbending",
+    "weapon_skill_description": "When HP falls below 90%, increases Charged Attack DMG by 50%, and Charged Attacks become much harder to interrupt.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Ferrous_Shadow_2nd.png/revision/latest?cb=20201116033929",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

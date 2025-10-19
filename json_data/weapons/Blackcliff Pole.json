@@ -1,0 +1,14 @@
+{
+    "id": "45634202",
+    "weapon_name": "Blackcliff Pole",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  55.1%",
+    "weapon_description": "A weapon made of blackstone and aerosiderite. There is a dark crimson glow on its cold black sheen.",
+    "weapon_skill_name": "Press the Advantage",
+    "weapon_skill_description": "After defeating an opponent, ATK is increased by 24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Blackcliff_Pole_2nd.png/revision/latest?cb=20201116032653",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

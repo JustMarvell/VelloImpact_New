@@ -1,0 +1,14 @@
+{
+    "id": "41145369",
+    "weapon_name": "Calamity of Eshu",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "A ceremonial blade forged by Sanhaj, the great high priest of the Masters of the Night-Wind. In tales of bygone days, Sanhaj could use this curved blade to perform rituals, blurring the boundary between the Night Kingdom and the present world.",
+    "weapon_skill_name": "Diffusing Boundary",
+    "weapon_skill_description": "While characters are protected by a Shield, DMG dealt by Normal and Charged Attacks is increased by 40%, and Normal and Charged Attack CRIT Rate is increased by 16%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Weapon_Calamity_of_Eshu_2nd.png/revision/latest?cb=20241128032751",
+    "weapon_release_date": "November 28, 2024 | 10 months ago"
+}

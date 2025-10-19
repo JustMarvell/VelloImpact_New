@@ -1,0 +1,14 @@
+{
+    "id": "44813190",
+    "weapon_name": "Blackcliff Agate",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  55.1%",
+    "weapon_description": "A mysterious catalyst made of blackstone. It has an ominous crimson glow that seems to pulse in synchronization with the tremors from deep within the earth.",
+    "weapon_skill_name": "Press the Advantage",
+    "weapon_skill_description": "After defeating an opponent, ATK is increased by 24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/50/Weapon_Blackcliff_Agate_2nd.png/revision/latest?cb=20201119234000",
+    "weapon_release_date": "November 01, 2020 | 4 years, 11 months ago"
+}

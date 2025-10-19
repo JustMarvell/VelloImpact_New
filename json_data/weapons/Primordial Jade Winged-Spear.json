@@ -1,0 +1,14 @@
+{
+    "id": "55667505",
+    "weapon_name": "Primordial Jade Winged-Spear",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 22.1%",
+    "weapon_description": "A jade polearm made by the archons, capable of slaying ancient beasts.",
+    "weapon_skill_name": "Eagle Spear of Justice",
+    "weapon_skill_description": "On hit, increases ATK by 6.0% for 6s. Max 7 stacks. This effect can only occur once every 0.3s. While in possession of the maximum possible stacks, DMG dealt is increased by 24%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/27/Weapon_Primordial_Jade_Winged-Spear_2nd.png/revision/latest?cb=20201116152026",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

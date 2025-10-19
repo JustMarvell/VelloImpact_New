@@ -1,0 +1,14 @@
+{
+    "id": "42234835",
+    "weapon_name": "Rainslasher",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "A fluorescent greatsword with no sharp edge that crushes enemies with brute force and raw power.",
+    "weapon_skill_name": "Bane of Storm and Tide",
+    "weapon_skill_description": "Increases DMG against opponents affected by Hydro or Electro by 36%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/0f/Weapon_Rainslasher_2nd.png/revision/latest?cb=20201119234740",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "53807479",
+    "weapon_name": "Skyward Harp",
+    "weapon_type": "Bow",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 22.1%",
+    "weapon_description": "A greatbow that symbolizes Dvalin's affiliation with the Anemo Archon. The sound of the bow firing is music to the Anemo Archon's ears. It contains the power of the sky and wind within.",
+    "weapon_skill_name": "Echoing Ballad",
+    "weapon_skill_description": "Increases CRIT DMG by 40%. Hits have a 100% chance to inflict a small AoE attack, dealing 125% Physical ATK DMG. Can only occur once every 2s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/60/Weapon_Skyward_Harp_2nd.png/revision/latest?cb=20201116151107",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

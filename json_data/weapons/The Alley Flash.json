@@ -1,0 +1,14 @@
+{
+    "id": "41300212",
+    "weapon_name": "The Alley Flash",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "620",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 55",
+    "weapon_description": "A straight sword as black as the night. It once belonged to a thief who roamed the benighted streets.",
+    "weapon_skill_name": "Itinerant Hero",
+    "weapon_skill_description": "Increases DMG dealt by the character equipping this weapon by 24%. Taking DMG disables this effect for 5s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/ac/Weapon_The_Alley_Flash_2nd.png/revision/latest?cb=20210317075442",
+    "weapon_release_date": "March 17, 2021 | 4 years, 7 months ago"
+}

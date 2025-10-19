@@ -1,0 +1,14 @@
+{
+    "id": "43435895",
+    "weapon_name": "Royal Bow",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "An old royal longbow that belonged to the erstwhile rulers of Mondstadt. Countless generations later, the bowstring is still tight and can still fire arrows with great force.",
+    "weapon_skill_name": "Focus",
+    "weapon_skill_description": "Upon dealing damage to an opponent, increases CRIT Rate by 16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/4e/Weapon_Royal_Bow_2nd.png/revision/latest?cb=20201116032709",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

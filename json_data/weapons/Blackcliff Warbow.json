@@ -1,0 +1,14 @@
+{
+    "id": "43561961",
+    "weapon_name": "Blackcliff Warbow",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG 36.8%",
+    "weapon_description": "A bow made of blackstone that features extremely sturdy bow limbs. It requires an archer with a strong bow arm to use.",
+    "weapon_skill_name": "Press the Advantage",
+    "weapon_skill_description": "After defeating an opponent, ATK is increased by 24% for 30s. This effect has a maximum of 3 stacks, and the duration of each stack is independent of the others.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Weapon_Blackcliff_Warbow_2nd.png/revision/latest?cb=20201120002837",
+    "weapon_release_date": "November 01, 2020 | 4 years, 11 months ago"
+}

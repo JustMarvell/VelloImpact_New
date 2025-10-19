@@ -1,0 +1,14 @@
+{
+    "id": "51678939",
+    "weapon_name": "Skyward Blade",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  55.1%",
+    "weapon_description": "The sword of a knight that symbolizes the restored honor of Dvalin. The blessings of the Anemo Archon rest on the fuller of the blade, imbuing the sword with the powers of the sky and the wind.",
+    "weapon_skill_name": "Sky-Piercing Fang",
+    "weapon_skill_description": "CRIT Rate increased by 8%. Gains Skypiercing Might upon using an Elemental Burst: Increases Movement SPD by 10%, increases ATK SPD by 10%, and Normal and Charged hits deal additional DMG equal to 40% of ATK. Skypiercing Might lasts for 12s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/5d/Weapon_Skyward_Blade_2nd.png/revision/latest?cb=20201116032714",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

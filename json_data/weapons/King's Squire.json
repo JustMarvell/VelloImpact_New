@@ -1,0 +1,14 @@
+{
+    "id": "43309423",
+    "weapon_name": "King's Squire",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK  55.1%",
+    "weapon_description": "It has taken on the shape of a bow that can shoot the enemies of the forest down.",
+    "weapon_skill_name": "Labyrinth Lord's Instruction",
+    "weapon_skill_description": "Obtain the Teachings of the Forest effect when unleashing Elemental Skills and Elemental Burst, increasing Elemental Mastery by 140 for 12s. This effect will be removed when switching characters. When the Teachings of the Forest effect ends or is removed, it will deal 180% of ATK as DMG to 1 nearby opponent. The Teachings of the Forest effect can be triggered once every 20s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_King%27s_Squire_2nd.png/revision/latest?cb=20220824051521",
+    "weapon_release_date": "August 24, 2022 | 3 years, 1 month ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "41561745",
+    "weapon_name": "Finale of the Deep",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "This longsword is as silent as the mysterious ocean depths. It is even more ancient than its stylings might imply.",
+    "weapon_skill_name": "An End Sublime",
+    "weapon_skill_description": "When using an Elemental Skill, ATK will be increased by 24% for 15s, and a Bond of Life worth 25% of Max HP will be granted. This effect can be triggered once every 10s. When the Bond of Life is cleared, a maximum of 300 ATK will be gained based on 4.8% of the total amount of the Life Bond cleared, lasting for 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/ad/Weapon_Finale_of_the_Deep_2nd.png/revision/latest?cb=20230817014204",
+    "weapon_release_date": "August 16, 2023 | 2 years, 2 months ago"
+}

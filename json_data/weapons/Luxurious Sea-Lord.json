@@ -1,0 +1,14 @@
+{
+    "id": "42248449",
+    "weapon_name": "Luxurious Sea-Lord",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK  55.1%",
+    "weapon_description": "The great king of the ocean. Having been air-dried, it makes for a fine weapon as well as emergency sustenance.",
+    "weapon_skill_name": "Oceanic Victory",
+    "weapon_skill_description": "Increases Elemental Burst DMG by 24%. When Elemental Burst hits opponents, there is a 100% chance of summoning a huge onrush of tuna that deals 200% ATK as AoE DMG. This effect can occur once every 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Weapon_Luxurious_Sea-Lord_2nd.png/revision/latest?cb=20231219172242",
+    "weapon_release_date": "September 27, 2021 | 4 years ago"
+}

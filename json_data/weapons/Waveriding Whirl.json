@@ -1,0 +1,14 @@
+{
+    "id": "44540367",
+    "weapon_name": "Waveriding Whirl",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 61.3%",
+    "weapon_description": "A boomerang made from the fangs of a giant sea serpent. It was a rare weapon indeed that the giant Tupac would call \"trusty.\"",
+    "weapon_skill_name": "Fangs Flying To and Fro",
+    "weapon_skill_description": "Decreases Swimming Stamina consumption by 15%. In addition, for 10s after using an Elemental Skill, Max HP is increased by 40%. For every Hydro Elemental character in the party, Max HP is increased by another 24%, and the maximum increase that can be achieved in this way is 48%. Can be triggered once every 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/41/Weapon_Waveriding_Whirl_2nd.png/revision/latest?cb=20241123035235",
+    "weapon_release_date": "November 20, 2024 | 10 months ago"
+}

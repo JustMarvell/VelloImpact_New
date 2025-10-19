@@ -1,0 +1,14 @@
+{
+    "id": "41428641",
+    "weapon_name": "The Flute",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "Beneath its rusty exterior is a lavishly decorated thin blade. It swings as swiftly as the wind.",
+    "weapon_skill_name": "Chord",
+    "weapon_skill_description": "Normal or Charged Attacks grant a Harmonic on hits. Gaining 5 Harmonics triggers the power of music and deals 200% ATK DMG to surrounding enemies. Harmonics last up to 30s, and a maximum of 1 can be gained every 0.5s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/3/37/Weapon_The_Flute_2nd.png/revision/latest?cb=20201119203413",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

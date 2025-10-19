@@ -1,0 +1,14 @@
+{
+    "id": "45327741",
+    "weapon_name": "Deathmatch",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate 36.8%",
+    "weapon_description": "A sharp crimson polearm that was once a gladiator's priceless treasure. Its awl has been stained by the blood of countless beasts and men.",
+    "weapon_skill_name": "Gladiator",
+    "weapon_skill_description": "If there are at least 2 opponents nearby, ATK is increased by 32% and DEF is increased by 32%. If there are fewer than 2 opponents nearby, ATK is increased by 48%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Weapon_Deathmatch_2nd.png/revision/latest?cb=20201116032655",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

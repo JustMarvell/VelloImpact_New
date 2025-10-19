@@ -1,0 +1,14 @@
+{
+    "id": "44241378",
+    "weapon_name": "Blackmarrow Lantern",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 221",
+    "weapon_description": "A lantern that emits a faint, ghostly glow, contained by a midnight-black alloy that resembles interlocking bones. It is said to have once been revered as a precious treasure by a certain secret organization.",
+    "weapon_skill_name": "Token of Covenant",
+    "weapon_skill_description": "Bloom DMG is increased by 96%, and Lunar-Bloom DMG is increased by 24%. Moonsign: Ascendant Gleam: Lunar-Bloom DMG is increased by an additional 24%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/9/98/Weapon_Blackmarrow_Lantern_2nd.png/revision/latest?cb=20250910061808",
+    "weapon_release_date": "September 10, 2025 | 1 month ago"
+}

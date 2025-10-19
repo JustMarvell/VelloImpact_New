@@ -1,0 +1,14 @@
+{
+    "id": "53993128",
+    "weapon_name": "Hunter's Path",
+    "weapon_type": "Bow",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 44.1%",
+    "weapon_description": "This gilded bow was made using precious white branches. It has felled countless wicked beasts attempting to infiltrate the woods.\n",
+    "weapon_skill_name": "At the End of the Beast-Paths",
+    "weapon_skill_description": "Gain 24% All Elemental DMG Bonus. Obtain the Tireless Hunt effect after hitting an opponent with a Charged Attack. This effect increases Charged Attack DMG by 320% of Elemental Mastery. This effect will be removed after 12 Charged Attacks or 10s. Only 1 instance of Tireless Hunt can be gained every 12s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/b5/Weapon_Hunter%27s_Path_2nd.png/revision/latest?cb=20220824051506",
+    "weapon_release_date": "August 24, 2022 | 3 years, 1 month ago"
+}

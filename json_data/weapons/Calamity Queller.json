@@ -1,0 +1,14 @@
+{
+    "id": "55993777",
+    "weapon_name": "Calamity Queller",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "741",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK - 16.5%",
+    "weapon_description": "A keenly honed weapon forged from some strange crystal. Its faint blue light seems to whisper of countless matters now past.",
+    "weapon_skill_name": "Extinguishing Precept",
+    "weapon_skill_description": "Gain 24% All Elemental DMG Bonus. Obtain Consummation for 20s after using an Elemental Skill, causing ATK to increase by 6.4% per second. This ATK increase has a maximum of 6 stacks. When the character equipped with this weapon is not on the field, Consummation's ATK increase is doubled.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/58/Weapon_Calamity_Queller_2nd.png/revision/latest?cb=20231219232140",
+    "weapon_release_date": "January 05, 2022 | 3 years, 9 months ago"
+}

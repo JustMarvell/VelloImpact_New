@@ -1,0 +1,14 @@
+{
+    "id": "51384398",
+    "weapon_name": "Splendor of Tranquil Waters",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 88.2%",
+    "weapon_description": "A scepter around which swirls pure water. In days long past, it once symbolized the highest authority over the seas.",
+    "weapon_skill_name": "Dawn and Dusk by the Lake",
+    "weapon_skill_description": "When the equipping character's current HP increases or decreases, Elemental Skill DMG dealt will be increased by 16% for 6s. Max 3 stacks. This effect can be triggered once every 0.2s. When other party members' current HP increases or decreases, the equipping character's Max HP will be increased by 28% for 6s. Max 2 stacks. This effect can be triggered once every 0.2s. The aforementioned effects can be triggered even if the wielder is off-field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/Weapon_Splendor_of_Tranquil_Waters_2nd.png/revision/latest?cb=20231221072131",
+    "weapon_release_date": "November 08, 2023 | 1 year, 11 months ago"
+}

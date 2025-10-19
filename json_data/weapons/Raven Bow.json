@@ -1,0 +1,14 @@
+{
+    "id": "33380971",
+    "weapon_name": "Raven Bow",
+    "weapon_type": "Bow",
+    "weapon_quality": "3",
+    "base_attack": "448",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 94",
+    "weapon_description": "Ravens are known to be the ferrymen of the dead. This bow's limb is decorated with raven feathers, which forebode the imminent death of its target.",
+    "weapon_skill_name": "Bane of Flame and Water",
+    "weapon_skill_description": "Increases DMG against opponents affected by Hydro or Pyro by 24%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/15/Weapon_Raven_Bow_2nd.png/revision/latest?cb=20230824220300",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

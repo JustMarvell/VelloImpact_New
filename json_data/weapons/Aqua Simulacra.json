@@ -1,0 +1,14 @@
+{
+    "id": "53585200",
+    "weapon_name": "Aqua Simulacra",
+    "weapon_type": "Bow",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 88.2%",
+    "weapon_description": "This longbow's color is unpredictable. Under the light, it takes on a lustrous, watery blue.",
+    "weapon_skill_name": "The Cleansing Form",
+    "weapon_skill_description": "HP is increased by 32%. When there are opponents nearby, the DMG dealt by the wielder of this weapon is increased by 40%. This will take effect whether the character is on-field or not.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Aqua_Simulacra_2nd.png/revision/latest?cb=20220531054833",
+    "weapon_release_date": "May 31, 2022 | 3 years, 4 months ago"
+}

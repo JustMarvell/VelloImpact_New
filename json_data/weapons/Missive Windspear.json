@@ -1,0 +1,14 @@
+{
+    "id": "45289637",
+    "weapon_name": "Missive Windspear",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "A beacon that shows the direction of the wind. Not every idyll carried on the breeze remains a gentle thing...",
+    "weapon_skill_name": "The Wind Unattained",
+    "weapon_skill_description": "Within 10s after an Elemental Reaction is triggered, ATK is increased by 24% and Elemental Mastery is increased by 96.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Missive_Windspear_2nd.png/revision/latest?cb=20231219232846",
+    "weapon_release_date": "September 29, 2022 | 3 years ago"
+}

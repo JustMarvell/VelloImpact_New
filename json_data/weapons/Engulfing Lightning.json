@@ -1,0 +1,14 @@
+{
+    "id": "55251226",
+    "weapon_name": "Engulfing Lightning",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  55.1%",
+    "weapon_description": "A naginata used to \"cut grass.\" Any army that stands before this weapon will probably be likewise cut down...",
+    "weapon_skill_name": "Timeless Dream: Eternal Stove",
+    "weapon_skill_description": "ATK increased by 56% of Energy Recharge over the base 100%. You can gain a maximum bonus of 120% ATK. Gain 50% Energy Recharge for 12s after using an Elemental Burst.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/23/Weapon_Engulfing_Lightning_2nd.png/revision/latest?cb=20210901042404",
+    "weapon_release_date": "September 01, 2021 | 4 years, 1 month ago"
+}

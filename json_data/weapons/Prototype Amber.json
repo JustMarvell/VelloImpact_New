@@ -1,0 +1,14 @@
+{
+    "id": "44298809",
+    "weapon_name": "Prototype Amber",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP 41.3%",
+    "weapon_description": "A dully gilded catalyst secretly guarded in the Blackcliff Forge. It seems to glow with the very light from the sky.",
+    "weapon_skill_name": "Gilding",
+    "weapon_skill_description": "Using an Elemental Burst regenerates 6 Energy every 2s for 6s. All party members will regenerate 6% HP every 2s for this duration.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Weapon_Prototype_Amber_2nd.png/revision/latest?cb=20201119204209",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

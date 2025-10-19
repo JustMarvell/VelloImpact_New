@@ -1,0 +1,14 @@
+{
+    "id": "51940177",
+    "weapon_name": "Peak Patrol Song",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "DEF",
+    "secondary_attribute": "DEF  82.7%",
+    "weapon_description": "An obsidian blade of unparalleled sharpness, light as a song. It was modified by a certain artisan to come equipped with a record-playing detachable Phlogiston Device.",
+    "weapon_skill_name": "Halcyon Years Unending",
+    "weapon_skill_description": "Gain \"Ode to Flowers\" after Normal or Plunging Attacks hit an opponent: DEF increases by 16% and gain a 20% All Elemental DMG Bonus for 6s. Max 2 stacks. Can trigger once per 0.1s. When this effect reaches 2 stacks or the 2nd stack's duration is refreshed, increase all nearby party members' All Elemental DMG Bonus by 16% for every 1,000 DEF the equipping character has, up to a maximum of 51.2%, for 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/59/Weapon_Peak_Patrol_Song_2nd.png/revision/latest?cb=20241009015435",
+    "weapon_release_date": "October 09, 2024 | 1 year ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "41428207",
+    "weapon_name": "Favonius Sword",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 61.3%",
+    "weapon_description": "A standard-issue longsword of the Knights of Favonius. When you're armed with this agile and sharp weapon, channeling the power of the elements has never been so easy!",
+    "weapon_skill_name": "Windfall",
+    "weapon_skill_description": "CRIT hits have a 100% chance to generate a small amount of Elemental Particles, which will regenerate 6 Energy for the character. Can only occur once every 6s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Favonius_Sword_2nd.png/revision/latest?cb=20201116033819",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "45575648",
+    "weapon_name": "Prototype Starglitter",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 45.9%",
+    "weapon_description": "A grudge discovered in the Blackcliff Forge. The glimmers along the sharp edge are like stars in the night.",
+    "weapon_skill_name": "Magic Affinity",
+    "weapon_skill_description": "After using an Elemental Skill, increases Normal and Charged Attack DMG by 16% for 12s. Max 2 stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/3/33/Weapon_Prototype_Starglitter_2nd.png/revision/latest?cb=20201116154402",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

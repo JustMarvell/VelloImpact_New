@@ -1,0 +1,14 @@
+{
+    "id": "43187136",
+    "weapon_name": "Song of Stillness",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "A strange longbow that resembles a sea creature. Its string makes no sound at all.",
+    "weapon_skill_name": "Benthic Pulse",
+    "weapon_skill_description": "After the wielder is healed, they will deal 32% more DMG for 8s. This can be triggered even when the character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Weapon_Song_of_Stillness_2nd.png/revision/latest?cb=20230817014238",
+    "weapon_release_date": "August 16, 2023 | 2 years, 2 months ago"
+}

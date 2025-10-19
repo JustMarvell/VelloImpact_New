@@ -1,0 +1,14 @@
+{
+    "id": "43544403",
+    "weapon_name": "Sequence of Solitude",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP 41.3%",
+    "weapon_description": "A mechanical longbow purpose-built for long shots and silent kills. Its twang is swallowed up amidst the night. the note lengthy and cold.",
+    "weapon_skill_name": "Silent Trigger",
+    "weapon_skill_description": "When an attack hits an opponent, deal AoE DMG equal to 80% of Max HP at the target location. This effect can be triggered once every 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/6e/Weapon_Sequence_of_Solitude_2nd.png/revision/latest?cb=20250509063046",
+    "weapon_release_date": "May 09, 2025 | 5 months ago"
+}

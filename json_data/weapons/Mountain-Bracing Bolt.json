@@ -1,0 +1,14 @@
+{
+    "id": "45279231",
+    "weapon_name": "Mountain-Bracing Bolt",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge - 30.6%",
+    "weapon_description": "This polearm was once jointly forged by the craftsmen in the mines as a sacrifice to the spirits of the mountains.",
+    "weapon_skill_name": "Hope Beyond the Peaks",
+    "weapon_skill_description": "Decreases Climbing Stamina Consumption by 15% and increases Elemental Skill DMG by 24%. Also, after other nearby party members use Elemental Skills, the equipping character's Elemental Skill DMG will also increase by 24% for 8s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Mountain-Bracing_Bolt_2nd.png/revision/latest?cb=20241009015509",
+    "weapon_release_date": "October 09, 2024 | 1 year ago"
+}

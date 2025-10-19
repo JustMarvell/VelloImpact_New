@@ -1,0 +1,14 @@
+{
+    "id": "41281443",
+    "weapon_name": "Xiphos' Moonlight",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "This ancient double-edged sword glimmers with moonlight. It is said that a now-silent Jinni dwells within it.",
+    "weapon_skill_name": "Jinni's Whisper",
+    "weapon_skill_description": "The following effect will trigger every 10s: The equipping character will gain 0.072% Energy Recharge for each point of Elemental Mastery they possess for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Weapon_Xiphos%27_Moonlight_2nd.png/revision/latest?cb=20221014114114",
+    "weapon_release_date": "October 14, 2022 | 3 years ago"
+}

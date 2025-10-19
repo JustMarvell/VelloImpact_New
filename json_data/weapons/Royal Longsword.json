@@ -1,0 +1,14 @@
+{
+    "id": "41513498",
+    "weapon_name": "Royal Longsword",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "An old longsword that belonged to the erstwhile rulers of Mondstadt. Exquisitely crafted, the carvings and embellishments testify to the stature of its owner.",
+    "weapon_skill_name": "Focus",
+    "weapon_skill_description": "Upon dealing damage to an opponent, increases CRIT Rate by 16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/8/84/Weapon_Royal_Longsword_2nd.png/revision/latest?cb=20201120002243",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

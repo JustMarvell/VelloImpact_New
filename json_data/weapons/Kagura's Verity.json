@@ -1,0 +1,14 @@
+{
+    "id": "54654918",
+    "weapon_name": "Kagura's Verity",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 66.2%",
+    "weapon_description": "The bells used when performing the Kagura Dance, blessed by the Guuji herself. The scent of the Sacred Sakura tree lingers on it.",
+    "weapon_skill_name": "Kagura Dance of the Sacred Sakura",
+    "weapon_skill_description": "Gains the Kagura Dance effect when using an Elemental Skill, causing the Elemental Skill DMG of the character wielding this weapon to increase by 24% for 16s. Max 3 stacks. This character will gain 24% All Elemental DMG Bonus when they possess 3 stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/1a/Weapon_Kagura%27s_Verity_2nd.png/revision/latest?cb=20220216070853",
+    "weapon_release_date": "February 16, 2022 | 3 years, 8 months ago"
+}

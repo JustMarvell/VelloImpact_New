@@ -1,0 +1,14 @@
+{
+    "id": "44257202",
+    "weapon_name": "Royal Grimoire",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "A book that once belonged to a royal mage of Mondstadt. It contains faithful and comprehensive historical accounts as well as magic spells.",
+    "weapon_skill_name": "Focus",
+    "weapon_skill_description": "Upon dealing damage to an opponent, increases CRIT Rate by 16%. Max 5 stacks. A CRIT hit removes all existing stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/69/Weapon_Royal_Grimoire_2nd.png/revision/latest?cb=20201116032710",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

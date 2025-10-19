@@ -1,0 +1,14 @@
+{
+    "id": "44287870",
+    "weapon_name": "Ash-Graven Drinking Horn",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP 41.3%",
+    "weapon_description": "A ritual vessel passed down amongst the Meztli. They say that this was once a treasure much-valued, yet never used, by the hero \"Giant\" Tupac.",
+    "weapon_skill_name": "Tupac's Grip",
+    "weapon_skill_description": "When an attack hits an opponent, deal AoE DMG equal to 80% of Max HP at the target location. This effect can be triggered once every 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/da/Weapon_Ash-Graven_Drinking_Horn_2nd.png/revision/latest?cb=20240914112635",
+    "weapon_release_date": "August 28, 2024 | 1 year, 1 month ago"
+}

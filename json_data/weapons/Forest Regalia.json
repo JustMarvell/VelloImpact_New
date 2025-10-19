@@ -1,0 +1,14 @@
+{
+    "id": "42182402",
+    "weapon_name": "Forest Regalia",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge - 30.6%",
+    "weapon_description": "It has taken on the shape of a greatsword that shall cut down the foes of the forest",
+    "weapon_skill_name": "Forest Sanctuary",
+    "weapon_skill_description": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Consciousness will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 120 Elemental Mastery for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field. The Leaf of Consciousness' effect cannot stack.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/b8/Weapon_Forest_Regalia_2nd.png/revision/latest?cb=20220824051437",
+    "weapon_release_date": "August 24, 2022 | 3 years, 1 month ago"
+}

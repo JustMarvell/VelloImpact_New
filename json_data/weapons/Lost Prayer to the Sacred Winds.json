@@ -1,0 +1,14 @@
+{
+    "id": "54519884",
+    "weapon_name": "Lost Prayer to the Sacred Winds",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 33.1%",
+    "weapon_description": "An educational tome written by anonymous early inhabitants who worshiped the wind. It has been blessed by the wind for its faithfulness and influence over the millennia.",
+    "weapon_skill_name": "Boundless Blessing",
+    "weapon_skill_description": "Increases Movement SPD by 10%. When in battle, gain an 16% Elemental DMG Bonus every 4s. Max 4 stacks. Lasts until the character falls or leaves combat.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Weapon_Lost_Prayer_to_the_Sacred_Winds_2nd.png/revision/latest?cb=20201116034150",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

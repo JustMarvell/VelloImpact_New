@@ -1,0 +1,14 @@
+{
+    "id": "52753910",
+    "weapon_name": "Beacon of the Reed Sea",
+    "weapon_type": "Claymore",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 33.1%",
+    "weapon_description": "A large, flat-tipped sword designed in to fit as the weapon of an ancient king or some ceremonial instrument.",
+    "weapon_skill_name": "Desert Watch",
+    "weapon_skill_description": "After the character's Elemental Skill hits an opponent, their ATK will be increased by 40% for 8s. After the character takes DMG, their ATK will be increased by 40% for 8s. The 2 aforementioned effects can be triggered even when the character is not on the field. Additionally, when not protected by a shield, the character's Max HP will be increased by 64%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Beacon_of_the_Reed_Sea_2nd.png/revision/latest?cb=20231219232112",
+    "weapon_release_date": "March 01, 2023 | 2 years, 7 months ago"
+}

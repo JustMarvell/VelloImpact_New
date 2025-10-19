@@ -1,0 +1,14 @@
+{
+    "id": "55978527",
+    "weapon_name": "Lumidouce Elegy",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 33.1%",
+    "weapon_description": "A magnificent polearm adorned with azure crystal. It is said to have been a certain legendary Champion Duelist's treasure \u2014 and yet, not once was it ever used.",
+    "weapon_skill_name": "Bright Dawn Overture",
+    "weapon_skill_description": "ATK increased by 31%. After the equipping character triggers Burning on an opponent or deals Dendro DMG to Burning opponents, the DMG dealt is increased by 38%. This effect lasts for 8s, max 2 stacks. When 2 stacks are reached or when the duration is refreshed at 2 stacks, restore 16 Energy. Energy can be restored this way once every 12s. The 2 aforementioned effects can be triggered even when the character is off-field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/3/34/Weapon_Lumidouce_Elegy_2nd.png/revision/latest?cb=20240819223206",
+    "weapon_release_date": "August 06, 2024 | 1 year, 2 months ago"
+}

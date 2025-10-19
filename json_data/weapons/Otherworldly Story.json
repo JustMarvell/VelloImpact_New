@@ -1,0 +1,14 @@
+{
+    "id": "34141712",
+    "weapon_name": "Otherworldly Story",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge - 39.0%",
+    "weapon_description": "A cheap fantasy novel with no value whatsoever. Any claim that it possesses the power of catalysis is also pure fantasy.",
+    "weapon_skill_name": "Energy Shower",
+    "weapon_skill_description": "Each Elemental Orb or Particle collected restores 2% HP.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Weapon_Otherworldly_Story_2nd.png/revision/latest?cb=20201116034643",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

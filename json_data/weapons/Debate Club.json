@@ -1,0 +1,14 @@
+{
+    "id": "32213695",
+    "weapon_name": "Debate Club",
+    "weapon_type": "Claymore",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK - 35.2%",
+    "weapon_description": "A handy club made of fine steel. The most persuasive line of reasoning in any debater's arsenal.",
+    "weapon_skill_name": "Blunt Conclusion",
+    "weapon_skill_description": "After using an Elemental Skill, Normal or Charged Attacks, on hit, deal an additional 120% ATK DMG in a small area. Effect lasts 15s. DMG can only occur once every 3s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Weapon_Debate_Club_2nd.png/revision/latest?cb=20201116033623",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

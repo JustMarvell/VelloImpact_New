@@ -1,0 +1,14 @@
+{
+    "id": "35691851",
+    "weapon_name": "White Tassel",
+    "weapon_type": "Polearm",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 23.4%",
+    "weapon_description": "A standard-issue weapon of the Millelith soldiers. It has a sturdy shaft and sharp spearhead. It's a reliable weapon.",
+    "weapon_skill_name": "Sharp",
+    "weapon_skill_description": "Increases Normal Attack DMG by 48%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/05/Weapon_White_Tassel_2nd.png/revision/latest?cb=20201116154942",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

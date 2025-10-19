@@ -1,0 +1,14 @@
+{
+    "id": "42950123",
+    "weapon_name": "Mailed Flower",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 110",
+    "weapon_description": "A graceful and elegant greatsword that is decorated with flowers and ribbons.",
+    "weapon_skill_name": "Whispers of Wind and Flower",
+    "weapon_skill_description": "Within 8s after the character's Elemental Skill hits an opponent or the character triggers an Elemental Reaction, their ATK and Elemental Mastery will be increased by 24% and 96 respectively.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Weapon_Mailed_Flower_2nd.png/revision/latest?cb=20231219232753",
+    "weapon_release_date": "March 03, 2023 | 2 years, 7 months ago"
+}

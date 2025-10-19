@@ -1,0 +1,14 @@
+{
+    "id": "42907642",
+    "weapon_name": "\"Ultimate Overlord's Mega Magic Sword\"",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge - 30.6%",
+    "weapon_description": "A magical sword that can only be wielded by the ultimate overlord who rules the seas. As it has been made with special water-resistant materials, it will not get ruined by water damage even after being immersed. Why, one might even call it invincible!",
+    "weapon_skill_name": "Melussistance!",
+    "weapon_skill_description": "ATK increased by 24%. That's not all! The support from all Melusines you've helped in Merusea Village fills you with strength! Based on the number of them you've helped, your ATK is increased by up to an additional 24%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/48/Weapon_Ultimate_Overlord%27s_Mega_Magic_Sword_2nd.png/revision/latest?cb=20231221035932",
+    "weapon_release_date": "December 21, 2023 | 1 year, 9 months ago"
+}

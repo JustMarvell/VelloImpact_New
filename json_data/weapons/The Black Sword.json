@@ -1,0 +1,14 @@
+{
+    "id": "41967708",
+    "weapon_name": "The Black Sword",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate 27.6%",
+    "weapon_description": "A pitch-black longsword that thirsts for violence and conflict. It is said that this weapon can cause its user to become drunk on the red wine of slaughter.",
+    "weapon_skill_name": "Justice",
+    "weapon_skill_description": "Increases DMG dealt by Normal and Charged Attacks by 40%.<br/>Additionally, regenerates 100% of ATK as HP when Normal and Charged Attacks score a CRIT Hit. This effect can occur once every 5s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/47/Weapon_The_Black_Sword_2nd.png/revision/latest?cb=20201119203615",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

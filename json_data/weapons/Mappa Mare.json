@@ -1,0 +1,14 @@
+{
+    "id": "44702195",
+    "weapon_name": "Mappa Mare",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 110",
+    "weapon_description": "A nautical chart featuring nearby currents and climates that somehow found its way into Liyue via foreign traders.",
+    "weapon_skill_name": "Infusion Scroll",
+    "weapon_skill_description": "Triggering an Elemental reaction grants a 16% Elemental DMG Bonus for 10s. Max 2 stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Mappa_Mare_2nd.png/revision/latest?cb=20201116032703",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

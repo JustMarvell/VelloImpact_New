@@ -1,0 +1,14 @@
+{
+    "id": "45455937",
+    "weapon_name": "Footprint of the Rainbow",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "DEF",
+    "secondary_attribute": "DEF  - 51.7%",
+    "weapon_description": "A keen polearm forged from jade. It gives off rainbow-hued light when exposed to sunlight.",
+    "weapon_skill_name": "Pact of Flowing Springs",
+    "weapon_skill_description": "Using an Elemental Skill increases DEF by 32% for 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/1b/Weapon_Footprint_of_the_Rainbow_2nd.png/revision/latest?cb=20240914113056",
+    "weapon_release_date": "August 28, 2024 | 1 year, 1 month ago"
+}

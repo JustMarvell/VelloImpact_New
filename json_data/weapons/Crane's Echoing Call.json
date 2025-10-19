@@ -1,0 +1,14 @@
+{
+    "id": "54109133",
+    "weapon_name": "Crane's Echoing Call",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "741",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK - 16.5%",
+    "weapon_description": "A fan carved from pure jade, around which swirls an ancient aura of adeptal energy.",
+    "weapon_skill_name": "Cloudfall Axiom",
+    "weapon_skill_description": "After the equipping character hits an opponent with a Plunging Attack, all nearby party members' Plunging Attacks will deal 80% increased DMG for 20s. When nearby party members hit opponents with Plunging Attacks, they will restore 3.5 Energy to the equipping character. Energy can be restored this way every 0.7s. This energy regain effect can be triggered even if the equipping character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/7/7c/Weapon_Crane%27s_Echoing_Call_2nd.png/revision/latest?cb=20240201122418",
+    "weapon_release_date": "January 31, 2024 | 1 year, 8 months ago"
+}

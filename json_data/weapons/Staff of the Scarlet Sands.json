@@ -1,0 +1,14 @@
+{
+    "id": "55205913",
+    "weapon_name": "Staff of the Scarlet Sands",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 44.1%",
+    "weapon_description": "One of a paired set of scepters fashioned from obsidian. Legend has it that these staves grant the right to lead the people of the desert, but no retainer now lives who can verify the proper appearance of these regalia.",
+    "weapon_skill_name": "Heat Haze at Horizon's End",
+    "weapon_skill_description": "The equipping character gains 104% of their Elemental Mastery as bonus ATK. When an Elemental Skill hits opponents, the Dream of the Scarlet Sands effect will be gained for 10s: The equipping character will gain 56% of their Elemental Mastery as bonus ATK. Max 3 stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/4d/Weapon_Staff_of_the_Scarlet_Sands_2nd.png/revision/latest?cb=20231219233113",
+    "weapon_release_date": "September 28, 2022 | 3 years ago"
+}

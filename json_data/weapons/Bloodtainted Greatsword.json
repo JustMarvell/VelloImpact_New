@@ -1,0 +1,14 @@
+{
+    "id": "32407192",
+    "weapon_name": "Bloodtainted Greatsword",
+    "weapon_type": "Claymore",
+    "weapon_quality": "3",
+    "base_attack": "354",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 187",
+    "weapon_description": "A steel sword that is said to have been coated with dragon blood, rendering it invulnerable to damage. This effect is not extended to its wielder, however.",
+    "weapon_skill_name": "Bane of Fire and Thunder",
+    "weapon_skill_description": "Increases DMG against opponents affected by Pyro or Electro by 24%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Weapon_Bloodtainted_Greatsword_2nd.png/revision/latest?cb=20201120003753",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

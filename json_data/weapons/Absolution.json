@@ -1,0 +1,14 @@
+{
+    "id": "51328187",
+    "weapon_name": "Absolution",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG - 44.1%",
+    "weapon_description": "A rapier once wielded by a deceiver who had forsaken everything. In the past, it was primarily used as a tool when he had to disguise his identity.",
+    "weapon_skill_name": "Deathly Pact",
+    "weapon_skill_description": "CRIT DMG increased by 40%. Increasing the value of a Bond of Life increases the DMG the equipping character deals by 32% for 6s. Max 3 stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/7/7a/Weapon_Absolution_2nd.png/revision/latest?cb=20240605052656",
+    "weapon_release_date": "June 05, 2024 | 1 year, 4 months ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "42850858",
+    "weapon_name": "Whiteblind",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "DEF",
+    "secondary_attribute": "DEF  - 51.7%",
+    "weapon_description": "An exotic sword with one section of the blade left blunt. It made its way into Liyue via the hands of foreign traders. Incredibly powerful in the hands of someone who knows how to use it.",
+    "weapon_skill_name": "Infusion Blade",
+    "weapon_skill_description": "On hit, Normal or Charged Attacks increase ATK and DEF by 12% for 6s. Max 4 stacks (48%  total). Can only occur once every 0.5s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/e9/Weapon_Whiteblind_2nd.png/revision/latest?cb=20201119200502",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

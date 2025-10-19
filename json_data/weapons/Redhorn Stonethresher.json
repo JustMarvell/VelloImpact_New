@@ -1,0 +1,14 @@
+{
+    "id": "52230974",
+    "weapon_name": "Redhorn Stonethresher",
+    "weapon_type": "Claymore",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 88.2%",
+    "weapon_description": "According to its previous owner, this weapon is the \"Mighty Redhorn Stoic Stonethreshing Gilded Goldcrushing Lion Lord\" that can send any monster packing with its tail between its legs.",
+    "weapon_skill_name": "Gokadaiou Otogibanashi",
+    "weapon_skill_description": "DEF is increased by 56%. Normal and Charged Attack DMG is increased by 80% of DEF.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Weapon_Redhorn_Stonethresher_2nd.png/revision/latest?cb=20211214105439",
+    "weapon_release_date": "December 14, 2021 | 3 years, 10 months ago"
+}

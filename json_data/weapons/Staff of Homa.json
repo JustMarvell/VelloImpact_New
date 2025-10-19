@@ -1,0 +1,14 @@
+{
+    "id": "55436695",
+    "weapon_name": "Staff of Homa",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 66.2%",
+    "weapon_description": "A \"firewood staff\" that was once used in ancient and long-lost rituals.",
+    "weapon_skill_name": "Reckless Cinnabar",
+    "weapon_skill_description": "HP increased by 40%. Additionally, provides an ATK Bonus based on 1.6% of the wielder's Max HP. When the wielder's HP is less than 50%, this ATK bonus is increased by an additional 1.8% of Max HP.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Staff_of_Homa_2nd.png/revision/latest?cb=20210321105014",
+    "weapon_release_date": "February 23, 2021 | 4 years, 7 months ago"
+}

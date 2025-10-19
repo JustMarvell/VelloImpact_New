@@ -1,0 +1,14 @@
+{
+    "id": "44434107",
+    "weapon_name": "Frostbearer",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "A fruit that possesses a strange, frosty will. A faint sense of agony emanates from it.",
+    "weapon_skill_name": "Frost Burial",
+    "weapon_skill_description": "Hitting an opponent with Normal and Charged Attacks has a 100% chance of forming and dropping an Everfrost Icicle above them, dealing 140% AoE ATK DMG. Opponents affected by Cryo are dealt 360% ATK DMG instead by the icicle. Can only occur once every 10s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/bb/Weapon_Frostbearer_2nd.png/revision/latest?cb=20210101191316",
+    "weapon_release_date": "December 23, 2020 | 4 years, 9 months ago"
+}

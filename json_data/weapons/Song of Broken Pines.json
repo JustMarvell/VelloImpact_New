@@ -1,0 +1,14 @@
+{
+    "id": "52430827",
+    "weapon_name": "Song of Broken Pines",
+    "weapon_type": "Claymore",
+    "weapon_quality": "5",
+    "base_attack": "741",
+    "secondary_attribute_type": "Physical DMG Bonus",
+    "secondary_attribute": "Physical DMG Bonus - 20.7%",
+    "weapon_description": "A greatsword as light as the sigh of grass in the breeze, yet as merciless to the corrupt as a typhoon.",
+    "weapon_skill_name": "Rebel's Banner-Hymn",
+    "weapon_skill_description": "A part of the \"Millennial Movement\" that wanders amidst the winds.<br/>Increases ATK by 32%, and when Normal or Charged Attacks hit opponents, the character gains a Sigil of Whispers. This effect can be triggered once every 0.3s.<br/>When you possess four Sigils of Whispers, all of them will be consumed and all nearby party members will obtain the \"Millennial Movement: Banner-Hymn\" effect for 12s.<br/>\"Millennial Movement: Banner-Hymn\" increases Normal ATK SPD by 24% and increases ATK by 40%. Once this effect is triggered, you will not gain Sigils of Whispers for 20s.<br/>Of the many effects of the \"Millennial Movement\", buffs of the same type will not stack.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/55/Weapon_Song_of_Broken_Pines_2nd.png/revision/latest?cb=20210518151810",
+    "weapon_release_date": "May 18, 2021 | 4 years, 5 months ago"
+}

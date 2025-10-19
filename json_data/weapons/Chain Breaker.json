@@ -1,0 +1,14 @@
+{
+    "id": "43447973",
+    "weapon_name": "Chain Breaker",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "A jade-adorned longbow. The gentle winds always seem to swirl gently about its string. Legends claim that this weapon was made in a far more ancient era by a dragon artisan.",
+    "weapon_skill_name": "Flower\u2014Feather Song",
+    "weapon_skill_description": "For every party member from Natlan or who has a different Elemental Type from the equipping character, the equipping character gains 9.6% increased ATK. When there are no less than 3 of the aforementioned characters, the equipping character gains 48 Elemental Mastery.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/7/72/Weapon_Chain_Breaker_2nd.png/revision/latest?cb=20240914113338",
+    "weapon_release_date": "August 28, 2024 | 1 year, 1 month ago"
+}

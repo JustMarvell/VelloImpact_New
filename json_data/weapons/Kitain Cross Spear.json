@@ -1,0 +1,14 @@
+{
+    "id": "45154527",
+    "weapon_name": "Kitain Cross Spear",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 110",
+    "weapon_description": "A special lance that was once used by a famed warrior who guarded the Tatarigami on Yashiori Island.",
+    "weapon_skill_name": "Samurai Conduct",
+    "weapon_skill_description": "Increases Elemental Skill DMG by 12%. After Elemental Skill hits an opponent, the character loses 3 Energy but regenerates 5 Energy every 2s for the next 6s. This effect can occur once every 10s. Can be triggered even when the character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/5d/Weapon_Kitain_Cross_Spear_2nd.png/revision/latest?cb=20210723074330",
+    "weapon_release_date": "July 21, 2021 | 4 years, 2 months ago"
+}

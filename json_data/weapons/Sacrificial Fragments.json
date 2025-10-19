@@ -1,0 +1,14 @@
+{
+    "id": "44163830",
+    "weapon_name": "Sacrificial Fragments",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 221",
+    "weapon_description": "A weathered script, the text of which is no longer legible. A cursed item eroded by the winds of time.",
+    "weapon_skill_name": "Composed",
+    "weapon_skill_description": "After dealing damage to an opponent with an Elemental Skill, the skill has a 80% chance to end its own CD. Can only occur once every 16s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/9/94/Weapon_Sacrificial_Fragments_2nd.png/revision/latest?cb=20231219233041",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

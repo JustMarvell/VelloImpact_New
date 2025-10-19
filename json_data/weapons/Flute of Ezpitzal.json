@@ -1,0 +1,14 @@
+{
+    "id": "41176936",
+    "weapon_name": "Flute of Ezpitzal",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "DEF",
+    "secondary_attribute": "DEF  69.0%",
+    "weapon_description": "A peculiarly shaped jade longsword that has been passed down amongst the Masters of the Night-Wind as a \"priestly flute.\"",
+    "weapon_skill_name": "Smoke-and-Mirror Mystery",
+    "weapon_skill_description": "Using an Elemental Skill increases DEF by 32% for 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/47/Weapon_Flute_of_Ezpitzal_2nd.png/revision/latest?cb=20240914112836",
+    "weapon_release_date": "August 28, 2024 | 1 year, 1 month ago"
+}

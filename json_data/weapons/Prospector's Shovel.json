@@ -1,0 +1,14 @@
+{
+    "id": "45499617",
+    "weapon_name": "Prospector's Shovel",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "A polearm that appears to have been crafted from a metal agricultural tool. At first glance, it could not look more ordinary, yet its discreet design hides fittings that are both lavish and undeniably exquisite.",
+    "weapon_skill_name": "Swift and Sure",
+    "weapon_skill_description": "Electro-Charged DMG is increased by 96%, and Lunar-Charged DMG is increased by 24%. Moonsign: Ascendant Gleam: Lunar-Charged DMG is increased by an additional 24%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/cd/Weapon_Prospector%27s_Shovel_2nd.png/revision/latest?cb=20250910060647",
+    "weapon_release_date": "September 10, 2025 | 1 month ago"
+}

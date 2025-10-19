@@ -1,0 +1,14 @@
+{
+    "id": "45102572",
+    "weapon_name": "Wavebreaker's Fin",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "620",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 13.8%",
+    "weapon_description": "A naginata forged from luminscent material deep in the ocean depths. It was once the possession of the tengu race.",
+    "weapon_skill_name": "Watatsumi Wavewalker",
+    "weapon_skill_description": "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by 0.24%. A maximum of 80% increased Elemental Burst DMG can be achieved this way.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/e4/Weapon_Wavebreaker%27s_Fin_2nd.png/revision/latest?cb=20231219232436",
+    "weapon_release_date": "November 02, 2021 | 3 years, 11 months ago"
+}

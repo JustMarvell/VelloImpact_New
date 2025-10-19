@@ -1,0 +1,14 @@
+{
+    "id": "54724630",
+    "weapon_name": "Everlasting Moonglow",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP  - 49.6%",
+    "weapon_description": "A string of lovely jasper from the deep sea. It shines with a pure radiance like that of the moon, and just as ever-distant.",
+    "weapon_skill_name": "Byakuya Kougetsu",
+    "weapon_skill_description": "Healing Bonus increased by 20%, Normal Attack DMG is increased by 3.0% of the Max HP of the character equipping this weapon. For 12s after using an Elemental Burst, Normal Attacks that hit opponents will restore 0.6 Energy. Energy can be restored this way once every 0.1s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Everlasting_Moonglow_2nd.png/revision/latest?cb=20210922011016",
+    "weapon_release_date": "September 21, 2021 | 4 years ago"
+}

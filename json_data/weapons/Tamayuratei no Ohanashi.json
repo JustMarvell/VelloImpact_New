@@ -1,0 +1,14 @@
+{
+    "id": "45934946",
+    "weapon_name": "Tamayuratei no Ohanashi",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge - 30.6%",
+    "weapon_description": "Once upon a time, there was a youkai that roamed Inazuma in the form of a lantern's name. This must once have been one of its vessels.",
+    "weapon_skill_name": "Busybody's Running Light",
+    "weapon_skill_description": "Increase ATK by 40% and Movement SPD by 10% for 10s when using an Elemental Skill.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/5c/Weapon_Tamayuratei_no_Ohanashi_2nd.png/revision/latest?cb=20250214143713",
+    "weapon_release_date": "February 14, 2025 | 8 months ago"
+}

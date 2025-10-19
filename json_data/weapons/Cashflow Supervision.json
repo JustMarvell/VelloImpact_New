@@ -1,0 +1,14 @@
+{
+    "id": "54422722",
+    "weapon_name": "Cashflow Supervision",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 22.1%",
+    "weapon_description": "A floating device that can monitor certain phenomena. It was picked up and modified to serve other purposes following its abandonment.",
+    "weapon_skill_name": "Golden Blood-Tide",
+    "weapon_skill_description": "ATK is increased by 32%. When current HP increases or decreases, Normal Attack DMG will be increased by 32% and Charged Attack DMG will be increased by 28% for 4s. Max 3 stacks. This effect can be triggered once every 0.3s. When the wielder has 3 stacks, ATK SPD will be increased by 16%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Cashflow_Supervision_2nd.png/revision/latest?cb=20231017112330",
+    "weapon_release_date": "October 17, 2023 | 2 years ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "52224443",
+    "weapon_name": "Wolf's Gravestone",
+    "weapon_type": "Claymore",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK  - 49.6%",
+    "weapon_description": "A longsword used by the Wolf Knight. Originally just a heavy sheet of iron given to the knight by a blacksmith from the city, it became endowed with legendary power owing to his friendship with the wolves.",
+    "weapon_skill_name": "Wolfish Tracker",
+    "weapon_skill_description": "Increases ATK by 40%. On hit, attacks against opponents with less than 30% HP increase all party members' ATK by 80% for 12s. Can only occur once every 30s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/0e/Weapon_Wolf%27s_Gravestone_2nd.png/revision/latest?cb=20201116032722",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

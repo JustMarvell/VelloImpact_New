@@ -1,0 +1,14 @@
+{
+    "id": "41392752",
+    "weapon_name": "Festering Desire",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 45.9%",
+    "weapon_description": "A creepy straight sword that almost seems to yearn for life. It drips with a shriveling venom that could even corrupt a mighty dragon.",
+    "weapon_skill_name": "Undying Admiration",
+    "weapon_skill_description": "Increases Elemental Skill DMG by 32% and Elemental Skill CRIT Rate by 12%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/a8/Weapon_Festering_Desire_2nd.png/revision/latest?cb=20201225232318",
+    "weapon_release_date": "December 23, 2020 | 4 years, 9 months ago"
+}

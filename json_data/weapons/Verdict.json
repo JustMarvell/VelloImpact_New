@@ -1,0 +1,14 @@
+{
+    "id": "52842422",
+    "weapon_name": "Verdict",
+    "weapon_type": "Claymore",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 22.1%",
+    "weapon_description": "A weapon once used by a young maiden who forsook her family name, stained with the blood of enemies and loved ones both.",
+    "weapon_skill_name": "Many Oaths of Dawn and Dusk",
+    "weapon_skill_description": "Increases ATK by 40%. When characters in your party obtain Elemental Shards from Crystallize reactions, the equipping character will gain 1 Seal, increasing Elemental Skill DMG by 36%. The Seal lasts for 15s, and the equipped may have up to 2 Seals at once. All of the equipper's Seals will disappear 0.2s after their Elemental Skill deals DMG.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/ef/Weapon_Verdict_2nd.png/revision/latest?cb=20231220025910",
+    "weapon_release_date": "December 20, 2023 | 1 year, 9 months ago"
+}

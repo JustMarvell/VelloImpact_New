@@ -1,0 +1,14 @@
+{
+    "id": "54774399",
+    "weapon_name": "Surf's Up",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 88.2%",
+    "weapon_description": "A commemorative item originally reserved for the champion of the \"First All-Tribe Surfing Championship.\" Since said tournament is currently in the preparatory stage, the prize is in temporary storage at the Leisurely Puffer, with the shop owner as its custodian.",
+    "weapon_skill_name": "Aqua Remembrance",
+    "weapon_skill_description": "Max HP increased by 40%. Once every 15s, for the 14s after using an Elemental Skill: Gain 4 Scorching Summer stacks. Each stack increases Normal Attack DMG by 24%. For the duration of the effect, every 1.5s, lose 1 stack after a Normal Attack hits an opponent; once every 1.5s, gain 1 stack after triggering a Vaporize reaction on an opponent. Max 4 Scorching Summer stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/3/35/Weapon_Surf%27s_Up_2nd.png/revision/latest?cb=20240914112430",
+    "weapon_release_date": "August 28, 2024 | 1 year, 1 month ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "51834682",
+    "weapon_name": "Key of Khaj-Nisut",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP  - 66.2%",
+    "weapon_description": "One of a paired set of scepters fashioned from obsidian. They say that this can be used as a key to open the gate to a paradise that lies at the end of the ocean of sand.",
+    "weapon_skill_name": "Sunken Song of the Sands",
+    "weapon_skill_description": "HP increased by 40%. When an Elemental Skill hits opponents, you gain the Grand Hymn effect for 20s. This effect increases the equipping character's Elemental Mastery by 0.24% of their Max HP. This effect can trigger once every 0.3s. Max 3 stacks. When this effect gains 3 stacks, or when the third stack's duration is refreshed, the Elemental Mastery of all nearby party members will be increased by 0.4% of the equipping character's max HP for 20s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/ce/Weapon_Key_of_Khaj-Nisut_2nd.png/revision/latest?cb=20231219232726",
+    "weapon_release_date": "October 14, 2022 | 3 years ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "54607781",
+    "weapon_name": "Skyward Atlas",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK - 33.1%",
+    "weapon_description": "A cloud atlas symbolizing Dvalin and his former master, the Anemo Archon. It details the winds and clouds of the northern regions and contains the powers of the sky and wind.",
+    "weapon_skill_name": "Wandering Clouds",
+    "weapon_skill_description": "Increases Elemental DMG Bonus by 24%. Normal Attack hits have a 50% chance to earn the favor of the clouds, which actively seek out nearby opponents to attack for 15s, dealing 320% ATK DMG. Can only occur once every 30s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/b1/Weapon_Skyward_Atlas_2nd.png/revision/latest?cb=20231219172451",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

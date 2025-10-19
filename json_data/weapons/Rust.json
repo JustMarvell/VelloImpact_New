@@ -1,0 +1,14 @@
+{
+    "id": "43775185",
+    "weapon_name": "Rust",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "A completely rusted iron greatbow. The average person would lack the strength to even lift it, let alone fire it.",
+    "weapon_skill_name": "Rapid Firing",
+    "weapon_skill_description": "Increases Normal Attack DMG by 80% but decreases Charged Attack DMG by 10%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/66/Weapon_Rust_2nd.png/revision/latest?cb=20201120002413",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

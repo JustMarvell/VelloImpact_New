@@ -1,0 +1,14 @@
+{
+    "id": "42998932",
+    "weapon_name": "Fruitful Hook",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "Bold Burkina from the Scions of the Canopy once made this weapon with the hero Tenoch's help \u2014 all for the sake of obtaining Flamegranates unmatched throughout Natlan.",
+    "weapon_skill_name": "The Weight of Falling Branches",
+    "weapon_skill_description": "Increase Plunging Attack CRIT Rate by 32%; After a Plunging Attack hits an opponent, Normal, Charged, and Plunging Attack DMG increased by 32% for 10s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/4b/Weapon_Fruitful_Hook_2nd.png/revision/latest?cb=20241029194813",
+    "weapon_release_date": "October 29, 2024 | 11 months ago"
+}

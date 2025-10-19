@@ -1,0 +1,14 @@
+{
+    "id": "53507632",
+    "weapon_name": "The First Great Magic",
+    "weapon_type": "Bow",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 66.2%",
+    "weapon_description": "A stage prop once used by a past \"Great Magician.\" Its final secret was that it was also a weapon beyond the pale.",
+    "weapon_skill_name": "Parsifal the Great",
+    "weapon_skill_description": "DMG dealt by Charged Attacks increased by 32%. For every party member with the same Elemental Type as the wielder (including the wielder themselves), gain 1 Gimmick stack. For every party member with a different Elemental Type from the wielder, gain 1 Theatrics stack. When the wielder has 1/2/3 or more Gimmick stacks, ATK will be increased by 32%/64%/96%. When the wielder has 1/2/3 or more Theatrics stacks, Movement SPD will be increased by 12%/15%/18%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/cc/Weapon_The_First_Great_Magic_2nd.png/revision/latest?cb=20230817014250",
+    "weapon_release_date": "August 16, 2023 | 2 years, 2 months ago"
+}

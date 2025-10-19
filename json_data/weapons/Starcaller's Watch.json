@@ -1,0 +1,14 @@
+{
+    "id": "54988942",
+    "weapon_name": "Starcaller's Watch",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 265",
+    "weapon_description": "A statue carved in the shape of an eagle, a sacred relic of the Masters of the Night-Wind that has been passed down from generation to generation.",
+    "weapon_skill_name": "Offering Unto Wind and Sun",
+    "weapon_skill_description": "Increases Elemental Mastery by 200. Gain the \"Mirror of Night\" effect within 15s after the equipping character creates a shield: The current active party member deals 56% increased DMG to nearby opponents. You can gain the \"Mirror of Night\" effect once every 14s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/b0/Weapon_Starcaller%27s_Watch_2nd.png/revision/latest?cb=20250102021816",
+    "weapon_release_date": "January 01, 2025 | 9 months ago"
+}

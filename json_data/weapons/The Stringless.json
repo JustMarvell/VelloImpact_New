@@ -1,0 +1,14 @@
+{
+    "id": "43517527",
+    "weapon_name": "The Stringless",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "A bow that once served as an extraordinary instrument. It is no longer capable of getting people up and dancing.",
+    "weapon_skill_name": "Arrowless Song",
+    "weapon_skill_description": "Increases Elemental Skill and Elemental Burst DMG by 48%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/f/f0/Weapon_The_Stringless_2nd.png/revision/latest?cb=20201116032718",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

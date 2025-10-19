@@ -1,0 +1,14 @@
+{
+    "id": "32752417",
+    "weapon_name": "White Iron Greatsword",
+    "weapon_type": "Claymore",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "DEF",
+    "secondary_attribute": "DEF - 43.9%",
+    "weapon_description": "A claymore made from white iron. Lightweight without compromising on power. Effective even when wielded by one of average strength, it is extremely deadly in the hands of a physically stronger wielder.",
+    "weapon_skill_name": "Cull the Weak",
+    "weapon_skill_description": "Defeating an opponent restores 16% HP.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/eb/Weapon_White_Iron_Greatsword_2nd.png/revision/latest?cb=20201119200911",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

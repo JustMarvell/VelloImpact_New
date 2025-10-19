@@ -1,0 +1,14 @@
+{
+    "id": "43815708",
+    "weapon_name": "Alley Hunter",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "An intricate, opulent longbow. It once belonged to a gentleman thief who was never caught.",
+    "weapon_skill_name": "Oppidan Ambush",
+    "weapon_skill_description": "While the character equipped with this weapon is in the party but not on the field, their DMG increases by 4% every second up to a max of 40%. When the character is on the field for more than 4s, the aforementioned DMG buff decreases by 8% per second until it reaches 0%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/16/Weapon_Alley_Hunter_2nd.png/revision/latest?cb=20220316031013",
+    "weapon_release_date": "April 06, 2021 | 4 years, 6 months ago"
+}

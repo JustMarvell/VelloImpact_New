@@ -1,0 +1,14 @@
+{
+    "id": "53415774",
+    "weapon_name": "Amos' Bow",
+    "weapon_type": "Bow",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK  - 49.6%",
+    "weapon_description": "An extremely ancient bow that has retained its power despite its original master being long gone. It draws power from everyone and everything in the world, and the further away you are from that which your heart desires, the more powerful it is.",
+    "weapon_skill_name": "Strong-Willed",
+    "weapon_skill_description": "Increases Normal Attack and Charged Attack DMG by 24%. After a Normal or Charged Attack is fired, DMG dealt increases by a further 16% every 0.1 seconds the arrow is in the air for up to 5 times.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/0d/Weapon_Amos%27_Bow_2nd.png/revision/latest?cb=20201119200004",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

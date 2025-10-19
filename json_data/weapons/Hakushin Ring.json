@@ -1,0 +1,14 @@
+{
+    "id": "44418840",
+    "weapon_name": "Hakushin Ring",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge - 30.6%",
+    "weapon_description": "A catalyst that carries the memory of the Kitsune Saiguu of ancient times. However, this device is but an impoverished vessel for the full breadth of her thought.",
+    "weapon_skill_name": "Sakura Saiguu",
+    "weapon_skill_description": "After the character equipped with this weapon triggers an Electro elemental reaction, nearby party members of an Elemental Type involved in the elemental reaction receive a 20% Elemental DMG Bonus for their element, lasting 6s. Elemental Bonuses gained in this way cannot be stacked.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Hakushin_Ring_2nd.png/revision/latest?cb=20210723074434",
+    "weapon_release_date": "July 21, 2021 | 4 years, 2 months ago"
+}

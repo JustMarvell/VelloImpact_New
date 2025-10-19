@@ -1,0 +1,14 @@
+{
+    "id": "42911148",
+    "weapon_name": "Portable Power Saw",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP  55.1%",
+    "weapon_description": "An old-school power saw that you can rarely find nowadays. It was once a cutting tool trusted by workers all around.",
+    "weapon_skill_name": "Sea Shanty",
+    "weapon_skill_description": "When the wielder is healed or heals others, they will gain a Stoic's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Roused effect will be granted for 10s. For each Symbol consumed, gain 80 Elemental Mastery, and 2s after the effect occurs, 4 Energy per Symbol consumed will be restored for said character. The Roused effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Weapon_Portable_Power_Saw_2nd.png/revision/latest?cb=20231219232910",
+    "weapon_release_date": "September 27, 2023 | 2 years ago"
+}

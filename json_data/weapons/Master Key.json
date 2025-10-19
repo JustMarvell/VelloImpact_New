@@ -1,0 +1,14 @@
+{
+    "id": "42699479",
+    "weapon_name": "Master Key",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 61.3%",
+    "weapon_description": "A heavy greatsword with a razor-sharp blade. Power is a key that can open almost any lock.",
+    "weapon_skill_name": "Fall Into Place",
+    "weapon_skill_description": "Upon causing an Elemental Reaction, increases Elemental Mastery by 120 for 12s. Moonsign: Ascendant Gleam: Elemental Mastery from this effect is further increased by 120. This effect can be triggered even if the equipping character is off-field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/9/91/Weapon_Master_Key_2nd.png/revision/latest?cb=20250910055404",
+    "weapon_release_date": "September 10, 2025 | 1 month ago"
+}

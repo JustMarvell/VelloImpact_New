@@ -1,0 +1,14 @@
+{
+    "id": "43972936",
+    "weapon_name": "Compound Bow",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "Physical DMG Bonus",
+    "secondary_attribute": "Physical DMG Bonus  69.0%",
+    "weapon_description": "An exotic metallic bow from a distant land. Though extremely difficult to maintain, it is easy to nock and fires with tremendous force.",
+    "weapon_skill_name": "Infusion Arrow",
+    "weapon_skill_description": "Normal Attack and Charged Attack hits increase ATK by 8% and Normal ATK SPD by 2.4% for 6s. Max 4 stacks. Can only occur once every 0.3s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/3/3b/Weapon_Compound_Bow_2nd.png/revision/latest?cb=20201119235450",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

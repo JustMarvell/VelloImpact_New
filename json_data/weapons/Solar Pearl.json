@@ -1,0 +1,14 @@
+{
+    "id": "44197309",
+    "weapon_name": "Solar Pearl",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate 27.6%",
+    "weapon_description": "A dull, golden pearl made of an unknown substance that harbors the light of the sun and the moon, and pulses with a warm strength.",
+    "weapon_skill_name": "Solar Shine",
+    "weapon_skill_description": "Normal Attack hits increase Elemental Skill and Elemental Burst DMG by 40% for 6s. Likewise, Elemental Skill or Elemental Burst hits increase Normal Attack DMG by 40% for 6s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/a2/Weapon_Solar_Pearl_2nd.png/revision/latest?cb=20201116035331",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

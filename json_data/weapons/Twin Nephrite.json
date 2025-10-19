@@ -1,0 +1,14 @@
+{
+    "id": "34242123",
+    "weapon_name": "Twin Nephrite",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "3",
+    "base_attack": "448",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 15.6%",
+    "weapon_description": "A jade pendant formed by piecing together two jade stones.",
+    "weapon_skill_name": "Guerilla Tactics",
+    "weapon_skill_description": "Defeating an opponent increases Movement SPD and ATK by 20% for 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/c4/Weapon_Twin_Nephrite_2nd.png/revision/latest?cb=20201119201635",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

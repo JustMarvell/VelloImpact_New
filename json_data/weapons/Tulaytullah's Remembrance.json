@@ -1,0 +1,14 @@
+{
+    "id": "54420516",
+    "weapon_name": "Tulaytullah's Remembrance",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG - 44.1%",
+    "weapon_description": "A bell crafted of deep sapphire and sterling silver. Its echoes are as crisp as they are distant.",
+    "weapon_skill_name": "Bygone Azure Teardrop",
+    "weapon_skill_description": "Normal Attack SPD is increased by 20%. After the wielder unleashes an Elemental Skill, Normal Attack DMG will increase by 9.6% every second for 14s. After this character hits an opponent with a Normal Attack during this duration, Normal Attack DMG will be increased by 19.2%. This increase can be triggered once every 0.3s. The maximum Normal Attack DMG increase per single duration of the overall effect is 96%. The effect will be removed when the wielder leaves the field, and using the Elemental Skill again will reset all DMG buffs.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/0b/Weapon_Tulaytullah%27s_Remembrance_2nd.png/revision/latest?cb=20231219233246",
+    "weapon_release_date": "December 07, 2022 | 2 years, 10 months ago"
+}

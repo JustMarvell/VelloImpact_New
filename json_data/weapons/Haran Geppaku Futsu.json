@@ -1,0 +1,14 @@
+{
+    "id": "51753861",
+    "weapon_name": "Haran Geppaku Futsu",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 33.1%",
+    "weapon_description": "A famed work by the Futsu line of smiths. The name \"Haran\" comes from the manner in which it resembles the violent, roiling waves.",
+    "weapon_skill_name": "Honed Flow",
+    "weapon_skill_description": "Obtain 24% All Elemental DMG Bonus. When other nearby party members use Elemental Skills, the character equipping this weapon will gain 1 Wavespike stack. Max 2 stacks. This effect can be triggered once every 0.3s. When the character equipping this weapon uses an Elemental Skill, all stacks of Wavespike will be consumed to gain Rippling Upheaval: each stack of Wavespike consumed will increase Normal Attack DMG by 40% for 8s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/51/Weapon_Haran_Geppaku_Futsu_2nd.png/revision/latest?cb=20220330041344",
+    "weapon_release_date": "March 30, 2022 | 3 years, 6 months ago"
+}

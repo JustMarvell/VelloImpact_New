@@ -1,0 +1,14 @@
+{
+    "id": "44103762",
+    "weapon_name": "Sacrificial Jade",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate 36.8%",
+    "weapon_description": "An ancient jade pendant that gleams like clear water. It seems to have been used in ancient ceremonies.",
+    "weapon_skill_name": "Jade Circulation",
+    "weapon_skill_description": "When not on the field for more than 5s, Max HP will be increased by 64% and Elemental Mastery will be increased by 80. These effects will be canceled after the wielder has been on the field for 10s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/7/79/Weapon_Sacrificial_Jade_2nd.png/revision/latest?cb=20230817014226",
+    "weapon_release_date": "August 16, 2023 | 2 years, 2 months ago"
+}

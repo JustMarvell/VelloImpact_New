@@ -1,0 +1,14 @@
+{
+    "id": "55874528",
+    "weapon_name": "Symphonist of Scents",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 66.2%",
+    "weapon_description": "An elegantly built polearm, said to have been a conductor's baton wielded by a great musician to bridge tune and taste.",
+    "weapon_skill_name": "Seasoned Symphony",
+    "weapon_skill_description": "ATK is increased by 24%. When the equipping character is off-field, ATK is increased by an additional 24%. After initiating healing, the equipping character and the character(s) they have healed will obtain the \"Sweet Echoes\" effect, increasing their ATK by 64% for 3s. This effect can be triggered even if the equipping character is off-field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Weapon_Symphonist_of_Scents_2nd.png/revision/latest?cb=20250507052733",
+    "weapon_release_date": "May 07, 2025 | 5 months ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "31455935",
+    "weapon_name": "Cool Steel",
+    "weapon_type": "Sword",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK - 35.2%",
+    "weapon_description": "A reliable steel-forged weapon that serves as a testament to the great adventures of its old master.",
+    "weapon_skill_name": "Bane of Water and Ice",
+    "weapon_skill_description": "Increases DMG against opponents affected by Hydro or Cryo by 24%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Weapon_Cool_Steel_2nd.png/revision/latest?cb=20201116033531",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

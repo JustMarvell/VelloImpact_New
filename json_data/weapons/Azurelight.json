@@ -1,0 +1,14 @@
+{
+    "id": "51578227",
+    "weapon_name": "Azurelight",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 22.1%",
+    "weapon_description": "This blade was once pure and pristine as a white dawn star, but it has since been tinted a deep, dark blue.",
+    "weapon_skill_name": "White Mountain's Bounty",
+    "weapon_skill_description": "Within 12s after an Elemental Skill is used, ATK is increased by 48%. During this time, when the equipping character has 0 Energy, ATK will be further increased by 48%, and CRIT DMG will be increased by 80%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/9/92/Weapon_Azurelight_2nd.png/revision/latest?cb=20250618034554",
+    "weapon_release_date": "June 18, 2025 | 4 months ago"
+}

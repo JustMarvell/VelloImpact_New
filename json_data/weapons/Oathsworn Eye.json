@@ -1,0 +1,14 @@
+{
+    "id": "44805580",
+    "weapon_name": "Oathsworn Eye",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "A national treasure of Byakuyakoku stored in the Dainichi Mikoshi. With the coming of the Serpent God, this item was used to notarize great oaths and wishes.",
+    "weapon_skill_name": "People of the Faltering Light",
+    "weapon_skill_description": "Increases Energy Recharge by 48% for 10s after using an Elemental Skill.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Weapon_Oathsworn_Eye_2nd.png/revision/latest?cb=20220217053620",
+    "weapon_release_date": "February 16, 2022 | 3 years, 8 months ago"
+}

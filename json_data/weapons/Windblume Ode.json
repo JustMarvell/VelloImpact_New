@@ -1,0 +1,14 @@
+{
+    "id": "43964552",
+    "weapon_name": "Windblume Ode",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "A bow adorned with nameless flowers that bears the earnest hopes of an equally nameless person.",
+    "weapon_skill_name": "Windblume Wish",
+    "weapon_skill_description": "After using an Elemental Skill, receive a boon from the ancient wish of the Windblume, increasing ATK by 32% for 6s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/6c/Weapon_Windblume_Ode_2nd.png/revision/latest?cb=20210319190853",
+    "weapon_release_date": "March 19, 2021 | 4 years, 7 months ago"
+}

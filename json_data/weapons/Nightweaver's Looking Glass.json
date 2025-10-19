@@ -1,0 +1,14 @@
+{
+    "id": "54602676",
+    "weapon_name": "Nightweaver's Looking Glass",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "565",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 265",
+    "weapon_description": "A mirror crafted from flawless silver that is said to have witnessed the birth of the Moon Maiden. It is seen as a relic of unrivalled provenance by the Frostmoon Scions.",
+    "weapon_skill_name": "Millennial Hymn",
+    "weapon_skill_description": "When the equipping character's Elemental Skill deals Hydro or Dendro DMG, they will gain Prayer of the Far North: Elemental Mastery is increased by 120 for 4.5s. When nearby party members trigger Lunar-Bloom reactions, the equipping character gains New Moon Verse: Elemental Mastery is increased by 120 for 10s. When both Prayer of the Far North and New Moon Verse are in effect, all nearby party members' Bloom DMG is increased by 240%, their Hyperbloom and Burgeon DMG is increased by 160%, and their Lunar-Bloom DMG is increased by 80%. This effect cannot stack. The aforementioned effects can be triggered even if the equipping character is off-field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/f/f2/Weapon_Nightweaver%27s_Looking_Glass_2nd.png/revision/latest?cb=20250912064430",
+    "weapon_release_date": "September 10, 2025 | 1 month ago"
+}

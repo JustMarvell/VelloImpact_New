@@ -1,0 +1,14 @@
+{
+    "id": "41258617",
+    "weapon_name": "Amenoma Kageuchi",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK  55.1%",
+    "weapon_description": "A blade custom made for a famed samurai who could strike down a tengu warrior, known for their incredible agility, in midair.",
+    "weapon_skill_name": "Iwakura Succession",
+    "weapon_skill_description": "After casting an Elemental Skill, gain 1 Succession Seed. This effect can be triggered once every 5s. The Succession Seed lasts for 30s. Up to 3 Succession Seeds may exist simultaneously. After using an Elemental Burst, all Succession Seeds are consumed and after 2s, the character regenerates 12 Energy for each seed consumed.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/c0/Weapon_Amenoma_Kageuchi_2nd.png/revision/latest?cb=20210723074457",
+    "weapon_release_date": "July 21, 2021 | 4 years, 2 months ago"
+}

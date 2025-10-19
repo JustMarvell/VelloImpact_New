@@ -1,0 +1,14 @@
+{
+    "id": "54201786",
+    "weapon_name": "Tome of the Eternal Flow",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 88.2%",
+    "weapon_description": "A manual that was once passed down from generation to generation within an underwater priory. Today, none know of its existence.",
+    "weapon_skill_name": "Aeon Wave",
+    "weapon_skill_description": "HP is increased by 32%. When current HP increases or decreases, Charged Attack DMG will be increased by 30% for 4s. Max 3 stacks, can be triggered once every 0.3s. When you have 3 stacks or refresh a third stack's duration, 12 Energy will be restored. This Energy restoration effect can be triggered once every 12s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/8/85/Weapon_Tome_of_the_Eternal_Flow_2nd.png/revision/latest?cb=20230927121122",
+    "weapon_release_date": "September 27, 2023 | 2 years ago"
+}

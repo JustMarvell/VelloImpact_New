@@ -1,0 +1,14 @@
+{
+    "id": "42141674",
+    "weapon_name": "Serpent Spine",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate 27.6%",
+    "weapon_description": "A rare weapon whose origin is the ancient ocean. One can hear the sound of the ageless waves as one swings it.",
+    "weapon_skill_name": "Wavesplitter",
+    "weapon_skill_description": "Every 4s a character is on the field, they will deal 10% more DMG and take 2%  more DMG. This effect has a maximum of 5 stacks and will not be reset if the character leaves the field, but will be reduced by 1 stack when the character takes DMG.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/10/Weapon_Serpent_Spine_2nd.png/revision/latest?cb=20201116032712",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

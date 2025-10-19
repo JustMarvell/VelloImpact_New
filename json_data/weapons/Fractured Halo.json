@@ -1,0 +1,14 @@
+{
+    "id": "55860404",
+    "weapon_name": "Fractured Halo",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 66.2%",
+    "weapon_description": "A spinning mechanical blade produced by the Clink-Clank Krumkake Craftshop that seems to hide secrets from a bygone era...",
+    "weapon_skill_name": "Purifying Crown",
+    "weapon_skill_description": "After an Elemental Skill or Elemental Burst is used, ATK is increased by 48% for 20s. If the equipping character creates a Shield while this effect is active, they will gain the Electrifying Edict effect for 20s: All nearby party members deal 80% more Lunar-Charged DMG.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/6a/Weapon_Fractured_Halo_2nd.png/revision/latest?cb=20250730033112",
+    "weapon_release_date": "July 30, 2025 | 2 months ago"
+}

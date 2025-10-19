@@ -1,0 +1,14 @@
+{
+    "id": "43660882",
+    "weapon_name": "The Viridescent Hunt",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate 27.6%",
+    "weapon_description": "A pure green hunting bow. This once belonged to a certain hunter whose home was the forest.",
+    "weapon_skill_name": "Verdant Wind",
+    "weapon_skill_description": "Upon hit, Normal and Aimed Shot Attacks have a 50% chance to generate a Cyclone, which will continuously attract surrounding opponents, dealing 80% of ATK as DMG to these opponents every 0.5s for 4s. This effect can only occur once every 10s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/be/Weapon_The_Viridescent_Hunt_2nd.png/revision/latest?cb=20201120010317",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

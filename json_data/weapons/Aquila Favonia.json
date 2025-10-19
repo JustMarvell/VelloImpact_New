@@ -1,0 +1,14 @@
+{
+    "id": "51817817",
+    "weapon_name": "Aquila Favonia",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "Physical DMG Bonus",
+    "secondary_attribute": "Physical DMG Bonus 41.3%",
+    "weapon_description": "The soul of the Knights of Favonius. Millennia later, it still calls on the winds of swift justice to vanquish all evil \u2014 just like the last heroine who wielded it.",
+    "weapon_skill_name": "Falcon's Defiance",
+    "weapon_skill_description": "ATK is increased by 40%. Triggers on taking DMG: the soul of the Falcon of the West awakens, holding the banner of the resistance aloft, regenerating HP equal to 160% of ATK and dealing 320% of ATK as DMG to surrounding opponents. This effect can only occur once every 15s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/c6/Weapon_Aquila_Favonia_2nd.png/revision/latest?cb=20201120002803",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

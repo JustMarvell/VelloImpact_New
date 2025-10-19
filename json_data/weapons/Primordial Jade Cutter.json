@@ -1,0 +1,14 @@
+{
+    "id": "51165310",
+    "weapon_name": "Primordial Jade Cutter",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 44.1%",
+    "weapon_description": "A ceremonial sword masterfully carved from pure jade. There almost seems to be an audible sigh in the wind as it is swung.",
+    "weapon_skill_name": "Protector's Virtue",
+    "weapon_skill_description": "HP increased by 40%. Additionally, provides an ATK Bonus based on 2.4% of the wielder's Max HP.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Weapon_Primordial_Jade_Cutter_2nd.png/revision/latest?cb=20210319202254",
+    "weapon_release_date": "February 03, 2021 | 4 years, 8 months ago"
+}

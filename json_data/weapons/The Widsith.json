@@ -1,0 +1,14 @@
+{
+    "id": "44783667",
+    "weapon_name": "The Widsith",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  55.1%",
+    "weapon_description": "A heavy notebook filled with musical scores. Though suffering from moth damage and heavy wear-and-tear, there is still much power to be found among the hand-written words within.",
+    "weapon_skill_name": "Debut",
+    "weapon_skill_description": "When a character takes the field, they will gain a random theme song for 10s. This can only occur once every 30s.<br/><i>Recitative</i>: ATK is increased by 120%.<br/><i>Aria</i>: Increases all Elemental DMG by 96%.<br/><i>Interlude</i>: Elemental Mastery is increased by 480.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/d1/Weapon_The_Widsith_2nd.png/revision/latest?cb=20201116035434",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

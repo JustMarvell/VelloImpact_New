@@ -1,0 +1,14 @@
+{
+    "id": "45974453",
+    "weapon_name": "Moonpiercer",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 110",
+    "weapon_description": "It is shaped like a giant arrow and can be used as a spear.",
+    "weapon_skill_name": "Stillwood Moonshadow",
+    "weapon_skill_description": "After triggering Burning, Quicken, Aggravate, Spread, Bloom, Hyperbloom, or Burgeon, a Leaf of Revival will be created around the character for a maximum of 10s. When picked up, the Leaf will grant the character 32% ATK for 12s. Only 1 Leaf can be generated this way every 20s. This effect can still be triggered if the character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/ab/Weapon_Moonpiercer_2nd.png/revision/latest?cb=20220824051535",
+    "weapon_release_date": "August 24, 2022 | 3 years, 1 month ago"
+}

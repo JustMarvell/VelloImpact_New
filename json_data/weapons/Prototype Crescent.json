@@ -1,0 +1,14 @@
+{
+    "id": "43861720",
+    "weapon_name": "Prototype Crescent",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "A prototype longbow discovered in the Blackcliff Forge. The arrow fired from this bow glimmers like a ray of moonlight.",
+    "weapon_skill_name": "Unreturning",
+    "weapon_skill_description": "Charged Attack hits on weak points increase Movement SPD by 10% and ATK by 72% for 10s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/7/7d/Weapon_Prototype_Crescent_2nd.png/revision/latest?cb=20201116032707",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "34927355",
+    "weapon_name": "Emerald Orb",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "3",
+    "base_attack": "448",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 94",
+    "weapon_description": "A catalyst carved out of the hard jade from Jueyun Karst north of Liyue. Small, light, and durable, it is known more colloquially as the \"jade ball.\"",
+    "weapon_skill_name": "Rapids",
+    "weapon_skill_description": "Upon causing a Vaporize, Electro-Charged, Frozen, Bloom, Lunar-Charged, Lunar-Bloom, or a Hydro-infused Swirl reaction, ATK is increased by 40% for 12s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/18/Weapon_Emerald_Orb_2nd.png/revision/latest?cb=20201116033656",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

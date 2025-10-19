@@ -1,0 +1,14 @@
+{
+    "id": "54767354",
+    "weapon_name": "Jadefall's Splendor",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP  - 49.6%",
+    "weapon_description": "A ritual vessel carved from jade that reflects the luster of the skies and the clear waters.",
+    "weapon_skill_name": "Primordial Jade Regalia",
+    "weapon_skill_description": "For 3s after using an Elemental Burst or creating a shield, the equipping character can gain the Primordial Jade Regalia effect: Restore 6.5 Energy every 2.5s, and gain 1.1% Elemental DMG Bonus for their corresponding Elemental Type for every 1,000 Max HP they possess, up to 44%. Primordial Jade Regalia will still take effect even if the equipping character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/8/83/Weapon_Jadefall%27s_Splendor_2nd.png/revision/latest?cb=20231219232630",
+    "weapon_release_date": "May 02, 2023 | 2 years, 5 months ago"
+}

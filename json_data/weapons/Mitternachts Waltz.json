@@ -1,0 +1,14 @@
+{
+    "id": "43751760",
+    "weapon_name": "Mitternachts Waltz",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Physical DMG Bonus",
+    "secondary_attribute": "Physical DMG Bonus  - 51.7%",
+    "weapon_description": "A bow painted the color of transgression and nights of illusion.",
+    "weapon_skill_name": "Evernight Duet",
+    "weapon_skill_description": "Normal Attack hits on opponents increase Elemental Skill DMG by 40% for 5s. Elemental Skill hits on opponents increase Normal Attack DMG by 40% for 5s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/ac/Weapon_Mitternachts_Waltz_2nd.png/revision/latest?cb=20210611013617",
+    "weapon_release_date": "June 09, 2021 | 4 years, 4 months ago"
+}

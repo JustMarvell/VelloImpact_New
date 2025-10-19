@@ -1,0 +1,14 @@
+{
+    "id": "43418101",
+    "weapon_name": "Ibis Piercer",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "A golden bow forged from the description in the story. If you use it as a normal weapon, you can also view it as a part of a fictional world that has made it off the pages.",
+    "weapon_skill_name": "Secret Wisdom's Favor",
+    "weapon_skill_description": "The character's Elemental Mastery will increase by 80 within 6s after Charged Attacks hit opponents. Max 2 stacks. This effect can be triggered once every 0.5s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Weapon_Ibis_Piercer_2nd.png/revision/latest?cb=20231219232603",
+    "weapon_release_date": "May 25, 2023 | 2 years, 4 months ago"
+}

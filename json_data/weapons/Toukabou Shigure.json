@@ -1,0 +1,14 @@
+{
+    "id": "41674578",
+    "weapon_name": "Toukabou Shigure",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "A rather special oil-paper umbrella. While long wanderings may make one used to the wind and the rain, there might be some fun in admiring a rainy scene beneath this parasol.",
+    "weapon_skill_name": "Kaidan: Rainfall Earthbinder",
+    "weapon_skill_description": "After an attack hits opponents, it will inflict an instance of Cursed Parasol upon one of them for 10s. This effect can be triggered once every 15s. If this opponent is defeated during Cursed Parasol's duration, Cursed Parasol's CD will be refreshed immediately. The character wielding this weapon will deal 32% more DMG to the opponent affected by Cursed Parasol.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/8/88/Weapon_Toukabou_Shigure_2nd.png/revision/latest?cb=20231219233219",
+    "weapon_release_date": "December 15, 2022 | 2 years, 10 months ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "55790281",
+    "weapon_name": "Crimson Moon's Semblance",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "CRIT Rate",
+    "secondary_attribute": "CRIT Rate - 22.1%",
+    "weapon_description": "A keen-edged weapon, luster dazzling as the crimson moon. It is said that an ancient dynasty once regarded it as a ritual object that could bridge two worlds, but none still remember the beliefs and ceremonies of that bygone age.",
+    "weapon_skill_name": "Ashen Sun's Shadow",
+    "weapon_skill_description": "Grants a Bond of Life equal to 25% of Max HP when a Charged Attack hits an opponent. This effect can be triggered up to once every 14s. In addition, when the equipping character has a Bond of Life, they gain a 28% DMG Bonus; if the value of the Bond of Life is greater than or equal to 30% of Max HP, then gain an additional 56% DMG.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/5/5d/Weapon_Crimson_Moon%27s_Semblance_2nd.png/revision/latest?cb=20240424233434",
+    "weapon_release_date": "April 24, 2024 | 1 year, 5 months ago"
+}

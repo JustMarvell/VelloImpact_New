@@ -1,0 +1,14 @@
+{
+    "id": "31634104",
+    "weapon_name": "Fillet Blade",
+    "weapon_type": "Sword",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK - 35.2%",
+    "weapon_description": "A sharp filleting knife. The blade is long, thin, and incredibly sharp.",
+    "weapon_skill_name": "Gash",
+    "weapon_skill_description": "On hit, has 50% chance to deal 400% ATK DMG to a single enemy. Can only occur once every 11s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/1/14/Weapon_Fillet_Blade_2nd.png/revision/latest?cb=20201116033948",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

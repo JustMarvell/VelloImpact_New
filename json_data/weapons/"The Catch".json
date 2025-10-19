@@ -1,0 +1,14 @@
+{
+    "id": "45533351",
+    "weapon_name": "\"The Catch\"",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 45.9%",
+    "weapon_description": "In the distant past, this was the beloved spear of a famed Inazuman bandit.",
+    "weapon_skill_name": "Shanty",
+    "weapon_skill_description": "Increases Elemental Burst DMG by 32% and Elemental Burst CRIT Rate by 12%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_The_Catch_2nd.png/revision/latest?cb=20210901040502",
+    "weapon_release_date": "September 01, 2021 | 4 years, 1 month ago"
+}

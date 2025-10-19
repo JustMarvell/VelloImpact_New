@@ -1,0 +1,14 @@
+{
+    "id": "42886432",
+    "weapon_name": "Lithic Blade",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "A greatsword carved and chiseled from the very bedrock of Liyue.",
+    "weapon_skill_name": "Lithic Axiom: Unity",
+    "weapon_skill_description": "For every character in the party who hails from Liyue, the character who equips this weapon gains 11% ATK increase and 7% CRIT Rate increase. This effect stacks up to 4 times.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/d7/Weapon_Lithic_Blade_2nd.png/revision/latest?cb=20210421124905",
+    "weapon_release_date": "February 23, 2021 | 4 years, 7 months ago"
+}

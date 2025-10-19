@@ -1,0 +1,14 @@
+{
+    "id": "55994681",
+    "weapon_name": "Skyward Spine",
+    "weapon_type": "Polearm",
+    "weapon_quality": "5",
+    "base_attack": "674",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge 36.8%",
+    "weapon_description": "A polearm that symbolizes Dvalin's fire resolve. The upright shaft of this weapon points towards the heavens, clad in the might of sky and wind.",
+    "weapon_skill_name": "Black Wing",
+    "weapon_skill_description": "Increases CRIT Rate by 16% and increases Normal ATK SPD by 12%. Additionally, Normal and Charged Attacks hits on opponents have a 50% chance to trigger a vacuum blade that deals 100% of ATK as DMG in a small AoE. This effect can occur no more than once every 2s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/7/7b/Weapon_Skyward_Spine_2nd.png/revision/latest?cb=20201116032715",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

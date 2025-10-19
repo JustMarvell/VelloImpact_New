@@ -1,0 +1,14 @@
+{
+    "id": "31546180",
+    "weapon_name": "Harbinger of Dawn",
+    "weapon_type": "Sword",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 46.9%",
+    "weapon_description": "A sword that once shone like the sun. The wielder of this sword will be blessed with a \"feel-good\" buff. The reflective material on the blade has long worn off.",
+    "weapon_skill_name": "Vigorous",
+    "weapon_skill_description": "When HP is above 90%, increases CRIT Rate by 28%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/f/fd/Weapon_Harbinger_of_Dawn_2nd.png/revision/latest?cb=20201116034013",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

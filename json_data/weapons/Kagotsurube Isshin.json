@@ -1,0 +1,14 @@
+{
+    "id": "41371890",
+    "weapon_name": "Kagotsurube Isshin",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "This famed blade was born in a nation to the far north. But in the name of \"Isshin,\" it was stained with many a dark deed on its home-bound journey.",
+    "weapon_skill_name": "Isshin Art Clarity",
+    "weapon_skill_description": "When a Normal, Charged, or Plunging Attack hits an opponent, it will whip up a Hewing Gale, dealing AoE DMG equal to 180% of ATK and increasing ATK by 15% for 8s. This effect can be triggered once every 8s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/07/Weapon_Kagotsurube_Isshin_2nd.png/revision/latest?cb=20231219232659",
+    "weapon_release_date": "July 13, 2022 | 3 years, 3 months ago"
+}

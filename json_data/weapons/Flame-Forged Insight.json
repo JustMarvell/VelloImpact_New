@@ -1,0 +1,14 @@
+{
+    "id": "42364300",
+    "weapon_name": "Flame-Forged Insight",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "Tribal tales tell of a great blade forged by the People of the Springs to protect a child who would embark on a distant journey. This particular weapon appears to be a replica of that legendary sword.",
+    "weapon_skill_name": "Mind in Bloom",
+    "weapon_skill_description": "When Electro-Charged, Lunar-Charged, Bloom, or Lunar-Bloom is triggered, restore 24 Elemental Energy and increase Elemental Mastery by 120 for 15 seconds. This effect can be triggered once every 15s and can be triggered even when the equipping character is off-field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/8/86/Weapon_Flame-Forged_Insight_2nd.png/revision/latest?cb=20250731224949",
+    "weapon_release_date": "July 30, 2025 | 2 months ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "43527364",
+    "weapon_name": "Cloudforged",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "A prototype for a standard-issue weapon the Yuheng commissioned from Blackcliff Forge after having analyzed the ancient mechanisms that protected the adeptal abode upon Tianheng.",
+    "weapon_skill_name": "Crag-Chiseled Forge",
+    "weapon_skill_description": "After Elemental Energy is decreased, the equipping character's Elemental Mastery will increase by 80 for 18s. Max 2 stacks.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/2/25/Weapon_Cloudforged_2nd.png/revision/latest?cb=20240607043109",
+    "weapon_release_date": "June 07, 2024 | 1 year, 4 months ago"
+}

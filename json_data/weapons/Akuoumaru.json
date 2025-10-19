@@ -1,0 +1,14 @@
+{
+    "id": "42904742",
+    "weapon_name": "Akuoumaru",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 41.3%",
+    "weapon_description": "The beloved sword of the legendary \"Akuou.\" The blade is huge and majestic, but is surprisingly easy to wield.",
+    "weapon_skill_name": "Watatsumi Wavewalker",
+    "weapon_skill_description": "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by 0.24%. A maximum of 80% increased Elemental Burst DMG can be achieved this way.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/45/Weapon_Akuoumaru_2nd.png/revision/latest?cb=20211013044354",
+    "weapon_release_date": "October 13, 2021 | 4 years ago"
+}

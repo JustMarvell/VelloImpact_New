@@ -1,0 +1,14 @@
+{
+    "id": "41746308",
+    "weapon_name": "Iron Sting",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "An exotic long-bladed rapier that somehow found its way into Liyue via foreign traders. It is light, agile, and sharp.",
+    "weapon_skill_name": "Infusion Stinger",
+    "weapon_skill_description": "Dealing Elemental DMG increases all DMG by 12% for 6s. Max 2 stacks. Can only occur once every 1s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/a/ac/Weapon_Iron_Sting_2nd.png/revision/latest?cb=20201116034105",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

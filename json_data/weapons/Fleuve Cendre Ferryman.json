@@ -1,0 +1,14 @@
+{
+    "id": "41106667",
+    "weapon_name": "Fleuve Cendre Ferryman",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 45.9%",
+    "weapon_description": "A handy length of abandoned copper pipe that was once used as a weapon. It was famous \u2014 or infamous, depending \u2014 in some circles.",
+    "weapon_skill_name": "Ironbone",
+    "weapon_skill_description": "Increases Elemental Skill CRIT Rate by 16%. Additionally, increases Energy Recharge by 32% for 5s after using an Elemental Skill.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Weapon_Fleuve_Cendre_Ferryman_2nd.png/revision/latest?cb=20231219232538",
+    "weapon_release_date": "August 16, 2023 | 2 years, 2 months ago"
+}

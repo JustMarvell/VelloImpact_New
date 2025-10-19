@@ -1,0 +1,14 @@
+{
+    "id": "43233670",
+    "weapon_name": "Range Gauge",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "A measuring instrument that you can rarely find nowadays. It is capable of firing arrows.",
+    "weapon_skill_name": "Masons' Ditty",
+    "weapon_skill_description": "When the wielder is healed or heals others, they will gain a Unity's Symbol that lasts 30s, up to a maximum of 3 Symbols. When using their Elemental Skill or Burst, all Symbols will be consumed and the Struggle effect will be granted for 10s. For each Symbol consumed, gain 7% ATK and 13% All Elemental DMG Bonus. The Struggle effect can be triggered once every 15s, and Symbols can be gained even when the character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/b/be/Weapon_Range_Gauge_2nd.png/revision/latest?cb=20231219232952",
+    "weapon_release_date": "October 17, 2023 | 2 years ago"
+}

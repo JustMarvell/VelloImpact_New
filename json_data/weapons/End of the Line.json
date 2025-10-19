@@ -1,0 +1,14 @@
+{
+    "id": "43653299",
+    "weapon_name": "End of the Line",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Energy Recharge",
+    "secondary_attribute": "Energy Recharge  - 45.9%",
+    "weapon_description": "This seems to be a now-extinct fish. Its body is sufficiently elastic that a string may be attached to it to let it serve as a bow.",
+    "weapon_skill_name": "Net Snapper",
+    "weapon_skill_description": "Triggers the Flowrider effect after using an Elemental Skill, dealing 160% ATK as AoE DMG upon hitting an opponent with an attack. Flowrider will be removed after 15s or after causing 3 instances of AoE DMG. Only 1 instance of AoE DMG can be caused every 2s in this way. Flowrider can be triggered once every 12s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/0/04/Weapon_End_of_the_Line_2nd.png/revision/latest?cb=20220824051422",
+    "weapon_release_date": "August 24, 2022 | 3 years, 1 month ago"
+}

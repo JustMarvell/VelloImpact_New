@@ -1,0 +1,14 @@
+{
+    "id": "51220969",
+    "weapon_name": "Uraku Misugiri",
+    "weapon_type": "Sword",
+    "weapon_quality": "5",
+    "base_attack": "542",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 88.2%",
+    "weapon_description": "This famous blade was once created by the hand of Urakusai, the renowned literato. Legend has it that it has never cut any living creature in all these hundreds of years.",
+    "weapon_skill_name": "Brocade Bloom, Shrine Sword",
+    "weapon_skill_description": "Normal Attack DMG is increased by 32% and Elemental Skill DMG is increased by 48%. After a nearby active character deals Geo DMG, the aforementioned effects increase by 100% for 15s. Additionally, the wielder's DEF is increased by 40%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/c/ca/Weapon_Uraku_Misugiri_2nd.png/revision/latest?cb=20240313020800",
+    "weapon_release_date": "March 13, 2024 | 1 year, 7 months ago"
+}

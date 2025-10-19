@@ -1,0 +1,14 @@
+{
+    "id": "43110348",
+    "weapon_name": "Mouun's Moon",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "A lovely warbow made from seashells and coral. A mournful brilliance flows along its moonlight-colored arms.",
+    "weapon_skill_name": "Watatsumi Wavewalker",
+    "weapon_skill_description": "For every point of the entire party's combined maximum Energy capacity, the Elemental Burst DMG of the character equipping this weapon is increased by 0.24%. A maximum of 80% increased Elemental Burst DMG can be achieved this way.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/e6/Weapon_Mouun%27s_Moon_2nd.png/revision/latest?cb=20230824222252",
+    "weapon_release_date": "November 02, 2021 | 3 years, 11 months ago"
+}

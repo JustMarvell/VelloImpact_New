@@ -1,0 +1,14 @@
+{
+    "id": "41214851",
+    "weapon_name": "Sturdy Bone",
+    "weapon_type": "Sword",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK 27.6%",
+    "weapon_description": "A longsword made of bone that has only grown harder after being hit and swung countless times. It is said that this was the hero Wanjiru's reliable weapon.",
+    "weapon_skill_name": "Trapper's Pride",
+    "weapon_skill_description": "Sprint or Alternate Sprint Stamina Consumption decreased by 15%. Additionally, after using Sprint or Alternate Sprint, Normal Attack DMG is increased by 32% of ATK. This effect expires after triggering 18 times or 7s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/f/f7/Weapon_Sturdy_Bone_2nd.png/revision/latest?cb=20241009015421",
+    "weapon_release_date": "October 09, 2024 | 1 year ago"
+}

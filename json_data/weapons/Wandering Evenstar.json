@@ -1,0 +1,14 @@
+{
+    "id": "44543698",
+    "weapon_name": "Wandering Evenstar",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 165",
+    "weapon_description": "This was originally a device used by researchers to observe and perform calculations on celestial phenomena. It serves as a conduit and catalyst.",
+    "weapon_skill_name": "Wildling Nightstar",
+    "weapon_skill_description": "The following effect will trigger every 10s: The equipping character will gain 48% of their Elemental Mastery as bonus ATK for 12s, with nearby party members gaining 30% of this buff for the same duration. Multiple instances of this weapon can allow this buff to stack. This effect will still trigger even if the character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/7/76/Weapon_Wandering_Evenstar_2nd.png/revision/latest?cb=20231219233311",
+    "weapon_release_date": "October 14, 2022 | 3 years ago"
+}

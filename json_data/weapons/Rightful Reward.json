@@ -1,0 +1,14 @@
+{
+    "id": "45432106",
+    "weapon_name": "Rightful Reward",
+    "weapon_type": "Polearm",
+    "weapon_quality": "4",
+    "base_attack": "565",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP 27.6%",
+    "weapon_description": "A sharp spear. Only its tip remains freshly bloodstained.",
+    "weapon_skill_name": "Tip of the Spear",
+    "weapon_skill_description": "When the wielder is healed, restore 16 Energy. This effect can be triggered once every 10s, and can occur even when the character is not on the field.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/dc/Weapon_Rightful_Reward_2nd.png/revision/latest?cb=20231219233016",
+    "weapon_release_date": "August 16, 2023 | 2 years, 2 months ago"
+}

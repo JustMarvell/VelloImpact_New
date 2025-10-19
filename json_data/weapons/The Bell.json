@@ -1,0 +1,14 @@
+{
+    "id": "42919986",
+    "weapon_name": "The Bell",
+    "weapon_type": "Claymore",
+    "weapon_quality": "4",
+    "base_attack": "510",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP 41.3%",
+    "weapon_description": "A heavy greatsword. A clock is embedded within it, though its internal mechanisms have long been damaged.",
+    "weapon_skill_name": "Rebellious Guardian",
+    "weapon_skill_description": "Taking DMG generates a shield which absorbs DMG up to 32% of max HP. This shield lasts for 10s or until broken, and can only be triggered once every 45s. While protected by a shield, the character gains 24% increased DMG.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/3/3d/Weapon_The_Bell_2nd.png/revision/latest?cb=20201116032717",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

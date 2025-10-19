@@ -1,0 +1,14 @@
+{
+    "id": "31289728",
+    "weapon_name": "Traveler's Handy Sword",
+    "weapon_type": "Sword",
+    "weapon_quality": "3",
+    "base_attack": "448",
+    "secondary_attribute_type": "DEF",
+    "secondary_attribute": "DEF - 29.3%",
+    "weapon_description": "A handy steel sword which contains scissors, a magnifying glass, tinder, and other useful items in its sheath.",
+    "weapon_skill_name": "Journey",
+    "weapon_skill_description": "Each Elemental Orb or Particle collected restores 2% HP.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/d/df/Weapon_Traveler%27s_Handy_Sword_2nd.png/revision/latest?cb=20201116035502",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

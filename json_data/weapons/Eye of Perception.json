@@ -1,0 +1,14 @@
+{
+    "id": "44877691",
+    "weapon_name": "Eye of Perception",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK  55.1%",
+    "weapon_description": "A dim black glaze pearl that is said to have the power to reach the purity of one's heart.",
+    "weapon_skill_name": "Echo",
+    "weapon_skill_description": "Normal and Charged Attacks have a 50% chance to fire a Bolt of Perception, dealing 360% ATK as DMG. This bolt can bounce between opponents a maximum of 4 times. This effect can occur once every 8s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Weapon_Eye_of_Perception_2nd.png/revision/latest?cb=20201116033710",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "43598920",
+    "weapon_name": "Hamayumi",
+    "weapon_type": "Bow",
+    "weapon_quality": "4",
+    "base_attack": "454",
+    "secondary_attribute_type": "ATK",
+    "secondary_attribute": "ATK  55.1%",
+    "weapon_description": "A certain shrine maiden once owned this warbow. It was made with surpassing skill, and is both intricate and sturdy.",
+    "weapon_skill_name": "Full Draw",
+    "weapon_skill_description": "Increases Normal Attack DMG by 32% and Charged Attack DMG by 24%. When the equipping character's Energy reaches 100%, this effect is increased by 100%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/e0/Weapon_Hamayumi_2nd.png/revision/latest?cb=20210723074416",
+    "weapon_release_date": "July 21, 2021 | 4 years, 2 months ago"
+}

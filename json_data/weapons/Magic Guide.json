@@ -1,0 +1,14 @@
+{
+    "id": "34547120",
+    "weapon_name": "Magic Guide",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "3",
+    "base_attack": "354",
+    "secondary_attribute_type": "Elemental Mastery",
+    "secondary_attribute": "Elemental Mastery 187",
+    "weapon_description": "Version 12. A reprint featuring corrections to Version 11 and brand-new additions based on recent developments.",
+    "weapon_skill_name": "Bane of Storm and Tide",
+    "weapon_skill_description": "Increases DMG against opponents affected by Hydro or Electro by 24%.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/4/4c/Weapon_Magic_Guide_2nd.png/revision/latest?cb=20201120000453",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "53528352",
+    "weapon_name": "Thundering Pulse",
+    "weapon_type": "Bow",
+    "weapon_quality": "5",
+    "base_attack": "608",
+    "secondary_attribute_type": "CRIT DMG",
+    "secondary_attribute": "CRIT DMG  - 66.2%",
+    "weapon_description": "A longbow that was a gift from the Shogun. Eternal lightning crackles all around it.",
+    "weapon_skill_name": "Rule By Thunder",
+    "weapon_skill_description": "Increases ATK by 40% and grants the might of the Thunder Emblem. At stack levels 1/2/3, the Thunder Emblem increases Normal Attack DMG by 24/48/80%. The character will obtain 1 stack of Thunder Emblem in each of the following scenarios: Normal Attack deals DMG (stack lasts 5s), casting Elemental Skill (stack lasts 10s); Energy is less than 100% (stack disappears when Energy is full). Each stack's duration is calculated independently.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/e/ee/Weapon_Thundering_Pulse_2nd.png/revision/latest?cb=20210811100510",
+    "weapon_release_date": "August 10, 2021 | 4 years, 2 months ago"
+}

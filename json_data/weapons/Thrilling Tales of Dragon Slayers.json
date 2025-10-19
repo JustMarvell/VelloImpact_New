@@ -1,0 +1,14 @@
+{
+    "id": "34136437",
+    "weapon_name": "Thrilling Tales of Dragon Slayers",
+    "weapon_type": "Catalyst",
+    "weapon_quality": "3",
+    "base_attack": "401",
+    "secondary_attribute_type": "HP",
+    "secondary_attribute": "HP - 35.2%",
+    "weapon_description": "A fictional story of a band of five heroes who go off on a dragon hunt. It is poorly written and structurally incoherent. Its value lies in the many lessons that can be learned from failure.",
+    "weapon_skill_name": "Heritage",
+    "weapon_skill_description": "When switching characters, the new character taking the field has their ATK increased by 48% for 10s. This effect can only occur once every 20s.",
+    "weapon_icon": "https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Weapon_Thrilling_Tales_of_Dragon_Slayers_2nd.png/revision/latest?cb=20201119201717",
+    "weapon_release_date": "September 28, 2020 | 5 years ago"
+}
