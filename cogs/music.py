@@ -32,7 +32,7 @@ class Music(commands.Cog):
             await ctx.send("I'm not in a voice channel")
     
     @commands.hybrid_command()
-    async def play_music(self, ctx : commands.Context, *, querry : list):
+    async def play_music(self, ctx : commands.Context, *, querry):
         if not ctx.author.voice:
             await ctx.send('You need to join a voice channel first to use me!')
             return
