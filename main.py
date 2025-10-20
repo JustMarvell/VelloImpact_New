@@ -29,6 +29,7 @@ async def load_cogs():
 intents = discord.Intents.default()
 intents.message_content = True
 client = Client(command_prefix="!", intents=intents, help_command=None)
+queue = []
 
 @client.tree.command(name = "reload_commands", description = "Reload all commands")
 async def reload_commands(interaction: discord.Interaction):
