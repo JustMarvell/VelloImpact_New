@@ -9,6 +9,7 @@ load_dotenv()
 DISCORD_API_SECRET = os.getenv("DISCORD_API_TOKEN")
 FIREBASE_API_SECRET = os.getenv("FIREBASE_URL")
 DISCORD_WEBHOOK_URL_SECRET = os.getenv("WEBHOOK_URL")
+YOUTUBE_PROXY_SECRET = os.getenv("YOUTUBE_PROXY")
 HEADERS = {"Content-Type" : "application/json"}
 BASE_DIR = pathlib.Path(__file__).parent
 COGS_DIR = BASE_DIR / "cogs"
