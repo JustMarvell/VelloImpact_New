@@ -3,6 +3,8 @@ from discord.ext import commands
 from discord import app_commands
 from youtubesearchpython import VideosSearch
 import yt_dlp
+import settings
+import time
 
 queue = []
 
@@ -109,17 +111,22 @@ class Music(commands.Cog):
             await ctx.send('You need to join a voice channel first to use me!')
             return
 
-        # join vc if not already
+        # Join vc if not already
         if not ctx.voice_client:
             channel = ctx.author.voice.channel
-            voice_client = await channel.connect()
+            await channel.connect()
+            await ctx.send(f'I have been summoned to join {channel.name}')
+            voice_client = ctx.voice_client
         else:
             voice_client = ctx.voice_client
-            
-            
-        # search the music in yt
-        search = VideosSearch(query=querry, limit=1)
-        results = search.result()['result']
+        
+        # Search the music in yt with proxy
+        try:
+            search = VideosSearch(query=querry, limit=1)
+            results = search.result()['result']
+        except Exception as e:
+            await ctx.send(f"Error searching YouTube: {str(e)}")
+            return
         
         if not results:
             await ctx.send(f'No music found for {querry}')
@@ -129,7 +136,7 @@ class Music(commands.Cog):
         url = video['link']
         title = video['title']
         
-        queue.append({'url' : url, 'title' : title})
+        queue.append({'url': url, 'title': title})
         
         if not voice_client.is_playing():
             # Play immediately if nothing is playing
@@ -152,29 +159,55 @@ class Music(commands.Cog):
         url = song['url']
         title = song['title']
         
-        # Create new view with buttons
-        view = MusicControls()
-        # Set initial button states based on playback
-        view.pause_button.disabled = False
-        view.resume_button.disabled = True
-        await ctx.send(f"Now playing: {title}", view=view)
+        await ctx.send(f"Found : {title}. | Processing....")
+        print(url)
+        
+        # Get proxy from environment variable
+        proxy = settings.YOUTUBE_PROXY_SECRET
+        headers = {
+            "authority": "www.google.com",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "accept-language": "en-US,en;q=0.9",
+            "cache-control": "max-age=0",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+            'sec-ch-ua': '"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
+            'sec-ch-ua-platform': 'Windows',
+            'sec-ch-ua-platform-version': '15.0.0',
+        }
+
         
         # Extract direct audio stream URL with yt-dlp
         ydl_opts = {
             'format': 'bestaudio/best',
             'quiet': True,
             'no_warnings': True,
+            'headers' : headers
         }
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=False)
-            audio_url = info['url']  # Direct stream URL
+        
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    info = ydl.extract_info(url, download=False)
+                    audio_url = info['url']  # Direct stream URL
+                break
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    await ctx.send(f"Error fetching audio, retrying... ({attempt+1}/{max_retries})")
+                    continue
+                else:
+                    await ctx.send(f"Failed to fetch audio after {max_retries} attempts: {str(e)}")
+                    return
         
         # Play audio
         ffmpeg_options = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
             'options': '-vn'
         }
-        source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
+        try:
+            source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
+        except Exception as e:
+            await ctx.send(f"Failed to play : {e}")
         
         # Define callback for when the song ends
         def after_playing(error):
@@ -186,6 +219,14 @@ class Music(commands.Cog):
                 fut.result()
             except Exception as e:
                 print(f"Error in play_next: {e}")
+                
+        
+        # Create new view with buttons
+        view = MusicControls()
+        # Set initial button states based on playback
+        view.pause_button.disabled = False
+        view.resume_button.disabled = True
+        await ctx.send(f"Now playing: {title}", view=view)
         
         voice_client.play(source, after=after_playing)
         
