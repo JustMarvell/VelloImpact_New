@@ -12,4 +12,4 @@ ydl_opts = {
 }
 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     info = ydl.extract_info('https://www.youtube.com/watch?v=YQHsXMglC9A', download=False)
-    print(info['url'])
+    print(info['thumbnail'])
