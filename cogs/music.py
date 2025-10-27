@@ -147,13 +147,19 @@ class Music(commands.Cog):
         else:
             voice_client = ctx.voice_client
         
-        # Search the music in yt with proxy
-        try:
-            search = VideosSearch(query=querry, limit=1)
-            results = search.result()['result']
-        except Exception as e:
-            await ctx.send(f"Error searching YouTube: {str(e)}")
-            return
+        # Check cache first
+        if querry in search_cache:
+            results = search_cache[querry]
+        else:
+            try:
+                search = VideosSearch(query=querry, limit=1)
+                results = search.result()['result']
+                if len(search_cache) >= 50:
+                    search_cache.pop(next(iter(search_cache)))
+                search_cache[querry] = results
+            except Exception as e:
+                await ctx.send(f"Error searching YouTube: {str(e)}")
+                return
         
         if not results:
             await ctx.send(f'No music found for {querry}')
