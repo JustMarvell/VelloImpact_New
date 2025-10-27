@@ -130,6 +130,10 @@ class Music(commands.Cog):
     
     @commands.hybrid_command()
     async def play_music(self, ctx : commands.Context, *, querry):
+        if len(queue) >= 20:  # Limit queue size
+            await ctx.send("Queue is full! Max 20 songs.")
+            return
+        
         if not ctx.author.voice:
             await ctx.send('You need to join a voice channel first to use me!')
             return
