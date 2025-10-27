@@ -7,6 +7,7 @@ import settings
 import time
 
 queue = []
+search_cache = {}
 
 async def setup(bot : commands.Bot):
     await bot.add_cog(Music(bot))
@@ -86,6 +87,19 @@ class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.channel = None
+        
+    @commands.Cog.listener()
+    async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
+        if not member.bot or member != self.bot.user:
+            return
+        voice_client = member.guild.voice_client
+        if voice_client and len(voice_client.channel.members) == 1:  # Bot is alone
+            global queue
+            queue.clear()
+            await voice_client.disconnect()
+            channel = self.bot.get_channel(voice_client.channel.id)
+            if channel:
+                await channel.send("Disconnected due to empty voice channel.")
     
     # Added
     @commands.hybrid_command()
