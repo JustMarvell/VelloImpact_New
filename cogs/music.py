@@ -241,7 +241,7 @@ class Music(commands.Cog):
         # Play audio
         ffmpeg_options = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-            'options': '-vn -b:a 96k -ac 1'
+            'options': '-vn -b:a 96k'
         }
         try:
             source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
