@@ -216,7 +216,7 @@ class Music(commands.Cog):
         
         # Extract direct audio stream URL with yt-dlp
         ydl_opts = {
-            'format': 'bestaudio/best',
+            'format': 'bestaudio[ext=m4a]',
             'quiet': True,
             'no_warnings': True,
             'headers' : headers
@@ -241,7 +241,7 @@ class Music(commands.Cog):
         # Play audio
         ffmpeg_options = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-            'options': '-vn'
+            'options': '-vn -b:a 96k -ac 1'
         }
         try:
             source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
