@@ -80,17 +80,25 @@ class MusicControls(discord.ui.View):
         await interaction.followup.send("Stopped", ephemeral=True)
 
 class Music(commands.Cog):
+    
+    channel = None
+    
     def __init__(self, bot):
         self.bot = bot
+        self.channel = None
     
     # Added
     @commands.hybrid_command()
     async def arise(self, ctx : commands.Context):
         """ Join a Voice Channel """
         if ctx.author.voice:
-            channel = ctx.author.voice.channel
-            await channel.connect()
-            await ctx.send(f'I have been summoned to join {channel.name}')
+            if self.channel == None:
+                self.channel = ctx.author.voice.channel
+                await self.channel.connect()
+                await ctx.send(f'I have been summoned to join {self.channel.name}')
+            else:
+                await ctx.send("I'm already in a channel :v")
+                return
         else:
             await ctx.send('Please join a voice channel first!')
             
@@ -100,6 +108,7 @@ class Music(commands.Cog):
         global queue
         if ctx.voice_client:
             queue.clear()
+            self.channel = None
             await ctx.voice_client.disconnect()
             await ctx.send('kbay')
         else:
@@ -113,9 +122,9 @@ class Music(commands.Cog):
 
         # Join vc if not already
         if not ctx.voice_client:
-            channel = ctx.author.voice.channel
-            await channel.connect()
-            await ctx.send(f'I have been summoned to join {channel.name}')
+            self.channel = ctx.author.voice.channel
+            await self.channel.connect()
+            await ctx.send(f'I have been summoned to join {self.channel.name}')
             voice_client = ctx.voice_client
         else:
             voice_client = ctx.voice_client
@@ -159,7 +168,8 @@ class Music(commands.Cog):
         url = song['url']
         title = song['title']
         
-        await ctx.send(f"Found : {title}. | Processing....")
+        await ctx.send(f"Found : {title} | Processing...please wait :)")
+        
         print(url)
         
         # Get proxy from environment variable
@@ -190,6 +200,7 @@ class Music(commands.Cog):
                 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                     info = ydl.extract_info(url, download=False)
                     audio_url = info['url']  # Direct stream URL
+                    print(audio_url)
                 break
             except Exception as e:
                 if attempt < max_retries - 1:
@@ -198,7 +209,7 @@ class Music(commands.Cog):
                 else:
                     await ctx.send(f"Failed to fetch audio after {max_retries} attempts: {str(e)}")
                     return
-        
+                
         # Play audio
         ffmpeg_options = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
