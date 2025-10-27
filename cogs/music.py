@@ -192,12 +192,16 @@ class Music(commands.Cog):
         url = song['url']
         title = song['title']
         
-        await ctx.send(f"Found : {title} | Processing...please wait :)")
-        
         print(url)
         
-        # Get proxy from environment variable
-        proxy = settings.YOUTUBE_PROXY_SECRET
+        # Create new view with buttons
+        view = MusicControls()
+        # Set initial button states based on playback
+        view.pause_button.disabled = False
+        view.resume_button.disabled = True
+        await ctx.send(f"Now playing: {title}", view=view)
+        
+        # custom headers
         headers = {
             "authority": "www.google.com",
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
@@ -255,13 +259,6 @@ class Music(commands.Cog):
             except Exception as e:
                 print(f"Error in play_next: {e}")
                 
-        
-        # Create new view with buttons
-        view = MusicControls()
-        # Set initial button states based on playback
-        view.pause_button.disabled = False
-        view.resume_button.disabled = True
-        await ctx.send(f"Now playing: {title}", view=view)
         
         voice_client.play(source, after=after_playing)
         
