@@ -1,10 +1,15 @@
-Updated version of my old VelloImpact Discord bot.
-Now using Firebase Realtime Database.
+<h1 align="center"> [/] Buff_VelloImpact </h1>
 
+<p>
+  Updated version of my old VelloImpact Discord bot.<br>
+  Now using Firebase Realtime Database.
+</p>
 
+> [!Note]
+> Q : Why make new repo instead of using the old?<br>
+A : 'cause why not?<br><br>
+> Q : Is it hosted?<br>
+A : Yes, but on some occasion I will deactivate it<br><br>
 
-
-Q : Why make new repo instead of using the old?
-A : 'cause why not?
-
-install links (guild) : https://discord.com/oauth2/authorize?client_id=1339815104836931615&permissions=3377701868202048&integration_type=0&scope=bot
+> [!Important]
+> Add app (guild) : [**_Here_**](https://discord.com/oauth2/authorize?client_id=1339815104836931615&permissions=3377701868202048&integration_type=0&scope=bot)
