@@ -34,7 +34,7 @@ YOUTUBE_API_KEY = settings.YOUTUBE_API_SECRET  # Replace with your actual key
 
 def get_youtube_client():
     """Initialize and return a YouTube API client."""
-    return build("youtube", "v3", developerKey='AIzaSyBs_Oiw8Pjy-CtYGiT4scrwECWmriOkqso')
+    return build("youtube", "v3", developerKey=YOUTUBE_API_KEY)
 
 
 def extract_video_id(url: str) -> str:
