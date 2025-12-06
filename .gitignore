@@ -175,3 +175,7 @@ cython_debug/
 
 .vscode/
 key.json
+
+# testing
+test.py
+youtube_api_example.py
