@@ -176,6 +176,8 @@ cython_debug/
 .vscode/
 key.json
 
-# testing
+# ignore test.py files and youtube_api_example.py file
 test.py
 youtube_api_example.py
+
+randomytvids.py
