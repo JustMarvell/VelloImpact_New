@@ -76,7 +76,6 @@ def format_duration(seconds_or_str) -> str:
             # If it already contains ':', assume it's already formatted
             if ':' in seconds_or_str:
                 return seconds_or_str
-            # Try to convert string to int
             seconds = int(seconds_or_str)
         else:
             seconds = int(seconds_or_str)
@@ -118,7 +117,6 @@ def format_view_count(count_or_str) -> str:
             # Thousands
             return f"{count / 1_000:.1f}K"
         else:
-            # Return as is
             return str(count)
     except (ValueError, TypeError):
         # If conversion fails, return the original value
@@ -142,7 +140,6 @@ class MusicControls(discord.ui.View):
         voice_client = interaction.guild.voice_client
         if voice_client.is_playing():
             voice_client.pause()
-            # Update button states
             self.pause_button.disabled = True
             self.resume_button.disabled = False
             await interaction.response.edit_message(view=self)
@@ -158,7 +155,6 @@ class MusicControls(discord.ui.View):
         voice_client = interaction.guild.voice_client
         if voice_client.is_paused():
             voice_client.resume()
-            # update button states
             self.pause_button.disabled = False
             self.resume_button.disabled = True
             await interaction.response.edit_message(view=self)
@@ -173,7 +169,7 @@ class MusicControls(discord.ui.View):
         
         voice_client = interaction.guild.voice_client
         if voice_client.is_playing() or voice_client.is_paused():
-            voice_client.stop()  # Triggers play_next via after_playing
+            voice_client.stop()
         else:
             await interaction.response.send_message("Nothing is playing to skip!", ephemeral=True)
 
@@ -187,7 +183,6 @@ class MusicControls(discord.ui.View):
         voice_client = interaction.guild.voice_client
         queue.clear()
         voice_client.stop()
-        # Disable all buttons except Stop
         self.pause_button.disabled = True
         self.resume_button.disabled = True
         self.skip_button.disabled = True
@@ -218,7 +213,6 @@ class MusicControls(discord.ui.View):
             await interaction.response.send_message("The queue is empty.", ephemeral=True)
             return
         
-        # Build queue list (show up to 10 songs in the message)
         queue_list = "\n".join(f"{i+1}. {song['title']}" for i, song in enumerate(queue[:10]))
         
         if len(queue) > 10:
@@ -238,13 +232,11 @@ class MusicControls(discord.ui.View):
             )
             return
         
-        # Get current song from cog
         current_song = self.cog.current_song
         if not current_song or not current_song.get('title'):
             await interaction.response.send_message("No song is currently playing.", ephemeral=True)
             return
         
-        # Defer to show we're processing
         try : 
             tempmsg = await interaction.response.send_message(
                 "🎵 Searching for lyrics...",
@@ -269,7 +261,6 @@ class MusicControls(discord.ui.View):
             except Exception:
                 pass
             
-            # Create embed with lyrics, splitting into multiple fields if needed
             embed = discord.Embed(
                 title=result['title'],
                 description=result['artist'],
@@ -279,17 +270,14 @@ class MusicControls(discord.ui.View):
             
             lyrics_text = result['lyrics']
             
-            # Discord embed field limit is 1024 characters per field
             # Split lyrics into chunks to fit multiple fields
             max_field_length = 1024
             if len(lyrics_text) <= max_field_length:
                 embed.add_field(name="Lyrics", value=lyrics_text, inline=False)
             else:
-                # Split lyrics into multiple fields
                 chunks = []
                 current_chunk = ""
                 
-                # Split by lines to maintain readability
                 lines = lyrics_text.split('\n')
                 for line in lines:
                     if len(current_chunk) + len(line) + 1 <= max_field_length:
@@ -302,7 +290,6 @@ class MusicControls(discord.ui.View):
                 if current_chunk:
                     chunks.append(current_chunk.strip())
                 
-                # Add chunks as separate fields
                 for i, chunk in enumerate(chunks):
                     field_name = "Lyrics" if i == 0 else f"Lyrics (cont.)"
                     embed.add_field(name=field_name, value=chunk, inline=False)
@@ -312,13 +299,11 @@ class MusicControls(discord.ui.View):
             try:
                 await interaction.followup.send(embed=embed, ephemeral=True)
             except Exception:
-                # Fallback if embed fails or too many fields
                 message_content = f"**{result['title']}** by {result['artist']}\n\n{lyrics_text}\n\n[Full lyrics on Genius]({result['url']})"
-                # Discord message limit is 2000 characters, split if needed
+            
                 if len(message_content) <= 2000:
                     await interaction.followup.send(message_content, ephemeral=True)
                 else:
-                    # Split into chunks and send multiple messages
                     chunks = [message_content[i:i+1900] for i in range(0, len(message_content), 1900)]
                     for chunk in chunks:
                         await interaction.followup.send(chunk, ephemeral=True)
@@ -333,11 +318,8 @@ class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.channel = None
-        # autoplay per guild id
         self.autoplay = {}
-        # recent played video ids per guild (list)
         self.recent_played = {}
-        # store current song info for lyrics button
         self.current_song = {}
         
     @commands.Cog.listener()
@@ -353,7 +335,6 @@ class Music(commands.Cog):
             if channel:
                 await channel.send("Disconnected due to empty voice channel.")
     
-    # Added
     @commands.hybrid_command()
     async def arise(self, ctx : commands.Context):
         """ Join a Voice Channel """
@@ -387,17 +368,10 @@ class Music(commands.Cog):
     )
     async def play(self, ctx: commands.Context, query: str = None, link: str = None):
         """Play a song by query or YouTube link. Prioritizes query if both are provided."""
-        # Prioritize query if both are provided
-        # Defer the interaction to avoid 'Unknown interaction' errors when
-        # the command takes longer than Discord's interaction window.
         try:
-            # If this is an interaction (slash command), defer the response so
-            # we can send followups later. For prefix commands, ctx.defer
-            # is a no-op.
             try:
                 await ctx.defer()
             except Exception:
-                # Not all Contexts support defer; ignore if it fails
                 pass
             if query:
                 try :
@@ -416,7 +390,7 @@ class Music(commands.Cog):
     
     async def play_music(self, ctx : commands.Context, querry : str):
         try : 
-            if len(queue) >= 20:  # Limit queue size
+            if len(queue) >= 20: 
                 await ctx.send("Queue is full! Max 20 songs.")
                 return
             
@@ -424,7 +398,6 @@ class Music(commands.Cog):
                 await ctx.send('You need to join a voice channel first to use me!')
                 return
 
-            # Join vc if not already
             if not ctx.voice_client:
                 self.channel = ctx.author.voice.channel
                 await self.channel.connect()
@@ -433,7 +406,6 @@ class Music(commands.Cog):
             else:
                 voice_client = ctx.voice_client
             
-            # Check cache first
             if querry in search_cache:
                 results = search_cache[querry]
             else:
@@ -466,17 +438,15 @@ class Music(commands.Cog):
             queue.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
 
             if not voice_client.is_playing():
-                # Play immediately if nothing is playing
                 await self.play_next(ctx)
             else:
-                # Add to queue if something is playing
                 await ctx.send(f"Added to queue: {title}")
         except Exception as e:
             await ctx.send(f"Something went wrong on internal play_music : {e}")
             
     async def play_music_by_url(self, ctx : commands.Context, link : str):
         try : 
-            if len(queue) >= 20:  # Limit queue size
+            if len(queue) >= 20:
                 await ctx.send("Queue is full! Max 20 songs.")
                 return
             
@@ -484,7 +454,6 @@ class Music(commands.Cog):
                 await ctx.send('You need to join a voice channel first to use me!')
                 return
 
-            # Join vc if not already
             if not ctx.voice_client:
                 self.channel = ctx.author.voice.channel
                 await self.channel.connect()
@@ -493,16 +462,12 @@ class Music(commands.Cog):
             else:
                 voice_client = ctx.voice_client
                 
-            
-            # Normalize link to support multiple YouTube formats (youtu.be, watch?v=, embed)
             normalized_link = normalize_youtube_link(link)
 
-            # Check cache first using the normalized link as the cache key
             if normalized_link in url_cache:
                 result = url_cache[normalized_link]
             else:
                 try:
-                    # Use normalized_link so both short and full URLs work
                     video_info = Video.getInfo(normalized_link, mode = ResultMode.json)
 
                     result = video_info
@@ -526,7 +491,6 @@ class Music(commands.Cog):
             channel_thumbnails = Channel.get(channel_id)['thumbnails'][0]['url']
             channel_url = Channel.get(channel_id)['url']
             channel_name = Channel.get(channel_id)['title']
-            # Handle duration which may come as dict with 'secondsText' or as raw string
             duration_raw = video['duration']['secondsText'] if isinstance(video.get('duration'), dict) else video.get('duration')
             duration = format_duration(duration_raw)
             view_count = format_view_count(video['viewCount']['text'])
@@ -535,10 +499,8 @@ class Music(commands.Cog):
             queue.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
 
             if not voice_client.is_playing():
-                # Play immediately if nothing is playing
                 await self.play_next(ctx)
             else:
-                # Add to queue if something is playing
                 await ctx.send(f"Added to queue: {title}")
         except Exception as e:
             await ctx.send(f"Something went wrong on internal play_music_by_url : {e}")
@@ -555,7 +517,6 @@ class Music(commands.Cog):
             last_channel_name = last_item.get('channel_name') if isinstance(last_item, dict) else None
             suggestions = []
             try:
-                # Use a channel-based genre bias when possible.
                 genre_label = None
                 if last_channel_id:
                     try:
@@ -565,32 +526,27 @@ class Music(commands.Cog):
                     except Exception:
                         genre_label = None
 
-                # Build a search query that includes the last title and optional genre
                 if last_title:
                     search_query = f"{last_title} {genre_label}" if genre_label else last_title
                     search = VideosSearch(query=search_query, limit=25)
                     res = search.result()
                     raw_suggestions = res.get('result', []) if isinstance(res, dict) else res
 
-                    # Filter: prefer same channel/artist, exclude same title
                     suggestions = []
                     for r in raw_suggestions:
-                        # Must not be the same title
                         if r.get('title') == last_title:
                             continue
-                        # Prefer same channel id (artist)
                         channel_id = (r.get('channel') or {}).get('id', '')
                         if last_channel_id and channel_id == last_channel_id:
                             suggestions.append(r)
 
-                    # If not enough, fill with other results (not same title)
                     if len(suggestions) < count:
                         for r in raw_suggestions:
                             if r.get('title') == last_title:
                                 continue
                             channel_id = (r.get('channel') or {}).get('id', '')
                             if last_channel_id and channel_id == last_channel_id:
-                                continue # already added
+                                continue
                             suggestions.append(r)
                             if len(suggestions) >= count:
                                 break
@@ -607,7 +563,6 @@ class Music(commands.Cog):
                 vid_id = get_video_id_from_url(link)
                 if not vid_id:
                     continue
-                # skip recently played or already queued
                 recent_ids = [r.get('id') if isinstance(r, dict) else r for r in recent]
                 if vid_id in recent_ids or any(s.get('video_id') == vid_id for s in queue):
                     continue
@@ -640,7 +595,6 @@ class Music(commands.Cog):
                 try:
                     await ctx.send(f"Autoplay added {added} suggested song(s) to the queue.")
                 except Exception:
-                    # If interaction response invalid, fallback to channel
                     if ctx.channel:
                         await ctx.channel.send(f"Autoplay added {added} suggested song(s) to the queue.")
             return added
@@ -658,7 +612,6 @@ class Music(commands.Cog):
                 await ctx.send("Queue is empty!")
                 return
             
-            # Get the next song
             song = queue.pop(0)
             url = song['url']
             title = song['title']
@@ -669,7 +622,6 @@ class Music(commands.Cog):
             duration = song['duration']
             view_count = song['view_count']
             
-            # Store current song info for lyrics button
             self.current_song = {
                 'title': title,
                 'channel_name': channel_name,
@@ -678,12 +630,9 @@ class Music(commands.Cog):
             
             print(url)
             
-            # Create new view with buttons (pass cog so button can toggle autoplay)
             view = MusicControls(self)
-            # Set initial button states based on playback
             view.pause_button.disabled = False
             view.resume_button.disabled = True
-            # Set autoplay button presentation according to current guild state
             try:
                 if ctx.guild:
                     enabled = self.autoplay.get(ctx.guild.id, False)
@@ -702,7 +651,6 @@ class Music(commands.Cog):
             try:
                 await ctx.send(embed=embed, view=view)
             except Exception as e:
-                # If sending via interaction fails (Unknown interaction), fallback to channel send
                 try:
                     if ctx.channel:
                         await ctx.channel.send(embed=embed)
@@ -711,18 +659,15 @@ class Music(commands.Cog):
                 else:
                     print(f"Delivered embed via channel as fallback due to: {e}")
 
-            # Record recently played and trigger autoplay suggestions if enabled
             try:
                 gid = ctx.guild.id if ctx.guild else None
                 if gid:
                     vid = song.get('video_id', '')
                     if vid:
                         lst = self.recent_played.get(gid, [])
-                        # store dict with id, title and channel info for better suggestion searches
                         lst.append({'id': vid, 'title': title, 'channel_id': song.get('channel_id'), 'channel_name': channel_name})
                         self.recent_played[gid] = lst[-20:]
 
-                    # If autoplay enabled and queue is low, add suggestions
                     if self.autoplay.get(gid, False) and len(queue) < 3:
                         await self.add_autoplay_suggestions(ctx, gid, count=5)
             except Exception as e:
@@ -730,7 +675,6 @@ class Music(commands.Cog):
         except Exception as e:
             await ctx.send(f"Failed to send Embed : {e}")
         
-        # custom headers
         headers = {
             "authority": "www.google.com",
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
@@ -742,8 +686,6 @@ class Music(commands.Cog):
             'sec-ch-ua-platform-version': '15.0.0',
         }
 
-        
-        # Extract direct audio stream URL with yt-dlp
         ydl_opts = {
             'format': 'bestaudio[ext=m4a]',
             'quiet': True,
@@ -767,7 +709,6 @@ class Music(commands.Cog):
                     await ctx.send(f"Failed to fetch audio after {max_retries} attempts: {str(e)}")
                     return
                 
-        # Play audio
         ffmpeg_options = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
             'options': '-vn -b:a 96k'
@@ -777,9 +718,7 @@ class Music(commands.Cog):
         except Exception as e:
             await ctx.send(f"Failed to play : {e}")
         
-        # Define callback for when the song ends
         def after_playing(error):
-            # Run play_next in an async context
             import asyncio
             coro = self.play_next(ctx)
             fut = asyncio.run_coroutine_threadsafe(coro, loop=self.bot.loop)
@@ -808,19 +747,16 @@ class Music(commands.Cog):
             )
             return
         
-        # If no query provided, try to use the currently playing song
         if not song_query:
             if not queue and not hasattr(self, '_current_song'):
                 await ctx.send("Please provide a song name, or play a song first.")
                 return
-            # Try to get current song title from recent_played or queue
             if hasattr(self, '_current_song'):
                 song_query = self._current_song.get('title', '')
             else:
                 await ctx.send("Please provide a song name, or play a song first.")
                 return
         
-        # Defer to show we're processing
         try:
             await ctx.defer()
         except Exception:
@@ -835,7 +771,6 @@ class Music(commands.Cog):
                 await ctx.send(f"❌ {result.get('error', 'Could not fetch lyrics')}")
                 return
             
-            # Create embed with lyrics, splitting into multiple fields if needed
             embed = discord.Embed(
                 title=result['title'],
                 description=result['artist'],
@@ -845,17 +780,13 @@ class Music(commands.Cog):
             
             lyrics_text = result['lyrics']
             
-            # Discord embed field limit is 1024 characters per field
-            # Split lyrics into chunks to fit multiple fields
             max_field_length = 1024
             if len(lyrics_text) <= max_field_length:
                 embed.add_field(name="Lyrics", value=lyrics_text, inline=False)
             else:
-                # Split lyrics into multiple fields
                 chunks = []
                 current_chunk = ""
                 
-                # Split by lines to maintain readability
                 lines = lyrics_text.split('\n')
                 for line in lines:
                     if len(current_chunk) + len(line) + 1 <= max_field_length:
@@ -868,7 +799,6 @@ class Music(commands.Cog):
                 if current_chunk:
                     chunks.append(current_chunk.strip())
                 
-                # Add chunks as separate fields
                 for i, chunk in enumerate(chunks):
                     field_name = "Lyrics" if i == 0 else f"Lyrics (cont.)"
                     embed.add_field(name=field_name, value=chunk, inline=False)
@@ -878,13 +808,10 @@ class Music(commands.Cog):
             try:
                 await ctx.send(embed=embed)
             except Exception as e:
-                # Fallback if embed fails or too many fields
                 message_content = f"**{result['title']}** by {result['artist']}\n\n{lyrics_text}\n\n[Full lyrics on Genius]({result['url']})"
-                # Discord message limit is 2000 characters, split if needed
                 if len(message_content) <= 2000:
                     await ctx.send(message_content)
                 else:
-                    # Split into chunks and send multiple messages
                     chunks = [message_content[i:i+1900] for i in range(0, len(message_content), 1900)]
                     for chunk in chunks:
                         await ctx.send(chunk)
@@ -920,7 +847,7 @@ class Music(commands.Cog):
             await ctx.send("Nothing is playing to skip!")
             return
         
-        ctx.voice_client.stop()  # Triggers play_next via after_playing
+        ctx.voice_client.stop()
         await ctx.send("Skipped current song")
         
     @commands.hybrid_command()
@@ -931,13 +858,11 @@ class Music(commands.Cog):
             await ctx.send("The queue is empty.")
             return
         
-        # Convert 1-based index to 0-based
         index = index - 1
         if index < 0 or index >= len(queue):
             await ctx.send(f"Invalid index. Use a number between 1 and {len(queue)}.")
             return
         
-        # Remove the song
         removed_song = queue.pop(index)
         await ctx.send(f"Removed from queue: {removed_song['title']}")
         
@@ -964,7 +889,7 @@ class Music(commands.Cog):
         """Stop playing song"""
         global queue
         if ctx.voice_client:
-            queue.clear()  # Clear queue on stop
+            queue.clear() 
             ctx.voice_client.stop()
             await ctx.send("Stopped")
         else:

@@ -5,12 +5,9 @@ import settings
 import re
 from typing import Optional, Dict
 
-# Initialize Genius client (you'll need to set GENIUS_API_TOKEN env var)
-# Get your token from: https://genius.com/api-clients
 GENIUS_TOKEN = settings.GENIUS_API_SECRET
 _genius = None
 
-# Terms to exclude from song titles when searching for lyrics
 EXCLUDED_TERMS = [
     "Remix",
     "Instrumental",
@@ -64,8 +61,6 @@ def clean_song_title(title: str) -> str:
     
     cleaned = title
     
-    # Sort by length (longest first) to match longer terms first
-    # This prevents "Official Video" from matching before "Official Music Video"
     sorted_terms = sorted(EXCLUDED_TERMS, key=len, reverse=True)
     
     for term in sorted_terms:
@@ -111,15 +106,12 @@ async def fetch_song_lyrics(song_title: str, artist_name: Optional[str] = None) 
         }
     
     try:
-        # Clean the song title to remove common non-lyrical terms
         cleaned_title = clean_song_title(song_title)
         
-        # Build initial cleaned query
         print(f"Search query cleaned: {cleaned_title} | artist hint: {artist_name}")
 
         # Helper: try to fetch a song given title and optional artist hint
         def try_fetch(title_hint: str, artist_hint: Optional[str]):
-            # Build a search query for candidate discovery
             q = f"{title_hint} {artist_hint}" if artist_hint else title_hint
             translation_indicators = [
                 'translation', 'translations', 'traduc', 'tradu', 'traducción', 'tradução', 'traduction',
@@ -158,7 +150,6 @@ async def fetch_song_lyrics(song_title: str, artist_name: Optional[str] = None) 
                 if song_obj:
                     return song_obj
 
-            # Last resort: direct search_song on the hint
             try:
                 return _genius.search_song(title_hint, artist=artist_hint or '', get_full_info=True)
             except Exception:
@@ -166,7 +157,6 @@ async def fetch_song_lyrics(song_title: str, artist_name: Optional[str] = None) 
 
         song = None
 
-        # If the cleaned title contains a separator like ' - ', try splitting into artist/title candidates
         split_patterns = [' - ', ' – ', ' — ', ':']
         candidates = []
         for sep in split_patterns:
@@ -182,15 +172,12 @@ async def fetch_song_lyrics(song_title: str, artist_name: Optional[str] = None) 
         # Also add the raw cleaned title as a candidate
         candidates.append((cleaned_title, artist_name))
 
-        # Try candidates in order and prefer results where the returned artist matches the artist hint
         fallback_song = None
         for title_hint, artist_hint in candidates:
             song = try_fetch(title_hint, artist_hint)
             if song:
-                # If we have an artist_hint, check if the returned song artist matches (best match)
                 if artist_hint and isinstance(song.artist, str) and artist_hint.lower() in song.artist.lower():
                     break
-                # otherwise keep the first successful as fallback
                 if not fallback_song:
                     fallback_song = song
 
@@ -205,7 +192,6 @@ async def fetch_song_lyrics(song_title: str, artist_name: Optional[str] = None) 
 
         lyrics = song.lyrics
         
-        # Truncate if lyrics are very long (Discord message limit is 2000 chars)
         max_length = 1900
         if len(lyrics) > max_length:
             lyrics = lyrics[:max_length] + "\n\n[Lyrics truncated - visit Genius for full lyrics]"

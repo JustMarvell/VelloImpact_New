@@ -12,12 +12,9 @@ from typing import Optional, Dict
 from youtubesearchpython import Channel
 import re
 
-# Simple in-memory cache: channel_id -> result dict
 channel_genre_cache: Dict[str, Dict] = {}
 _CACHE_MAX = 200
 
-# Minimal keyword mapping to normalized genre labels. This list can be
-# extended over time.
 GENRE_KEYWORDS = {
     "lofi": [r"lo-?fi", r"chillhop", r"chill beats", r"lofi"],
     "hiphop": [r"hip[ -]?hop", r"rap", r"trap"],
@@ -41,7 +38,6 @@ def _cache_set(channel_id: str, value: Dict) -> None:
         channel_genre_cache[key] = value
         return
     if len(channel_genre_cache) >= _CACHE_MAX:
-        # pop oldest
         channel_genre_cache.pop(next(iter(channel_genre_cache)))
     channel_genre_cache[key] = value
 
@@ -69,20 +65,16 @@ def infer_channel_genre(channel_id: str) -> Dict:
     text = ""
     try:
         info = Channel.get(channel_id)
-        # Channel.get returns a dict-like structure; title is almost always present
         title = (info.get("title") or "").lower()
         description = (info.get("description") or "").lower()
         text = f"{title} \n {description}"
     except Exception:
-        # If the remote lookup fails, store negative result to avoid repeated attempts
         res = {"genre": None, "source": "fetch_error", "confidence": 0.0}
         _cache_set(channel_id, res)
         return res
 
-    # Check title first (strong signal), then description
     for genre, patterns in GENRE_KEYWORDS.items():
         for pat in patterns:
-            # Exact match in title -> high confidence
             try:
                 if re.search(pat, title, flags=re.I):
                     res = {"genre": genre, "source": "title", "confidence": 0.95}
@@ -101,7 +93,6 @@ def infer_channel_genre(channel_id: str) -> Dict:
             except re.error:
                 continue
 
-    # Heuristic: if channel title contains 'music' it's likely broad 'music'
     if "music" in text:
         res = {"genre": "music", "source": "keyword", "confidence": 0.5}
         _cache_set(channel_id, res)
