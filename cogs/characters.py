@@ -66,7 +66,10 @@ class Characters(commands.Cog):
     @app_commands.autocomplete(char_name = character_autocomplete)
     async def show_character(self, ctx : commands.Context, *, char_name : str):
         """ show a character based on [char_name] or [random] to select random character """
-        
+        try :
+            await ctx.defer()
+        except Exception:
+            pass
     
         if char_name == 'random':
             lst = await cc.get_character_list()
