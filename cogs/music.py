@@ -186,6 +186,14 @@ class MusicControls(discord.ui.View):
         self.pause_button.disabled = True
         self.resume_button.disabled = True
         self.skip_button.disabled = True
+        
+        # remove current activity
+        try:
+            await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+        except Exception as e:
+            print(f"Error removing bot status: {e}")
+            pass
+        
         await interaction.response.edit_message(view=self)
 
     @discord.ui.button(label="Autoplay: 🔴", style=discord.ButtonStyle.secondary)
@@ -356,6 +364,13 @@ class Music(commands.Cog):
         if ctx.voice_client:
             queue.clear()
             self.channel = None
+            
+            try:
+                await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+            except Exception as e:
+                print(f"Error removing bot status: {e}")
+                pass
+            
             await ctx.voice_client.disconnect()
             await ctx.send('kbay')
         else:
@@ -610,6 +625,13 @@ class Music(commands.Cog):
             voice_client = ctx.voice_client
             if not queue:
                 await ctx.send("Queue is empty!")
+                
+                # remove current bot status
+                try:
+                    await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+                except Exception as e:
+                    print(f"Error removing bot status: {e}")
+                    pass
                 return
             
             song = queue.pop(0)
@@ -649,15 +671,21 @@ class Music(commands.Cog):
             embed.set_image(url = thumbnail)
             
             try:
+                # send discord embed
                 await ctx.send(embed=embed, view=view)
+                
+                activity = discord.Activity(type=discord.ActivityType.listening, 
+                                            name=f"🎵 {title}", 
+                                            url=url,
+                                            details=f"Uploaded to Youtube By: {channel_name}", 
+                                            platform='YouTube', 
+                                            details_url=channel_url)
+                
+                await self.bot.change_presence(activity=activity)
+                
             except Exception as e:
-                try:
-                    if ctx.channel:
-                        await ctx.channel.send(embed=embed)
-                except Exception:
-                    print(f"Failed to deliver embed via both interaction and channel: {e}")
-                else:
-                    print(f"Delivered embed via channel as fallback due to: {e}")
+                print(f"error : {e}")
+                pass
 
             try:
                 gid = ctx.guild.id if ctx.guild else None
@@ -731,6 +759,24 @@ class Music(commands.Cog):
             voice_client.play(source, after=after_playing)
         except Exception as e:
             await ctx.send(f"Failed to play using voice client : {e}")
+            
+    @commands.hybrid_command()
+    async def custom_status(self, ctx: commands.Context):
+        """Set a custom status for the bot."""
+        try:
+            # set bot activity to listening to current song
+            activity_assets = {
+                'large_image': 'Large Image',
+                'large_text': 'Large Text',
+                'small_image': 'Small Image',
+                'small_text': 'Small Text',
+                'small_url' : 'https://i.pinimg.com/1200x/e3/0b/d6/e30bd65b5a0087312259b40fbb2127e6.jpg',
+                'large_url' : 'https://i.pinimg.com/1200x/e3/0b/d6/e30bd65b5a0087312259b40fbb2127e6.jpg'
+            }
+            activity = discord.Activity(type=discord.ActivityType.listening, name='Custom Status Test', assets=activity_assets, details=f"Uploaded By: {ctx.author.name}")
+            await self.bot.change_presence(activity=activity)
+        except Exception as e:
+            await ctx.send(f"Failed to set custom status : {e}")
         
     @commands.hybrid_command()
     async def lyrics(self, ctx: commands.Context, *, song_query: str = None):
@@ -891,6 +937,14 @@ class Music(commands.Cog):
         if ctx.voice_client:
             queue.clear() 
             ctx.voice_client.stop()
+            
+            # remove current activity
+            try:
+                await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+            except Exception as e:
+                print(f"Error removing bot status: {e}")
+                pass
+            
             await ctx.send("Stopped")
         else:
             await ctx.send("Nothing to stop")

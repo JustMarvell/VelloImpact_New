@@ -15,8 +15,8 @@ class Client(commands.Bot):
         # load cogs
         await load_cogs()
         
-        synced = await self.tree.sync()
-        tree_logger.info(f"Synced {len(synced)} commands to global")
+        # synced = await self.tree.sync()
+        # tree_logger.info(f"Synced {len(synced)} commands to global")
         
 async def load_cogs():
     """Load all cogs"""
@@ -33,12 +33,25 @@ client = Client(command_prefix="!", intents=intents, help_command=None)
 @client.tree.command(name = "reload_commands", description = "Reload all commands")
 async def reload_commands(interaction: discord.Interaction):
     """Reload all commands"""
-    reloaded_cogs = 0
-    for cogs in settings.COGS_DIR.glob("*.py"):
-        if cogs.name != "__init__.py":
-            await client.reload_extension(f'cogs.{cogs.name[:-3]}')
-            reloaded_cogs += 1
-    await interaction.response.send_message(f'Reloaded : {reloaded_cogs} cogs. Auto delete after 4 Seconds', delete_after=4)
+    try:
+        reloaded_cogs = 0
+        for cogs in settings.COGS_DIR.glob("*.py"):
+            if cogs.name != "__init__.py":
+                await client.reload_extension(f'cogs.{cogs.name[:-3]}')
+                reloaded_cogs += 1
+                
+        # synced = await client.tree.sync()
+        # tree_logger.info(f"Synced {len(synced)} commands to global")
+        
+        await interaction.response.send_message(f'Reloaded : {reloaded_cogs} cogs. Auto delete after 4 Seconds', delete_after=4)
+    except Exception as e:
+        tree_logger.error(f"Error reloading cogs: {e}")
+        await interaction.followup.send(f'Error reloading cogs: {e}', ephemeral=True)
+    
+@client.event
+async def on_ready():
+    # set bot status
+    await client.change_presence(activity=discord.Game(name="VelloImpact Bot is Online!"))
 
 fb.initialize_app()
 client.run(settings.DISCORD_API_SECRET, root_logger = True)
