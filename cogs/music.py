@@ -189,7 +189,8 @@ class MusicControls(discord.ui.View):
         
         # remove current activity
         try:
-            await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+            await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
+            # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
         except Exception as e:
             print(f"Error removing bot status: {e}")
             pass
@@ -366,7 +367,8 @@ class Music(commands.Cog):
             self.channel = None
             
             try:
-                await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+                await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
+                # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
             except Exception as e:
                 print(f"Error removing bot status: {e}")
                 pass
@@ -628,7 +630,8 @@ class Music(commands.Cog):
                 
                 # remove current bot status
                 try:
-                    await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+                    await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
+                    # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
                 except Exception as e:
                     print(f"Error removing bot status: {e}")
                     pass
@@ -940,7 +943,8 @@ class Music(commands.Cog):
             
             # remove current activity
             try:
-                await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+                # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+                await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
             except Exception as e:
                 print(f"Error removing bot status: {e}")
                 pass

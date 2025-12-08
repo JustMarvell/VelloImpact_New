@@ -15,8 +15,12 @@ class Client(commands.Bot):
         # load cogs
         await load_cogs()
         
-        # synced = await self.tree.sync()
-        # tree_logger.info(f"Synced {len(synced)} commands to global")
+        # try :
+        #     synced = await self.tree.sync()
+        #     tree_logger.info(f"Synced {len(synced)} commands to global")
+        # except Exception:
+        #     pass
+        tree_logger.info(msg="Bot is Ready!")
         
 async def load_cogs():
     """Load all cogs"""
@@ -46,7 +50,19 @@ async def reload_commands(interaction: discord.Interaction):
         await interaction.response.send_message(f'Reloaded : {reloaded_cogs} cogs. Auto delete after 4 Seconds', delete_after=4)
     except Exception as e:
         tree_logger.error(f"Error reloading cogs: {e}")
-        await interaction.followup.send(f'Error reloading cogs: {e}', ephemeral=True)
+        await interaction.response.send_message(f'Error reloading cogs: {e}', ephemeral=True)
+        
+@client.tree.command(name = "sync_commands", description = "Sync all commands")
+async def sync_commands(interaction: discord.Interaction):
+    """Sync all commands"""
+    try:
+        synced = await client.tree.sync()
+        tree_logger.info(f"Synced {len(synced)} commands to global")
+        
+        await interaction.response.send_message(f'Synced : {len(synced)} cogs. Auto delete after 4 Seconds', delete_after=4)
+    except Exception as e:
+        tree_logger.error(f"Error on Sync: {e}")
+        await interaction.response.send_message(f'Error on Sync: {e}', ephemeral=True)
     
 @client.event
 async def on_ready():
