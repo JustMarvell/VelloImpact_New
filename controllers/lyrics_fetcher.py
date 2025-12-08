@@ -192,10 +192,6 @@ async def fetch_song_lyrics(song_title: str, artist_name: Optional[str] = None) 
 
         lyrics = song.lyrics
         
-        max_length = 1900
-        if len(lyrics) > max_length:
-            lyrics = lyrics[:max_length] + "\n\n[Lyrics truncated - visit Genius for full lyrics]"
-        
         return {
             'success': True,
             'title': song.title,

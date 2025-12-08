@@ -12,6 +12,7 @@ DISCORD_WEBHOOK_URL_SECRET = os.getenv("WEBHOOK_URL")
 YOUTUBE_PROXY_SECRET = os.getenv("YOUTUBE_PROXY")
 YOUTUBE_API_SECRET = os.getenv("YOUTUBE_API_KEY")
 GENIUS_API_SECRET = os.getenv("GENIUS_API_TOKEN")
+COOKIE_API_SECRET = os.getenv("COOKIE_API_KEY")
 HEADERS = {"Content-Type" : "application/json"}
 BASE_DIR = pathlib.Path(__file__).parent
 COGS_DIR = BASE_DIR / "cogs"
@@ -43,7 +44,7 @@ LOGGING_CONFIG = {
         "file" : {
             'level' : "INFO",
             'class' : "logging.FileHandler",
-            'filename' : "logs/infos.log",
+            'filename' : f"{BASE_DIR}/logs/infos.log",
             'mode' : "w",
             'formatter' : "verbose"
         },
