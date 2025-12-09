@@ -122,3 +122,7 @@ async def get_ai_chat(prompt : str):
         return response.json()
     else:
         raise Exception
+    
+async def async_wait(seconds: float):
+    import asyncio
+    await asyncio.sleep(seconds)

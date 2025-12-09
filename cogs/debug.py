@@ -3,6 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 import datetime
 import controllers.test as test
+import random
 
 async def setup(bot: commands.Bot) :
     await bot.add_cog(Debug(bot))
@@ -10,14 +11,18 @@ async def setup(bot: commands.Bot) :
 class Debug(commands.Cog) :
     def __init__(self, bot) :
         self.bot = bot
-        
-    @commands.hybrid_command()
-    async def say(self, ctx : commands.Context, action: str):
-        await ctx.send(action)
-        
+                
     bad_ping = 15606812
     medium_ping = 15134236
     good_ping = 2420252
+    
+    # "Large image key" : "Large image text"
+    image_asset_key = [
+        "ayla_kuning",
+        "absolute_idiot",
+        "cat_think",
+        "speed"
+    ]
         
     @commands.hybrid_command()
     async def ping(self, ctx : commands.Context):
@@ -36,4 +41,28 @@ class Debug(commands.Cog) :
             
         embed.color = ping_color
         await ctx.send(embed=embed)
+
+    # set bot's custom status (only accesible by bot owner)
+    @commands.hybrid_command()
+    @commands.is_owner()
+    @app_commands.describe(activity_type="Type of activity", activity_name="Name of the activity")
+    async def custom_status(self, ctx: commands.Context, *, activity_type : discord.ActivityType, activity_name : str):
+        """Set a custom status for the bot."""
+        
+        if (activity_type == None):
+            await ctx.send("Failed : Can't have NoneType activity", ephemeral=True)
+            return
+        
+        # choose random image asset
+        asset = {
+            'large_image': random.choice(self.image_asset_key)
+        }
+        
+        try:
+            activity = discord.Activity(type=activity_type, name=activity_name, details=f"Uploaded By: {ctx.author.name}", assets=asset)
+            await self.bot.change_presence(activity=activity)
+            await ctx.send("Succesfully changed the bot's status!", ephemeral=True)
+            
+        except Exception as e:
+            await ctx.send(f"Failed to set custom status : {e}")
         
