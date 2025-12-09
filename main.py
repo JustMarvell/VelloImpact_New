@@ -24,6 +24,7 @@ class Client(commands.Bot):
         
 async def load_cogs():
     """Load all cogs"""
+    tree_logger.info("Loading cogs...!")
     for cogs in settings.COGS_DIR.glob("*.py"):
         if cogs.name != "__init__.py":
             await client.load_extension(f'cogs.{cogs.name[:-3]}')
@@ -39,15 +40,17 @@ async def reload_commands(interaction: discord.Interaction):
     """Reload all commands"""
     try:
         reloaded_cogs = 0
+        tree_logger.info("Reloading cogs...!")
         for cogs in settings.COGS_DIR.glob("*.py"):
             if cogs.name != "__init__.py":
                 await client.reload_extension(f'cogs.{cogs.name[:-3]}')
+                cogs_logger.info(f'Loaded ({cogs.name})')
                 reloaded_cogs += 1
                 
         # synced = await client.tree.sync()
         # tree_logger.info(f"Synced {len(synced)} commands to global")
         
-        await interaction.response.send_message(f'Reloaded : {reloaded_cogs} cogs. Auto delete after 4 Seconds', delete_after=4)
+        await interaction.response.send_message(f'Reloaded : {reloaded_cogs} cogs. Auto delete after 4 Seconds', delete_after=4, ephemeral=True)
     except Exception as e:
         tree_logger.error(f"Error reloading cogs: {e}")
         await interaction.response.send_message(f'Error reloading cogs: {e}', ephemeral=True)
@@ -56,10 +59,11 @@ async def reload_commands(interaction: discord.Interaction):
 async def sync_commands(interaction: discord.Interaction):
     """Sync all commands"""
     try:
+        tree_logger.info("Syncing commands...!")
         synced = await client.tree.sync()
         tree_logger.info(f"Synced {len(synced)} commands to global")
         
-        await interaction.response.send_message(f'Synced : {len(synced)} cogs. Auto delete after 4 Seconds', delete_after=4)
+        await interaction.response.send_message(f'Synced : {len(synced)} cogs. Auto delete after 4 Seconds', delete_after=4, ephemeral=True)
     except Exception as e:
         tree_logger.error(f"Error on Sync: {e}")
         await interaction.response.send_message(f'Error on Sync: {e}', ephemeral=True)

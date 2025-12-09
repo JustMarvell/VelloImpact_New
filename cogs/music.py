@@ -762,24 +762,6 @@ class Music(commands.Cog):
             voice_client.play(source, after=after_playing)
         except Exception as e:
             await ctx.send(f"Failed to play using voice client : {e}")
-            
-    @commands.hybrid_command()
-    async def custom_status(self, ctx: commands.Context):
-        """Set a custom status for the bot."""
-        try:
-            # set bot activity to listening to current song
-            activity_assets = {
-                'large_image': 'Large Image',
-                'large_text': 'Large Text',
-                'small_image': 'Small Image',
-                'small_text': 'Small Text',
-                'small_url' : 'https://i.pinimg.com/1200x/e3/0b/d6/e30bd65b5a0087312259b40fbb2127e6.jpg',
-                'large_url' : 'https://i.pinimg.com/1200x/e3/0b/d6/e30bd65b5a0087312259b40fbb2127e6.jpg'
-            }
-            activity = discord.Activity(type=discord.ActivityType.listening, name='Custom Status Test', assets=activity_assets, details=f"Uploaded By: {ctx.author.name}")
-            await self.bot.change_presence(activity=activity)
-        except Exception as e:
-            await ctx.send(f"Failed to set custom status : {e}")
         
     @commands.hybrid_command()
     async def lyrics(self, ctx: commands.Context, *, song_query: str = None):
