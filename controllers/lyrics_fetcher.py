@@ -37,11 +37,33 @@ EXCLUDED_TERMS = [
     "Official",
     "【Original Song】",
     "【Official Animated MV】"
+    "Live", 
+    "Acoustic", 
+    "Piano Version",
+    "Slowed + Reverb",
+    "Sped Up",
+    "Nightcore",
+    "8D Audio",
+    "Lyrics On Screen",
+    "Animation", 
+    "AMV",
+    "TikTok", 
+    "1 Hour",
+    "10 Hours", 
+    "Loop",
+    "Bass Boosted"
 ]
 
 if GENIUS_TOKEN:
     try:
-        _genius = lyricsgenius.Genius(GENIUS_TOKEN, skip_non_songs=True, excluded_terms=EXCLUDED_TERMS)
+        _genius = lyricsgenius.Genius(
+            GENIUS_TOKEN,
+            skip_non_songs=True,
+            excluded_terms=EXCLUDED_TERMS,
+            timeout=15,
+            retries=3,
+            sleep_time=0.5
+        )
     except Exception as e:
         print(f"Failed to initialize Genius client: {e}")
         _genius = None
@@ -81,131 +103,68 @@ def clean_song_title(title: str) -> str:
     cleaned = re.sub(r'\s*-\s*$', '', cleaned)  # Remove trailing dash
     
     return cleaned
-
-
-async def fetch_song_lyrics(song_title: str, artist_name: Optional[str] = None) -> Optional[Dict]:
-    """Fetch lyrics for a song from Genius API.
-    
-    Args:
-        song_title: Title of the song to fetch lyrics for
-        artist_name: Optional artist name to improve search accuracy
         
-    Returns:
-        dict with keys:
-            - 'title': Song title
-            - 'artist': Artist name
-            - 'lyrics': Lyrics text (may be truncated if very long)
-            - 'url': Link to Genius page
-            - 'success': True if lyrics were found
-        OR None if Genius is not configured or song not found
-    """
+async def fetch_song_lyrics(song_title: str, artist_name: Optional[str] = None) -> Dict:
+    """Fetch ONLY original-language lyrics — NEVER returns a search list"""
     if not GENIUS_TOKEN or not _genius:
         return {
             'success': False,
-            'error': 'Genius API token not configured. Set GENIUS_API_TOKEN environment variable.'
+            'error': 'Genius API token not configured.'
         }
-    
+
     try:
         cleaned_title = clean_song_title(song_title)
-        
-        print(f"Search query cleaned: {cleaned_title} | artist hint: {artist_name}")
+        query = cleaned_title
+        if artist_name:
+            query += f" {artist_name}"
 
-        # Helper: try to fetch a song given title and optional artist hint
-        def try_fetch(title_hint: str, artist_hint: Optional[str]):
-            q = f"{title_hint} {artist_hint}" if artist_hint else title_hint
-            translation_indicators = [
-                'translation', 'translations', 'traduc', 'tradu', 'traducción', 'tradução', 'traduction',
-                'übersetzung', '訳', '翻訳', '번역', 'ترجمة', 'translated'
-            ]
+        print(f"[Lyrics] Searching: {query}")
 
-            try:
-                search_results = _genius.search_songs(q, per_page=5) or {}
-                hits = search_results.get('hits', [])
-            except Exception:
-                hits = []
+        # Comprehensive translation blocklist
+        translation_keywords = [
+            "translation", "translations", "traduc", "tradução", "traducción", "traduction",
+            "übersetzung", "перевод", "번역", "ترجمة", "歌詞", "lyrics in", "sub español",
+            "english", "spanish", "portuguese", "french", "german", "russian", "korean",
+            "arabic", "chinese", "japanese", "thai", "vietnamese", "italian",
+            "english translation", "traducción al español", "tradução em português",
+            "traduction française", "deutsche Übersetzung", "перевод на русский",
+            "한국어 번역", "日本語訳", "ترجمة عربية", "แปลไทย", "sub indo",
+            "pinyin", "hangul"
+        ]
 
-            def is_translation_hit(res: dict) -> bool:
-                url = (res.get('url') or '').lower()
-                title = (res.get('title') or '').lower()
-                for ind in translation_indicators:
-                    if ind in url or ind in title:
-                        return True
-                return False
+        def is_translation(title: str, url: str = "") -> bool:
+            text = f"{title} {url}".lower()
+            return any(k in text for k in translation_keywords)
 
-            for hit in hits:
-                res = hit.get('result') if isinstance(hit, dict) else None
-                if not res:
-                    continue
-                if is_translation_hit(res):
-                    continue
-                cand_title = res.get('title') or res.get('title_with_featured') or title_hint
-                cand_artist = (res.get('primary_artist') or {}).get('name')
-                
-                print (f"Cand title : {cand_title}")
-                print (f"Cand artist : {cand_artist}")
-                try:
-                    song_obj = _genius.search_song(cand_title, artist=cand_artist or '', get_full_info=True)
-                except Exception:
-                    song_obj = None
-                if song_obj:
-                    return song_obj
+        # ── STEP 1: Try direct search (most reliable) ──
+        song = _genius.search_song(title=cleaned_title, artist=artist_name, get_full_info=True)
 
-            try:
-                return _genius.search_song(title_hint, artist=artist_hint or '', get_full_info=True)
-            except Exception:
-                return None
+        # Validate it's a real Song object with lyrics
+        if song and hasattr(song, 'lyrics') and song.lyrics and not is_translation(song.title, song.url):
+            lyrics = song.lyrics.strip()
+            if lyrics and len(lyrics) > 50:  # Avoid garbage
+                if "Embed" in lyrics[-20:]:
+                    lyrics = lyrics.rsplit("Embed", 1)[0].strip()
+                return {
+                    'success': True,
+                    'title': song.title,
+                    'artist': song.artist,
+                    'lyrics': lyrics,
+                    'url': song.url
+                }
 
-        song = None
-
-        split_patterns = [' - ', ' – ', ' — ', ':']
-        candidates = []
-        for sep in split_patterns:
-            if sep in cleaned_title:
-                left, right = cleaned_title.split(sep, 1)
-                left = left.strip()
-                right = right.strip()
-                # Two possible interpretations: Artist - Title OR Title - Artist
-                candidates.append((right, left))  # assume left=artist, right=title
-                candidates.append((left, right))  # assume left=title, right=artist
-                break
-
-        # Also add the raw cleaned title as a candidate
-        candidates.append((cleaned_title, artist_name))
-
-        fallback_song = None
-        for title_hint, artist_hint in candidates:
-            song = try_fetch(title_hint, artist_hint)
-            if song:
-                if artist_hint and isinstance(song.artist, str) and artist_hint.lower() in song.artist.lower():
-                    break
-                if not fallback_song:
-                    fallback_song = song
-
-        if not song and fallback_song:
-            song = fallback_song
-
-        if not song:
-            return {
-                'success': False,
-                'error': f'No lyrics found for "{song_title}"'
-            }
-
-        lyrics = song.lyrics
-        
-        return {
-            'success': True,
-            'title': song.title,
-            'artist': song.artist,
-            'lyrics': lyrics,
-            'url': song.url
-        }
-    
-    except Exception as e:
+        # ── FINAL: Nothing found ──
         return {
             'success': False,
-            'error': f'Error fetching lyrics: {str(e)}'
+            'error': f'No original lyrics found for "{song_title}" try again later or use the /lyrics command instead'
         }
 
+    except Exception as e:
+        print(f"[Lyrics] Unexpected error: {e}")
+        return {
+            'success': False,
+            'error': 'Lyrics service temporarily unavailable'
+        }
 
 def is_genius_available() -> bool:
     """Check if Genius API is configured and available."""

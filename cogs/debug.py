@@ -44,7 +44,6 @@ class Debug(commands.Cog) :
 
     # set bot's custom status (only accesible by bot owner)
     @commands.hybrid_command()
-    @commands.is_owner()
     @app_commands.describe(activity_type="Type of activity", activity_name="Name of the activity")
     async def custom_status(self, ctx: commands.Context, *, activity_type : discord.ActivityType, activity_name : str):
         """Set a custom status for the bot."""
