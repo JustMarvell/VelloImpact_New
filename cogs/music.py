@@ -13,15 +13,15 @@ import concurrent.futures
 # Add this at the top with other imports
 executor = concurrent.futures.ThreadPoolExecutor(max_workers=6)
 
+search_cache = {}
+url_cache = {}
+
+#region : defs
+
 async def run_in_thread(fn, *args, **kwargs):
     """Helper to safely run blocking functions in a thread"""
     loop = asyncio.get_event_loop()
     return await loop.run_in_executor(executor, fn, *args, **kwargs)
-
-queue = []
-search_cache = {}
-url_cache = {}
-
 
 def get_video_id_from_url(url: str) -> str:
     """Extract YouTube video ID from a URL or return original if not found."""
@@ -135,6 +135,8 @@ def format_view_count(count_or_str) -> str:
 async def setup(bot : commands.Bot):
     await bot.add_cog(Music(bot))
     
+#endregion
+    
 class MusicControls(discord.ui.View):
     def __init__(self, cog):
         super().__init__(timeout=None) # Persisent view
@@ -185,13 +187,18 @@ class MusicControls(discord.ui.View):
 
     @discord.ui.button(label="⏹", style=discord.ButtonStyle.danger)
     async def stop_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        global queue
+        
         if not interaction.guild.voice_client:
             await interaction.response.send_message("Not in a voice channel!", ephemeral=True)
             return
         
         voice_client = interaction.guild.voice_client
-        queue.clear()
+        
+        guild_id = interaction.guild.id
+        self.cog.get_queue(guild_id).clear()
+        if guild_id in self.cog.current_songs:
+            del self.cog.current_songs[guild_id]
+            
         voice_client.stop()
         self.pause_button.disabled = True
         self.resume_button.disabled = True
@@ -199,7 +206,7 @@ class MusicControls(discord.ui.View):
         
         # remove current activity
         try:
-            await self.cog.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
+            await self.cog.bot.change_presence(activity=discord.Game(name="Hide and Seek", platform="Closet"))
         except Exception as e:
             print(f"Error removing bot status: {e}")
             pass
@@ -258,7 +265,8 @@ class MusicControls(discord.ui.View):
     @discord.ui.button(label="☰", style=discord.ButtonStyle.secondary)
     async def show_queue_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         """Show the current music queue."""
-        global queue
+        queue = self.cog.get_queue(interaction.guild.id)
+        
         if not queue:
             await interaction.response.send_message("The queue is empty.", ephemeral=True)
             return
@@ -274,8 +282,8 @@ class MusicControls(discord.ui.View):
     @discord.ui.button(label="🗑️ Clear Queue", style=discord.ButtonStyle.danger)
     async def clear_queue_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         """Clear the current music queue."""
-        global queue
-        queue.clear()
+        guild_id = interaction.guild.id
+        self.cog.get_queue(guild_id).clear()
         await interaction.response.send_message("Cleared the music queue.", ephemeral=True, delete_after=4)
 
     @discord.ui.button(label="📝 Lyrics", style=discord.ButtonStyle.secondary)
@@ -291,9 +299,9 @@ class MusicControls(discord.ui.View):
             )
             return
         
-        current_song = self.cog.current_song
-        if not current_song or not current_song.get('title'):
-            await interaction.response.send_message("No song is currently playing.", ephemeral=True, delete_after=4)
+        guild_id = interaction.guild.id
+        if guild_id not in self.cog.current_songs:
+            await interaction.response.send_message("No song is currently playing!", ephemeral=True)
             return
         
         try : 
@@ -306,9 +314,11 @@ class MusicControls(discord.ui.View):
             pass
             
         try:
-            song_title = current_song.get('title', '')
-            artist_name = current_song.get('channel_name', '')
-            
+            song = self.cog.current_songs[guild_id]
+
+            song_title = song.get('title', '')
+            artist_name = song.get('channel_name', '')
+
             result = await fetch_song_lyrics(song_title, artist_name)
             
             if not result.get('success'):
@@ -371,7 +381,6 @@ class MusicControls(discord.ui.View):
             await interaction.followup.send(f"❌ Error fetching lyrics: {str(e)}", ephemeral=True)
 
 class Music(commands.Cog):
-    
     channel = None
     
     def __init__(self, bot):
@@ -379,8 +388,15 @@ class Music(commands.Cog):
         self.channel = None
         self.autoplay = {}
         self.recent_played = {}
-        self.current_song = {}
+        self.queues = {}
+        self.current_songs = {}
         self.disconnect_tasks = {}
+        
+    def get_queue(self, guild_id: int):
+        """Get or create queue for a guild"""
+        if guild_id not in self.queues:
+            self.queues[guild_id] = []
+        return self.queues[guild_id]
         
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
@@ -416,9 +432,17 @@ class Music(commands.Cog):
         voice_client = guild.voice_client
         if voice_client and len(voice_client.channel.members) == 1:
             await voice_client.disconnect(force=True)
-            guild.voice_client = None  # Explicit cleanup
-            # Optional: Send message to text channel if needed
-            # await some_channel.send("Disconnected due to inactivity.")
+            guild.voice_client = None 
+            
+            if guild.id in self.queues:
+                del self.queues[guild.id]
+            if guild.id in self.current_songs:
+                del self.current_songs[guild.id]
+            if guild.id in self.autoplay:
+                del self.autoplay[guild.id]
+            if guild.id in self.recent_played:
+                del self.recent_played[guild.id]
+
         if guild.id in self.disconnect_tasks:
             del self.disconnect_tasks[guild.id]
     
@@ -546,6 +570,9 @@ class Music(commands.Cog):
             if not results:
                 await ctx.send(f'No music found for {querry}')
                 return
+            
+            guild_id = ctx.guild.id
+            q = self.get_queue(guild_id)
                 
             video = results[0]
             url = video['link']
@@ -559,7 +586,7 @@ class Music(commands.Cog):
             view_count = format_view_count(video['viewCount']['short'])
 
             video_id = get_video_id_from_url(url) or ''
-            queue.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
+            q.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
 
             if not voice_client.is_playing():
                 await self.play_next(ctx)
@@ -606,6 +633,9 @@ class Music(commands.Cog):
             if not result:
                 await ctx.send(f'No music found for {link}')
                 return
+            
+            guild_id = ctx.guild.id
+            q = self.get_queue(guild_id)
                 
             video = result
             url = video['link']
@@ -620,7 +650,7 @@ class Music(commands.Cog):
             view_count = format_view_count(video['viewCount']['text'])
 
             video_id = get_video_id_from_url(url) or ''
-            queue.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
+            q.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
 
             if not voice_client.is_playing():
                 await self.play_next(ctx)
@@ -733,19 +763,29 @@ class Music(commands.Cog):
                 return
             
             voice_client = ctx.voice_client
-            if not queue:
+            guild_id = ctx.guild.id
+            q = self.get_queue(guild_id)
+            
+            if not q:
                 await ctx.send("Queue is empty!")
                 
                 # remove current bot status
                 try:
                     await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
-                    # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+                    try:
+                        if guild_id in self.current_songs:
+                            del self.current_songs[guild_id]
+                    except Exception:
+                        pass
                 except Exception as e:
                     print(f"Error removing bot status: {e}")
                     pass
                 return
             
-            song = queue.pop(0)
+            song = q.pop(0)
+            
+            self.current_songs[guild_id] = song
+            
             url = song['url']
             title = song['title']
             thumbnail = song['thumbnail']
@@ -754,12 +794,6 @@ class Music(commands.Cog):
             channel_url = song['channel_url']
             duration = song['duration']
             view_count = song['view_count']
-            
-            self.current_song = {
-                'title': title,
-                'channel_name': channel_name,
-                'url': url
-            }
             
             print(url)
             
@@ -858,16 +892,15 @@ class Music(commands.Cog):
             await ctx.send(f"Failed to play using voice client : {e}")
             
         try:
-            gid = ctx.guild.id if ctx.guild else None
-            if gid:
+            if guild_id:
                 vid = song.get('video_id', '')
                 if vid:
-                    lst = self.recent_played.get(gid, [])
+                    lst = self.recent_played.get(guild_id, [])
                     lst.append({'id': vid, 'title': title, 'channel_id': song.get('channel_id'), 'channel_name': channel_name})
-                    self.recent_played[gid] = lst[-20:]
+                    self.recent_played[guild_id] = lst[-20:]
 
-                if self.autoplay.get(gid, False) and len(queue) < 3:
-                    await self.add_autoplay_suggestions(ctx, gid, count=3)
+                if self.autoplay.get(guild_id, False) and len(q) < 3:
+                    await self.add_autoplay_suggestions(ctx, guild_id, count=3)
         except Exception as e:
             print(f"Error handling autoplay post-play: {e}")
         
@@ -886,12 +919,15 @@ class Music(commands.Cog):
             )
             return
         
+        guild_id = ctx.guild.id
+        
         if not song_query:
-            if not queue and not hasattr(self, '_current_song'):
+            q = self.get_queue(guild_id)
+            if not q and guild_id not in self.current_songs:
                 await ctx.send("Please provide a song name, or play a song first.")
                 return
-            if hasattr(self, '_current_song'):
-                song_query = self._current_song.get('title', '')
+            if guild_id in self.current_songs:
+                song_query = self.current_songs[guild_id].get('title', '')
             else:
                 await ctx.send("Please provide a song name, or play a song first.")
                 return
@@ -961,6 +997,9 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def show_queue(self, ctx: commands.Context):
         """Show current song queue"""
+        guild_id = ctx.guild.id
+        queue = self.get_queue(guild_id)
+        
         if not queue:
             await ctx.send("The queue is empty.")
             return
@@ -971,8 +1010,8 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def clear_queue(self, ctx: commands.Context):
         """Clear current queue"""
-        global queue
-        queue.clear()
+        guild_id = ctx.guild.id
+        self.get_queue(guild_id).clear()
         await ctx.send("Queue cleared.")
         
     @commands.hybrid_command()
@@ -992,17 +1031,18 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def remove(self, ctx: commands.Context, index: int):
         """Remove song at specified index"""
-        global queue
-        if not queue:
+        guild_id = ctx.guild.id
+        q = self.get_queue(guild_id)
+        if not q:
             await ctx.send("The queue is empty.")
             return
         
         index = index - 1
-        if index < 0 or index >= len(queue):
-            await ctx.send(f"Invalid index. Use a number between 1 and {len(queue)}.")
+        if index < 0 or index >= len(q):
+            await ctx.send(f"Invalid index. Use a number between 1 and {len(q)}.")
             return
         
-        removed_song = queue.pop(index)
+        removed_song = q.pop(index)
         await ctx.send(f"Removed from queue: {removed_song['title']}")
         
     @commands.hybrid_command()
@@ -1026,14 +1066,15 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def stop(self, ctx : commands.Context):
         """Stop playing song"""
-        global queue
         if ctx.voice_client:
-            queue.clear() 
+            guild_id = ctx.guild.id
+            self.get_queue(guild_id).clear() 
+            if guild_id in self.current_songs:
+                del self.current_songs[guild_id]
             ctx.voice_client.stop()
             
             # remove current activity
             try:
-                # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
                 await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
             except Exception as e:
                 print(f"Error removing bot status: {e}")
