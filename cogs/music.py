@@ -380,33 +380,83 @@ class Music(commands.Cog):
         self.autoplay = {}
         self.recent_played = {}
         self.current_song = {}
+        self.disconnect_tasks = {}
         
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
-        if not member.bot or member != self.bot.user:
+        guild = member.guild
+        voice_client = guild.voice_client
+
+        if member == self.bot.user:
+            # Bot was disconnected (e.g., by Discord idle timeout)
+            if after.channel is None:
+                guild.voice_client = None
+                if guild.id in self.disconnect_tasks:
+                    del self.disconnect_tasks[guild.id]
             return
-        voice_client = member.guild.voice_client
-        if voice_client and len(voice_client.channel.members) == 1:  # Bot is alone
-            global queue
-            queue.clear()
-            await voice_client.disconnect()
-            channel = self.bot.get_channel(voice_client.channel.id)
-            if channel:
-                await channel.send("Disconnected due to empty voice channel.")
+
+        if voice_client is None:
+            return
+
+        channel = voice_client.channel
+        if len(channel.members) == 1:  # Only bot left
+            if guild.id in self.disconnect_tasks:
+                return  # Timer already running
+            task = self.bot.loop.create_task(self.disconnect_timer(guild))
+            self.disconnect_tasks[guild.id] = task
+        else:
+            # Users present: cancel any timer
+            if guild.id in self.disconnect_tasks:
+                self.disconnect_tasks[guild.id].cancel()
+                del self.disconnect_tasks[guild.id]
+                
+    async def disconnect_timer(self, guild: discord.Guild):
+        """Timer to disconnect after inactivity when alone"""
+        await asyncio.sleep(300)  # 5 minutes
+        voice_client = guild.voice_client
+        if voice_client and len(voice_client.channel.members) == 1:
+            await voice_client.disconnect(force=True)
+            guild.voice_client = None  # Explicit cleanup
+            # Optional: Send message to text channel if needed
+            # await some_channel.send("Disconnected due to inactivity.")
+        if guild.id in self.disconnect_tasks:
+            del self.disconnect_tasks[guild.id]
     
     @commands.hybrid_command()
-    async def arise(self, ctx : commands.Context):
-        """ Join a Voice Channel """
-        if ctx.author.voice:
-            if self.channel == None:
-                self.channel = ctx.author.voice.channel
-                await self.channel.connect()
-                await ctx.send(f'I have been summoned to join {self.channel.name}')
-            else:
-                await ctx.send("I'm already in a channel :v")
-                return
-        else:
-            await ctx.send('Please join a voice channel first!')
+    async def arise(self, ctx : commands.Context):            
+        """Join the voice channel"""
+        if not ctx.author.voice:
+            await ctx.send("You are not in a voice channel!")
+            return
+
+        channel = ctx.author.voice.channel
+        
+        try:
+            await ctx.defer()
+        except Exception:
+            pass
+
+        try:
+            if ctx.voice_client is not None:
+                # NEW: Handle zombie state
+                if not ctx.voice_client.is_connected():
+                    await ctx.voice_client.disconnect(force=True)
+                    ctx.guild.voice_client = None  # Clear zombie
+
+                if ctx.voice_client is not None:  # Re-check after cleanup
+                    if ctx.voice_client.channel == channel:
+                        await ctx.send("Already in your voice channel!")
+                        return
+                    else:
+                        await ctx.voice_client.move_to(channel)
+                        await ctx.send(f"Moved to {channel}")
+                        return
+        except Exception as e:
+            await ctx.send(f"Error handling existing voice client: {e}", ephemeral=True)
+            return
+
+        await channel.connect()
+        await ctx.send(f"I've been summoned to {channel.name}")
             
     @commands.hybrid_command()
     async def release(self, ctx : commands.Context):
@@ -422,11 +472,18 @@ class Music(commands.Cog):
             except Exception as e:
                 print(f"Error removing bot status: {e}")
                 pass
+
+            await ctx.voice_client.disconnect(force=True)
+            ctx.guild.voice_client = None
+            
+            if ctx.guild.id in self.disconnect_tasks:
+                del self.disconnect_tasks[ctx.guild.id]
             
             await ctx.voice_client.disconnect()
             await ctx.send('kbay')
         else:
             await ctx.send("I'm not in a voice channel")
+            
     
     @commands.hybrid_command(name="play")
     @app_commands.describe(
