@@ -239,7 +239,7 @@ class MusicControls(discord.ui.View):
         
         # ———————— NEW: AUTO-START MUSIC WHEN TURNING ON ————————
         if now_enabled and not was_enabled:  # Was off → now on
-            if len(queue) == 0:  # Queue is empty → let's fill it!
+            if len(self.cog.get_queue(gid)) == 0:  # Queue is empty → let's fill it!
                 ctx = await self.cog.bot.get_context(interaction.message)
 
                 # Try to base it on the last played song
@@ -485,7 +485,8 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def release(self, ctx : commands.Context):
         """ Leave a voice Channel """
-        global queue
+        guild_id = ctx.guild.id
+        queue = self.get_queue(guild_id)
         if ctx.voice_client:
             queue.clear()
             self.channel = None
@@ -496,14 +497,23 @@ class Music(commands.Cog):
             except Exception as e:
                 print(f"Error removing bot status: {e}")
                 pass
+            
+            try:
+                if guild_id in self.current_songs:
+                    del self.current_songs[guild_id]
 
-            await ctx.voice_client.disconnect(force=True)
-            ctx.guild.voice_client = None
-            
-            if ctx.guild.id in self.disconnect_tasks:
-                del self.disconnect_tasks[ctx.guild.id]
-            
-            await ctx.voice_client.disconnect()
+                await ctx.voice_client.disconnect(force=True)
+                try:
+                    ctx.guild.voice_client = None
+                except Exception:
+                    pass
+                
+                if ctx.guild.id in self.disconnect_tasks:
+                    del self.disconnect_tasks[ctx.guild.id]
+            except Exception as e:
+                await ctx.send(f"Error disconnecting: {e}", ephemeral=True)
+                pass
+                
             await ctx.send('kbay')
         else:
             await ctx.send("I'm not in a voice channel")
@@ -538,7 +548,10 @@ class Music(commands.Cog):
     
     async def play_music(self, ctx : commands.Context, querry : str):
         try : 
-            if len(queue) >= 20: 
+            guild_id = ctx.guild.id
+            q = self.get_queue(guild_id)
+            
+            if len(q) >= 20: 
                 await ctx.send("Queue is full! Max 20 songs.")
                 return
             
@@ -570,9 +583,6 @@ class Music(commands.Cog):
             if not results:
                 await ctx.send(f'No music found for {querry}')
                 return
-            
-            guild_id = ctx.guild.id
-            q = self.get_queue(guild_id)
                 
             video = results[0]
             url = video['link']
@@ -597,7 +607,10 @@ class Music(commands.Cog):
             
     async def play_music_by_url(self, ctx : commands.Context, link : str):
         try : 
-            if len(queue) >= 20:
+            guild_id = ctx.guild.id
+            q = self.get_queue(guild_id)
+            
+            if len(q) >= 20:
                 await ctx.send("Queue is full! Max 20 songs.")
                 return
             
@@ -633,9 +646,6 @@ class Music(commands.Cog):
             if not result:
                 await ctx.send(f'No music found for {link}')
                 return
-            
-            guild_id = ctx.guild.id
-            q = self.get_queue(guild_id)
                 
             video = result
             url = video['link']
@@ -677,7 +687,7 @@ class Music(commands.Cog):
 
             # Collect IDs to avoid duplicates
             played_ids = {item.get('id') for item in recent if item.get('id')}
-            queued_ids = {song.get('video_id') for song in queue if song.get('video_id')}
+            queued_ids = {song.get('video_id') for song in self.get_queue(guild_id) if song.get('video_id')}
             avoid_ids = played_ids.union(queued_ids)
 
             def fetch_related():
@@ -740,7 +750,7 @@ class Music(commands.Cog):
                     except:
                         pass
 
-                queue.append({'url': url, 'video_id': vid_id, 'title': title, 'thumbnail': thumbnail, 'channel_name': channel_name, 'channel_id': channel_id or '', 'duration': duration, 'view_count': '', 'channel_thumbnails': channel_thumbnails, 'channel_url': channel_url})
+                self.get_queue(guild_id).append({'url': url, 'video_id': vid_id, 'title': title, 'thumbnail': thumbnail, 'channel_name': channel_name, 'channel_id': channel_id or '', 'duration': duration, 'view_count': '', 'channel_thumbnails': channel_thumbnails, 'channel_url': channel_url})
 
                 seen.add(vid_id)
                 added += 1
