@@ -13,6 +13,8 @@ import concurrent.futures
 # Add this at the top with other imports
 executor = concurrent.futures.ThreadPoolExecutor(max_workers=6)
 
+cogs_logger = settings.logging.getLogger("cogs")
+
 search_cache = {}
 url_cache = {}
 
@@ -406,9 +408,21 @@ class Music(commands.Cog):
         if member == self.bot.user:
             # Bot was disconnected (e.g., by Discord idle timeout)
             if after.channel is None:
-                guild.voice_client = None
-                if guild.id in self.disconnect_tasks:
-                    del self.disconnect_tasks[guild.id]
+                try:
+                    guild_id = guild.id
+                    self.get_queue(guild_id).clear() 
+                    if guild_id in self.current_songs:
+                        del self.current_songs[guild_id]
+                    voice_client.stop()
+                    
+                    guild.voice_client = None
+                    if guild.id in self.disconnect_tasks:
+                        del self.disconnect_tasks[guild.id]
+                        
+                    cogs_logger.info(f"Bot disconnected from voice channel in guild {guild.name} ({guild.id})")
+                except Exception as e:
+                    cogs_logger.error(f"Error handling bot disconnection: {e}")
+                    pass
             return
 
         if voice_client is None:
@@ -430,21 +444,34 @@ class Music(commands.Cog):
         """Timer to disconnect after inactivity when alone"""
         await asyncio.sleep(300)  # 5 minutes
         voice_client = guild.voice_client
-        if voice_client and len(voice_client.channel.members) == 1:
-            await voice_client.disconnect(force=True)
-            guild.voice_client = None 
+        try:
+            if voice_client and len(voice_client.channel.members) == 1:
+                await voice_client.disconnect(force=True)
+                guild.voice_client = None 
+        except Exception as e:
+            cogs_logger.error(f"Error during disconnect timer for guild {guild.name}: {e}")
+            pass
             
-            if guild.id in self.queues:
-                del self.queues[guild.id]
-            if guild.id in self.current_songs:
-                del self.current_songs[guild.id]
-            if guild.id in self.autoplay:
-                del self.autoplay[guild.id]
-            if guild.id in self.recent_played:
-                del self.recent_played[guild.id]
+            try:
+                if guild.id in self.queues:
+                    del self.queues[guild.id]
+                if guild.id in self.current_songs:
+                    del self.current_songs[guild.id]
+                if guild.id in self.autoplay:
+                    del self.autoplay[guild.id]
+                if guild.id in self.recent_played:
+                    del self.recent_played[guild.id]
+            except Exception as e:
+                cogs_logger.error(f"Error cleaning up after disconnect in {guild.name}: {e}")
+                pass
 
-        if guild.id in self.disconnect_tasks:
-            del self.disconnect_tasks[guild.id]
+        try:
+            if guild.id in self.disconnect_tasks:
+                del self.disconnect_tasks[guild.id]
+            cogs_logger.info(f"Disconnected from voice channel in guild {guild.name} ({guild.id}) due to inactivity.")
+        except Exception as e:
+            cogs_logger.error(f"Error removing disconnect task for {guild.name}: {e}")
+            pass
     
     @commands.hybrid_command()
     async def arise(self, ctx : commands.Context):            
