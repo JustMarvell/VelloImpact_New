@@ -399,6 +399,38 @@ class Music(commands.Cog):
         if guild_id not in self.queues:
             self.queues[guild_id] = []
         return self.queues[guild_id]
+    
+    async def get_audio_source(self, song_url: str):
+        """ Extract direct audio URL using yt_dlp in a thread to avoid blocking the async loop """
+        
+        headers = {
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        }
+        
+        ydl_opts = {
+            'format': 'bestaudio[ext=m4a]/bestaudio',
+            'quiet': True,
+            'no_warnings': True,
+            'headers': headers,
+        }
+        
+        def extract():
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(song_url, download=False)
+                return info['url']
+            
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                audio_url = await run_in_thread(extract)
+                return audio_url
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    # Could log or send temporary message here if desired
+                    continue
+                else:
+                    raise Exception(f"Failed to extract audio URL after {max_retries} attempts: {str(e)}")
+        
         
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
@@ -415,7 +447,6 @@ class Music(commands.Cog):
                         del self.current_songs[guild_id]
                     voice_client.stop()
                     
-                    guild.voice_client = None
                     if guild.id in self.disconnect_tasks:
                         del self.disconnect_tasks[guild.id]
                         
@@ -544,7 +575,6 @@ class Music(commands.Cog):
             await ctx.send('kbay')
         else:
             await ctx.send("I'm not in a voice channel")
-            
     
     @commands.hybrid_command(name="play")
     @app_commands.describe(
@@ -804,7 +834,7 @@ class Music(commands.Cog):
             q = self.get_queue(guild_id)
             
             if not q:
-                await ctx.send("Queue is empty!")
+                await ctx.send("Queue is empty!", ephemeral=True, delete_after=5)
                 
                 # remove current bot status
                 try:
@@ -870,17 +900,18 @@ class Music(commands.Cog):
                 pass
         except Exception as e:
             await ctx.send(f"Failed to send Embed : {e}")
-        
-        headers = {
-            "authority": "www.google.com",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-            "accept-language": "en-US,en;q=0.9",
-            "cache-control": "max-age=0",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
-            'sec-ch-ua': '"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
-            'sec-ch-ua-platform': 'Windows',
-            'sec-ch-ua-platform-version': '15.0.0',
-        }
+            
+        # (old headers)
+        # headers = {
+        #     "authority": "www.google.com",
+        #     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+        #     "accept-language": "en-US,en;q=0.9",
+        #     "cache-control": "max-age=0",
+        #     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        #     'sec-ch-ua': '"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
+        #     'sec-ch-ua-platform': 'Windows',
+        #     'sec-ch-ua-platform-version': '15.0.0',
+        # }
 
         ydl_opts = {
             'format': 'bestaudio[ext=m4a]',
@@ -926,7 +957,7 @@ class Music(commands.Cog):
         try :
             voice_client.play(source, after=after_playing)
         except Exception as e:
-            await ctx.send(f"Failed to play using voice client : {e}")
+            await ctx.send(f"Failed to play using voice client : {e}", ephemeral=True, delete_after=5)
             
         try:
             if guild_id:
