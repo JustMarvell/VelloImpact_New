@@ -913,37 +913,53 @@ class Music(commands.Cog):
         #     'sec-ch-ua-platform-version': '15.0.0',
         # }
 
-        ydl_opts = {
-            'format': 'bestaudio[ext=m4a]',
-            'quiet': True,
-            'no_warnings': True,
-            'headers' : headers
-        }
+        # ydl_opts = {
+        #     'format': 'bestaudio[ext=m4a]',
+        #     'quiet': True,
+        #     'no_warnings': True,
+        #     'headers' : headers
+        # }
         
-        max_retries = 3
-        for attempt in range(max_retries):
-            try:
-                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    info = ydl.extract_info(url, download=False)
-                    audio_url = info['url']  # Direct stream URL
-                    print(audio_url)
-                break
-            except Exception as e:
-                if attempt < max_retries - 1:
-                    await ctx.send(f"Error fetching audio, retrying... ({attempt+1}/{max_retries})")
-                    continue
-                else:
-                    await ctx.send(f"Failed to fetch audio after {max_retries} attempts: {str(e)}")
-                    return
+        # max_retries = 3
+        # for attempt in range(max_retries):
+        #     try:
+        #         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        #             info = ydl.extract_info(url, download=False)
+        #             audio_url = info['url']  # Direct stream URL
+        #             print(audio_url)
+        #         break
+        #     except Exception as e:
+        #         if attempt < max_retries - 1:
+        #             await ctx.send(f"Error fetching audio, retrying... ({attempt+1}/{max_retries})")
+        #             continue
+        #         else:
+        #             await ctx.send(f"Failed to fetch audio after {max_retries} attempts: {str(e)}")
+        #             return
                 
         ffmpeg_options = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
             'options': '-vn -b:a 96k'
         }
+        
+        # try:
+        #     source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
+        # except Exception as e:
+        #     await ctx.send(f"Failed to play : {e}")
+        
+        # New: Offload yt_dlp extraction to thread for better responsiveness
         try:
-            source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
+            audio_url = await self.get_audio_source(url)
         except Exception as e:
-            await ctx.send(f"Failed to play : {e}")
+            await ctx.send(f"Failed to fetch audio stream: {str(e)}")
+            # Clean up current song if extraction failed
+            if guild_id in self.current_songs:
+                del self.current_songs[guild_id]
+            # Try to play next if queue has more
+            if q:
+                await self.play_next(ctx)
+            return
+        
+        source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
         
         def after_playing(error):
             import asyncio
