@@ -5,13 +5,14 @@ from discord import app_commands
 from youtubesearchpython import *
 from controllers.channel_genre import infer_channel_genre
 from controllers.lyrics_fetcher import fetch_song_lyrics, is_genius_available
+import controllers.character_chunk as character_chunk
 import yt_dlp
 import settings
 import time
 import concurrent.futures
 
 # Add this at the top with other imports
-executor = concurrent.futures.ThreadPoolExecutor(max_workers=6)
+executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
 
 cogs_logger = settings.logging.getLogger("cogs")
 
@@ -151,14 +152,18 @@ class MusicControls(discord.ui.View):
             await interaction.response.send_message("Not in a voice channel", ephemeral=True)
             return
         
-        voice_client = interaction.guild.voice_client
-        if voice_client.is_playing():
-            voice_client.pause()
-            self.pause_button.disabled = True
-            self.resume_button.disabled = False
-            await interaction.response.edit_message(view=self)
-        else:
-            await interaction.response.send_message("Nothing is playing", ephemeral=True)
+        try:
+            voice_client = interaction.guild.voice_client
+            if voice_client.is_playing():
+                voice_client.pause()
+                self.pause_button.disabled = True
+                self.resume_button.disabled = False
+                await interaction.response.edit_message(view=self)
+                await interaction.response.send_message(f"Paused!", ephemeral=True, delete_after=5)
+            else:
+                await interaction.response.send_message("Nothing is playing", ephemeral=True)
+        except Exception as e:
+            cogs_logger.warning(f"Failed in [UI] pause_button : {e}")
 
     @discord.ui.button(label="▶", style=discord.ButtonStyle.primary, disabled=True)
     async def resume_button(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -166,14 +171,18 @@ class MusicControls(discord.ui.View):
             await interaction.response.send_message("Not in a voice channel", ephemeral=True)
             return
         
-        voice_client = interaction.guild.voice_client
-        if voice_client.is_paused():
-            voice_client.resume()
-            self.pause_button.disabled = False
-            self.resume_button.disabled = True
-            await interaction.response.edit_message(view=self)
-        else:
-            await interaction.response.send_message("Not paused", ephemeral=True)
+        try:
+            voice_client = interaction.guild.voice_client
+            if voice_client.is_paused():
+                voice_client.resume()
+                self.pause_button.disabled = False
+                self.resume_button.disabled = True
+                await interaction.response.edit_message(view=self)
+                await interaction.response.send_message(f"Resumed!", ephemeral=True, delete_after=5)
+            else:
+                await interaction.response.send_message("Not paused", ephemeral=True)
+        except Exception as e:
+            cogs_logger.warning(f"Failed in [UI] resume_button : {e}")
 
     @discord.ui.button(label="⏭", style=discord.ButtonStyle.primary)
     async def skip_button(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -181,11 +190,15 @@ class MusicControls(discord.ui.View):
             await interaction.response.send_message("Not in a voice channel!", ephemeral=True)
             return
         
-        voice_client = interaction.guild.voice_client
-        if voice_client.is_playing() or voice_client.is_paused():
-            voice_client.stop()
-        else:
-            await interaction.response.send_message("Nothing is playing to skip!", ephemeral=True)
+        try:
+            voice_client = interaction.guild.voice_client
+            if voice_client.is_playing() or voice_client.is_paused():
+                voice_client.stop()
+                await interaction.response.send_message(f"Skipped!", ephemeral=True, delete_after=5)
+            else:
+                await interaction.response.send_message("Nothing is playing to skip!", ephemeral=True)
+        except Exception as e:
+            cogs_logger.warning(f"Failed in [UI] skip_button : {e}")
 
     @discord.ui.button(label="⏹", style=discord.ButtonStyle.danger)
     async def stop_button(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -201,16 +214,20 @@ class MusicControls(discord.ui.View):
         if guild_id in self.cog.current_songs:
             del self.cog.current_songs[guild_id]
             
-        voice_client.stop()
-        self.pause_button.disabled = True
-        self.resume_button.disabled = True
-        self.skip_button.disabled = True
+        try:
+            voice_client.stop()
+            self.pause_button.disabled = True
+            self.resume_button.disabled = True
+            self.skip_button.disabled = True
+            await interaction.response.send_message(f"Stopped!", ephemeral=True, delete_after=5)
+        except Exception as e:
+            cogs_logger.warning(f"Failed in [UI] stop_button : {e}")
         
         # remove current activity
         try:
             await self.cog.bot.change_presence(activity=discord.Game(name="Hide and Seek", platform="Closet"))
         except Exception as e:
-            print(f"Error removing bot status: {e}")
+            cogs_logger.warning(f"Failed to remove bot status : {e}")
             pass
         
         await interaction.response.edit_message(view=self)
@@ -264,7 +281,7 @@ class MusicControls(discord.ui.View):
                     except:
                         pass  # play_next will handle errors
 
-    @discord.ui.button(label="☰", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="☰ Show Queue", style=discord.ButtonStyle.secondary)
     async def show_queue_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         """Show the current music queue."""
         queue = self.cog.get_queue(interaction.guild.id)
@@ -342,24 +359,10 @@ class MusicControls(discord.ui.View):
             lyrics_text = result['lyrics']
             
             # Split lyrics into chunks to fit multiple fields
-            max_field_length = 1024
-            if len(lyrics_text) <= max_field_length:
+            if len(lyrics_text) <= character_chunk.MAX_FIELD_LENGTH:
                 embed.add_field(name="Lyrics", value=lyrics_text, inline=False)
-            else:
-                chunks = []
-                current_chunk = ""
-                
-                lines = lyrics_text.split('\n')
-                for line in lines:
-                    if len(current_chunk) + len(line) + 1 <= max_field_length:
-                        current_chunk += line + '\n'
-                    else:
-                        if current_chunk:
-                            chunks.append(current_chunk.strip())
-                        current_chunk = line + '\n'
-                
-                if current_chunk:
-                    chunks.append(current_chunk.strip())
+            else:               
+                chunks = character_chunk.get_chunk(lyrics_text)
                 
                 for i, chunk in enumerate(chunks):
                     field_name = "Lyrics" if i == 0 else f"Lyrics (cont.)"
@@ -408,9 +411,12 @@ class Music(commands.Cog):
         }
         
         ydl_opts = {
-            'format': 'bestaudio[ext=m4a]/bestaudio',
+            'format': 'bestaudio[acodec^=opus]/bestaudio/best',
+            'noplaylist': True,
             'quiet': True,
             'no_warnings': True,
+            'default_search': 'auto',
+            'source_address': '0.0.0.0',
             'headers': headers,
         }
         
@@ -608,8 +614,8 @@ class Music(commands.Cog):
             guild_id = ctx.guild.id
             q = self.get_queue(guild_id)
             
-            if len(q) >= 20: 
-                await ctx.send("Queue is full! Max 20 songs.")
+            if len(q) >= 10: 
+                await ctx.send("Queue is full! Max 10 songs.")
                 return
             
             if not ctx.author.voice:
@@ -667,8 +673,8 @@ class Music(commands.Cog):
             guild_id = ctx.guild.id
             q = self.get_queue(guild_id)
             
-            if len(q) >= 20:
-                await ctx.send("Queue is full! Max 20 songs.")
+            if len(q) >= 10:
+                await ctx.send("Queue is full! Max 10 songs.")
                 return
             
             if not ctx.author.voice:
@@ -900,51 +906,11 @@ class Music(commands.Cog):
                 pass
         except Exception as e:
             await ctx.send(f"Failed to send Embed : {e}")
-            
-        # (old headers)
-        # headers = {
-        #     "authority": "www.google.com",
-        #     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-        #     "accept-language": "en-US,en;q=0.9",
-        #     "cache-control": "max-age=0",
-        #     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
-        #     'sec-ch-ua': '"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
-        #     'sec-ch-ua-platform': 'Windows',
-        #     'sec-ch-ua-platform-version': '15.0.0',
-        # }
-
-        # ydl_opts = {
-        #     'format': 'bestaudio[ext=m4a]',
-        #     'quiet': True,
-        #     'no_warnings': True,
-        #     'headers' : headers
-        # }
-        
-        # max_retries = 3
-        # for attempt in range(max_retries):
-        #     try:
-        #         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        #             info = ydl.extract_info(url, download=False)
-        #             audio_url = info['url']  # Direct stream URL
-        #             print(audio_url)
-        #         break
-        #     except Exception as e:
-        #         if attempt < max_retries - 1:
-        #             await ctx.send(f"Error fetching audio, retrying... ({attempt+1}/{max_retries})")
-        #             continue
-        #         else:
-        #             await ctx.send(f"Failed to fetch audio after {max_retries} attempts: {str(e)}")
-        #             return
                 
         ffmpeg_options = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-            'options': '-vn -b:a 96k'
+            'options': '-b:a 64k'
         }
-        
-        # try:
-        #     source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
-        # except Exception as e:
-        #     await ctx.send(f"Failed to play : {e}")
         
         # New: Offload yt_dlp extraction to thread for better responsiveness
         try:
@@ -959,7 +925,16 @@ class Music(commands.Cog):
                 await self.play_next(ctx)
             return
         
-        source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
+        def custom_probe(source, executable):
+            # some analysis code here
+            codec = 'opus'
+            bitrate = '96k'
+            return codec, bitrate
+        
+        source = await discord.FFmpegOpusAudio.from_probe(audio_url,
+                                                           method=custom_probe,
+                                                           executable='ffmpeg',
+                                                           **ffmpeg_options)
         
         def after_playing(error):
             import asyncio
@@ -981,7 +956,7 @@ class Music(commands.Cog):
                 if vid:
                     lst = self.recent_played.get(guild_id, [])
                     lst.append({'id': vid, 'title': title, 'channel_id': song.get('channel_id'), 'channel_name': channel_name})
-                    self.recent_played[guild_id] = lst[-20:]
+                    self.recent_played[guild_id] = lst[-10:]
 
                 if self.autoplay.get(guild_id, False) and len(q) < 3:
                     await self.add_autoplay_suggestions(ctx, guild_id, count=3)
@@ -1039,24 +1014,10 @@ class Music(commands.Cog):
             
             lyrics_text = result['lyrics']
             
-            max_field_length = 1024
-            if len(lyrics_text) <= max_field_length:
+            if len(lyrics_text) <= character_chunk.MAX_FIELD_LENGTH:
                 embed.add_field(name="Lyrics", value=lyrics_text, inline=False)
-            else:
-                chunks = []
-                current_chunk = ""
-                
-                lines = lyrics_text.split('\n')
-                for line in lines:
-                    if len(current_chunk) + len(line) + 1 <= max_field_length:
-                        current_chunk += line + '\n'
-                    else:
-                        if current_chunk:
-                            chunks.append(current_chunk.strip())
-                        current_chunk = line + '\n'
-                
-                if current_chunk:
-                    chunks.append(current_chunk.strip())
+            else:                    
+                chunks = character_chunk.get_chunk(lyrics_text)
                 
                 for i, chunk in enumerate(chunks):
                     field_name = "Lyrics" if i == 0 else f"Lyrics (cont.)"
