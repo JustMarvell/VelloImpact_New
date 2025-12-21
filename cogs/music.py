@@ -10,6 +10,7 @@ import yt_dlp
 import settings
 import time
 import concurrent.futures
+import pomice
 
 # Add this at the top with other imports
 executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
@@ -385,6 +386,11 @@ class MusicControls(discord.ui.View):
         except Exception as e:
             await interaction.followup.send(f"❌ Error fetching lyrics: {str(e)}", ephemeral=True)
 
+class CustomPlayer(pomice.Player):
+    async def on_track_end(self, reason):
+        if self.queue:
+            await self.play(self.queue.pop(0))
+
 class Music(commands.Cog):
     channel = None
     
@@ -396,6 +402,25 @@ class Music(commands.Cog):
         self.queues = {}
         self.current_songs = {}
         self.disconnect_tasks = {}
+        
+        self.pomice = pomice.NodePool()
+        
+        bot.loop.create_task(self.start_nodes())
+        
+    async def start_nodes(self):
+        # Waiting for the bot to get ready before connecting to nodes
+        await self.bot.wait_until_ready()
+        
+        await self.pomice.create_node(
+            bot = self.bot,
+            host = "lava-v4.ajieblogs.eu.org",
+            port = 443,
+            password = "https://dsc.gg/ajidevserver",
+            secure = True,
+            identifier = "MAIN",
+        )
+        
+        cogs_logger.info(f"{self.bot} Node is ready!")
         
     def get_queue(self, guild_id: int):
         """Get or create queue for a guild"""
@@ -621,50 +646,65 @@ class Music(commands.Cog):
             if not ctx.author.voice:
                 await ctx.send('You need to join a voice channel first to use me!')
                 return
-
-            if not ctx.voice_client:
-                self.channel = ctx.author.voice.channel
-                await self.channel.connect()
-                await ctx.send(f'I have been summoned to join {self.channel.name}')
-                voice_client = ctx.voice_client
-            else:
-                voice_client = ctx.voice_client
             
-            if querry in search_cache:
-                results = search_cache[querry]
-            else:
-                try:
-                    search = VideosSearch(query=querry, limit=1)
-                    results = search.result()['result']
-                    if len(search_cache) >= 50:
-                        search_cache.pop(next(iter(search_cache)))
-                    search_cache[querry] = results
-                except Exception as e:
-                    await ctx.send(f"Error searching YouTube: {str(e)}")
-                    return
+            # if not ctx.voice_client:
+            #     self.channel = ctx.author.voice.channel
+            #     await self.channel.connect()
+            #     await ctx.send(f'I have been summoned to join {self.channel.name}')
+            #     voice_client = ctx.voice_client
+            # else:
+            #     voice_client = ctx.voice_client
+            
+            # connect or get existing pomice player
+            player: pomice.Player = ctx.voice_client or await ctx.author.voice.channel.connect(cls=CustomPlayer)
+            
+            # if querry in search_cache:
+            #     results = search_cache[querry]
+            # else:
+            #     try:
+            #         search = VideosSearch(query=querry, limit=1)
+            #         results = search.result()['result']
+            #         if len(search_cache) >= 50:
+            #             search_cache.pop(next(iter(search_cache)))
+            #         search_cache[querry] = results
+            #     except Exception as e:
+            #         await ctx.send(f"Error searching YouTube: {str(e)}")
+            #         return
+            
+            # search tracks
+            results = await player.get_tracks(querry, ctx=ctx)
+            
             
             if not results:
                 await ctx.send(f'No music found for {querry}')
                 return
+            
+            track = results[0]
+            
+            await player.queue.put(track)
+            if not player.is_playing:
+                await player.play(player.queue.get())
                 
-            video = results[0]
-            url = video['link']
-            title = video['title']
-            thumbnail = video['thumbnails'][0]['url']
-            channel_id = video['channel']['id']
-            channel_thumbnails = Channel.get(channel_id)['thumbnails'][0]['url']
-            channel_url = Channel.get(channel_id)['url']
-            channel_name = Channel.get(channel_id)['title']
-            duration = format_duration(video['duration'])
-            view_count = format_view_count(video['viewCount']['short'])
+            await ctx.send(f"Added to queue: **{track.title}**")
+                
+            # video = results[0]
+            # url = video['link']
+            # title = video['title']
+            # thumbnail = video['thumbnails'][0]['url']
+            # channel_id = video['channel']['id']
+            # channel_thumbnails = Channel.get(channel_id)['thumbnails'][0]['url']
+            # channel_url = Channel.get(channel_id)['url']
+            # channel_name = Channel.get(channel_id)['title']
+            # duration = format_duration(video['duration'])
+            # view_count = format_view_count(video['viewCount']['short'])
 
-            video_id = get_video_id_from_url(url) or ''
-            q.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
+            # video_id = get_video_id_from_url(url) or ''
+            # q.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
 
-            if not voice_client.is_playing():
-                await self.play_next(ctx)
-            else:
-                await ctx.send(f"Added to queue: {title}")
+            # if not voice_client.is_playing():
+            #     await self.play_next(ctx)
+            # else:
+            #     await ctx.send(f"Added to queue: {title}")
         except Exception as e:
             await ctx.send(f"Something went wrong on internal play_music : {e}")
             
