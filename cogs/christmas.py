@@ -99,6 +99,11 @@ class Christmas(commands.Cog):
         
         song_url = "https://www.youtube.com/watch?v=aAkMkVFwAoo"  # URL for "All I Want for Christmas Is You"
         
+        ffmpeg_options = {
+            'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
+            'options': '-vn'
+        }
+        
         try:
             audio_source_url = await self.get_audio_source(song_url)
             audio_source = discord.FFmpegPCMAudio(audio_source_url)

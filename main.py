@@ -14,7 +14,7 @@ class Client(commands.Bot):
         
         # load cogs
         await load_cogs()
-        
+                
         # try :
         #     synced = await self.tree.sync()
         #     tree_logger.info(f"Synced {len(synced)} commands to global")
