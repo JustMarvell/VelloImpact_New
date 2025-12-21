@@ -1,17 +1,30 @@
+import asyncio
 import discord
 from discord.ext import commands
 from discord import app_commands
 from youtubesearchpython import *
 from controllers.channel_genre import infer_channel_genre
 from controllers.lyrics_fetcher import fetch_song_lyrics, is_genius_available
+import controllers.character_chunk as character_chunk
 import yt_dlp
 import settings
 import time
+import concurrent.futures
 
-queue = []
+# Add this at the top with other imports
+executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
+
+cogs_logger = settings.logging.getLogger("cogs")
+
 search_cache = {}
 url_cache = {}
 
+#region : defs
+
+async def run_in_thread(fn, *args, **kwargs):
+    """Helper to safely run blocking functions in a thread"""
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(executor, fn, *args, **kwargs)
 
 def get_video_id_from_url(url: str) -> str:
     """Extract YouTube video ID from a URL or return original if not found."""
@@ -125,6 +138,8 @@ def format_view_count(count_or_str) -> str:
 async def setup(bot : commands.Bot):
     await bot.add_cog(Music(bot))
     
+#endregion
+    
 class MusicControls(discord.ui.View):
     def __init__(self, cog):
         super().__init__(timeout=None) # Persisent view
@@ -137,14 +152,18 @@ class MusicControls(discord.ui.View):
             await interaction.response.send_message("Not in a voice channel", ephemeral=True)
             return
         
-        voice_client = interaction.guild.voice_client
-        if voice_client.is_playing():
-            voice_client.pause()
-            self.pause_button.disabled = True
-            self.resume_button.disabled = False
-            await interaction.response.edit_message(view=self)
-        else:
-            await interaction.response.send_message("Nothing is playing", ephemeral=True)
+        try:
+            voice_client = interaction.guild.voice_client
+            if voice_client.is_playing():
+                voice_client.pause()
+                self.pause_button.disabled = True
+                self.resume_button.disabled = False
+                await interaction.response.edit_message(view=self)
+                await interaction.response.send_message(f"Paused!", ephemeral=True, delete_after=5)
+            else:
+                await interaction.response.send_message("Nothing is playing", ephemeral=True)
+        except Exception as e:
+            cogs_logger.warning(f"Failed in [UI] pause_button : {e}")
 
     @discord.ui.button(label="▶", style=discord.ButtonStyle.primary, disabled=True)
     async def resume_button(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -152,14 +171,18 @@ class MusicControls(discord.ui.View):
             await interaction.response.send_message("Not in a voice channel", ephemeral=True)
             return
         
-        voice_client = interaction.guild.voice_client
-        if voice_client.is_paused():
-            voice_client.resume()
-            self.pause_button.disabled = False
-            self.resume_button.disabled = True
-            await interaction.response.edit_message(view=self)
-        else:
-            await interaction.response.send_message("Not paused", ephemeral=True)
+        try:
+            voice_client = interaction.guild.voice_client
+            if voice_client.is_paused():
+                voice_client.resume()
+                self.pause_button.disabled = False
+                self.resume_button.disabled = True
+                await interaction.response.edit_message(view=self)
+                await interaction.response.send_message(f"Resumed!", ephemeral=True, delete_after=5)
+            else:
+                await interaction.response.send_message("Not paused", ephemeral=True)
+        except Exception as e:
+            cogs_logger.warning(f"Failed in [UI] resume_button : {e}")
 
     @discord.ui.button(label="⏭", style=discord.ButtonStyle.primary)
     async def skip_button(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -167,57 +190,102 @@ class MusicControls(discord.ui.View):
             await interaction.response.send_message("Not in a voice channel!", ephemeral=True)
             return
         
-        voice_client = interaction.guild.voice_client
-        if voice_client.is_playing() or voice_client.is_paused():
-            voice_client.stop()
-        else:
-            await interaction.response.send_message("Nothing is playing to skip!", ephemeral=True)
+        try:
+            voice_client = interaction.guild.voice_client
+            if voice_client.is_playing() or voice_client.is_paused():
+                voice_client.stop()
+                await interaction.response.send_message(f"Skipped!", ephemeral=True, delete_after=5)
+            else:
+                await interaction.response.send_message("Nothing is playing to skip!", ephemeral=True)
+        except Exception as e:
+            cogs_logger.warning(f"Failed in [UI] skip_button : {e}")
 
     @discord.ui.button(label="⏹", style=discord.ButtonStyle.danger)
     async def stop_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        global queue
+        
         if not interaction.guild.voice_client:
             await interaction.response.send_message("Not in a voice channel!", ephemeral=True)
             return
         
         voice_client = interaction.guild.voice_client
-        queue.clear()
-        voice_client.stop()
-        self.pause_button.disabled = True
-        self.resume_button.disabled = True
-        self.skip_button.disabled = True
+        
+        guild_id = interaction.guild.id
+        self.cog.get_queue(guild_id).clear()
+        if guild_id in self.cog.current_songs:
+            del self.cog.current_songs[guild_id]
+            
+        try:
+            voice_client.stop()
+            self.pause_button.disabled = True
+            self.resume_button.disabled = True
+            self.skip_button.disabled = True
+            await interaction.response.send_message(f"Stopped!", ephemeral=True, delete_after=5)
+        except Exception as e:
+            cogs_logger.warning(f"Failed in [UI] stop_button : {e}")
         
         # remove current activity
         try:
-            await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
-            # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+            await self.cog.bot.change_presence(activity=discord.Game(name="Hide and Seek", platform="Closet"))
         except Exception as e:
-            print(f"Error removing bot status: {e}")
+            cogs_logger.warning(f"Failed to remove bot status : {e}")
             pass
         
         await interaction.response.edit_message(view=self)
 
     @discord.ui.button(label="Autoplay: 🔴", style=discord.ButtonStyle.secondary)
     async def autoplay_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        """Toggle autoplay for the guild. When enabled, the bot will auto-add suggestions."""
+        """Toggle autoplay + auto-start music if queue is empty"""
         guild = interaction.guild
         if not guild:
-            await interaction.response.send_message("Autoplay only available in guilds.", ephemeral=True)
+            await interaction.response.send_message("This only works in servers!", ephemeral=True)
+            return
+
+        voice_client = guild.voice_client
+        if not voice_client:
+            await interaction.response.send_message("I'm not in a voice channel!", ephemeral=True)
             return
 
         gid = guild.id
-        enabled = not self.cog.autoplay.get(gid, False)
-        self.cog.autoplay[gid] = enabled
+        was_enabled = self.cog.autoplay.get(gid, False)
+        now_enabled = not was_enabled
+        self.cog.autoplay[gid] = now_enabled
 
-        # Update button presentation
-        button.label = f"Autoplay: {'🟢' if enabled else '🔴'}"
-        button.style = discord.ButtonStyle.success if enabled else discord.ButtonStyle.secondary
+        # Update button appearance
+        button.label = f"Autoplay: {'🟢' if now_enabled else '🔴'}"
+        button.style = discord.ButtonStyle.success if now_enabled else discord.ButtonStyle.secondary
+
         await interaction.response.edit_message(view=self)
+        
+        # ———————— NEW: AUTO-START MUSIC WHEN TURNING ON ————————
+        if now_enabled and not was_enabled:  # Was off → now on
+            if len(self.cog.get_queue(gid)) == 0:  # Queue is empty → let's fill it!
+                ctx = await self.cog.bot.get_context(interaction.message)
 
-    @discord.ui.button(label="☰", style=discord.ButtonStyle.secondary)
+                # Try to base it on the last played song
+                recent = self.cog.recent_played.get(gid, [])
+                if recent:
+                    last_song = recent[-1]
+                    title = last_song.get('title', 'music')
+                    await interaction.followup.send("Autoplay enabled! Starting radio based on your last song...", ephemeral=True)
+                else:
+                    title = "lofi hip hop radio beats to relax/study to"  # Classic fallback
+                    await interaction.followup.send("Autoplay enabled! Starting a chill radio...", ephemeral=True)
+
+                # Add 3 songs to queue using real YouTube recommendations
+                added = await self.cog.add_autoplay_suggestions(ctx, gid, count=3)
+
+                if added > 0 and not voice_client.is_playing():
+                    # Force play the next song immediately
+                    try:
+                        await self.cog.play_next(ctx)
+                    except:
+                        pass  # play_next will handle errors
+
+    @discord.ui.button(label="☰ Show Queue", style=discord.ButtonStyle.secondary)
     async def show_queue_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         """Show the current music queue."""
-        global queue
+        queue = self.cog.get_queue(interaction.guild.id)
+        
         if not queue:
             await interaction.response.send_message("The queue is empty.", ephemeral=True)
             return
@@ -228,6 +296,14 @@ class MusicControls(discord.ui.View):
             queue_list += f"\n... and {len(queue) - 10} more song(s)"
         
         await interaction.response.send_message(f"**Current Queue:**\n{queue_list}")
+        
+    # clear queue button
+    @discord.ui.button(label="🗑️ Clear Queue", style=discord.ButtonStyle.danger)
+    async def clear_queue_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        """Clear the current music queue."""
+        guild_id = interaction.guild.id
+        self.cog.get_queue(guild_id).clear()
+        await interaction.response.send_message("Cleared the music queue.", ephemeral=True, delete_after=4)
 
     @discord.ui.button(label="📝 Lyrics", style=discord.ButtonStyle.secondary)
     async def lyrics_button(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -237,28 +313,31 @@ class MusicControls(discord.ui.View):
         if not is_genius_available():
             await interaction.response.send_message(
                 "❌ Lyrics feature is not available. The bot owner needs to configure the Genius API token.",
-                ephemeral=True
+                ephemeral=True,
+                delete_after=4
             )
             return
         
-        current_song = self.cog.current_song
-        if not current_song or not current_song.get('title'):
-            await interaction.response.send_message("No song is currently playing.", ephemeral=True)
+        guild_id = interaction.guild.id
+        if guild_id not in self.cog.current_songs:
+            await interaction.response.send_message("No song is currently playing!", ephemeral=True)
             return
         
         try : 
             tempmsg = await interaction.response.send_message(
                 "🎵 Searching for lyrics...",
-                ephemeral=True
+                ephemeral=True, delete_after=60
             )
             await interaction.response.defer(ephemeral=True)
         except Exception:
             pass
             
         try:
-            song_title = current_song.get('title', '')
-            artist_name = current_song.get('channel_name', '')
-            
+            song = self.cog.current_songs[guild_id]
+
+            song_title = song.get('title', '')
+            artist_name = song.get('channel_name', '')
+
             result = await fetch_song_lyrics(song_title, artist_name)
             
             if not result.get('success'):
@@ -280,24 +359,10 @@ class MusicControls(discord.ui.View):
             lyrics_text = result['lyrics']
             
             # Split lyrics into chunks to fit multiple fields
-            max_field_length = 1024
-            if len(lyrics_text) <= max_field_length:
+            if len(lyrics_text) <= character_chunk.MAX_FIELD_LENGTH:
                 embed.add_field(name="Lyrics", value=lyrics_text, inline=False)
-            else:
-                chunks = []
-                current_chunk = ""
-                
-                lines = lyrics_text.split('\n')
-                for line in lines:
-                    if len(current_chunk) + len(line) + 1 <= max_field_length:
-                        current_chunk += line + '\n'
-                    else:
-                        if current_chunk:
-                            chunks.append(current_chunk.strip())
-                        current_chunk = line + '\n'
-                
-                if current_chunk:
-                    chunks.append(current_chunk.strip())
+            else:               
+                chunks = character_chunk.get_chunk(lyrics_text)
                 
                 for i, chunk in enumerate(chunks):
                     field_name = "Lyrics" if i == 0 else f"Lyrics (cont.)"
@@ -321,7 +386,6 @@ class MusicControls(discord.ui.View):
             await interaction.followup.send(f"❌ Error fetching lyrics: {str(e)}", ephemeral=True)
 
 class Music(commands.Cog):
-    
     channel = None
     
     def __init__(self, bot):
@@ -329,39 +393,164 @@ class Music(commands.Cog):
         self.channel = None
         self.autoplay = {}
         self.recent_played = {}
-        self.current_song = {}
+        self.queues = {}
+        self.current_songs = {}
+        self.disconnect_tasks = {}
+        
+    def get_queue(self, guild_id: int):
+        """Get or create queue for a guild"""
+        if guild_id not in self.queues:
+            self.queues[guild_id] = []
+        return self.queues[guild_id]
+    
+    async def get_audio_source(self, song_url: str):
+        """ Extract direct audio URL using yt_dlp in a thread to avoid blocking the async loop """
+        
+        headers = {
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+        }
+        
+        ydl_opts = {
+            'format': 'bestaudio[acodec^=opus]/bestaudio/best',
+            'noplaylist': True,
+            'quiet': True,
+            'no_warnings': True,
+            'default_search': 'auto',
+            'source_address': '0.0.0.0',
+            'headers': headers,
+        }
+        
+        def extract():
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(song_url, download=False)
+                return info['url']
+            
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                audio_url = await run_in_thread(extract)
+                return audio_url
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    # Could log or send temporary message here if desired
+                    continue
+                else:
+                    raise Exception(f"Failed to extract audio URL after {max_retries} attempts: {str(e)}")
+        
         
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
-        if not member.bot or member != self.bot.user:
+        guild = member.guild
+        voice_client = guild.voice_client
+
+        if member == self.bot.user:
+            # Bot was disconnected (e.g., by Discord idle timeout)
+            if after.channel is None:
+                try:
+                    guild_id = guild.id
+                    self.get_queue(guild_id).clear() 
+                    if guild_id in self.current_songs:
+                        del self.current_songs[guild_id]
+                    voice_client.stop()
+                    
+                    if guild.id in self.disconnect_tasks:
+                        del self.disconnect_tasks[guild.id]
+                        
+                    cogs_logger.info(f"Bot disconnected from voice channel in guild {guild.name} ({guild.id})")
+                except Exception as e:
+                    cogs_logger.error(f"Error handling bot disconnection: {e}")
+                    pass
             return
-        voice_client = member.guild.voice_client
-        if voice_client and len(voice_client.channel.members) == 1:  # Bot is alone
-            global queue
-            queue.clear()
-            await voice_client.disconnect()
-            channel = self.bot.get_channel(voice_client.channel.id)
-            if channel:
-                await channel.send("Disconnected due to empty voice channel.")
+
+        if voice_client is None:
+            return
+
+        channel = voice_client.channel
+        if len(channel.members) == 1:  # Only bot left
+            if guild.id in self.disconnect_tasks:
+                return  # Timer already running
+            task = self.bot.loop.create_task(self.disconnect_timer(guild))
+            self.disconnect_tasks[guild.id] = task
+        else:
+            # Users present: cancel any timer
+            if guild.id in self.disconnect_tasks:
+                self.disconnect_tasks[guild.id].cancel()
+                del self.disconnect_tasks[guild.id]
+                
+    async def disconnect_timer(self, guild: discord.Guild):
+        """Timer to disconnect after inactivity when alone"""
+        await asyncio.sleep(300)  # 5 minutes
+        voice_client = guild.voice_client
+        try:
+            if voice_client and len(voice_client.channel.members) == 1:
+                await voice_client.disconnect(force=True)
+                guild.voice_client = None 
+        except Exception as e:
+            cogs_logger.error(f"Error during disconnect timer for guild {guild.name}: {e}")
+            pass
+            
+            try:
+                if guild.id in self.queues:
+                    del self.queues[guild.id]
+                if guild.id in self.current_songs:
+                    del self.current_songs[guild.id]
+                if guild.id in self.autoplay:
+                    del self.autoplay[guild.id]
+                if guild.id in self.recent_played:
+                    del self.recent_played[guild.id]
+            except Exception as e:
+                cogs_logger.error(f"Error cleaning up after disconnect in {guild.name}: {e}")
+                pass
+
+        try:
+            if guild.id in self.disconnect_tasks:
+                del self.disconnect_tasks[guild.id]
+            cogs_logger.info(f"Disconnected from voice channel in guild {guild.name} ({guild.id}) due to inactivity.")
+        except Exception as e:
+            cogs_logger.error(f"Error removing disconnect task for {guild.name}: {e}")
+            pass
     
     @commands.hybrid_command()
-    async def arise(self, ctx : commands.Context):
-        """ Join a Voice Channel """
-        if ctx.author.voice:
-            if self.channel == None:
-                self.channel = ctx.author.voice.channel
-                await self.channel.connect()
-                await ctx.send(f'I have been summoned to join {self.channel.name}')
-            else:
-                await ctx.send("I'm already in a channel :v")
-                return
-        else:
-            await ctx.send('Please join a voice channel first!')
+    async def arise(self, ctx : commands.Context):            
+        """Join the voice channel"""
+        if not ctx.author.voice:
+            await ctx.send("You are not in a voice channel!")
+            return
+
+        channel = ctx.author.voice.channel
+        
+        try:
+            await ctx.defer()
+        except Exception:
+            pass
+
+        try:
+            if ctx.voice_client is not None:
+                # NEW: Handle zombie state
+                if not ctx.voice_client.is_connected():
+                    await ctx.voice_client.disconnect(force=True)
+                    ctx.guild.voice_client = None  # Clear zombie
+
+                if ctx.voice_client is not None:  # Re-check after cleanup
+                    if ctx.voice_client.channel == channel:
+                        await ctx.send("Already in your voice channel!")
+                        return
+                    else:
+                        await ctx.voice_client.move_to(channel)
+                        await ctx.send(f"Moved to {channel}")
+                        return
+        except Exception as e:
+            await ctx.send(f"Error handling existing voice client: {e}", ephemeral=True)
+            return
+
+        await channel.connect()
+        await ctx.send(f"I've been summoned to {channel.name}")
             
     @commands.hybrid_command()
     async def release(self, ctx : commands.Context):
         """ Leave a voice Channel """
-        global queue
+        guild_id = ctx.guild.id
+        queue = self.get_queue(guild_id)
         if ctx.voice_client:
             queue.clear()
             self.channel = None
@@ -373,7 +562,22 @@ class Music(commands.Cog):
                 print(f"Error removing bot status: {e}")
                 pass
             
-            await ctx.voice_client.disconnect()
+            try:
+                if guild_id in self.current_songs:
+                    del self.current_songs[guild_id]
+
+                await ctx.voice_client.disconnect(force=True)
+                try:
+                    ctx.guild.voice_client = None
+                except Exception:
+                    pass
+                
+                if ctx.guild.id in self.disconnect_tasks:
+                    del self.disconnect_tasks[ctx.guild.id]
+            except Exception as e:
+                await ctx.send(f"Error disconnecting: {e}", ephemeral=True)
+                pass
+                
             await ctx.send('kbay')
         else:
             await ctx.send("I'm not in a voice channel")
@@ -407,8 +611,11 @@ class Music(commands.Cog):
     
     async def play_music(self, ctx : commands.Context, querry : str):
         try : 
-            if len(queue) >= 20: 
-                await ctx.send("Queue is full! Max 20 songs.")
+            guild_id = ctx.guild.id
+            q = self.get_queue(guild_id)
+            
+            if len(q) >= 10: 
+                await ctx.send("Queue is full! Max 10 songs.")
                 return
             
             if not ctx.author.voice:
@@ -452,7 +659,7 @@ class Music(commands.Cog):
             view_count = format_view_count(video['viewCount']['short'])
 
             video_id = get_video_id_from_url(url) or ''
-            queue.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
+            q.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
 
             if not voice_client.is_playing():
                 await self.play_next(ctx)
@@ -463,8 +670,11 @@ class Music(commands.Cog):
             
     async def play_music_by_url(self, ctx : commands.Context, link : str):
         try : 
-            if len(queue) >= 20:
-                await ctx.send("Queue is full! Max 20 songs.")
+            guild_id = ctx.guild.id
+            q = self.get_queue(guild_id)
+            
+            if len(q) >= 10:
+                await ctx.send("Queue is full! Max 10 songs.")
                 return
             
             if not ctx.author.voice:
@@ -513,7 +723,7 @@ class Music(commands.Cog):
             view_count = format_view_count(video['viewCount']['text'])
 
             video_id = get_video_id_from_url(url) or ''
-            queue.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
+            q.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
 
             if not voice_client.is_playing():
                 await self.play_next(ctx)
@@ -522,101 +732,102 @@ class Music(commands.Cog):
         except Exception as e:
             await ctx.send(f"Something went wrong on internal play_music_by_url : {e}")
     
-    async def add_autoplay_suggestions(self, ctx: commands.Context, guild_id: int, count: int = 5):
-        """Fetch related videos based on recent played and append up to `count` new songs to the queue."""
+    async def add_autoplay_suggestions(self, ctx: commands.Context, guild_id: int, count: int = 1):
+        """Use yt_dlp to get REAL YouTube 'Up Next' / related videos for true autoplay"""
         try:
+            """Fetch REAL YouTube autoplay recommendations safely in a thread"""
+            if not ctx.guild or not ctx.voice_client:
+                return 0
+
             recent = self.recent_played.get(guild_id, [])
             if not recent:
                 return 0
-            last_item = recent[-1]
-            last_title = last_item.get('title') if isinstance(last_item, dict) else None
-            last_channel_id = last_item.get('channel_id') if isinstance(last_item, dict) else None
-            last_channel_name = last_item.get('channel_name') if isinstance(last_item, dict) else None
-            suggestions = []
+
+            last_song = recent[-1]
+            video_id = last_song.get('id') or get_video_id_from_url(last_song.get('url', ''))
+            if not video_id:
+                return 0
+
+            # Collect IDs to avoid duplicates
+            played_ids = {item.get('id') for item in recent if item.get('id')}
+            queued_ids = {song.get('video_id') for song in self.get_queue(guild_id) if song.get('video_id')}
+            avoid_ids = played_ids.union(queued_ids)
+
+            def fetch_related():
+                ydl_opts = {
+                    'quiet': True,
+                    'no_warnings': True,
+                    'extract_flat': True,
+                    'skip_download': True,
+                    'playlistend': count + 10,  # Get extra to filter
+                }
+                try:
+                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                        info = ydl.extract_info(
+                            f"https://www.youtube.com/watch?v={video_id}&list=RD{video_id}",
+                            download=False
+                        )
+                        return info.get('entries', [])[1:]  # Skip first (current song)
+                except Exception as e:
+                    print(f"[Autoplay] yt_dlp failed: {e}")
+                    return []
+
             try:
-                genre_label = None
-                if last_channel_id:
-                    try:
-                        ginfo = infer_channel_genre(last_channel_id)
-                        if ginfo and ginfo.get('genre'):
-                            genre_label = ginfo.get('genre')
-                    except Exception:
-                        genre_label = None
-
-                if last_title:
-                    search_query = f"{last_title} {genre_label}" if genre_label else last_title
-                    search = VideosSearch(query=search_query, limit=25)
-                    res = search.result()
-                    raw_suggestions = res.get('result', []) if isinstance(res, dict) else res
-
-                    suggestions = []
-                    for r in raw_suggestions:
-                        if r.get('title') == last_title:
-                            continue
-                        channel_id = (r.get('channel') or {}).get('id', '')
-                        if last_channel_id and channel_id == last_channel_id:
-                            suggestions.append(r)
-
-                    if len(suggestions) < count:
-                        for r in raw_suggestions:
-                            if r.get('title') == last_title:
-                                continue
-                            channel_id = (r.get('channel') or {}).get('id', '')
-                            if last_channel_id and channel_id == last_channel_id:
-                                continue
-                            suggestions.append(r)
-                            if len(suggestions) >= count:
-                                break
-                else:
-                    suggestions = []
-            except Exception:
-                suggestions = []
+                entries = await run_in_thread(fetch_related)
+            except Exception as e:
+                print(f"[Autoplay] Thread execution failed: {e}")
+                return 0
 
             added = 0
-            for r in suggestions:
+            seen = set()
+
+            for entry in entries:
                 if added >= count:
                     break
-                link = r.get('link') or ''
-                vid_id = get_video_id_from_url(link)
-                if not vid_id:
+
+                vid_id = entry.get('id')
+                if not vid_id or vid_id in avoid_ids or vid_id in seen:
                     continue
-                recent_ids = [r.get('id') if isinstance(r, dict) else r for r in recent]
-                if vid_id in recent_ids or any(s.get('video_id') == vid_id for s in queue):
+                if entry.get('title') in ('[Private video]', '[Deleted video]'):
                     continue
 
-                title = r.get('title')
-                thumbnail = ''
-                try:
-                    thumbnail = r.get('thumbnails', [])[0].get('url', '')
-                except Exception:
-                    thumbnail = ''
-                channel_id = (r.get('channel') or {}).get('id', '')
-                channel_name = (r.get('channel') or {}).get('name', '')
-                try:
-                    channel_thumbnails = Channel.get(channel_id)['thumbnails'][0]['url'] if channel_id else ''
-                    channel_url = Channel.get(channel_id)['url'] if channel_id else ''
-                    channel_name = Channel.get(channel_id)['title'] if channel_id else channel_name
-                except Exception:
-                    channel_thumbnails = ''
-                    channel_url = ''
-                    channel_name = channel_name
+                title = entry.get('title', 'Unknown')
+                url = f"https://www.youtube.com/watch?v={vid_id}"
+                duration = format_duration(entry.get('duration')) if entry.get('duration') else "LIVE"
+                thumbnail = entry['thumbnails'][-1]['url'] if entry.get('thumbnails') else ''
 
-                duration_raw = r.get('duration')
-                duration = format_duration(duration_raw)
-                view_count = format_view_count((r.get('viewCount') or {}).get('text') or r.get('viewCount') or 0)
+                channel_name = entry.get('uploader', 'Unknown')
+                channel_id = entry.get('channel_id')
 
-                queue.append({'url': link, 'video_id': vid_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
+                channel_thumbnails = ''
+                channel_url = f"https://www.youtube.com/channel/{channel_id}" if channel_id else ''
+
+                # Optional: enrich channel name (lightweight, async-safe)
+                if channel_id:
+                    try:
+                        ch_info = await run_in_thread(Channel.get, channel_id)
+                        channel_name = ch_info.get('title', channel_name)
+                        if ch_info.get('thumbnails'):
+                            channel_thumbnails = ch_info['thumbnails'][0]['url']
+                        channel_url = ch_info.get('url', channel_url)
+                    except:
+                        pass
+
+                self.get_queue(guild_id).append({'url': url, 'video_id': vid_id, 'title': title, 'thumbnail': thumbnail, 'channel_name': channel_name, 'channel_id': channel_id or '', 'duration': duration, 'view_count': '', 'channel_thumbnails': channel_thumbnails, 'channel_url': channel_url})
+
+                seen.add(vid_id)
                 added += 1
 
             if added > 0:
                 try:
-                    await ctx.send(f"Autoplay added {added} suggested song(s) to the queue.")
-                except Exception:
-                    if ctx.channel:
-                        await ctx.channel.send(f"Autoplay added {added} suggested song(s) to the queue.")
+                    await ctx.send(f"Autoplay added {added} new song(s)", delete_after=5)
+                except:
+                    pass
+
             return added
+
         except Exception as e:
-            print(f"Autoplay suggestion error: {e}")
+            print(f"Autoplay error: {e}")
             return 0
     
     async def play_next(self, ctx: commands.Context):
@@ -625,19 +836,29 @@ class Music(commands.Cog):
                 return
             
             voice_client = ctx.voice_client
-            if not queue:
-                await ctx.send("Queue is empty!")
+            guild_id = ctx.guild.id
+            q = self.get_queue(guild_id)
+            
+            if not q:
+                await ctx.send("Queue is empty!", ephemeral=True, delete_after=5)
                 
                 # remove current bot status
                 try:
                     await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
-                    # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
+                    try:
+                        if guild_id in self.current_songs:
+                            del self.current_songs[guild_id]
+                    except Exception:
+                        pass
                 except Exception as e:
                     print(f"Error removing bot status: {e}")
                     pass
                 return
             
-            song = queue.pop(0)
+            song = q.pop(0)
+            
+            self.current_songs[guild_id] = song
+            
             url = song['url']
             title = song['title']
             thumbnail = song['thumbnail']
@@ -646,12 +867,6 @@ class Music(commands.Cog):
             channel_url = song['channel_url']
             duration = song['duration']
             view_count = song['view_count']
-            
-            self.current_song = {
-                'title': title,
-                'channel_name': channel_name,
-                'url': url
-            }
             
             print(url)
             
@@ -689,65 +904,37 @@ class Music(commands.Cog):
             except Exception as e:
                 print(f"error : {e}")
                 pass
-
-            try:
-                gid = ctx.guild.id if ctx.guild else None
-                if gid:
-                    vid = song.get('video_id', '')
-                    if vid:
-                        lst = self.recent_played.get(gid, [])
-                        lst.append({'id': vid, 'title': title, 'channel_id': song.get('channel_id'), 'channel_name': channel_name})
-                        self.recent_played[gid] = lst[-20:]
-
-                    if self.autoplay.get(gid, False) and len(queue) < 3:
-                        await self.add_autoplay_suggestions(ctx, gid, count=5)
-            except Exception as e:
-                print(f"Error handling autoplay post-play: {e}")
         except Exception as e:
             await ctx.send(f"Failed to send Embed : {e}")
-        
-        headers = {
-            "authority": "www.google.com",
-            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-            "accept-language": "en-US,en;q=0.9",
-            "cache-control": "max-age=0",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
-            'sec-ch-ua': '"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
-            'sec-ch-ua-platform': 'Windows',
-            'sec-ch-ua-platform-version': '15.0.0',
-        }
-
-        ydl_opts = {
-            'format': 'bestaudio[ext=m4a]',
-            'quiet': True,
-            'no_warnings': True,
-            'headers' : headers
-        }
-        
-        max_retries = 3
-        for attempt in range(max_retries):
-            try:
-                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    info = ydl.extract_info(url, download=False)
-                    audio_url = info['url']  # Direct stream URL
-                    print(audio_url)
-                break
-            except Exception as e:
-                if attempt < max_retries - 1:
-                    await ctx.send(f"Error fetching audio, retrying... ({attempt+1}/{max_retries})")
-                    continue
-                else:
-                    await ctx.send(f"Failed to fetch audio after {max_retries} attempts: {str(e)}")
-                    return
                 
         ffmpeg_options = {
             'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-            'options': '-vn -b:a 96k'
+            'options': '-b:a 64k'
         }
+        
+        # New: Offload yt_dlp extraction to thread for better responsiveness
         try:
-            source = discord.FFmpegPCMAudio(audio_url, **ffmpeg_options)
+            audio_url = await self.get_audio_source(url)
         except Exception as e:
-            await ctx.send(f"Failed to play : {e}")
+            await ctx.send(f"Failed to fetch audio stream: {str(e)}")
+            # Clean up current song if extraction failed
+            if guild_id in self.current_songs:
+                del self.current_songs[guild_id]
+            # Try to play next if queue has more
+            if q:
+                await self.play_next(ctx)
+            return
+        
+        def custom_probe(source, executable):
+            # some analysis code here
+            codec = 'opus'
+            bitrate = '96k'
+            return codec, bitrate
+        
+        source = await discord.FFmpegOpusAudio.from_probe(audio_url,
+                                                           method=custom_probe,
+                                                           executable='ffmpeg',
+                                                           **ffmpeg_options)
         
         def after_playing(error):
             import asyncio
@@ -761,7 +948,20 @@ class Music(commands.Cog):
         try :
             voice_client.play(source, after=after_playing)
         except Exception as e:
-            await ctx.send(f"Failed to play using voice client : {e}")
+            await ctx.send(f"Failed to play using voice client : {e}", ephemeral=True, delete_after=5)
+            
+        try:
+            if guild_id:
+                vid = song.get('video_id', '')
+                if vid:
+                    lst = self.recent_played.get(guild_id, [])
+                    lst.append({'id': vid, 'title': title, 'channel_id': song.get('channel_id'), 'channel_name': channel_name})
+                    self.recent_played[guild_id] = lst[-10:]
+
+                if self.autoplay.get(guild_id, False) and len(q) < 3:
+                    await self.add_autoplay_suggestions(ctx, guild_id, count=3)
+        except Exception as e:
+            print(f"Error handling autoplay post-play: {e}")
         
     @commands.hybrid_command()
     async def lyrics(self, ctx: commands.Context, *, song_query: str = None):
@@ -778,12 +978,15 @@ class Music(commands.Cog):
             )
             return
         
+        guild_id = ctx.guild.id
+        
         if not song_query:
-            if not queue and not hasattr(self, '_current_song'):
+            q = self.get_queue(guild_id)
+            if not q and guild_id not in self.current_songs:
                 await ctx.send("Please provide a song name, or play a song first.")
                 return
-            if hasattr(self, '_current_song'):
-                song_query = self._current_song.get('title', '')
+            if guild_id in self.current_songs:
+                song_query = self.current_songs[guild_id].get('title', '')
             else:
                 await ctx.send("Please provide a song name, or play a song first.")
                 return
@@ -811,24 +1014,10 @@ class Music(commands.Cog):
             
             lyrics_text = result['lyrics']
             
-            max_field_length = 1024
-            if len(lyrics_text) <= max_field_length:
+            if len(lyrics_text) <= character_chunk.MAX_FIELD_LENGTH:
                 embed.add_field(name="Lyrics", value=lyrics_text, inline=False)
-            else:
-                chunks = []
-                current_chunk = ""
-                
-                lines = lyrics_text.split('\n')
-                for line in lines:
-                    if len(current_chunk) + len(line) + 1 <= max_field_length:
-                        current_chunk += line + '\n'
-                    else:
-                        if current_chunk:
-                            chunks.append(current_chunk.strip())
-                        current_chunk = line + '\n'
-                
-                if current_chunk:
-                    chunks.append(current_chunk.strip())
+            else:                    
+                chunks = character_chunk.get_chunk(lyrics_text)
                 
                 for i, chunk in enumerate(chunks):
                     field_name = "Lyrics" if i == 0 else f"Lyrics (cont.)"
@@ -853,6 +1042,9 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def show_queue(self, ctx: commands.Context):
         """Show current song queue"""
+        guild_id = ctx.guild.id
+        queue = self.get_queue(guild_id)
+        
         if not queue:
             await ctx.send("The queue is empty.")
             return
@@ -863,8 +1055,8 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def clear_queue(self, ctx: commands.Context):
         """Clear current queue"""
-        global queue
-        queue.clear()
+        guild_id = ctx.guild.id
+        self.get_queue(guild_id).clear()
         await ctx.send("Queue cleared.")
         
     @commands.hybrid_command()
@@ -884,17 +1076,18 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def remove(self, ctx: commands.Context, index: int):
         """Remove song at specified index"""
-        global queue
-        if not queue:
+        guild_id = ctx.guild.id
+        q = self.get_queue(guild_id)
+        if not q:
             await ctx.send("The queue is empty.")
             return
         
         index = index - 1
-        if index < 0 or index >= len(queue):
-            await ctx.send(f"Invalid index. Use a number between 1 and {len(queue)}.")
+        if index < 0 or index >= len(q):
+            await ctx.send(f"Invalid index. Use a number between 1 and {len(q)}.")
             return
         
-        removed_song = queue.pop(index)
+        removed_song = q.pop(index)
         await ctx.send(f"Removed from queue: {removed_song['title']}")
         
     @commands.hybrid_command()
@@ -918,14 +1111,15 @@ class Music(commands.Cog):
     @commands.hybrid_command()
     async def stop(self, ctx : commands.Context):
         """Stop playing song"""
-        global queue
         if ctx.voice_client:
-            queue.clear() 
+            guild_id = ctx.guild.id
+            self.get_queue(guild_id).clear() 
+            if guild_id in self.current_songs:
+                del self.current_songs[guild_id]
             ctx.voice_client.stop()
             
             # remove current activity
             try:
-                # await self.bot.change_presence(activity=discord.Activity(state=discord.ActivityType.playing, name="Your Mom"))
                 await self.bot.change_presence(activity=discord.Game(name="Hide and seek", platform="Closet"))
             except Exception as e:
                 print(f"Error removing bot status: {e}")
