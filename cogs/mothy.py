@@ -9,17 +9,6 @@ async def setup(bot : commands.Bot):
 class mothy(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
-    # make the bot say a message (not reply to command message)
-    @commands.hybrid_command()
-    async def say(self, ctx : commands.Context, *, msg : str):
-        """ Make the bot say a message """
-        try:
-            await ctx.message.delete()
-            await ctx.send(msg)
-            
-        except Exception as e:
-            await ctx.send(f"An error occurred: {e}", ephemeral=True)
     
     # prank commands (for fun)
     # fake spam commands
