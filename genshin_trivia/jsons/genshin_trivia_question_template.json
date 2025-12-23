@@ -1,0 +1,42 @@
+[
+    {
+        "question" : "What is the type of weapon that [character_name] wields?",
+        "difficulty" : "Easy"
+    },
+    {
+        "question" : "From which region does [character_name] is from?",
+        "difficulty" : "Easy"
+    },
+    {
+        "question" : "What element is [character_name]'s vision?",
+        "difficulty" : "Easy"
+    },
+    {
+        "question" : "What is the title that [character_name] have?",
+        "difficulty" : "Medium"
+    },
+    {
+        "question" : "What is the name of [character_name]'s special dish?",
+        "difficulty" : "Medium"
+    },
+    {
+        "question" : "What is the name of [character_name]'s constelation?",
+        "difficulty" : "Medium"
+    },
+    {
+        "question" : "When is [character_name]'s birthday?",
+        "difficulty" : "Hard"
+    },
+    {
+        "question" : "In which version does [character_name] released?",
+        "difficulty" : "Hard"
+    },
+    {
+        "question" : "Who is [character_name]'s English VA?",
+        "difficulty" : "Hard"
+    },
+    {
+        "question" : "Who is [character_name]'s Japanese VA?",
+        "difficulty" : "Hard"
+    }
+]

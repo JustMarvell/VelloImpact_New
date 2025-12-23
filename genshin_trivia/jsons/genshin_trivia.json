@@ -1,0 +1,5029 @@
+[
+  {
+    "question": "What element is Ayaka's vision?",
+    "options": [
+      "Pyro",
+      "Geo",
+      "Dendro",
+      "Cryo"
+    ],
+    "correct": "Cryo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Ayaka's constellation?",
+    "options": [
+      "Grus Nivis",
+      "Nereides",
+      "Nubis Caesor",
+      "Trulla"
+    ],
+    "correct": "Grus Nivis",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Ayaka's English VA?",
+    "options": [
+      "Laura Post",
+      "Brittany Lauda",
+      "Erica Mendez",
+      "Amber Lee Connors"
+    ],
+    "correct": "Erica Mendez",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Ayaka wields?",
+    "options": [
+      "Polearm",
+      "Claymore",
+      "Catalyst",
+      "Sword"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Ayaka has?",
+    "options": [
+      "Dandelion Knight",
+      "Frostflake Heron",
+      "Empyrean Reflection",
+      "Harmless Sweetie"
+    ],
+    "correct": "Frostflake Heron",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Ayaka come from?",
+    "options": [
+      "Sumeru",
+      "Inazuma",
+      "Mondstadt",
+      "Liyue"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Ayaka's birthday?",
+    "options": [
+      "June 23rd",
+      "August 8th",
+      "February 2nd",
+      "September 28th"
+    ],
+    "correct": "September 28th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Ayaka's special dish?",
+    "options": [
+      "Nutritious Meal (V.593)",
+      "Slow-Cooked Bamboo Shoot Soup",
+      "\"Snow on the Hearth\"",
+      "The Only Truth"
+    ],
+    "correct": "\"Snow on the Hearth\"",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Ayaka released?",
+    "options": [
+      "5.5",
+      "1.0",
+      "4.4",
+      "v2.0"
+    ],
+    "correct": "v2.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Xinyan come from?",
+    "options": [
+      "Fontaine",
+      "Liyue",
+      "Snezhnaya",
+      "Inazuma"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Xinyan has?",
+    "options": [
+      "Helm of the Radiant Rose",
+      "Embrace of Enchanting Dreams",
+      "Blazing Riff",
+      "Vigilant Yaksha"
+    ],
+    "correct": "Blazing Riff",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Xinyan's constellation?",
+    "options": [
+      "Monoceros Caeli",
+      "Equa Alba",
+      "Fila Ignium",
+      "Cantus Choralis"
+    ],
+    "correct": "Fila Ignium",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Xinyan's vision?",
+    "options": [
+      "Dendro",
+      "Pyro",
+      "Electro",
+      "Geo"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Xinyan released?",
+    "options": [
+      "4.8",
+      "4.0",
+      "v1.1",
+      "5.6"
+    ],
+    "correct": "v1.1",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Xinyan's Japanese VA?",
+    "options": [
+      "Chiaki Takahashi (たかはし智秋)",
+      "Fujita Akane (藤田茜)",
+      "Endou Aya (遠藤綾)",
+      "Inagaki Konomi (稲垣好)"
+    ],
+    "correct": "Chiaki Takahashi (たかはし智秋)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Xinyan wields?",
+    "options": [
+      "Sword",
+      "Claymore",
+      "Bow",
+      "Polearm"
+    ],
+    "correct": "Claymore",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Xinyan's birthday?",
+    "options": [
+      "June 21st",
+      "September 24th",
+      "September 21st",
+      "October 16th"
+    ],
+    "correct": "October 16th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Xinyan's English VA?",
+    "options": [
+      "Valeria Rodriguez (Pre-5.8)",
+      "Ben Balmaceda",
+      "Laura Stah",
+      "Anne Yatco"
+    ],
+    "correct": "Laura Stah",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Traveller (male) released?",
+    "options": [
+      "3.5",
+      "4.4",
+      "v1.0",
+      "5.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Traveller (male)'s English VA?",
+    "options": [
+      "Lilypichu (Lily Ki)",
+      "Zach Aguilar",
+      "Poonam Basu",
+      "Jeannie Tirado"
+    ],
+    "correct": "Zach Aguilar",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Traveller (male)'s constellation?",
+    "options": [
+      "Viator",
+      "Nyctereutes Minor",
+      "Flosculi Implexi",
+      "Osmanthus"
+    ],
+    "correct": "Viator",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Traveller (male)'s Japanese VA?",
+    "options": [
+      "Ohara Sayaka (大原さやか)",
+      "Shun Horie (堀江瞬)",
+      "Toriumi Kousuke (鳥海浩輔)",
+      "Fukuhara Ayaka (福原綾香)"
+    ],
+    "correct": "Shun Horie (堀江瞬)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Traveller (male)'s vision?",
+    "options": [
+      "Electro",
+      "Hydro",
+      "Anemo",
+      "None"
+    ],
+    "correct": "None",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Traveller (male) has?",
+    "options": [
+      "Wondrous Dragonheir",
+      "Admonishing Instruction",
+      "Outlander",
+      "Saviour From Another World"
+    ],
+    "correct": "Outlander",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Traveller (male)'s birthday?",
+    "options": [
+      "November 20th",
+      "July 28th",
+      "April 22nd",
+      "Player's Choice"
+    ],
+    "correct": "Player's Choice",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Traveller (male) wields?",
+    "options": [
+      "Polearm",
+      "Claymore",
+      "Sword",
+      "Bow"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Tartaglia's Japanese VA?",
+    "options": [
+      "Iguchi Yuuichi (井口祐一)",
+      "Ryohei Kimura (木村良平)",
+      "Mimori Suzuko (三森すずこ)",
+      "Terashima Junta (寺島惇太)"
+    ],
+    "correct": "Ryohei Kimura (木村良平)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Tartaglia released?",
+    "options": [
+      "1.0",
+      "v1.1",
+      "4.6",
+      "1.5"
+    ],
+    "correct": "v1.1",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Tartaglia's birthday?",
+    "options": [
+      "August 10th",
+      "July 20th",
+      "July 27th",
+      "July 15th"
+    ],
+    "correct": "July 20th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Tartaglia's vision?",
+    "options": [
+      "Hydro",
+      "Geo",
+      "Pyro",
+      "Dendro"
+    ],
+    "correct": "Hydro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Tartaglia wields?",
+    "options": [
+      "Bow",
+      "Catalyst",
+      "Claymore",
+      "Sword"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Tartaglia's English VA?",
+    "options": [
+      "Kelly Baskin",
+      "Stephanie Southerland",
+      "Patrick Pedraza",
+      "Griffin Burns"
+    ],
+    "correct": "Griffin Burns",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Tartaglia has?",
+    "options": [
+      "Childe",
+      "Enigmatic Machinist",
+      "Blazing Rift",
+      "Pillar of Fortitude"
+    ],
+    "correct": "Childe",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Tartaglia come from?",
+    "options": [
+      "Snezhnaya",
+      "Mondstadt",
+      "Fontaine",
+      "Liyue"
+    ],
+    "correct": "Snezhnaya",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Tartaglia's constellation?",
+    "options": [
+      "Monoceros Caeli",
+      "Fabulae Textile",
+      "Laterna Vigilis",
+      "Lagenaria"
+    ],
+    "correct": "Monoceros Caeli",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Itto has?",
+    "options": [
+      "Passerine Herald",
+      "Empyrean Reflection",
+      "Hanamizaka Heroics",
+      "Beyond Mortality"
+    ],
+    "correct": "Hanamizaka Heroics",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Itto's constellation?",
+    "options": [
+      "Victor Mare",
+      "Taurus Iracundus",
+      "Cervus Minor",
+      "Osmanthus"
+    ],
+    "correct": "Taurus Iracundus",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Itto come from?",
+    "options": [
+      "Liyue",
+      "Mondstadt",
+      "Sumeru",
+      "Inazuma"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Itto's vision?",
+    "options": [
+      "Hydro",
+      "Geo",
+      "Electro",
+      "Pyro"
+    ],
+    "correct": "Geo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Itto's special dish?",
+    "options": [
+      "Gateau Debord: Magnifique",
+      "Way of the Strong",
+      "Impeccably Organized",
+      "Super-Dee-Duper Delicious Meat Roll"
+    ],
+    "correct": "Way of the Strong",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Itto's Japanese VA?",
+    "options": [
+      "Wakayama Shion (若山詩音)",
+      "Sasahara Yu (篠原侑)",
+      "Shimono Hiro (下野紘)",
+      "Takanori Nishikawa (西川貴教)"
+    ],
+    "correct": "Takanori Nishikawa (西川貴教)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Itto released?",
+    "options": [
+      "1.0",
+      "4.0",
+      "Luna I",
+      "v2.3"
+    ],
+    "correct": "v2.3",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Itto wields?",
+    "options": [
+      "Polearm",
+      "Catalyst",
+      "Bow",
+      "Claymore"
+    ],
+    "correct": "Claymore",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Itto's birthday?",
+    "options": [
+      "May 27th",
+      "January 18th",
+      "March 26th",
+      "June 1st"
+    ],
+    "correct": "June 1st",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Rosaria's English VA?",
+    "options": [
+      "Elizabeth Maxwell",
+      "Brittany Cox",
+      "Christie Cate",
+      "Allegra Clark"
+    ],
+    "correct": "Elizabeth Maxwell",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Rosaria's birthday?",
+    "options": [
+      "October 16th",
+      "July 15th",
+      "January 24th",
+      "August 17th"
+    ],
+    "correct": "January 24th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Rosaria's special dish?",
+    "options": [
+      "Dinner of Judgment",
+      "Extravagant Slumber",
+      "Rockin' Riffin' Chicken!",
+      "A Leisurely Sip"
+    ],
+    "correct": "Dinner of Judgment",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Rosaria has?",
+    "options": [
+      "Thorny Benevolence",
+      "Prinzessin der Verurteilung!",
+      "Frozen Ardor",
+      "Spectacle of Phantasmagoria"
+    ],
+    "correct": "Thorny Benevolence",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Rosaria released?",
+    "options": [
+      "3.0",
+      "v1.4",
+      "1.0",
+      "2.1"
+    ],
+    "correct": "v1.4",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Rosaria's constellation?",
+    "options": [
+      "Lapis Dei",
+      "Trulla",
+      "Animula Choragi",
+      "Spinea Corona"
+    ],
+    "correct": "Spinea Corona",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Rosaria's vision?",
+    "options": [
+      "Cryo",
+      "Hydro",
+      "Anemo",
+      "Dendro"
+    ],
+    "correct": "Cryo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Rosaria come from?",
+    "options": [
+      "Sumeru",
+      "Liyue",
+      "Mondstadt",
+      "Snezhnaya"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Rosaria wields?",
+    "options": [
+      "Sword",
+      "Claymore",
+      "Bow",
+      "Polearm"
+    ],
+    "correct": "Polearm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Ayato come from?",
+    "options": [
+      "Sumeru",
+      "Liyue",
+      "Inazuma",
+      "Snezhnaya"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Ayato's special dish?",
+    "options": [
+      "A Prize Catch",
+      "Definitely Not Bar Food!",
+      "\"Snow on the Hearth\"",
+      "Quiet Elegance"
+    ],
+    "correct": "Quiet Elegance",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Ayato's birthday?",
+    "options": [
+      "March 14th",
+      "July 24th",
+      "March 26th",
+      "August 17th"
+    ],
+    "correct": "March 26th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Ayato's constellation?",
+    "options": [
+      "Cypressus Custos",
+      "Flabellum",
+      "Lapis Dei",
+      "Peregrinus"
+    ],
+    "correct": "Cypressus Custos",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Ayato's Japanese VA?",
+    "options": [
+      "Kondo Takashi (近藤隆)",
+      "Saitou Chiwa (斎藤千和)",
+      "Toyama Nao (東山奈央)",
+      "Akira Ishida (石田 彰)"
+    ],
+    "correct": "Akira Ishida (石田 彰)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Ayato wields?",
+    "options": [
+      "Claymore",
+      "Bow",
+      "Catalyst",
+      "Sword"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Ayato's vision?",
+    "options": [
+      "Pyro",
+      "Electro",
+      "Anemo",
+      "Hydro"
+    ],
+    "correct": "Hydro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Ayato released?",
+    "options": [
+      "v2.6",
+      "1.0",
+      "4.7",
+      "5.0"
+    ],
+    "correct": "v2.6",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Ayato has?",
+    "options": [
+      "Pillar of Fortitude",
+      "Elegance in the Shadows",
+      "Trial by Fire",
+      "Hanamizaka Heroics"
+    ],
+    "correct": "Pillar of Fortitude",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Beidou's Japanese VA?",
+    "options": [
+      "Maekawa Ryoko (前川涼子)",
+      "Tano Asami (田野アサミ)",
+      "Kanemoto Hisako (金元寿子)",
+      "Ami Koshimizu (小清水亜美)"
+    ],
+    "correct": "Ami Koshimizu (小清水亜美)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Beidou's English VA?",
+    "options": [
+      "Suzie Yeung",
+      "Amber May",
+      "Allegra Clark",
+      "Nathan Nokes"
+    ],
+    "correct": "Allegra Clark",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Beidou's constellation?",
+    "options": [
+      "Umbrabilis Orchis",
+      "Vulpes Zerda",
+      "Automaton",
+      "Victor Mare"
+    ],
+    "correct": "Victor Mare",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Beidou wields?",
+    "options": [
+      "Bow",
+      "Catalyst",
+      "Claymore",
+      "Sword"
+    ],
+    "correct": "Claymore",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Beidou's birthday?",
+    "options": [
+      "February 14th",
+      "January 9th",
+      "October 29th",
+      "May 31st"
+    ],
+    "correct": "February 14th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Beidou has?",
+    "options": [
+      "Windborne Bard",
+      "Uncrowned Lord of the Ocean",
+      "Pillar of Fortitude",
+      "Stage Lucinda"
+    ],
+    "correct": "Uncrowned Lord of the Ocean",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Beidou's special dish?",
+    "options": [
+      "Invigorating Pizza",
+      "Faith Eternal",
+      "Forest Watcher's Choice",
+      "Flash-Fried Filet"
+    ],
+    "correct": "Flash-Fried Filet",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Beidou's vision?",
+    "options": [
+      "Hydro",
+      "Dendro",
+      "Electro",
+      "Pyro"
+    ],
+    "correct": "Electro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Beidou come from?",
+    "options": [
+      "Fontaine",
+      "Mondstadt",
+      "Liyue",
+      "Sumeru"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Yae's special dish?",
+    "options": [
+      "Hearthfire's Trail",
+      "Cloud-Shrouded Jade",
+      "Fruity Skewers",
+      "Fukuuchi Udon"
+    ],
+    "correct": "Fukuuchi Udon",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Yae's constellation?",
+    "options": [
+      "Divina Vulpes",
+      "Cypressus Custos",
+      "Viatrix",
+      "Lepus"
+    ],
+    "correct": "Divina Vulpes",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Yae come from?",
+    "options": [
+      "Liyue",
+      "Natlan",
+      "Snezhnaya",
+      "Inazuma"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Yae's birthday?",
+    "options": [
+      "June 27th",
+      "November 30th",
+      "August 22nd",
+      "January 3rd"
+    ],
+    "correct": "June 27th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Yae released?",
+    "options": [
+      "5.8",
+      "3.0",
+      "v2.5",
+      "3.6"
+    ],
+    "correct": "v2.5",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Yae's vision?",
+    "options": [
+      "Cryo",
+      "Electro",
+      "Anemo",
+      "Geo"
+    ],
+    "correct": "Electro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Yae has?",
+    "options": [
+      "Turnfire Hunt",
+      "Windborne Bard",
+      "Trial by Fire",
+      "Astute Amusement"
+    ],
+    "correct": "Astute Amusement",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Yae's English VA?",
+    "options": [
+      "Nazeeh Tarsha",
+      "Kelsey Jaffer",
+      "Ratana",
+      "Alexandra Guelff"
+    ],
+    "correct": "Ratana",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Yae's Japanese VA?",
+    "options": [
+      "Satō Satomi (佐藤聡美)",
+      "Ueda Reina (上田麗奈)",
+      "Ayane Sakura (佐倉綾音)",
+      "Izawa Shiori (井澤詩織)"
+    ],
+    "correct": "Ayane Sakura (佐倉綾音)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Bennett released?",
+    "options": [
+      "3.3",
+      "1.0",
+      "v1.0",
+      "3.3"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Bennett has?",
+    "options": [
+      "Frostflake Heron",
+      "Night-Igniting Flame",
+      "Trial by Fire",
+      "Verdant Strider"
+    ],
+    "correct": "Trial by Fire",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Bennett come from?",
+    "options": [
+      "Inazuma",
+      "Mondstadt",
+      "Liyue",
+      "Sumeru"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Bennett's birthday?",
+    "options": [
+      "March 30th",
+      "July 14th",
+      "February 29th",
+      "May 8th"
+    ],
+    "correct": "February 29th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Bennett's vision?",
+    "options": [
+      "Dendro",
+      "Anemo",
+      "Hydro",
+      "Pyro"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Bennett's English VA?",
+    "options": [
+      "Jenny Yokobori",
+      "Brittany Lauda",
+      "Valeria Rodriguez (Pre-5.8)",
+      "Cristina Vee Valenzuela"
+    ],
+    "correct": "Cristina Vee Valenzuela",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Bennett's constellation?",
+    "options": [
+      "Palumbus",
+      "Sinae Unicornis",
+      "Hualina Veritas",
+      "Rota Calamitas"
+    ],
+    "correct": "Rota Calamitas",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Bennett's Japanese VA?",
+    "options": [
+      "Ono Daisuke (小野大輔)",
+      "Tanaka Rie (田中理恵)",
+      "Tano Asami (田野アサミ)",
+      "Ryōta Ōsaka (逢坂良太)"
+    ],
+    "correct": "Ryōta Ōsaka (逢坂良太)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Bennett's special dish?",
+    "options": [
+      "Shimi Chazuke",
+      "Wanmin Restaurant's Boiled Fish",
+      "Teyvat Charred Egg",
+      "Cloud-Shrouded Jade"
+    ],
+    "correct": "Teyvat Charred Egg",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Yoimiya's constellation?",
+    "options": [
+      "Rapperia",
+      "Taurus Iracundus",
+      "Trifolium",
+      "Carassius Auratus"
+    ],
+    "correct": "Carassius Auratus",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Yoimiya's special dish?",
+    "options": [
+      "Quiet Elegance",
+      "Encompassing Gladness",
+      "Secret Sauce BBQ Ribs",
+      "Summer Festival Fish"
+    ],
+    "correct": "Summer Festival Fish",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Yoimiya's Japanese VA?",
+    "options": [
+      "Kino Hina (木野日菜)",
+      "Maeno Tomoaki (前野智昭)",
+      "Mizuki Nana (水樹 奈々)",
+      "Kana Ueda (植田佳奈)"
+    ],
+    "correct": "Kana Ueda (植田佳奈)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Yoimiya's birthday?",
+    "options": [
+      "November 26th",
+      "February 2nd",
+      "June 21st",
+      "November 5th"
+    ],
+    "correct": "June 21st",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Yoimiya has?",
+    "options": [
+      "Plane of Euthymia",
+      "Frozen Ardor",
+      "Frolicking Flames",
+      "Mujina Ninja"
+    ],
+    "correct": "Frolicking Flames",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Yoimiya's vision?",
+    "options": [
+      "Pyro",
+      "Dendro",
+      "Hydro",
+      "Geo"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Yoimiya released?",
+    "options": [
+      "v2.0",
+      "1.0",
+      "1.0",
+      "1.0"
+    ],
+    "correct": "v2.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Yoimiya's English VA?",
+    "options": [
+      "Lilypichu (Lily Ki)",
+      "Chandni Parekh",
+      "Robb Moreira",
+      "Jenny Yokobori"
+    ],
+    "correct": "Jenny Yokobori",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Yoimiya wields?",
+    "options": [
+      "Bow",
+      "Claymore",
+      "Catalyst",
+      "Sword"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Shenhe's constellation?",
+    "options": [
+      "Pristina Nola",
+      "Lepus",
+      "Nyctereutes Minor",
+      "Crista Doloris"
+    ],
+    "correct": "Crista Doloris",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Shenhe released?",
+    "options": [
+      "1.0",
+      "3.2",
+      "v2.4",
+      "1.0"
+    ],
+    "correct": "v2.4",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Shenhe's vision?",
+    "options": [
+      "Cryo",
+      "Electro",
+      "Anemo",
+      "Hydro"
+    ],
+    "correct": "Cryo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Shenhe's Japanese VA?",
+    "options": [
+      "Kohara Konomi (小原好美)",
+      "Ayako Kawasumi (川澄綾子)",
+      "Saitou Chiwa (斎藤千和)",
+      "Shimono Hiro (下野紘)"
+    ],
+    "correct": "Ayako Kawasumi (川澄綾子)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Shenhe wields?",
+    "options": [
+      "Polearm",
+      "Sword",
+      "Bow",
+      "Claymore"
+    ],
+    "correct": "Polearm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Shenhe's birthday?",
+    "options": [
+      "August 26th",
+      "December 31st",
+      "October 27th",
+      "March 10th"
+    ],
+    "correct": "March 10th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Shenhe's special dish?",
+    "options": [
+      "Heartstring Noodles",
+      "No Tomorrow",
+      "Fruity Skewers",
+      "Swirling Steps"
+    ],
+    "correct": "Heartstring Noodles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Shenhe's English VA?",
+    "options": [
+      "Jennifer Losi",
+      "Lilypichu (Lily Ki)",
+      "Kieran Regan",
+      "Chelsea Kwoka"
+    ],
+    "correct": "Chelsea Kwoka",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Shenhe come from?",
+    "options": [
+      "Natlan",
+      "Fontaine",
+      "Inazuma",
+      "Liyue"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Xingqiu's special dish?",
+    "options": [
+      "Jade-Cut Flowers",
+      "Invigorating Pizza",
+      "All-Delicacy Parcels",
+      "Cold Noodles with Mountain Delicacies"
+    ],
+    "correct": "All-Delicacy Parcels",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Xingqiu's vision?",
+    "options": [
+      "Hydro",
+      "Cryo",
+      "Geo",
+      "Dendro"
+    ],
+    "correct": "Hydro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Xingqiu has?",
+    "options": [
+      "Juvenile Galant",
+      "Admonishing Instruction",
+      "Dandelion Knight",
+      "Frostflake Heron"
+    ],
+    "correct": "Juvenile Galant",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Xingqiu's birthday?",
+    "options": [
+      "March 14th",
+      "October 9th",
+      "May 18th",
+      "November 26th"
+    ],
+    "correct": "October 9th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Xingqiu's Japanese VA?",
+    "options": [
+      "Junko Minagawa (皆川純子)",
+      "Mimori Suzuko (三森すずこ)",
+      "Mori Nanako (森なな子)",
+      "Terashima Junta (寺島惇太)"
+    ],
+    "correct": "Junko Minagawa (皆川純子)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Xingqiu wields?",
+    "options": [
+      "Sword",
+      "Claymore",
+      "Polearm",
+      "Bow"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Xingqiu come from?",
+    "options": [
+      "Inazuma",
+      "Liyue",
+      "Fontaine",
+      "Natlan"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Xingqiu released?",
+    "options": [
+      "3.4",
+      "5.7",
+      "v1.0",
+      "4.2"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Xingqiu's English VA?",
+    "options": [
+      "Robb Moreira",
+      "Jane Jackson",
+      "Cristina Vee Valenzuela",
+      "Anairis Quiñones"
+    ],
+    "correct": "Cristina Vee Valenzuela",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Sara wields?",
+    "options": [
+      "Catalyst",
+      "Sword",
+      "Claymore",
+      "Bow"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Sara has?",
+    "options": [
+      "Crowfeather Kaburaya",
+      "Canine Warrior",
+      "Coordinates of Clear Frost",
+      "Flame-Mane"
+    ],
+    "correct": "Crowfeather Kaburaya",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Sara's English VA?",
+    "options": [
+      "Christina Costello",
+      "Jeannie Tirado",
+      "Josey Montana McCoy",
+      "Ray Chase"
+    ],
+    "correct": "Jeannie Tirado",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Sara come from?",
+    "options": [
+      "Mondstadt",
+      "Inazuma",
+      "Sumeru",
+      "Snezhnaya"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Sara's birthday?",
+    "options": [
+      "July 27th",
+      "January 9th",
+      "September 7th",
+      "July 14th"
+    ],
+    "correct": "July 14th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Sara's Japanese VA?",
+    "options": [
+      "Kanemoto Hisako (金元寿子)",
+      "Umehara Yuuichirou (梅原裕一郎)",
+      "Asami Seto (瀬戸麻沙美)",
+      "Toki Shunichi (土岐隼一)"
+    ],
+    "correct": "Asami Seto (瀬戸麻沙美)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Sara released?",
+    "options": [
+      "v2.1",
+      "1.0",
+      "2.0",
+      "3.4"
+    ],
+    "correct": "v2.1",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Sara's constellation?",
+    "options": [
+      "Spinea Corona",
+      "Oriolus",
+      "Noctua",
+      "Flabellum"
+    ],
+    "correct": "Flabellum",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Sara's vision?",
+    "options": [
+      "Electro",
+      "Geo",
+      "Dendro",
+      "Hydro"
+    ],
+    "correct": "Electro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Noelle's constellation?",
+    "options": [
+      "Parma Cordis",
+      "Cistellula Mira",
+      "Nubis Caesor",
+      "Opera Grandis"
+    ],
+    "correct": "Parma Cordis",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Noelle has?",
+    "options": [
+      "Astute Amusement",
+      "Chivalric Blossom",
+      "Cat Upon the Eaves",
+      "Golden Vow"
+    ],
+    "correct": "Chivalric Blossom",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Noelle come from?",
+    "options": [
+      "Mondstadt",
+      "Sumeru",
+      "Fontaine",
+      "Natlan"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Noelle's vision?",
+    "options": [
+      "Pyro",
+      "Anemo",
+      "Dendro",
+      "Geo"
+    ],
+    "correct": "Geo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Noelle's English VA?",
+    "options": [
+      "Ashleigh Haddad",
+      "Paul Castro Jr.",
+      "Risa Mei",
+      "Laura Faye Smith"
+    ],
+    "correct": "Laura Faye Smith",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Noelle wields?",
+    "options": [
+      "Bow",
+      "Claymore",
+      "Sword",
+      "Catalyst"
+    ],
+    "correct": "Claymore",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Noelle's special dish?",
+    "options": [
+      "Goldflame Tajine",
+      "'Tagged and Bagged'",
+      "Lighter-Than-Air ",
+      "Stormcrest Pie"
+    ],
+    "correct": "Lighter-Than-Air ",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Noelle's birthday?",
+    "options": [
+      "April 22nd",
+      "March 21st",
+      "May 21st",
+      "January 9th"
+    ],
+    "correct": "March 21st",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Noelle's Japanese VA?",
+    "options": [
+      "Fukuhara Ayaka (福原綾香)",
+      "Kakuma Ai (加隈亜衣)",
+      "Kanon Takao (高尾奏音)",
+      "Kawasumi Ayako (川澄綾子)"
+    ],
+    "correct": "Kanon Takao (高尾奏音)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Xiao has?",
+    "options": [
+      "Vago Mundo",
+      "Emissary of Solitary Iniquity",
+      "Vigilant Yaksha",
+      "Valley Orchid"
+    ],
+    "correct": "Vigilant Yaksha",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Xiao wields?",
+    "options": [
+      "Catalyst",
+      "Bow",
+      "Polearm",
+      "Sword"
+    ],
+    "correct": "Polearm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Xiao released?",
+    "options": [
+      "1.2",
+      "1.1",
+      "1.6",
+      "v1.3"
+    ],
+    "correct": "v1.3",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Xiao's birthday?",
+    "options": [
+      "May 18th",
+      "April 17th",
+      "July 27th",
+      "July 28th"
+    ],
+    "correct": "April 17th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Xiao's English VA?",
+    "options": [
+      "Laila Berzins",
+      "Poonam Basu",
+      "Lauren Amante",
+      "Edward Stoneguard"
+    ],
+    "correct": "Laila Berzins",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Xiao come from?",
+    "options": [
+      "Fontaine",
+      "Sumeru",
+      "Natlan",
+      "Liyue"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Xiao's special dish?",
+    "options": [
+      "Gold-Standard Healthy Meal",
+      "Sweet Dream",
+      "No Tomorrow",
+      "All-Delicacy Parcels"
+    ],
+    "correct": "Sweet Dream",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Xiao's constellation?",
+    "options": [
+      "Ludus Latrunculorum",
+      "Imperatrix Umbrosa",
+      "Trulla",
+      "Alatus Nemeseos"
+    ],
+    "correct": "Alatus Nemeseos",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Xiao's Japanese VA?",
+    "options": [
+      "Tamura Yukari (田村ゆかり)",
+      "Yoshitsugu Matsuoka (松岡禎丞)",
+      "Yusa Koji (遊佐浩二)",
+      "Takamori Natsumi (高森奈津美)"
+    ],
+    "correct": "Yoshitsugu Matsuoka (松岡禎丞)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Kokomi's special dish?",
+    "options": [
+      "Long Night Alight",
+      "Secret Art",
+      "A Stunning Stratagem",
+      "A Leisurely Sip"
+    ],
+    "correct": "A Stunning Stratagem",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Kokomi's English VA?",
+    "options": [
+      "Jane Jackson",
+      "Risa Mei",
+      "Daman Mills",
+      "Julia Gu"
+    ],
+    "correct": "Risa Mei",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Kokomi's Japanese VA?",
+    "options": [
+      "Wakayama Shion (若山詩音)",
+      "Suzuko Mimori (三森すずこ)",
+      "Hikasa Yoko (日笠陽子)",
+      "Nakamura Yūichi (中村悠一)"
+    ],
+    "correct": "Suzuko Mimori (三森すずこ)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Kokomi's constellation?",
+    "options": [
+      "Peregrinus",
+      "Pavo Ocellus",
+      "Carmen Dei",
+      "Dracaena Somnolenta"
+    ],
+    "correct": "Dracaena Somnolenta",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Kokomi has?",
+    "options": [
+      "Yearning for Unseen Depths",
+      "Frostflake Heron",
+      "Enigmatic Machinist",
+      "Pearl of Wisdom"
+    ],
+    "correct": "Pearl of Wisdom",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Kokomi's vision?",
+    "options": [
+      "Cryo",
+      "Anemo",
+      "Hydro",
+      "Geo"
+    ],
+    "correct": "Hydro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Kokomi's birthday?",
+    "options": [
+      "May 3rd",
+      "October 29th",
+      "July 15th",
+      "February 22nd"
+    ],
+    "correct": "February 22nd",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Kokomi released?",
+    "options": [
+      "v2.1",
+      "5.7",
+      "3.0",
+      "1.0"
+    ],
+    "correct": "v2.1",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Kokomi wields?",
+    "options": [
+      "Sword",
+      "Claymore",
+      "Catalyst",
+      "Bow"
+    ],
+    "correct": "Catalyst",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Sayu's birthday?",
+    "options": [
+      "January 18th",
+      "March 14th",
+      "October 19th",
+      "July 24th"
+    ],
+    "correct": "October 19th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Sayu's vision?",
+    "options": [
+      "Anemo",
+      "Geo",
+      "Pyro",
+      "Cryo"
+    ],
+    "correct": "Anemo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Sayu's special dish?",
+    "options": [
+      "Dizziness-Be-Gone no Jutsu Version 2.0",
+      "'Tagged and Bagged'",
+      "Duel Soul",
+      "Definitely Not Bar Food!"
+    ],
+    "correct": "Dizziness-Be-Gone no Jutsu Version 2.0",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Sayu's constellation?",
+    "options": [
+      "Arcella",
+      "Leo Minor",
+      "Tapirus Somniator",
+      "Nyctereutes Minor"
+    ],
+    "correct": "Nyctereutes Minor",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Sayu's Japanese VA?",
+    "options": [
+      "Takahashi Rie (高橋李依)",
+      "Ichimichi Mao (M・A・O)",
+      "Ousaka Ryouta (逢坂良太)",
+      "Aya Suzaki (洲崎綾)"
+    ],
+    "correct": "Aya Suzaki (洲崎綾)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Sayu come from?",
+    "options": [
+      "Sumeru",
+      "Fontaine",
+      "Mondstadt",
+      "Inazuma"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Sayu's English VA?",
+    "options": [
+      "Kira Buckland",
+      "Christian Banas",
+      "Lilypichu (Lily Ki)",
+      "Nic Olsen"
+    ],
+    "correct": "Lilypichu (Lily Ki)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Sayu released?",
+    "options": [
+      "v2.0",
+      "3.2",
+      "5.4",
+      "3.0"
+    ],
+    "correct": "v2.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Sayu wields?",
+    "options": [
+      "Claymore",
+      "Polearm",
+      "Sword",
+      "Catalyst"
+    ],
+    "correct": "Claymore",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Klee's special dish?",
+    "options": [
+      "Shimi Chazuke",
+      "Honey-Glazed Ceviche",
+      "A Stunning Stratagem",
+      "Fish-Flavored Toast"
+    ],
+    "correct": "Fish-Flavored Toast",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Klee's vision?",
+    "options": [
+      "Anemo",
+      "Cryo",
+      "Pyro",
+      "Dendro"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Klee's English VA?",
+    "options": [
+      "Allegra Clark",
+      "Poonam Basu",
+      "Christina Costello",
+      "Judy Alice Lee"
+    ],
+    "correct": "Poonam Basu",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Klee's birthday?",
+    "options": [
+      "March 30th",
+      "July 27th",
+      "October 29th",
+      "March 14th"
+    ],
+    "correct": "July 27th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Klee's constellation?",
+    "options": [
+      "Grus Nivis",
+      "Basileos Delta",
+      "Alatus Nemeseos",
+      "Trifolium"
+    ],
+    "correct": "Trifolium",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Klee has?",
+    "options": [
+      "Dance of Shimmering Waves",
+      "Fleeing Sunlight",
+      "Helm of the Radiant Rose",
+      "Thorny Benevolence"
+    ],
+    "correct": "Fleeing Sunlight",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Klee come from?",
+    "options": [
+      "Fontaine",
+      "Liyue",
+      "Mondstadt",
+      "Inazuma"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Klee wields?",
+    "options": [
+      "Catalyst",
+      "Bow",
+      "Sword",
+      "Claymore"
+    ],
+    "correct": "Catalyst",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Klee released?",
+    "options": [
+      "3.4",
+      "v1.0",
+      "2.6",
+      "2.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Amber's English VA?",
+    "options": [
+      "Jeannie Tirado",
+      "Kelly Baskin",
+      "Zach Aguilar",
+      "Jackie Lastra"
+    ],
+    "correct": "Kelly Baskin",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Amber's Japanese VA?",
+    "options": [
+      "Komatsu Mikako (小松未可子)",
+      "Fukuhara Ayaka (福原綾香)",
+      "Yamamoto Kazutomi (山本和臣)",
+      "Manaka Iwami (石見舞菜香)"
+    ],
+    "correct": "Manaka Iwami (石見舞菜香)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Amber released?",
+    "options": [
+      "5.0",
+      "v1.0",
+      "1.0",
+      "2.3"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Amber come from?",
+    "options": [
+      "Liyue",
+      "Sumeru",
+      "Fontaine",
+      "Mondstadt"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Amber wields?",
+    "options": [
+      "Polearm",
+      "Claymore",
+      "Bow",
+      "Catalyst"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Amber's constellation?",
+    "options": [
+      "Cistellula Mira",
+      "Alatus Nemeseos",
+      "Lupus Aureus",
+      "Lepus"
+    ],
+    "correct": "Lepus",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Amber has?",
+    "options": [
+      "Sprout of Rebirth",
+      "Gliding Champion",
+      "Thundering Seamstress",
+      "Frostwind Swordsman"
+    ],
+    "correct": "Gliding Champion",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Amber's vision?",
+    "options": [
+      "Electro",
+      "Dendro",
+      "Pyro",
+      "Cryo"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Amber's birthday?",
+    "options": [
+      "August 10th",
+      "September 9th",
+      "August 22nd",
+      "July 27th"
+    ],
+    "correct": "August 10th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Yanfei's birthday?",
+    "options": [
+      "July 28th",
+      "June 23rd",
+      "April 17th",
+      "October 25th"
+    ],
+    "correct": "July 28th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Yanfei has?",
+    "options": [
+      "Thundering Seamstress",
+      "Stage Lucinda",
+      "In the Wake of Wandering Winds",
+      "Wise Innocence"
+    ],
+    "correct": "Wise Innocence",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Yanfei's vision?",
+    "options": [
+      "Geo",
+      "Dendro",
+      "Electro",
+      "Pyro"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Yanfei wields?",
+    "options": [
+      "Bow",
+      "Catalyst",
+      "Claymore",
+      "Polearm"
+    ],
+    "correct": "Catalyst",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Yanfei released?",
+    "options": [
+      "5.3",
+      "1.0",
+      "v1.5",
+      "1.1"
+    ],
+    "correct": "v1.5",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Yanfei come from?",
+    "options": [
+      "Liyue",
+      "Inazuma",
+      "Sumeru",
+      "Fontaine"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Yanfei's Japanese VA?",
+    "options": [
+      "Saitou Chiwa (斎藤千和)",
+      "Nakatomi Mana (中臣真菜)",
+      "Yumiri Hanamori (花守 ゆみり)",
+      "Matsuoka Yoshitsugu (松岡禎丞)"
+    ],
+    "correct": "Yumiri Hanamori (花守 ゆみり)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Yanfei's English VA?",
+    "options": [
+      "Beau Bridgland",
+      "Sean Chiplock",
+      "Kimberley Anne Campbell",
+      "Lizzie Freeman"
+    ],
+    "correct": "Lizzie Freeman",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Yanfei's special dish?",
+    "options": [
+      "Hearthfire's Trail",
+      "My Way",
+      "Satiety Gel",
+      "Yummy Yum Cha"
+    ],
+    "correct": "My Way",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Kazuha's English VA?",
+    "options": [
+      "Mark Whitten",
+      "Kira Buckland",
+      "Griffin Burns",
+      "Cassandra Lee Morris"
+    ],
+    "correct": "Mark Whitten",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Kazuha's special dish?",
+    "options": [
+      "Utmost Care",
+      "All-Weather Beauty",
+      "No Tomorrow",
+      "Emotional Support"
+    ],
+    "correct": "All-Weather Beauty",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Kazuha released?",
+    "options": [
+      "1.0",
+      "5.0",
+      "v1.6",
+      "5.4"
+    ],
+    "correct": "v1.6",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Kazuha's vision?",
+    "options": [
+      "Anemo",
+      "Hydro",
+      "Electro",
+      "Pyro"
+    ],
+    "correct": "Anemo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Kazuha's constellation?",
+    "options": [
+      "Paradisaea",
+      "Mantichora",
+      "Chimaera Alebriius",
+      "Acer Palmatum"
+    ],
+    "correct": "Acer Palmatum",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Kazuha wields?",
+    "options": [
+      "Claymore",
+      "Polearm",
+      "Sword",
+      "Catalyst"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Kazuha come from?",
+    "options": [
+      "Sumeru",
+      "Liyue",
+      "Mondstadt",
+      "Inazuma"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Kazuha's Japanese VA?",
+    "options": [
+      "Tamura Yukari (田村ゆかり)",
+      "Shimoji Shino (下地紫野)",
+      "Umehara Yuuichirou (梅原裕一郎)",
+      "Nobunaga Shimazaki (島崎 信長)"
+    ],
+    "correct": "Nobunaga Shimazaki (島崎 信長)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Kazuha has?",
+    "options": [
+      "Trial by Fire",
+      "Scarlet Leaves Pursue Wild Waves",
+      "Icy Ressurection",
+      "Plenilune Gaze"
+    ],
+    "correct": "Scarlet Leaves Pursue Wild Waves",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Lisa has?",
+    "options": [
+      "Ardent Flames Forge the Soul",
+      "Witch of Purple Rose",
+      "Candlebearer, Shadowhunter",
+      "Juvenile Galant"
+    ],
+    "correct": "Witch of Purple Rose",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Lisa's special dish?",
+    "options": [
+      "Rockin' Riffin' Chicken!",
+      "Impeccably Organized",
+      "Mt. Mushroom (For One)",
+      "Mysterious Bolognese"
+    ],
+    "correct": "Mysterious Bolognese",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Lisa released?",
+    "options": [
+      "3.4",
+      "v1.0",
+      "1.0",
+      "2.3"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Lisa come from?",
+    "options": [
+      "Snezhnaya",
+      "Liyue",
+      "Mondstadt",
+      "Inazuma"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Lisa's Japanese VA?",
+    "options": [
+      "Waki Azumi (和氣あず未)",
+      "Ishikawa Yui (石川由依)",
+      "Yusa Koji (遊佐浩二)",
+      "Rie Tanaka (田中理恵)"
+    ],
+    "correct": "Rie Tanaka (田中理恵)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Lisa's birthday?",
+    "options": [
+      "July 20th",
+      "September 28th",
+      "June 9th",
+      "October 9th"
+    ],
+    "correct": "June 9th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Lisa wields?",
+    "options": [
+      "Sword",
+      "Bow",
+      "Polearm",
+      "Catalyst"
+    ],
+    "correct": "Catalyst",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Lisa's constellation?",
+    "options": [
+      "Paradisaea",
+      "Tempus Fugit",
+      "Felis Fuscus",
+      "Draco Rubedo"
+    ],
+    "correct": "Tempus Fugit",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Lisa's vision?",
+    "options": [
+      "Electro",
+      "Geo",
+      "Dendro",
+      "Anemo"
+    ],
+    "correct": "Electro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Xiangling's special dish?",
+    "options": [
+      "Stormcrest Pie",
+      "Wanmin Restaurant's Boiled Fish",
+      "Fruity Skewers",
+      "Yummy Yum Cha"
+    ],
+    "correct": "Wanmin Restaurant's Boiled Fish",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Xiangling's constellation?",
+    "options": [
+      "Crystallina",
+      "Trulla",
+      "Basileos Delta",
+      "Carnotaurus"
+    ],
+    "correct": "Trulla",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Xiangling's birthday?",
+    "options": [
+      "March 14th",
+      "April 17th",
+      "November 2nd",
+      "August 10th"
+    ],
+    "correct": "November 2nd",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Xiangling wields?",
+    "options": [
+      "Bow",
+      "Polearm",
+      "Sword",
+      "Catalyst"
+    ],
+    "correct": "Polearm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Xiangling has?",
+    "options": [
+      "Blazing Rift",
+      "Exquisite Delicacy",
+      "Gliding Champion",
+      "Saviour From Another World"
+    ],
+    "correct": "Exquisite Delicacy",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Xiangling's English VA?",
+    "options": [
+      "Jackie Lastra",
+      "Kelly Baskin",
+      "Erin Ebers",
+      "Daman Mills"
+    ],
+    "correct": "Jackie Lastra",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Xiangling come from?",
+    "options": [
+      "Mondstadt",
+      "Liyue",
+      "Sumeru",
+      "Inazuma"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Xiangling's vision?",
+    "options": [
+      "Anemo",
+      "Pyro",
+      "Geo",
+      "Dendro"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Xiangling released?",
+    "options": [
+      "1.0",
+      "1.4",
+      "v1.0",
+      "5.8"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Aloy wields?",
+    "options": [
+      "Claymore",
+      "Bow",
+      "Sword",
+      "Polearm"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Aloy's constellation?",
+    "options": [
+      "Mantichora",
+      "Nora Fortis",
+      "Vultur Volans",
+      "Rapperia"
+    ],
+    "correct": "Nora Fortis",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Aloy's Japanese VA?",
+    "options": [
+      "Suzaki Aya (洲崎綾)",
+      "Uchida Maaya (内田真礼)",
+      "Fukuhara Ayaka (福原綾香)",
+      "Ayahi Takagaki (高垣 彩陽)"
+    ],
+    "correct": "Ayahi Takagaki (高垣 彩陽)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Aloy's English VA?",
+    "options": [
+      "Erin Ebers",
+      "Giselle Fernandez",
+      "Lilypichu (Lily Ki)",
+      "Khoi Dao"
+    ],
+    "correct": "Giselle Fernandez",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Aloy released?",
+    "options": [
+      "5.7",
+      "1.0",
+      "1.0",
+      "v2.1"
+    ],
+    "correct": "v2.1",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Aloy has?",
+    "options": [
+      "Dire Balemoon",
+      "Mender of Tribulations",
+      "Helm of the Radiant Rose",
+      "Savior From Another World"
+    ],
+    "correct": "Savior From Another World",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Aloy's special dish?",
+    "options": [
+      "Slow-Cooked Bamboo Shoot Soup",
+      "Definitely Not Bar Food!",
+      "Satiety Gel",
+      "'Tagged and Bagged'"
+    ],
+    "correct": "Satiety Gel",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Aloy's birthday?",
+    "options": [
+      "September 7th",
+      "November 2nd",
+      "October 31st",
+      "April 4"
+    ],
+    "correct": "April 4",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Aloy's vision?",
+    "options": [
+      "Hydro",
+      "Geo",
+      "Cryo",
+      "Electro"
+    ],
+    "correct": "Cryo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Hu Tao's birthday?",
+    "options": [
+      "July 15th",
+      "April 22nd",
+      "January 18th",
+      "October 13th"
+    ],
+    "correct": "July 15th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Hu Tao has?",
+    "options": [
+      "Judicator of Secrets",
+      "Fragrance in Thaw",
+      "Protector From Afar",
+      "Flame-Mane"
+    ],
+    "correct": "Fragrance in Thaw",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Hu Tao's constellation?",
+    "options": [
+      "Nubis Caesor",
+      "Trulla Cementarii",
+      "Papilio Charontis",
+      "Victor Mare"
+    ],
+    "correct": "Papilio Charontis",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Hu Tao's special dish?",
+    "options": [
+      "A Prize Catch",
+      "Ghostly March",
+      "Slow-Cooked Bamboo Shoot Soup",
+      "Heat-Quelling Soup"
+    ],
+    "correct": "Ghostly March",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Hu Tao released?",
+    "options": [
+      "v1.3",
+      "2.3",
+      "2.1",
+      "1.3"
+    ],
+    "correct": "v1.3",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Hu Tao's vision?",
+    "options": [
+      "Anemo",
+      "Pyro",
+      "Dendro",
+      "Hydro"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Hu Tao come from?",
+    "options": [
+      "Natlan",
+      "Inazuma",
+      "Mondstadt",
+      "Liyue"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Hu Tao's Japanese VA?",
+    "options": [
+      "Nakajima Megumi (中島愛)",
+      "Tano Asami (田野アサミ)",
+      "Maeno Tomoaki (前野智昭)",
+      "Rie Takahashi (高橋李依)"
+    ],
+    "correct": "Rie Takahashi (高橋李依)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Hu Tao's English VA?",
+    "options": [
+      "Jane Jackson",
+      "Brianna Knickerbocker",
+      "Max Mittelman",
+      "Nic Olsen"
+    ],
+    "correct": "Brianna Knickerbocker",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Barbara's English VA?",
+    "options": [
+      "Jennifer Losi",
+      "Paul Castro Jr.",
+      "Laura Stahl",
+      "Nic Olsen"
+    ],
+    "correct": "Laura Stahl",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Barbara's vision?",
+    "options": [
+      "Geo",
+      "Hydro",
+      "Pyro",
+      "Electro"
+    ],
+    "correct": "Hydro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Barbara's birthday?",
+    "options": [
+      "December 21st",
+      "July 24th",
+      "July 5th",
+      "March 13th"
+    ],
+    "correct": "July 5th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Barbara's Japanese VA?",
+    "options": [
+      "Kimura Ryohei (木村良平)",
+      "Akari Kitō (鬼頭明里)",
+      "Yamamoto Kazutomi (山本和臣)",
+      "Tamura Yukari (田村ゆかり)"
+    ],
+    "correct": "Akari Kitō (鬼頭明里)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Barbara released?",
+    "options": [
+      "1.0",
+      "1.0",
+      "v1.0",
+      "4.7"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Barbara's special dish?",
+    "options": [
+      "All-Delicacy Parcels",
+      "Mysterious Bolognese",
+      "Spicy Stew",
+      "\"After-Class Practice\""
+    ],
+    "correct": "Spicy Stew",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Barbara wields?",
+    "options": [
+      "Bow",
+      "Polearm",
+      "Sword",
+      "Catalyst"
+    ],
+    "correct": "Catalyst",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Barbara has?",
+    "options": [
+      "Shining Idol",
+      "Spectacle of Phantasmagoria",
+      "Helm of the Radiant Rose",
+      "Dance of Lotuslight"
+    ],
+    "correct": "Shining Idol",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Barbara come from?",
+    "options": [
+      "Mondstadt",
+      "Natlan",
+      "Fontaine",
+      "Liyue"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Razor has?",
+    "options": [
+      "Wolf Boy",
+      "Prinzessin der Verurteilung!",
+      "Empyrean Reflection",
+      "Emissary of Solitary Iniquity"
+    ],
+    "correct": "Wolf Boy",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Razor's birthday?",
+    "options": [
+      "December 31st",
+      "August 26th",
+      "June 26th",
+      "September 9th"
+    ],
+    "correct": "September 9th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Razor's constellation?",
+    "options": [
+      "Cistellula Mira",
+      "Viator",
+      "Lupus Minor",
+      "Vultur Volans"
+    ],
+    "correct": "Lupus Minor",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Razor's vision?",
+    "options": [
+      "Dendro",
+      "Pyro",
+      "Electro",
+      "Anemo"
+    ],
+    "correct": "Electro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Razor wields?",
+    "options": [
+      "Polearm",
+      "Bow",
+      "Catalyst",
+      "Claymore"
+    ],
+    "correct": "Claymore",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Razor's special dish?",
+    "options": [
+      "Fruity Skewers",
+      "Heartstring Noodles",
+      "Moment of Respite",
+      "Puppy-Paw Hash Brown"
+    ],
+    "correct": "Puppy-Paw Hash Brown",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Razor's Japanese VA?",
+    "options": [
+      "Ono Kensho (小野賢章)",
+      "Kōki Uchiyama (内山昂輝)",
+      "Yusa Koji (遊佐浩二)",
+      "Kondo Takashi (近藤隆)"
+    ],
+    "correct": "Kōki Uchiyama (内山昂輝)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Razor come from?",
+    "options": [
+      "Fontaine",
+      "Inazuma",
+      "Snezhnaya",
+      "Mondstadt"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Razor released?",
+    "options": [
+      "v1.0",
+      "4.0",
+      "5.1",
+      "5.6"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Eula wields?",
+    "options": [
+      "Claymore",
+      "Sword",
+      "Catalyst",
+      "Bow"
+    ],
+    "correct": "Claymore",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Eula come from?",
+    "options": [
+      "Mondstadt",
+      "Liyue",
+      "Fontaine",
+      "Snezhnaya"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Eula's birthday?",
+    "options": [
+      "October 14th",
+      "February 29th",
+      "June 26th",
+      "October 25th"
+    ],
+    "correct": "October 25th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Eula's Japanese VA?",
+    "options": [
+      "Kaida Yuuko (甲斐田裕子)",
+      "Horie Shun (堀江瞬)",
+      "Rina Sato (佐藤利奈)",
+      "Waki Azumi (和氣あず未)"
+    ],
+    "correct": "Rina Sato (佐藤利奈)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Eula has?",
+    "options": [
+      "Flame-Mane",
+      "Wondrous Dragonheir",
+      "Dance of the Shimmering Wave",
+      "Chivalric Blossom"
+    ],
+    "correct": "Dance of the Shimmering Wave",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Eula's special dish?",
+    "options": [
+      "\"Sweet Dream\"",
+      "Halvamazd",
+      "Long Night Alight",
+      "Stormcrest Pie"
+    ],
+    "correct": "Stormcrest Pie",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Eula released?",
+    "options": [
+      "3.3",
+      "1.0",
+      "v1.5",
+      "4.6"
+    ],
+    "correct": "v1.5",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Eula's constellation?",
+    "options": [
+      "Automaton",
+      "Aphros Delos",
+      "Peregrinus",
+      "Tempus Fugit"
+    ],
+    "correct": "Aphros Delos",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Eula's vision?",
+    "options": [
+      "Anemo",
+      "Cryo",
+      "Hydro",
+      "Electro"
+    ],
+    "correct": "Cryo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Venti released?",
+    "options": [
+      "4.1",
+      "5.0",
+      "5.2",
+      "v1.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Venti's vision?",
+    "options": [
+      "Dendro",
+      "Anemo",
+      "Electro",
+      "Geo"
+    ],
+    "correct": "Anemo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Venti's Japanese VA?",
+    "options": [
+      "Yuzuki Ryoka (柚木涼香)",
+      "Takao Kanon (高尾奏音)",
+      "Ayumu Murase (村瀬歩)",
+      "Hikasa Yoko (日笠陽子)"
+    ],
+    "correct": "Ayumu Murase (村瀬歩)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Venti's constellation?",
+    "options": [
+      "Astrolabos",
+      "Lepus",
+      "Fabulae Textile",
+      "Lupus Aureus"
+    ],
+    "correct": "Fabulae Textile",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Venti wields?",
+    "options": [
+      "Bow",
+      "Polearm",
+      "Catalyst",
+      "Claymore"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Venti's birthday?",
+    "options": [
+      "April 2nd",
+      "June 16th",
+      "January 22nd",
+      "February 14th"
+    ],
+    "correct": "June 16th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Venti's English VA?",
+    "options": [
+      "Laila Berzins",
+      "Anairis Quiñones",
+      "Griffin Burns",
+      "Erika Harlacher"
+    ],
+    "correct": "Erika Harlacher",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Venti has?",
+    "options": [
+      "Windborne Bard",
+      "Wisdom's Measure",
+      "Driving Thunder",
+      "Mujina Ninja"
+    ],
+    "correct": "Windborne Bard",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Venti come from?",
+    "options": [
+      "Sumeru",
+      "Natlan",
+      "Liyue",
+      "Mondstadt"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Diluc's vision?",
+    "options": [
+      "Hydro",
+      "Cryo",
+      "Pyro",
+      "Electro"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Diluc has?",
+    "options": [
+      "Passerine Herald",
+      "Spectacle of Phantasmagoria",
+      "In the Wake of Wandering Winds",
+      "The Dark Side of Dawn"
+    ],
+    "correct": "The Dark Side of Dawn",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Diluc released?",
+    "options": [
+      "v1.0",
+      "5.4",
+      "1.4",
+      "Luna II"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Diluc's birthday?",
+    "options": [
+      "July 20th",
+      "January 24th",
+      "September 21st",
+      "April 30th"
+    ],
+    "correct": "April 30th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Diluc's constellation?",
+    "options": [
+      "Palumbus",
+      "Arcella",
+      "Panthera Ocelota",
+      "Noctua"
+    ],
+    "correct": "Noctua",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Diluc's English VA?",
+    "options": [
+      "Caleb Yen",
+      "Robb Moreira",
+      "Sean Chiplock",
+      "Annabel Brook"
+    ],
+    "correct": "Sean Chiplock",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Diluc's special dish?",
+    "options": [
+      "\"Once Upon a Time in Mondstadt\"",
+      "Gold-Standard Healthy Meal",
+      "\"My Way\"",
+      "Saurian Hunter's Reward"
+    ],
+    "correct": "\"Once Upon a Time in Mondstadt\"",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Diluc come from?",
+    "options": [
+      "Snezhnaya",
+      "Inazuma",
+      "Natlan",
+      "Mondstadt"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Diluc's Japanese VA?",
+    "options": [
+      "Saito Soma (斉藤壮馬)",
+      "Kensho Ono (小野賢章)",
+      "Kaneda Tomoko (金田朋子)",
+      "Tomita Miyu (富田美憂)"
+    ],
+    "correct": "Kensho Ono (小野賢章)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Diona wields?",
+    "options": [
+      "Catalyst",
+      "Polearm",
+      "Claymore",
+      "Bow"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Diona released?",
+    "options": [
+      "1.0",
+      "1.0",
+      "1.0",
+      "v1.1"
+    ],
+    "correct": "v1.1",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Diona's constellation?",
+    "options": [
+      "Cerberus",
+      "Tempus Fugit",
+      "Draco Rubedo",
+      "Feles"
+    ],
+    "correct": "Feles",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Diona's special dish?",
+    "options": [
+      "All-Weather Beauty",
+      "Definitely Not Bar Food!",
+      "Way of the Strong",
+      "Fukuuchi Udon"
+    ],
+    "correct": "Definitely Not Bar Food!",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Diona's birthday?",
+    "options": [
+      "May 27th",
+      "March 14th",
+      "January 24th",
+      "January 18th"
+    ],
+    "correct": "January 18th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Diona has?",
+    "options": [
+      "Helm of the Radiant Rose",
+      "Golden Vow",
+      "Admonishing Instruction",
+      "Kätzlein Cocktail"
+    ],
+    "correct": "Kätzlein Cocktail",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Diona's English VA?",
+    "options": [
+      "Amber Aviles",
+      "Jane Jackson",
+      "Dina Sherman",
+      "Jennifer Losi"
+    ],
+    "correct": "Dina Sherman",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Diona's Japanese VA?",
+    "options": [
+      "Uchiyama Kouki (内山昂輝)",
+      "Mizuhashi Kaori (水橋かおり)",
+      "Shiori Izawa (井澤詩織)",
+      "Shimono Hiro (下野紘)"
+    ],
+    "correct": "Shiori Izawa (井澤詩織)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Diona come from?",
+    "options": [
+      "Mondstadt",
+      "Natlan",
+      "Snezhnaya",
+      "Fontaine"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Qiqi's constellation?",
+    "options": [
+      "Pristina Nola",
+      "Palumbus",
+      "Ochotona Princeps",
+      "Feles"
+    ],
+    "correct": "Pristina Nola",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Qiqi released?",
+    "options": [
+      "v1.0",
+      "5.7",
+      "1.0",
+      "4.4"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Qiqi wields?",
+    "options": [
+      "Sword",
+      "Polearm",
+      "Claymore",
+      "Bow"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Qiqi's special dish?",
+    "options": [
+      "No Tomorrow",
+      "\"Sweet Dream\"",
+      "Secret Art",
+      "Secret Sauce BBQ Ribs"
+    ],
+    "correct": "No Tomorrow",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Qiqi's vision?",
+    "options": [
+      "Electro",
+      "Dendro",
+      "Pyro",
+      "Cryo"
+    ],
+    "correct": "Cryo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Qiqi has?",
+    "options": [
+      "Icy Ressurection",
+      "Astute Amusement",
+      "Icy Resurrection",
+      "Leonine Vanguard"
+    ],
+    "correct": "Icy Resurrection",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Qiqi's Japanese VA?",
+    "options": [
+      "Yukari Tamura (田村ゆかり)",
+      "Nakajima Megumi (中島愛)",
+      "Toyosaki Aki (豊崎愛生)",
+      "Satō Satomi (佐藤聡美)"
+    ],
+    "correct": "Yukari Tamura (田村ゆかり)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Qiqi's birthday?",
+    "options": [
+      "June 1st",
+      "March 3rd",
+      "August 8th",
+      "March 13th"
+    ],
+    "correct": "March 3rd",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Qiqi's English VA?",
+    "options": [
+      "Ratana",
+      "Erin Ebers",
+      "Mark Whitten",
+      "Christie Cate"
+    ],
+    "correct": "Christie Cate",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Yun Jin's Japanese VA?",
+    "options": [
+      "Horie Yui (堀江由衣)",
+      "Ozawa Ari (小澤亜李)",
+      "Ishida Akira (石田彰)",
+      "Koiwai Kotori (小岩井ことり), Yang Yang (杨扬)"
+    ],
+    "correct": "Koiwai Kotori (小岩井ことり), Yang Yang (杨扬)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Yun Jin wields?",
+    "options": [
+      "Polearm",
+      "Bow",
+      "Claymore",
+      "Catalyst"
+    ],
+    "correct": "Polearm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Yun Jin come from?",
+    "options": [
+      "Liyue",
+      "Sumeru",
+      "Snezhnaya",
+      "Natlan"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Yun Jin's English VA?",
+    "options": [
+      "Judy Alice Lee, Yang Yang (杨扬)",
+      "Robb Moreira",
+      "Jacob Takanashi",
+      "Ashely Biski"
+    ],
+    "correct": "Judy Alice Lee, Yang Yang (杨扬)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Yun Jin's constellation?",
+    "options": [
+      "Acer Palmatum",
+      "Parma Cordis",
+      "Opera Grandis",
+      "Astrolabos"
+    ],
+    "correct": "Opera Grandis",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Yun Jin has?",
+    "options": [
+      "Beyond Mortality",
+      "Stage Lucida",
+      "Candlebearer, Shadowhunter",
+      "Valley Orchid"
+    ],
+    "correct": "Stage Lucida",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Yun Jin released?",
+    "options": [
+      "2.8",
+      "v2.4",
+      "1.0",
+      "1.0"
+    ],
+    "correct": "v2.4",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Yun Jin's special dish?",
+    "options": [
+      "Die Heilige Sinfonie",
+      "Definitely Not Bar Food!",
+      "Exclusive Scoop: Gourmet Column",
+      "Cloud-Shrouded Jade"
+    ],
+    "correct": "Cloud-Shrouded Jade",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Yun Jin's birthday?",
+    "options": [
+      "July 28th",
+      "March 30th",
+      "July 27th",
+      "May 21st"
+    ],
+    "correct": "May 21st",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Kuki's special dish?",
+    "options": [
+      "Omurice Waltz",
+      "Apple Stew (Trial Version)",
+      "Summer Festival Fish",
+      "Prosperous Peace"
+    ],
+    "correct": "Omurice Waltz",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Kuki's constellation?",
+    "options": [
+      "Sagitta Scutum",
+      "Victor Mare",
+      "Leptailurus Cervarius",
+      "Tribulatio Demptio"
+    ],
+    "correct": "Tribulatio Demptio",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Kuki come from?",
+    "options": [
+      "Inazuma",
+      "Sumeru",
+      "Mondstadt",
+      "Natlan"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Kuki released?",
+    "options": [
+      "2.7",
+      "5.2",
+      "v2.7",
+      "1.0"
+    ],
+    "correct": "v2.7",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Kuki's vision?",
+    "options": [
+      "Electro",
+      "Anemo",
+      "Geo",
+      "Pyro"
+    ],
+    "correct": "Electro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Kuki's English VA?",
+    "options": [
+      "Kira Buckland",
+      "Robb Moreira",
+      "Max Mittelman",
+      "Elizabeth Dean"
+    ],
+    "correct": "Kira Buckland",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Kuki has?",
+    "options": [
+      "Mender of Tribulations",
+      "Eons Adrift",
+      "Protector From Afar",
+      "Wondrous Dragonheir"
+    ],
+    "correct": "Mender of Tribulations",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Kuki's birthday?",
+    "options": [
+      "September 22nd",
+      "July 27",
+      "October 19th",
+      "January 9th"
+    ],
+    "correct": "July 27",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Kuki wields?",
+    "options": [
+      "Sword",
+      "Polearm",
+      "Claymore",
+      "Bow"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Yelan wields?",
+    "options": [
+      "Claymore",
+      "Bow",
+      "Sword",
+      "Polearm"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Yelan's vision?",
+    "options": [
+      "Cryo",
+      "Dendro",
+      "Hydro",
+      "Pyro"
+    ],
+    "correct": "Hydro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Yelan has?",
+    "options": [
+      "Pillar of Fortitude",
+      "Valley Orchid",
+      "Obsidian Opalstar",
+      "Ordainer of Inexorable Judgement"
+    ],
+    "correct": "Valley Orchid",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Yelan's Japanese VA?",
+    "options": [
+      "Minagawa Junko (皆川純子)",
+      "Hanamori Yumiri (花守ゆみり)",
+      "Endou Aya (遠藤 綾)",
+      "Kohara Konomi (小原好美)"
+    ],
+    "correct": "Endou Aya (遠藤 綾)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Yelan come from?",
+    "options": [
+      "Mondstadt",
+      "Snezhnaya",
+      "Fontaine",
+      "Liyue"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Yelan's special dish?",
+    "options": [
+      "Dew-Dipped Shrimp",
+      "Yearning",
+      "Way of the Strong",
+      "\"Pick What You Like!\""
+    ],
+    "correct": "Dew-Dipped Shrimp",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Yelan's constellation?",
+    "options": [
+      "Vultur Volans",
+      "Umbrabilis Orchis",
+      "Magicae Lucerna",
+      "Phoca Neomonachus"
+    ],
+    "correct": "Umbrabilis Orchis",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Yelan's English VA?",
+    "options": [
+      "Daman Mills",
+      "Mark Whitten",
+      "Laura Post",
+      "Chandni Parekh"
+    ],
+    "correct": "Laura Post",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Yelan released?",
+    "options": [
+      "2.0",
+      "v2.7",
+      "4.7",
+      "2.6"
+    ],
+    "correct": "v2.7",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Thoma's vision?",
+    "options": [
+      "Cryo",
+      "Hydro",
+      "Pyro",
+      "Dendro"
+    ],
+    "correct": "Pyro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Thoma's special dish?",
+    "options": [
+      "Jade-Cut Flowers",
+      "Traditionally-Made Charcoal-Baked Ajilenakh Cake",
+      "\"Warmth\"",
+      "Energizing Bento"
+    ],
+    "correct": "\"Warmth\"",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Thoma released?",
+    "options": [
+      "4.7",
+      "v2.2",
+      "3.5",
+      "5.4"
+    ],
+    "correct": "v2.2",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Thoma's English VA?",
+    "options": [
+      "Christian Banas",
+      "Erica Mendez",
+      "Giselle Fernandez",
+      "Judy Alice Lee"
+    ],
+    "correct": "Christian Banas",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Thoma come from?",
+    "options": [
+      "Natlan",
+      "Fontaine",
+      "Inazuma",
+      "Sumeru"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Thoma's birthday?",
+    "options": [
+      "January 9th",
+      "February 2nd",
+      "October 9th",
+      "October 19th"
+    ],
+    "correct": "January 9th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Thoma wields?",
+    "options": [
+      "Sword",
+      "Polearm",
+      "Claymore",
+      "Catalyst"
+    ],
+    "correct": "Polearm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Thoma has?",
+    "options": [
+      "Shadow of Night-Wind",
+      "Candlebearer, Shadowhunter",
+      "Protector From Afar",
+      "Wondrous Dragonheir"
+    ],
+    "correct": "Protector From Afar",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Thoma's Japanese VA?",
+    "options": [
+      "Masakazu Morita (森田成一)",
+      "Minagawa Junko (皆川純子)",
+      "Satō Satomi (佐藤聡美)",
+      "Komatsu Shouhei (小松昌平)"
+    ],
+    "correct": "Masakazu Morita (森田成一)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Traveller (female)'s English VA?",
+    "options": [
+      "Zeno Robinson",
+      "Sarah Miller-Crews",
+      "Keith Silverstein",
+      "Chris Hackney"
+    ],
+    "correct": "Sarah Miller-Crews",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Traveller (female) has?",
+    "options": [
+      "Analytical Harmony",
+      "Outlander",
+      "Valley Orchid",
+      "Pearl of Wisdom"
+    ],
+    "correct": "Outlander",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Traveller (female)'s Japanese VA?",
+    "options": [
+      "Kimura Ryohei (木村良平)",
+      "Hayami Saori (早見沙織)",
+      "Komatsu Shouhei (小松昌平)",
+      "Aoi Yūki (悠木碧)"
+    ],
+    "correct": "Aoi Yūki (悠木碧)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Traveller (female)'s birthday?",
+    "options": [
+      "Player's Choice",
+      "October 31st",
+      "December 2nd",
+      "March 14th"
+    ],
+    "correct": "Player's Choice",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Traveller (female)'s vision?",
+    "options": [
+      "Geo",
+      "Cryo",
+      "None",
+      "Pyro"
+    ],
+    "correct": "None",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Traveller (female)'s constellation?",
+    "options": [
+      "Ignis Purgatorius",
+      "Viatrix",
+      "Carnotaurus",
+      "Hualina Veritas"
+    ],
+    "correct": "Viatrix",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Traveller (female) released?",
+    "options": [
+      "2.1",
+      "v1.0",
+      "5.8",
+      "4.2"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Traveller (female) wields?",
+    "options": [
+      "Bow",
+      "Claymore",
+      "Sword",
+      "Polearm"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Albedo's Japanese VA?",
+    "options": [
+      "Kenji Nojima (野島健児)",
+      "Matsuoka Yoshitsugu (松岡禎丞)",
+      "Yuzuki Ryoka (柚木涼香)",
+      "Hayami Saori (早見沙織)"
+    ],
+    "correct": "Kenji Nojima (野島健児)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Albedo come from?",
+    "options": [
+      "Mondstadt",
+      "Natlan",
+      "Fontaine",
+      "Sumeru"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Albedo released?",
+    "options": [
+      "4.6",
+      "5.6",
+      "2.5",
+      "v1.2"
+    ],
+    "correct": "v1.2",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Albedo's English VA?",
+    "options": [
+      "Cat Protano",
+      "Khoi Dao",
+      "Beau Bridgland",
+      "Poonam Basu"
+    ],
+    "correct": "Khoi Dao",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Albedo's vision?",
+    "options": [
+      "Hydro",
+      "Cryo",
+      "Electro",
+      "Geo"
+    ],
+    "correct": "Geo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Albedo's constellation?",
+    "options": [
+      "Princeps Cretaceus",
+      "Alatus Nemeseos",
+      "Felis Alba",
+      "Canis Bellatoris"
+    ],
+    "correct": "Princeps Cretaceus",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Albedo wields?",
+    "options": [
+      "Bow",
+      "Polearm",
+      "Sword",
+      "Catalyst"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Albedo's special dish?",
+    "options": [
+      "Cubic Tricks",
+      "Heat-Quelling Soup",
+      "Jade-Cut Flowers",
+      "Woodland Dream"
+    ],
+    "correct": "Woodland Dream",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Albedo's birthday?",
+    "options": [
+      "August 16th",
+      "October 25th",
+      "September 13th",
+      "November 15th"
+    ],
+    "correct": "September 13th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Chongyun has?",
+    "options": [
+      "Frozen Ardor",
+      "Embrace of Enchanting Dreams",
+      "Windborne Bard",
+      "Dance of Shimmering Waves"
+    ],
+    "correct": "Frozen Ardor",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Chongyun released?",
+    "options": [
+      "1.6",
+      "v1.0",
+      "2.3",
+      "5.4"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Chongyun's birthday?",
+    "options": [
+      "July 5th",
+      "September 24th",
+      "May 8th",
+      "September 7th"
+    ],
+    "correct": "September 7th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Chongyun wields?",
+    "options": [
+      "Catalyst",
+      "Claymore",
+      "Sword",
+      "Bow"
+    ],
+    "correct": "Claymore",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Chongyun's constellation?",
+    "options": [
+      "Lotos Somno",
+      "Patina Anavatlaca",
+      "Nubis Caesor",
+      "Osmanthus"
+    ],
+    "correct": "Nubis Caesor",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Chongyun's special dish?",
+    "options": [
+      "Mysterious Bolognese",
+      "Cloud-Shrouded Jade",
+      "The Only Truth",
+      "Cold Noodles with Mountain Delicacies"
+    ],
+    "correct": "Cold Noodles with Mountain Delicacies",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Chongyun come from?",
+    "options": [
+      "Natlan",
+      "Liyue",
+      "Snezhnaya",
+      "Fontaine"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Chongyun's Japanese VA?",
+    "options": [
+      "Soma Saito (斉藤壮馬)",
+      "Koshimizu Ami (小清水亜美)",
+      "Shimono Hiro (下野紘)",
+      "Uchida Yuma (内田雄馬)"
+    ],
+    "correct": "Soma Saito (斉藤壮馬)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Chongyun's English VA?",
+    "options": [
+      "Jonny Loquasto",
+      "Chris Hackney",
+      "Beau Bridgland",
+      "Cory Yee"
+    ],
+    "correct": "Beau Bridgland",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Fischl's Japanese VA?",
+    "options": [
+      "Maaya Uchida (内田真礼), Oz: Yasunori Masutani (増谷康紀)",
+      "Takamori Natsumi (高森奈津美)",
+      "Noto Mamiko (能登麻美子)",
+      "Terashima Junta (寺島惇太)"
+    ],
+    "correct": "Maaya Uchida (内田真礼), Oz: Yasunori Masutani (増谷康紀)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Fischl's special dish?",
+    "options": [
+      "Impeccably Organized",
+      "Die Heilige Sinfonie",
+      "Omurice Waltz",
+      "Quiet Elegance"
+    ],
+    "correct": "Die Heilige Sinfonie",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Fischl wields?",
+    "options": [
+      "Claymore",
+      "Bow",
+      "Polearm",
+      "Catalyst"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Fischl come from?",
+    "options": [
+      "Snezhnaya",
+      "Mondstadt",
+      "Inazuma",
+      "Liyue"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Fischl's birthday?",
+    "options": [
+      "March 3rd",
+      "July 27th",
+      "May 27th",
+      "June 9th"
+    ],
+    "correct": "May 27th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Fischl's constellation?",
+    "options": [
+      "Astrolabos",
+      "Animula Choragi",
+      "Alatus Nemeseos",
+      "Corvus"
+    ],
+    "correct": "Corvus",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Fischl's vision?",
+    "options": [
+      "Geo",
+      "Cryo",
+      "Electro",
+      "Pyro"
+    ],
+    "correct": "Electro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Fischl has?",
+    "options": [
+      "Prinzessin der Verurteilung!",
+      "Mottled Gold Yet Unsmelted",
+      "Valley Orchid",
+      "Flame-Mane"
+    ],
+    "correct": "Prinzessin der Verurteilung!",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Fischl's English VA?",
+    "options": [
+      "Valeria Rodriguez (Pre-5.8)",
+      "Brittany Cox, Oz: Ben Pronsky",
+      "Katiana Sarkissian",
+      "Judy Alice Lee"
+    ],
+    "correct": "Brittany Cox, Oz: Ben Pronsky",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Ningguang's vision?",
+    "options": [
+      "Hydro",
+      "Dendro",
+      "Geo",
+      "Electro"
+    ],
+    "correct": "Geo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Ningguang wields?",
+    "options": [
+      "Polearm",
+      "Catalyst",
+      "Bow",
+      "Claymore"
+    ],
+    "correct": "Catalyst",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Ningguang released?",
+    "options": [
+      "1.0",
+      "v1.0",
+      "2.7",
+      "1.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Ningguang has?",
+    "options": [
+      "Executor of Justice",
+      "Juvenile Galant",
+      "Eclipsing Star",
+      "Chivalric Blossom"
+    ],
+    "correct": "Eclipsing Star",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Ningguang's birthday?",
+    "options": [
+      "March 16th",
+      "February 2nd",
+      "May 3rd",
+      "August 26th"
+    ],
+    "correct": "August 26th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Ningguang's English VA?",
+    "options": [
+      "Kieran Regan",
+      "Kristen McGuire",
+      "Allegra Clark",
+      "Erin Ebers"
+    ],
+    "correct": "Erin Ebers",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Ningguang's special dish?",
+    "options": [
+      "Qiankun Mora Meat",
+      "Well-Balanced Meal",
+      "Exclusive Scoop: Gourmet Column",
+      "Mysterious Bolognese"
+    ],
+    "correct": "Qiankun Mora Meat",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Ningguang's constellation?",
+    "options": [
+      "Fabulae Textile",
+      "Opus Aequilibrium",
+      "Pomum de Ambra",
+      "Lotos Somno"
+    ],
+    "correct": "Opus Aequilibrium",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Ningguang's Japanese VA?",
+    "options": [
+      "Ueda Kana (植田佳奈)",
+      "Tanaka Rie (田中理恵)",
+      "Sayaka Ohara (大原さやか)",
+      "Umehara Yuuichirou (梅原裕一郎)"
+    ],
+    "correct": "Sayaka Ohara (大原さやか)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Jean has?",
+    "options": [
+      "Helm of the Radiant Rose",
+      "Stage Lucinda",
+      "Dandelion Knight",
+      "Chivalric Blossom"
+    ],
+    "correct": "Dandelion Knight",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Jean's special dish?",
+    "options": [
+      "Invigorating Pizza Invigorating Pizza",
+      "Long Night Alight",
+      "Puppy-Paw Hash Brown",
+      "\"Abyssal Bounty\""
+    ],
+    "correct": "Invigorating Pizza Invigorating Pizza",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Jean wields?",
+    "options": [
+      "Catalyst",
+      "Bow",
+      "Claymore",
+      "Sword"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "In which version was Jean released?",
+    "options": [
+      "2.3",
+      "1.2",
+      "1.0",
+      "v1.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Jean's constellation?",
+    "options": [
+      "Leo Minor",
+      "Princeps Cretaceus",
+      "Ochotona Princeps",
+      "Sapientia Oromasdis"
+    ],
+    "correct": "Leo Minor",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Jean's Japanese VA?",
+    "options": [
+      "Koiwai Kotori (小岩井ことり)",
+      "Chiwa Saitō (斎藤千和)",
+      "Umehara Yuuichirou (梅原裕一郎)",
+      "Tamura Yukari (田村ゆかり)"
+    ],
+    "correct": "Chiwa Saitō (斎藤千和)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Jean come from?",
+    "options": [
+      "Mondstadt",
+      "Liyue",
+      "Fontaine",
+      "Sumeru"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Jean's vision?",
+    "options": [
+      "Geo",
+      "Electro",
+      "Anemo",
+      "Hydro"
+    ],
+    "correct": "Anemo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Jean's English VA?",
+    "options": [
+      "Stephanie Southerland",
+      "Ratana",
+      "Valeria Rodriguez (Pre-5.8)",
+      "Angelina Danielle Cama"
+    ],
+    "correct": "Stephanie Southerland",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Zhongli's constellation?",
+    "options": [
+      "Parma Cordis",
+      "Lapis Dei",
+      "Vultur Gryphus",
+      "Taurus Iracundus"
+    ],
+    "correct": "Lapis Dei",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Zhongli has?",
+    "options": [
+      "Vago Mundo",
+      "Crowfeather Kaburaya",
+      "Trial by Fire",
+      "Chivalric Blossom"
+    ],
+    "correct": "Vago Mundo",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the type of weapon that Zhongli wields?",
+    "options": [
+      "Claymore",
+      "Bow",
+      "Sword",
+      "Polearm"
+    ],
+    "correct": "Polearm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Zhongli's vision?",
+    "options": [
+      "Hydro",
+      "Dendro",
+      "Electro",
+      "Geo"
+    ],
+    "correct": "Geo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Zhongli's special dish?",
+    "options": [
+      "'Fashion Show'",
+      "Encompassing Gladness",
+      "Gold-Standard Healthy Meal",
+      "Slow-Cooked Bamboo Shoot Soup"
+    ],
+    "correct": "Slow-Cooked Bamboo Shoot Soup",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Zhongli's birthday?",
+    "options": [
+      "December 31st",
+      "October 25th",
+      "April 20th",
+      "June 1st"
+    ],
+    "correct": "December 31st",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Zhongli come from?",
+    "options": [
+      "Sumeru",
+      "Snezhnaya",
+      "Liyue",
+      "Mondstadt"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Zhongli's Japanese VA?",
+    "options": [
+      "Mizuki Nana (水樹 奈々)",
+      "Tomoaki Maeno (前野智昭)",
+      "Koiwai Kotori (小岩井ことり)",
+      "Nakajima Megumi (中島愛)"
+    ],
+    "correct": "Tomoaki Maeno (前野智昭)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Zhongli released?",
+    "options": [
+      "1.6",
+      "v1.1",
+      "2.6",
+      "Luna III"
+    ],
+    "correct": "v1.1",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Keqing's constellation?",
+    "options": [
+      "Papilio Charontis",
+      "Pomum de Ambra",
+      "Trulla Cementarii",
+      "Cerberus"
+    ],
+    "correct": "Trulla Cementarii",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Keqing come from?",
+    "options": [
+      "Snezhnaya",
+      "Liyue",
+      "Natlan",
+      "Fontaine"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Keqing wields?",
+    "options": [
+      "Claymore",
+      "Sword",
+      "Catalyst",
+      "Polearm"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Keqing's birthday?",
+    "options": [
+      "November 2nd",
+      "August 8th",
+      "November 20th",
+      "August 31st"
+    ],
+    "correct": "November 20th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Keqing has?",
+    "options": [
+      "Driving Thunder",
+      "Prinzessin der Verurteilung!",
+      "Frostflake Heron",
+      "Harmless Sweetie"
+    ],
+    "correct": "Driving Thunder",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Keqing's English VA?",
+    "options": [
+      "Ashely Biski",
+      "Kayli Mills",
+      "Kristen McGuire",
+      "Jane Jackson"
+    ],
+    "correct": "Kayli Mills",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Keqing's special dish?",
+    "options": [
+      "Hymn of Gathered Flame",
+      "Survival Grilled Fish",
+      "Super-Dee-Duper Delicious Meat Roll",
+      "Woodland Dream"
+    ],
+    "correct": "Survival Grilled Fish",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Keqing's Japanese VA?",
+    "options": [
+      "Horie Shun (堀江瞬)",
+      "Koshimizu Ami (小清水亜美)",
+      "Ohara Sayaka (大原さやか)",
+      "Eri Kitamura (喜多村英梨)"
+    ],
+    "correct": "Eri Kitamura (喜多村英梨)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Keqing released?",
+    "options": [
+      "5.6",
+      "v1.0",
+      "Luna III",
+      "1.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Ganyu's vision?",
+    "options": [
+      "Electro",
+      "Cryo",
+      "Hydro",
+      "Pyro"
+    ],
+    "correct": "Cryo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Ganyu come from?",
+    "options": [
+      "Snezhnaya",
+      "Fontaine",
+      "Inazuma",
+      "Liyue"
+    ],
+    "correct": "Liyue",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Ganyu wields?",
+    "options": [
+      "Claymore",
+      "Bow",
+      "Polearm",
+      "Catalyst"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Ganyu's constellation?",
+    "options": [
+      "Sinae Unicornis",
+      "Cervus Minor",
+      "Mantichora",
+      "Leviathan Judicator"
+    ],
+    "correct": "Sinae Unicornis",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Ganyu's special dish?",
+    "options": [
+      "Long Night Alight",
+      "Definitely Not Bar Food!",
+      "Forest Watcher's Choice",
+      "Prosperous Peace"
+    ],
+    "correct": "Prosperous Peace",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Ganyu's birthday?",
+    "options": [
+      "December 31st",
+      "August 3rd",
+      "June 1st",
+      "December 2nd"
+    ],
+    "correct": "December 2nd",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Ganyu released?",
+    "options": [
+      "1.5",
+      "v1.2",
+      "1.0",
+      "4.0"
+    ],
+    "correct": "v1.2",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Ganyu's Japanese VA?",
+    "options": [
+      "Aizawa Saya (会沢紗弥)",
+      "Reina Ueda (上田麗奈)",
+      "Koshimizu Ami (小清水亜美)",
+      "Mori Nanako (森なな子)"
+    ],
+    "correct": "Reina Ueda (上田麗奈)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Ganyu has?",
+    "options": [
+      "Plenilune Gaze",
+      "Mender of Tribulations",
+      "Yearning for Unseen Depths",
+      "Admonishing Instruction"
+    ],
+    "correct": "Plenilune Gaze",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Sucrose has?",
+    "options": [
+      "Splish-Splash Wavechaser",
+      "Burgeoning Grace",
+      "Harmless Sweetie",
+      "Mottled Gold Yet Unsmelted"
+    ],
+    "correct": "Harmless Sweetie",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Sucrose's special dish?",
+    "options": [
+      "Apple Stew (Trial Version)",
+      "Nutritious Meal (V.593)",
+      "Definitely Not Bar Food!",
+      "Teyvat Charred Egg"
+    ],
+    "correct": "Nutritious Meal (V.593)",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Sucrose's birthday?",
+    "options": [
+      "April 17th",
+      "November 26th",
+      "August 3rd",
+      "August 11th"
+    ],
+    "correct": "November 26th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Sucrose released?",
+    "options": [
+      "1.3",
+      "1.3",
+      "4.1",
+      "v1.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "From which region does Sucrose come from?",
+    "options": [
+      "Natlan",
+      "Snezhnaya",
+      "Mondstadt",
+      "Sumeru"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the type of weapon that Sucrose wields?",
+    "options": [
+      "Polearm",
+      "Catalyst",
+      "Sword",
+      "Claymore"
+    ],
+    "correct": "Catalyst",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Sucrose's constellation?",
+    "options": [
+      "Vulpes Zerda",
+      "Sagitta Scutum",
+      "Fabulae Textile",
+      "Ampulla"
+    ],
+    "correct": "Ampulla",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Sucrose's vision?",
+    "options": [
+      "Dendro",
+      "Electro",
+      "Anemo",
+      "Pyro"
+    ],
+    "correct": "Anemo",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Sucrose's English VA?",
+    "options": [
+      "Valeria Rodriguez",
+      "Christian Banas",
+      "Brittany Lauda",
+      "Chris Hackney"
+    ],
+    "correct": "Valeria Rodriguez",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Kaeya's constellation?",
+    "options": [
+      "Fragum",
+      "Pavo Ocellus",
+      "Sclopetum Ensiferum",
+      "Leviathan Judicator"
+    ],
+    "correct": "Pavo Ocellus",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the name of Kaeya's special dish?",
+    "options": [
+      "Utmost Care",
+      "\"Seabird's Sojourn\"",
+      "Pass the Luck",
+      "Fruity Skewers"
+    ],
+    "correct": "Fruity Skewers",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Kaeya come from?",
+    "options": [
+      "Mondstadt",
+      "Fontaine",
+      "Liyue",
+      "Sumeru"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "When is Kaeya's birthday?",
+    "options": [
+      "February 11th",
+      "May 31st",
+      "November 30th",
+      "April 10th"
+    ],
+    "correct": "November 30th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Kaeya's Japanese VA?",
+    "options": [
+      "Komatsu Mikako (小松未可子)",
+      "Tomita Miyu (富田美憂)",
+      "Kohsuke Toriumi (鳥海浩輔)",
+      "Kitamura Eri (喜多村英梨)"
+    ],
+    "correct": "Kohsuke Toriumi (鳥海浩輔)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Kaeya has?",
+    "options": [
+      "Judicator of Secrets",
+      "Frostwind Swordsman",
+      "Treasure of Dream Garden",
+      "Canine Warrior"
+    ],
+    "correct": "Frostwind Swordsman",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Kaeya released?",
+    "options": [
+      "2.4",
+      "2.1",
+      "4.8",
+      "v1.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Kaeya's English VA?",
+    "options": [
+      "Josey Montana McCoy",
+      "Shara Kirby (Pre-Luna II)",
+      "Ashleigh Haddad",
+      "Edward Stoneguard"
+    ],
+    "correct": "Josey Montana McCoy",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Kaeya wields?",
+    "options": [
+      "Claymore",
+      "Polearm",
+      "Sword",
+      "Catalyst"
+    ],
+    "correct": "Sword",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the title that Mona has?",
+    "options": [
+      "Astral Reflection",
+      "Gliding Champion",
+      "Night-Igniting Flame",
+      "Spectacle of Phantasmagoria"
+    ],
+    "correct": "Astral Reflection",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Who is Mona's English VA?",
+    "options": [
+      "Naomi McDonald",
+      "Mara Junot",
+      "Felecia Angelle",
+      "Kayli Mills (Pre-5.7)"
+    ],
+    "correct": "Felecia Angelle",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Mona wields?",
+    "options": [
+      "Sword",
+      "Claymore",
+      "Polearm",
+      "Catalyst"
+    ],
+    "correct": "Catalyst",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Mona's Japanese VA?",
+    "options": [
+      "Konomi Kohara (小原好美)",
+      "Takao Kanon (高尾奏音)",
+      "Kaneda Tomoko (金田朋子)",
+      "Takamori Natsumi (高森奈津美)"
+    ],
+    "correct": "Konomi Kohara (小原好美)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Mona's constellation?",
+    "options": [
+      "Astrolabos",
+      "Rubeum Scutum",
+      "Tapirus Somniator",
+      "Ochotona Princeps"
+    ],
+    "correct": "Astrolabos",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Mona released?",
+    "options": [
+      "v1.0",
+      "3.7",
+      "1.4",
+      "1.0"
+    ],
+    "correct": "v1.0",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Mona's special dish?",
+    "options": [
+      "\"Snow on the Hearth\"",
+      "Mt. Mushroom (For One)",
+      "Nutritious Meal (V.593)",
+      "Der Weisheit Letzter Schluss (Life)"
+    ],
+    "correct": "Der Weisheit Letzter Schluss (Life)",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What element is Mona's vision?",
+    "options": [
+      "Cryo",
+      "Anemo",
+      "Pyro",
+      "Hydro"
+    ],
+    "correct": "Hydro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Mona come from?",
+    "options": [
+      "Inazuma",
+      "Snezhnaya",
+      "Fontaine",
+      "Mondstadt"
+    ],
+    "correct": "Mondstadt",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Raiden Shogun's English VA?",
+    "options": [
+      "Anne Yatco",
+      "Max Mittelman",
+      "Katiana Sarkissian",
+      "Risa Mei"
+    ],
+    "correct": "Anne Yatco",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "When is Raiden Shogun's birthday?",
+    "options": [
+      "August 8th",
+      "July 27th",
+      "June 26th",
+      "October 31st"
+    ],
+    "correct": "June 26th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the name of Raiden Shogun's constellation?",
+    "options": [
+      "Viatrix",
+      "Imperatrix Umbrosa",
+      "Papilio Charontis",
+      "Astrolabos"
+    ],
+    "correct": "Imperatrix Umbrosa",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the title that Raiden Shogun has?",
+    "options": [
+      "Dance of Shimmering Waves",
+      "Plane of Euthymia",
+      "Spring Woven from Jade",
+      "Enigmatic Machinist"
+    ],
+    "correct": "Plane of Euthymia",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "In which version was Raiden Shogun released?",
+    "options": [
+      "3.1",
+      "4.6",
+      "3.0",
+      "v2.1"
+    ],
+    "correct": "v2.1",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Raiden Shogun wields?",
+    "options": [
+      "Bow",
+      "Claymore",
+      "Polearm",
+      "Catalyst"
+    ],
+    "correct": "Polearm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "From which region does Raiden Shogun come from?",
+    "options": [
+      "Snezhnaya",
+      "Inazuma",
+      "Liyue",
+      "Fontaine"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What element is Raiden Shogun's vision?",
+    "options": [
+      "Pyro",
+      "Dendro",
+      "Cryo",
+      "Electro"
+    ],
+    "correct": "Electro",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Raiden Shogun's Japanese VA?",
+    "options": [
+      "Miyuki Sawashiro (沢城みゆき)",
+      "Ueda Kana (植田佳奈)",
+      "Uchiyama Kouki (内山昂輝)",
+      "Kawasumi Ayako (川澄綾子)"
+    ],
+    "correct": "Miyuki Sawashiro (沢城みゆき)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "In which version was Gorou released?",
+    "options": [
+      "3.2",
+      "1.5",
+      "v2.3",
+      "1.0"
+    ],
+    "correct": "v2.3",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the type of weapon that Gorou wields?",
+    "options": [
+      "Sword",
+      "Bow",
+      "Claymore",
+      "Catalyst"
+    ],
+    "correct": "Bow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Who is Gorou's English VA?",
+    "options": [
+      "Cory Yee",
+      "Anna Devlin",
+      "Lizzie Freeman",
+      "Cristina Vee Valenzuela"
+    ],
+    "correct": "Cory Yee",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What is the title that Gorou has?",
+    "options": [
+      "Mujina Ninja",
+      "Wondrous Dragonheir",
+      "Canine Warrior",
+      "Dance of Lotuslight"
+    ],
+    "correct": "Canine Warrior",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "From which region does Gorou come from?",
+    "options": [
+      "Mondstadt",
+      "Natlan",
+      "Sumeru",
+      "Inazuma"
+    ],
+    "correct": "Inazuma",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the name of Gorou's special dish?",
+    "options": [
+      "Thunderclap Slash!",
+      "Stormcrest Pie",
+      "Victorious Legend",
+      "Omurice Waltz"
+    ],
+    "correct": "Victorious Legend",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "When is Gorou's birthday?",
+    "options": [
+      "May 8th",
+      "May 21st",
+      "February 2nd",
+      "May 18th"
+    ],
+    "correct": "May 18th",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Who is Gorou's Japanese VA?",
+    "options": [
+      "Kakuma Ai (加隈亜衣)",
+      "Satou Rina (佐藤利奈)",
+      "Tasuku Hatanaka (畠中 祐)",
+      "Kanemoto Hisako (金元寿子)"
+    ],
+    "correct": "Tasuku Hatanaka (畠中 祐)",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "What element is Gorou's vision?",
+    "options": [
+      "Geo",
+      "Electro",
+      "Hydro",
+      "Pyro"
+    ],
+    "correct": "Geo",
+    "difficulty": "Easy"
+  }
+]
