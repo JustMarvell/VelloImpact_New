@@ -11,13 +11,14 @@ import pathlib
 TRIVIA_FILE = pathlib.Path(__file__).parent.parent / "genshin_trivia/jsons/genshin_trivia.json"
 
 class TriviaView(discord.ui.View):
-    def __init__(self, question_data: Dict, timeout_seconds: int = 15):
+    def __init__(self, question_data: Dict, timeout_seconds: int = 20):
         super().__init__(timeout=timeout_seconds)
         self.question_data = question_data
         self.question = question_data["question"]
         self.options = question_data["options"]
         self.correct = question_data["correct"]
         self.difficulty = question_data["difficulty"]
+        self.image_url = question_data.get("image", None)
         
         self.answered_users = set()
         self.timer_task = None
@@ -115,19 +116,28 @@ class TriviaView(discord.ui.View):
                 self.seconds_left -= 1
 
                 if self.seconds_left % 2 == 0:  # update every 2 seconds
-                    embed = discord.Embed(
-                        title=f"Genshin Trivia • {self.difficulty.capitalize()}",
-                        description=f"**{self.question}**\n\n⏳ **{self.seconds_left}s** remaining",
-                        color=discord.Color.blue()
-                    )
-                    embed.set_footer(text="One attempt per person • Multiple players can join!")
+                    embed = self.create_embed()
                     try:
                         await message.edit(embed=embed)
                     except discord.errors.NotFound:
                         return
         except asyncio.CancelledError:
             pass
+        
+    def create_embed(self) -> discord.Embed:
+        embed = discord.Embed(
+            title=f"Genshin Trivia • {self.difficulty.capitalize()}",
+            description=f"**{self.question}**\n\n⏳ **{self.seconds_left}s** remaining",
+            color=discord.Color.blue()
+        )
+        embed.set_footer(text="One attempt per person • Multiple players can join!")
 
+        # Add character image if available
+        if self.image_url:
+            # embed.set_thumbnail(url=self.image_url)  # small icon
+            embed.set_image(url=self.image_url)
+
+        return embed
 
 class Trivia(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -151,12 +161,12 @@ class Trivia(commands.Cog):
 
         question_data = random.choice(self.questions)
         
-        view = TriviaView(question_data, timeout_seconds=15)
+        view = TriviaView(question_data, timeout_seconds=20)
         
         embed = discord.Embed(
             title=f"Genshin Trivia • {question_data['difficulty'].capitalize()}",
-            description=f"**{question_data['question']}**\n\n⏳ **15 seconds** to answer!",
-            color=discord.Color.blue()
+            description=f"**{question_data['question']}**\n\n⏳ **20 seconds** to answer!",
+            color=discord.Color.blue(),
         )
         embed.set_footer(text="One attempt per person • Multiple players can join!")
 
