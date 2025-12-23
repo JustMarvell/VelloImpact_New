@@ -117,7 +117,7 @@ class Christmas(commands.Cog):
     # Send a "Merry Christmas!" message in the selected channel
     @commands.hybrid_command()
     @app_commands.describe(channel="The channel to send the Christmas message in")
-    async def send_christmas_message(self, ctx: commands.Context, channel: discord.TextChannel):
+    async def send_christmas_message(self, ctx: commands.Context, channel: discord.TextChannel | discord.VoiceChannel):
         """ Send a Merry Christmas message in the selected channel """
         
         try:
