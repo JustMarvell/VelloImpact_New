@@ -6,6 +6,7 @@ import settings
 import traceback
 import concurrent.futures
 from discord.ext import commands
+from youtubesearchpython import VideosSearch
 
 # logger
 commands_logger = settings.logging.getLogger("commands")
@@ -56,8 +57,42 @@ def get_video_id_from_url(url: str) -> str | None:
             match = re.search(pattern, url)
             if match:
                 return match.group(1)
-    except Exception(BaseException) as e:
+    except Exception as e:
         raise e
+    
+def normalize_youtube_link(link: str) -> str:
+    """ Normalize various YouTube URL formats to the canonical full URL
+     
+    Supported inputs:
+        - https://www.youtube.com/watch?v=VIDEOID
+        - https://youtu.be/VIDEOID
+        - https://www.youtube.com/embed/VIDEOID
+        - raw VIDEOID
+    
+    If no 11-character video id is found, returns the original link unchanged.
+    
+    Args:
+        link: The link to be normalized
+     """
+    try:
+        if not isinstance(link, str):
+            return link
+        
+        # look for the 11-character YouTube video id in several common patterns
+        patterns = [
+            r"v=([A-Za-z0-9_-]{11})",
+            r"youtu\.be/([A-Za-z0-9_-]{11})",
+            r"/embed/([A-Za-z0-9_-]{11})",
+            r"([A-Za-z0-9_-]{11})$",
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, link)
+            if match:
+                return f"https://www.youtube.com/watch?v={match.group(1)}"
+    except Exception:
+        return link
+    
+    return link
 
 def format_duration(seconds_or_str) -> str:
     """ Convert duration from seconds to MM:SS format 
@@ -110,15 +145,15 @@ def format_view_count(count_or_str) -> str:
     except (ValueError, TypeError):
         return str(count_or_str)
     
-def get_queue(self, guild_id: int):
+def get_queue(queues, guild_id: int):
     """ Get or create queue for a guild 
     Args:
         self: self object
         guild_id: Current guild id
     """
-    if guild_id not in self.queues:
-        self.queues[guild_id] = []
-    return self.queues[guild_id]
+    if guild_id not in queues:
+        queues[guild_id] = []
+    return queues[guild_id]
     
 def log_error(msg: str) -> None:
     """ Send a log error message 
@@ -133,8 +168,9 @@ def log_info(msg: str) -> None:
         msg (str): Info message.
     """
     commands_logger.info(msg)
-    
-def show_queue(self, ctx: commands.Context) -> str | None:
+
+# ================================= ASYNC FUNCTION ==================================
+async def show_queue(self, ctx: commands.Context) -> str | None:
     """ Returns current song queue 
     Args:
         self: self object
@@ -150,11 +186,23 @@ def show_queue(self, ctx: commands.Context) -> str | None:
     
     return queue_list
 
-# ================================= ASYNC FUNCTION ==================================
-async def run_in_thread(_executor, func, *args):
+async def video_search(query: str, limit: int):
+    """ Search YouTube using VideoSearch 
+    Args:
+        query: Search query
+        limit: query limit    
+    """
+    try:
+        search: VideosSearch = await run_in_thread(executor, VideosSearch, query, limit)
+        return search.result()['result']
+    except Exception as ex:
+        log_error(f"Failed in video search : {ex}")
+        raise Exception(ex)
+    
+async def run_in_thread(_executor, func, *args, **kwargs):
     """ Run blocking function in a seperate thread """
     loop  = asyncio.get_event_loop()
-    return await loop.run_in_executor(executor=_executor, func=func, *args)
+    return await loop.run_in_executor(_executor, func, *args, **kwargs)
 
 async def disconnect_timer(self, guild: discord.Guild):
     """ Timer to disconnect after inactifity when alone 
@@ -184,7 +232,7 @@ async def disconnect_timer(self, guild: discord.Guild):
             del self.autoplay[guild.id]
         if guild.id in self.recent_played:
             del self.recent_played[guild.id]
-    except Exception(BaseException) as e:
+    except Exception as e:
         log_error(f"Error during cleaning up in disconnect timer : {e}")
         pass
     
@@ -192,8 +240,8 @@ async def disconnect_timer(self, guild: discord.Guild):
         if guild.id in self.disconnect_task:
             del self.disconnect_task[guild.id]
         log_info(f"Disconnected from voice channel in guild {guild.name} ({guild.id}) due to inactivity.")
-    except Exception(BaseException) as e:
-        log_error(f"Error removing disconnect task for guild {guild.name} : {e}")
+    except Exception as e:
+        log_error(f"Error removing disconnect task for guild {guild.name} : {str(e)}")
         pass
     
 async def get_audio_source(song_url: str) -> str:
@@ -211,7 +259,7 @@ async def get_audio_source(song_url: str) -> str:
         try:
             audio_url = await run_in_thread(_executor=executor, func=extract)
             return audio_url
-        except asyncio.exceptions.TimeoutError or Exception(BaseException) as e:
+        except asyncio.exceptions.TimeoutError or Exception as e:
             if attempt < max_retries - 1:
                 log_info(f"Falied to extract audio url in get_audio_source. Retrying...")
                 continue
@@ -221,7 +269,7 @@ async def get_audio_source(song_url: str) -> str:
 
     raise Exception("Failed to get audio url")
 
-async def play_next(self, ctx: commands.Context):
+async def play_next(self, ctx: commands.Context, queue):
     """ Play a song and send discord embed
      Args:
          self: self object
@@ -232,7 +280,7 @@ async def play_next(self, ctx: commands.Context):
     
     voice_client = ctx.voice_client
     guild_id = ctx.guild.id
-    queue = get_queue(self=self, guild_id=guild_id)
+    queue = get_queue(queue, guild_id)
     
     if not queue:
         await ctx.send("Queue is empty! add more song's or use autoplay", delete_after=5)
@@ -245,10 +293,10 @@ async def play_next(self, ctx: commands.Context):
     url = song['url']
     
     try:
-        audio_url = await run_in_thread(get_audio_source, url)
-    except Exception(BaseException) as e:
-        await ctx.send(f"Failed to get audio stream {e}. | Current song will be cleaned and skipped!", ephemeral=True, delete_after=5)
-        log_error(f"Failed to get audio stream in play_next : {e} | Cleaning up current song!. Next song(if available) will be played instead")
+        audio_url = await run_in_thread(executor, get_audio_source, url)
+    except Exception as e:
+        await ctx.send(f"Failed to get audio stream {str(e)}. | Current song will be cleaned and skipped!", ephemeral=True, delete_after=5)
+        log_error(f"Failed to get audio stream in play_next : {str(e)} | Cleaning up current song!. Next song(if available) will be played instead")
         
         # clean up current song if extraction failed
         if guild_id in self.current_songs:
@@ -271,11 +319,28 @@ async def play_next(self, ctx: commands.Context):
         fut = asyncio.run_coroutine_threadsafe(coro, loop=self.bot.loop)
         try:
             fut.result()
-        except asyncio.CancelledError or Exception(BaseException) as err:
+        except asyncio.CancelledError or Exception as err:
             log_error(f"Failed to play next song in after_playing() : {err}")
     
     try:
         voice_client.play(source, after=after_playing)
-    except Exception(BaseException) as er:
-        await ctx.send(f"Failed to play using voice client: {er}")
-        log_error(f"Failed to play using voice client: {er} | {traceback.format_exc()}")
+    except Exception as er:
+        await ctx.send(f"Failed to play using voice client: {str(er)}")
+        log_error(f"Failed to play using voice client: {str(er)} | {traceback.format_exc()}")
+        
+async def handle_zombie_voice_state(ctx: commands.Context, channel):
+    try:
+        if await ctx.voice_client.is_connected():
+            await ctx.voice_client.disconnect(force=True)
+            ctx.guild.voice_client = None
+            
+        if ctx.voice_client is not None:
+            if ctx.voice_client.channel == channel:
+                await ctx.send("I'm Already in your voice channel!")
+                return None
+            else:
+                await ctx.voice_client.move_to(channel)
+                await ctx.send(f"Moved to {channel}")
+                return None
+    except asyncio.exceptions.CancelledError or Exception as errs:
+        raise errs
