@@ -5,10 +5,15 @@ from discord.ext import commands
 import asyncio
 import random
 import json
-from typing import Dict
+from typing import Dict, Optional
 import pathlib
 
 TRIVIA_FILE = pathlib.Path(__file__).parent.parent / "genshin_trivia/jsons/genshin_trivia.json"
+
+class GameState:
+    ACTIVE = "active"
+    ENDED = "ended" 
+    CANCELLED = "cancelled"
 
 class TriviaView(discord.ui.View):
     def __init__(self, question_data: Dict, timeout_seconds: int = 20):
@@ -21,13 +26,13 @@ class TriviaView(discord.ui.View):
         self.image_url = question_data.get("image", None)
         
         self.answered_users = set()
+        self.game_state = GameState.ACTIVE
         self.timer_task = None
         self.seconds_left = timeout_seconds
+        self.message_ref = None
 
-        # Add dropdown immediately
+        # Add UI components
         self.add_item(self.create_answer_select())
-
-        # Add cancel button
         self.add_item(self.create_cancel_button())
 
     def create_answer_select(self):
@@ -45,11 +50,47 @@ class TriviaView(discord.ui.View):
         return select
 
     def create_cancel_button(self):
-        btn = discord.ui.Button(label="Cancel", style=discord.ButtonStyle.red)
+        btn = discord.ui.Button(
+            label="Cancel", 
+            style=discord.ButtonStyle.red,
+            custom_id="trivia_cancel"
+        )
         btn.callback = self.cancel_callback
         return btn
 
+    def disable_all_components(self):
+        """Disable all interactive components"""
+        for child in self.children:
+            child.disabled = True
+
+    async def end_game(self, embed: discord.Embed, disable_ui: bool = True):
+        """End the game and update UI"""
+        if self.game_state != GameState.ACTIVE:
+            return  # Already ended
+        
+        self.game_state = GameState.ENDED
+        
+        # Cancel timer task
+        if self.timer_task and not self.timer_task.done():
+            self.timer_task.cancel()
+        
+        # Disable UI if requested
+        if disable_ui:
+            self.disable_all_components()
+        
+        # Update message
+        if self.message_ref:
+            try:
+                await self.message_ref.edit(embed=embed, view=self if disable_ui else None)
+            except discord.errors.NotFound:
+                pass  # Message already deleted
+
     async def select_callback(self, interaction: discord.Interaction):
+        # Check if game is still active
+        if self.game_state != GameState.ACTIVE:
+            await interaction.response.send_message("This trivia game has already ended!", ephemeral=True)
+            return
+
         user_id = interaction.user.id
         if user_id in self.answered_users:
             await interaction.response.send_message("You've already answered this trivia!", ephemeral=True)
@@ -57,8 +98,12 @@ class TriviaView(discord.ui.View):
 
         self.answered_users.add(user_id)
 
-        selected_index = int(interaction.data["values"][0])
-        chosen_answer = self.options[selected_index]
+        try:
+            selected_index = int(interaction.data["values"][0])
+            chosen_answer = self.options[selected_index]
+        except (KeyError, IndexError, ValueError):
+            await interaction.response.send_message("Invalid selection. Please try again.", ephemeral=True)
+            return
 
         is_correct = chosen_answer == self.correct
 
@@ -66,76 +111,119 @@ class TriviaView(discord.ui.View):
         feedback = "✅ **Correct!**" if is_correct else f"❌ **Wrong!**\nThe correct answer was: **{self.correct}**"
         await interaction.response.send_message(feedback, ephemeral=True)
 
-        # Visual feedback
-        embed = interaction.message.embeds[0]
-        if is_correct:
-            embed.color = discord.Color.green()
-            embed.set_footer(text=f"Correct! Answered by {interaction.user.display_name}")
-        else:
-            embed.color = discord.Color.red()
-            embed.set_footer(text=f"Wrong • Correct: {self.correct} • Answered by {interaction.user.display_name}")
+        # Create end game embed
+        embed = discord.Embed(
+            title=f"🎯 Game Win!" if is_correct else "🎯 Game Over!",
+            description=f"**{self.question}**",
+            color=discord.Color.green() if is_correct else discord.Color.red()
+        )
+        embed.add_field(name="Your Answer", value=chosen_answer, inline=True)
+        embed.add_field(name="Correct Answer", value=self.correct, inline=True)
+        embed.add_field(name="Result", value="✅ Correct!" if is_correct else "❌ Wrong!", inline=True)
+        embed.set_footer(text=f"Answered by {interaction.user.display_name}")
 
-        # Disable select menu
-        self.children[0].disabled = True
-        await interaction.message.edit(embed=embed, view=self)
+        # Add image if available
+        if self.image_url:
+            embed.set_thumbnail(url=self.image_url)
 
-        # Optional: stop timer on correct answer
-        if is_correct and self.timer_task:
-            self.timer_task.cancel()
+        # End the game
+        await self.end_game(embed, disable_ui=True)
 
     async def cancel_callback(self, interaction: discord.Interaction):
-        await interaction.response.defer()
+        if self.game_state != GameState.ACTIVE:
+            await interaction.response.send_message("This trivia game has already ended!", ephemeral=True)
+            return
+
         embed = discord.Embed(
-            title="Trivia Cancelled",
+            title="❌ Trivia Cancelled",
             description=f"Cancelled by {interaction.user.mention}",
             color=discord.Color.greyple()
         )
-        await interaction.message.edit(embed=embed, view=None)
+        embed.add_field(name="Question", value=self.question, inline=False)
+        embed.add_field(name="Correct Answer", value=self.correct, inline=False)
+        
+        if self.image_url:
+            embed.set_thumbnail(url=self.image_url)
+
+        await interaction.response.defer()
+        await self.end_game(embed, disable_ui=False)
 
     async def on_timeout(self):
-        if any("Correct!" in e.footer.text for e in self.message.embeds or []):
-            return  # someone already answered correctly
+        # Only handle timeout if game is still active
+        if self.game_state != GameState.ACTIVE:
+            return
 
         embed = discord.Embed(
             title="⏰ Time's Up!",
-            description=f"The correct answer was: **{self.correct}**",
+            description=f"**{self.question}**",
             color=discord.Color.orange()
         )
-        embed.add_field(name="Question", value=self.question, inline=False)
-        self.clear_items()
-        try:
-            await self.message.edit(embed=embed, view=self)
-        except:
-            pass
+        embed.add_field(name="Correct Answer", value=f"**{self.correct}**", inline=False)
+        embed.add_field(name="Participants", value=str(len(self.answered_users)), inline=True)
+        embed.add_field(name="Time Limit", value="20 seconds", inline=True)
+        embed.set_footer(text="⏰ Time expired")
+        
+        if self.image_url:
+            embed.set_thumbnail(url=self.image_url)
+
+        await self.end_game(embed, disable_ui=True)
 
     async def countdown_timer(self, message: discord.Message):
-        self.message = message  # store reference for on_timeout
+        """Optimized countdown timer that updates every 3 seconds"""
+        self.message_ref = message
         try:
-            while self.seconds_left > 0:
-                await asyncio.sleep(1)
-                self.seconds_left -= 1
-
-                if self.seconds_left % 2 == 0:  # update every 2 seconds
+            while self.seconds_left > 0 and self.game_state == GameState.ACTIVE:
+                await asyncio.sleep(3)  # Update every 3 seconds instead of 2
+                self.seconds_left -= 3
+                
+                if self.seconds_left < 0:
+                    self.seconds_left = 0
+                
+                # Only update if game is still active
+                if self.game_state == GameState.ACTIVE:
                     embed = self.create_embed()
                     try:
                         await message.edit(embed=embed)
                     except discord.errors.NotFound:
-                        return
+                        return  # Message was deleted
+                    except discord.errors.Forbidden:
+                        return  # No permission to edit
+                        
         except asyncio.CancelledError:
-            pass
+            pass  # Timer was cancelled, which is expected
+        except Exception as e:
+            print(f"Timer error: {e}")
         
     def create_embed(self) -> discord.Embed:
+        """Create the main trivia embed"""
         embed = discord.Embed(
-            title=f"Genshin Trivia • {self.difficulty.capitalize()}",
-            description=f"**{self.question}**\n\n⏳ **{self.seconds_left}s** remaining",
+            title=f"🎮 Genshin Trivia • {self.difficulty.capitalize()}",
+            description=f"**{self.question}**",
             color=discord.Color.blue()
         )
-        embed.set_footer(text="One attempt per person • Multiple players can join!")
+        
+        # Add timer field
+        timer_emoji = "🔴" if self.seconds_left <= 5 else "🟡" if self.seconds_left <= 10 else "🟢"
+        embed.add_field(
+            name=f"{timer_emoji} Time Remaining", 
+            value=f"**{self.seconds_left}s**", 
+            inline=True
+        )
+        
+        embed.add_field(
+            name="👥 Players", 
+            value=str(len(self.answered_users)), 
+            inline=True
+        )
+        
+        embed.set_footer(
+            text="Select an answer • Cancel to end early • Multiple players can join!",
+            icon_url="https://i.imgur.com/AfFp7Hd.png"
+        )
 
-        # Add character image if available
+        # Use thumbnail instead of image for faster loading
         if self.image_url:
-            # embed.set_thumbnail(url=self.image_url)  # small icon
-            embed.set_image(url=self.image_url)
+            embed.set_thumbnail(url=self.image_url)
 
         return embed
 
@@ -143,38 +231,74 @@ class Trivia(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.questions = []
+        self.active_games = set()  # Track active games to prevent conflicts
         self.load_questions()
 
     def load_questions(self):
+        """Load trivia questions from JSON file"""
         try:
             with open(TRIVIA_FILE, "r", encoding="utf-8") as f:
                 self.questions = json.load(f)
-            print(f"Loaded {len(self.questions)} trivia questions")
+            print(f"✅ Loaded {len(self.questions)} trivia questions")
         except Exception as e:
-            print(f"Failed to load trivia: {e}")
+            print(f"❌ Failed to load trivia: {e}")
+            self.questions = []
 
     @app_commands.command(name="trivia", description="Start a Genshin Impact trivia question")
     async def trivia(self, interaction: discord.Interaction):
         if not self.questions:
-            await interaction.response.send_message("No trivia questions loaded!", ephemeral=True)
+            await interaction.response.send_message("❌ No trivia questions available!", ephemeral=True)
+            return
+
+        # Check if there's already an active trivia in this channel
+        channel_id = interaction.channel.id
+        if channel_id in self.active_games:
+            await interaction.response.send_message(
+                "⚠️ There's already an active trivia game in this channel!", 
+                ephemeral=True
+            )
             return
 
         question_data = random.choice(self.questions)
         
-        view = TriviaView(question_data, timeout_seconds=20)
-        
-        embed = discord.Embed(
-            title=f"Genshin Trivia • {question_data['difficulty'].capitalize()}",
-            description=f"**{question_data['question']}**\n\n⏳ **20 seconds** to answer!",
-            color=discord.Color.blue(),
-        )
-        embed.set_footer(text="One attempt per person • Multiple players can join!")
+        try:
+            # Create view and embed
+            view = TriviaView(question_data, timeout_seconds=20)
+            embed = view.create_embed()
+            
+            # Add initial timer field
+            embed.add_field(name="⏱️ Time", value="**20s**", inline=True)
+            
+            # Send message
+            await interaction.response.send_message(embed=embed, view=view)
+            message = await interaction.original_response()
+            
+            # Register this game as active
+            self.active_games.add(channel_id)
+            view.timer_task = asyncio.create_task(view.countdown_timer(message))
+            
+            # Clean up when game ends
+            async def cleanup():
+                await asyncio.sleep(1)  # Small delay to ensure cleanup
+                self.active_games.discard(channel_id)
+            
+            # Schedule cleanup (this will run when the view is finished)
+            asyncio.create_task(cleanup())
+            
+        except Exception as e:
+            print(f"Error starting trivia: {e}")
+            await interaction.response.send_message(
+                "❌ Failed to start trivia game. Please try again.", 
+                ephemeral=True
+            )
 
-        message = await interaction.response.send_message(embed=embed, view=view)
-        
-        # Start the countdown
-        view.timer_task = asyncio.create_task(view.countdown_timer(await interaction.original_response()))
-
+    async def cog_unload(self):
+        """Clean up when cog is unloaded"""
+        # Cancel all active timer tasks
+        for view in list(self.active_games):
+            if view.timer_task and not view.timer_task.done():
+                view.timer_task.cancel()
+        self.active_games.clear()
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Trivia(bot))
