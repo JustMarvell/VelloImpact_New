@@ -64,4 +64,19 @@ class Debug(commands.Cog) :
             
         except Exception as e:
             await ctx.send(f"Failed to set custom status : {e}")
+
+        # make the bot say a message (not reply to command message)
+    @commands.hybrid_command()
+    async def say(self, ctx : commands.Context, *, message : str, channel: discord.TextChannel | discord.VoiceChannel):
+        """ Make the bot say a message in a selected channel
+        Args:
+            message: message to be sent
+            channel: selected channel
+        """
+        try:
+            await channel.send(message)
+            await ctx.send(f"Message sent to {channel.name}", ephemeral=True, delete_after=10)
+            
+        except Exception as e:
+            await ctx.send(f"An error occurred: {e}", ephemeral=True)
         
