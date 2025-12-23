@@ -1,0 +1,439 @@
+import discord
+import asyncio
+import settings
+import concurrent.futures
+from discord.ext import commands
+from discord import app_commands
+from youtubesearchpython import *
+import controllers.music as music_helper
+
+# logger
+cogs_logger = settings.logging.getLogger("cogs")
+
+# cache
+search_cache = {}
+url_cache = {}
+
+# executor
+executor = concurrent.futures.ThreadPoolExecutor(max_workers=6)
+
+# =========================== Bot's Setup =======================
+async def setup(bot : commands.Bot):
+    await bot.add_cog(Music(bot))
+    
+# =========================== Helper Function =========================
+def log_info(msg: str) -> None:
+    """ Send a log info message
+    Args:
+         msg (str): Info message
+    """
+    cogs_logger.info(msg)
+
+def log_error(msg: str) -> None:
+    """ Send a log Error message
+    Args:
+         msg (str): Error message
+    """
+    cogs_logger.error(msg)
+    
+def log_warning(msg: str) -> None:
+    """ Send a log Warning message
+    Args:
+         msg (str): Warning message
+    """
+    cogs_logger.warning(msg)
+    
+async def run_in_thread(fn, *args, **kwargs):
+    """ Helper to safely run a blocking functinos in a thread """
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(executor, fn, *args, **kwargs)
+
+# ============================== MUSIC CONTROLS ========================
+# TODO : Add Music Controls
+
+class Music(commands.Cog):
+    channel = None
+    
+    def __init__(self, bot):
+        self.bot = bot
+        self.channel = None
+        self.autoplay = {}
+        self.recent_played = {}
+        self.queues = {}
+        self.current_songs = {}
+        self.disconnect_tasks = {}
+        
+    def get_queue(self, guild_id: int):
+        """ Get or create queue for a guild """
+        if guild_id not in self.queues:
+            self.queues[guild_id] = []
+        return self.queues[guild_id]
+        
+    @commands.Cog.listener() # DONE
+    async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState, after: discord.VoiceState):
+        guild = member.guild
+        voice_client = guild.voice_client
+
+        if member == self.bot.user:
+            # Bot was disconnected (e.g., by Discord idle timeout)
+            if after.channel is None:
+                try:
+                    guild_id = guild.id
+                    music_helper.get_queue(self.queues, guild_id).clear() 
+                    if guild_id in self.current_songs:
+                        del self.current_songs[guild_id]
+                    voice_client.stop()
+                    
+                    if guild.id in self.disconnect_tasks:
+                        del self.disconnect_tasks[guild.id]
+                        
+                    log_info(f"Bot disconnected from voice channel in guild {guild.name} ({guild.id})")
+                except Exception as e:
+                    log_error(f"Error handling bot disconnection: {e}")
+                    pass
+            return
+
+        if voice_client is None:
+            return
+
+        channel = voice_client.channel
+        if len(channel.members) == 1:  # Only bot left
+            if guild.id in self.disconnect_tasks:
+                return  # Timer already running
+            task = self.bot.loop.create_task(music_helper.disconnect_timer(self=self, guild=guild))
+            self.disconnect_tasks[guild.id] = task
+        else:
+            # Users present: cancel any timer
+            if guild.id in self.disconnect_tasks:
+                self.disconnect_tasks[guild.id].cancel()
+                del self.disconnect_tasks[guild.id]
+
+    @commands.hybrid_command() # DONE
+    async def arise(self, ctx : commands.Context):            
+        """Join the voice channel"""
+        try:
+            await ctx.defer()
+        except Exception:
+            pass
+        
+        if not ctx.author.voice:
+            await ctx.send("You are not in a voice channel!", ephemeral=True, delete_after=5)
+            return
+
+        channel = ctx.author.voice.channel
+        
+        try:
+            if ctx.voice_client is not None:
+                # NEW: Handle zombie state
+                check_zombie = await music_helper.handle_zombie_voice_state(ctx=ctx, channel=channel)
+                if check_zombie is None:
+                    return
+        except Exception as e:
+            await ctx.send(f"Error handling existing voice client: {e}", ephemeral=True, delete_after=10)
+            log_error(f"Error handling existing voice client! Reason : {e}")
+            return
+
+        try:
+            await channel.connect()
+            await ctx.send(f"I've been summoned to {channel.name}", delete_after=10)
+        except Exception as e:
+            await ctx.send(f"Failed to connect to voice channel! : {e}", ephemeral=True, delete_after=10)
+            log_error(f"Failed to connect to voice channel! Reason : {e}")
+            
+    @commands.hybrid_command() # DONE
+    async def release(self, ctx : commands.Context):
+        """ Leave a voice Channel """
+        guild_id = ctx.guild.id
+        queue = self.get_queue(guild_id)
+        if ctx.voice_client:
+            queue.clear()
+            self.channel = None
+            
+            # TODO : Change bot's presence
+            
+            try:
+                if guild_id in self.current_songs:
+                    del self.current_songs[guild_id]
+
+                await ctx.voice_client.disconnect(force=True)
+                try:
+                    ctx.guild.voice_client = None
+                except Exception:
+                    pass
+                
+                if ctx.guild.id in self.disconnect_tasks:
+                    del self.disconnect_tasks[ctx.guild.id]
+            except Exception as e:
+                await ctx.send(f"Error disconnecting: {e}", ephemeral=True, delete_after=5)
+                pass
+                
+            await ctx.send('kbay', delete_after=8)
+        else:
+            await ctx.send("I'm not in a voice channel", ephemeral=True, delete_after=5)
+    
+    @commands.hybrid_command(name="play") # DONE
+    @app_commands.describe(
+        name="Song title to search on YouTube"
+    )
+    async def play(self, ctx: commands.Context, name: str):
+        """ Search a song on YouTube and play it in a voice channel """
+        try:
+            await ctx.defer()
+        except Exception:
+            pass
+        
+        try:
+            # Check if user is not in a voice channel
+            if not ctx.author.voice:
+                await ctx.send("You need  to join a voice channel first to use me!", ephemeral=True, delete_after=5)
+                return 
+            
+            # Check if the search querry is not empty
+            if name == "":
+                await ctx.send("Cannot search an empty title, Please input a valid search term!", ephemeral=True, delete_after=5)
+                return 
+            
+            # Get the queue
+            guild_id = ctx.guild.id
+            queue = self.get_queue(guild_id)
+            
+            # Check if current queue is full
+            if len(queue) >= 10:
+                await ctx.send("Queue is full! Max 10 songs.", ephemeral=True, delete_after=5)
+                return
+            
+            # Prompt to join if not connected to a voice channel
+            if not ctx.voice_client:
+                await ctx.send("I'm currently not connected to a voice channel. Please use ``/arise`` to summon me!", ephemeral=True, delete_after=10)
+                return
+            else:
+                voice_client = ctx.voice_client
+            
+            try:
+                print("Check point -3")
+                if name in search_cache:
+                    print("Check point -2")
+                    results = search_cache[name]
+                    print("Check point -1")
+                else:
+                    try:
+                        # results = await music_helper.video_search(query=name, limit=1)
+                        print("Check point 0")
+                        
+                        search = VideosSearch(query=name, limit=1)
+                        results = search.result()['result']
+                        if len(search_cache) >= 50:
+                            search_cache.pop(next(iter(search_cache)))
+                        search_cache[name] = results
+                        
+                        print("Check point 1")
+                        
+                    except Exception as e:
+                        print("Check point 5")
+                        error_msg = f"Error searching YouTube: {str(e) if e else 'Unknown error'}"
+                        await ctx.send(error_msg, ephemeral=True, delete_after=5)
+                        # Re-raise with a proper error message
+                        raise Exception(f"Failed to use video_search on music helper: {str(e) if e else 'Unknown error'}") from e
+            except Exception as e:
+                raise Exception(f"Failed in there : {e}")
+            
+            print("Check point 6")
+            if not results:
+                await ctx.send(f'No song(s) found for {name}', ephemeral=True, delete_after=5)
+                return
+                
+            print("Check point 7")
+            video = results[0]
+            url = video['link']
+            title = video['title']
+            thumbnail = video['thumbnails'][0]['url']
+            channel_id = video['channel']['id']
+            channel_thumbnails = Channel.get(channel_id)['thumbnails'][0]['url']
+            channel_url = Channel.get(channel_id)['url']
+            channel_name = Channel.get(channel_id)['title']
+            duration = music_helper.format_duration(seconds_or_str=video['duration'])
+            view_count = music_helper.format_view_count(count_or_str=video['viewCount']['short'])
+            
+            print("Check point 8")
+
+            video_id = music_helper.get_video_id_from_url(url) or ''
+            queue.append({'url': url, 'video_id': video_id, 'title': title, 'thumbnail': thumbnail, 'channel_thumbnails': channel_thumbnails, 'channel_name': channel_name, 'channel_id': channel_id, 'duration': duration, 'view_count': view_count, 'channel_url': channel_url})
+
+            if not voice_client.is_playing():
+                await music_helper.play_next(self=self, ctx=ctx, queue=self.queues)
+                await self.send_embed(ctx=ctx)
+            else:
+                await ctx.send(f"Added to queue: **{title}**")
+        except Exception as e:
+            await ctx.send(f"Something went wrong on internal play_music : {e}", ephemeral=True, delete_after=5)
+            log_error(f"Error raised on internal play_music. Reason : {str(e) if e else 'Unknown error'}")
+    
+    # TODO : FIX add autoplay suggestions
+    
+    # DONE
+    async def send_embed(self, ctx: commands.Context):
+        if not ctx.voice_client:
+            return
+        
+        guild_id = ctx.guild.id
+        queue = self.get_queue(guild_id)
+        
+        song = queue.pop(0)
+        
+        self.current_songs[guild_id] = song
+        
+        url = song['url']
+        title = song['title']
+        thumbnail = song['thumbnail']
+        channel_thumbnails = song['channel_thumbnails']
+        channel_name = song['channel_name']
+        channel_url = song['channel_url']
+        duration = song['duration']
+        view_count = song['view_count']
+        try :
+            
+            # TODO : Add UI buttons
+
+            embed = discord.Embed(title=f'Now Playing : ')
+            embed.set_author(name=channel_name, url=channel_url)
+            embed.set_thumbnail(url='https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png')
+            embed.set_footer(text=channel_name, icon_url=channel_thumbnails)
+            embed.add_field(name=title, value=f'Duration : {duration}\nView Count : {view_count}')
+            embed.set_image(url = thumbnail)
+            
+            try:
+                # send discord embed
+                await ctx.send(embed=embed)
+                
+                activity = discord.Activity(type=discord.ActivityType.listening, 
+                                            name=f"🎵 {title}", 
+                                            url=url,
+                                            details=f"Uploaded to Youtube By: {channel_name}", 
+                                            platform='YouTube', 
+                                            details_url=channel_url)
+                
+                await self.bot.change_presence(activity=activity)
+                
+            except Exception as e:
+                raise e
+            
+        except Exception as e:
+            await ctx.send(f"Failed to send Embed : {e}", ephemeral=True, delete_after=5)
+            log_error(f"Failed to send Embed : {e}")
+                  
+        try:
+            if guild_id:
+                vid = song.get('video_id', '')
+                if vid:
+                    lst = self.recent_played.get(guild_id, [])
+                    lst.append({'id': vid, 'title': title, 'channel_id': song.get('channel_id'), 'channel_name': channel_name})
+                    self.recent_played[guild_id] = lst[-10:]
+
+                # TODO : FIX autoplay
+                
+        except Exception as e:
+            print(f"Error handling autoplay post-play: {e}")
+        
+    # TODO : FIX Lyrics command
+        
+    @commands.hybrid_command() # DONE
+    async def show_queue(self, ctx: commands.Context):
+        """Show current song queue"""
+        try:
+            queue_list = await music_helper.show_queue(self, ctx)
+            if queue_list is not None:
+                await ctx.send(f"Current queue:\n{queue_list}")
+            else:
+                await ctx.send("Queue is empty!", delete_after=5)
+        except Exception as e:
+            await ctx.send(f"Something went wrong when fetching queue! : {e}", ephemeral=True, delete_after=5)
+        
+    @commands.hybrid_command() # DONE
+    async def clear_queue(self, ctx: commands.Context):
+        """Clear current queue"""
+        try:
+            guild_id = ctx.guild.id
+            self.get_queue(guild_id).clear()
+            await ctx.send(f"Queue cleared by {ctx.author.mention}", delete_after=15)
+        except Exception as e:
+            await ctx.send(f"Something went wrong when clearing the queue : {e}", ephemeral=True, delete_after=5)
+        
+    @commands.hybrid_command() # DONE
+    async def skip(self, ctx: commands.Context):
+        """Skip current song"""
+        if not ctx.voice_client:
+            await ctx.send("Not in a voice channel!")
+            return
+        
+        if not ctx.voice_client.is_playing() and not ctx.voice_client.is_paused():
+            await ctx.send("Nothing is playing to skip!")
+            return
+        
+        try:
+            ctx.voice_client.stop()
+            await ctx.send(f"{ctx.author.mention} skipped current song!", delete_after=10)
+        except Exception as e:
+            await ctx.send(f"Failed to skip current song : {e}", ephemeral=True, delete_after=5)
+        
+    @commands.hybrid_command() # DONE
+    async def remove(self, ctx: commands.Context, index: int):
+        """Remove song at specified index"""
+        guild_id = ctx.guild.id
+        q = self.get_queue(guild_id)
+        if not q:
+            await ctx.send("The queue is empty.", ephemeral=True, delete_after=5)
+            return
+        
+        index = index - 1
+        if index < 0 or index >= len(q):
+            await ctx.send(f"Invalid index. Use a number between 1 and {len(q)}.", ephemeral=True, delete_after=5)
+            return
+        
+        try:
+            removed_song = q.pop(index)
+            await ctx.send(f"{ctx.author.mention} removed a song from queue: {removed_song['title']}", delete_after=10)
+        except Exception as e:
+            await ctx.send(f"Something went wrong when removing the song! : {e}", ephemeral=True, delete_after=5)
+        
+    @commands.hybrid_command() # DONE
+    async def pause(self, ctx : commands.Context):
+        """Pause current song"""
+        try:
+            if ctx.voice_client and ctx.voice_client.is_playing():
+                ctx.voice_client.pause()
+                await ctx.send('Paused')
+            else:
+                await ctx.send('Nothing is currently playing')
+        except Exception as e:
+            await ctx.send(f"Something went wrong when pausing. Please try again later! : {e}", ephemeral=True, delete_after=5)
+    
+    @commands.hybrid_command() # DONE
+    async def resume(self, ctx : commands.Context):
+        """Resume current paused song"""
+        try:
+            if ctx.voice_client and ctx.voice_client.is_paused():
+                ctx.voice_client.resume()
+                await ctx.send('Resumed')
+            else:
+                await ctx.send('Not Paused')
+        except Exception as e:
+            await ctx.send(f"Something went wrong when resuming the song! : {e}")
+            
+    @commands.hybrid_command() # DONE
+    async def stop(self, ctx : commands.Context):
+        """Stop playing song"""
+        try:
+            if ctx.voice_client:
+                guild_id = ctx.guild.id
+                self.get_queue(guild_id).clear() 
+                if guild_id in self.current_songs:
+                    del self.current_songs[guild_id]
+                ctx.voice_client.stop()
+                
+                # TODO : Change bot's activity
+                
+                await ctx.send(f"{ctx.author.mention} stopped current song!", delete_after=10)
+            else:
+                await ctx.send("Nothing to stop", ephemeral=True, delete_after=5)
+        except Exception as e:
+            await ctx.send(f"Something went wrong when stopping the song! {e}", ephemeral=True, delete_after=5)
