@@ -6,6 +6,7 @@ from tqdm import tqdm  # Optional: for progress bar (pip install tqdm)
 from data_pools import WEAPON_POOL, REGION_POOL, ELEMENT_POOL, TITLE_POOL, SPECIAL_DISH_POOL, CONSTELLATION_POOL, BIRTHDAY_POOL, RELEASED_VERSION_POOL, ENGLISH_VA_POOL, JAPANESE_VA_POOL
 
 BASE_URL = "https://gsi.fly.dev/"
+IMAGE_API_BASE = "https://genshin.jmp.blue"
 
 
 # Question templates ordered by difficulty (easy → medium → hard)
@@ -55,6 +56,24 @@ def get_field_value(detail, field):
         return detail.get(parent, [{}])[0].get(key)
     return detail.get(field)
 
+def get_character_image(char_id):
+    """Fetch character icon/splash from genshin.jmp.blue"""
+    image_url = f"{IMAGE_API_BASE}/characters/{char_id}/gacha-splash"
+    
+    # Optional: use /portrait for full splash art instead
+    # image_url = f"{IMAGE_API_BASE}/characters/{char_id}/portrait"
+    
+    # Quick existence check (optional but recommended)
+    try:
+        response = requests.head(image_url, timeout=3)
+        if response.status_code == 200:
+            return image_url
+        else:
+            print(f"Image not found for {char_id}")
+            return ""
+    except:
+        return ""
+
 
 def generate_options(correct, pool=None, count=3):
     if pool:
@@ -76,6 +95,9 @@ def create_questions_for_character(character, max_per_char=4):
 
     questions = []
     used_templates = []
+    
+    char_id = detail["name"].lower().replace(" ", "-")  # normalize if needed
+    image_url = get_character_image(char_id)
 
     # Shuffle templates to get variety, but respect difficulty order
     template_indices = list(range(len(QUESTION_TEMPLATES)))
@@ -108,7 +130,8 @@ def create_questions_for_character(character, max_per_char=4):
             "question": question_text,
             "options": options,
             "correct": value,
-            "difficulty": template["diff"]
+            "difficulty": template["diff"],
+            'image' : image_url
         }
         questions.append(q)
         used_templates.append(idx)
