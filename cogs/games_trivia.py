@@ -26,7 +26,7 @@ class TriviaView(discord.ui.View):
         self.image_url = question_data.get("image", None)
         
         self.answered_users = set()
-        self.correct_users = []
+        self.correct_users = set()  # Fixed: Changed from list to set
         self.game_state = GameState.ACTIVE
         self.timer_task = None
         self.seconds_left = timeout_seconds
@@ -125,12 +125,9 @@ class TriviaView(discord.ui.View):
             # Get current embed
             embed = self.create_embed()
             
-            # Add summary of all answers so far
-            if len(self.answered_users) > 0:
-                users = ""
-                for i in len(self.correct_users):
-                    users += f"{i}\n"
-                
+            # Add summary of all correct users
+            if len(self.correct_users) > 0:
+                users = "\n".join(self.correct_users)
                 embed.add_field(
                     name="📊 Correct Users", 
                     value=users, 
@@ -161,6 +158,11 @@ class TriviaView(discord.ui.View):
         embed.add_field(name="Correct Answer", value=self.correct, inline=False)
         embed.add_field(name="Total Participants", value=str(len(self.answered_users)), inline=True)
         
+        # Add correct users list when cancelled
+        if len(self.correct_users) > 0:
+            correct_users_text = "\n".join(self.correct_users)
+            embed.add_field(name="🏆 Correct Users", value=correct_users_text, inline=True)
+        
         if self.image_url:
             embed.set_thumbnail(url=self.image_url)
 
@@ -176,7 +178,7 @@ class TriviaView(discord.ui.View):
         correct_count = 0
         total_answers = len(self.answered_users)
         
-        # For timeout, we don't have individual answers tracked, so just show the stats
+        # Create timeout embed with correct users list
         embed = discord.Embed(
             title="⏰ Time's Up!",
             description=f"**{self.question}**",
@@ -184,6 +186,12 @@ class TriviaView(discord.ui.View):
         )
         embed.add_field(name="Correct Answer", value=f"**{self.correct}**", inline=False)
         embed.add_field(name="Total Participants", value=str(total_answers), inline=True)
+        
+        # Add correct users list when timeout
+        if len(self.correct_users) > 0:
+            correct_users_text = "\n".join(self.correct_users)
+            embed.add_field(name="🏆 Correct Users", value=correct_users_text, inline=True)
+        
         embed.add_field(name="Time Limit", value="20 seconds", inline=True)
         embed.set_footer(text="⏰ Time expired")
         
@@ -207,12 +215,9 @@ class TriviaView(discord.ui.View):
                 if self.game_state == GameState.ACTIVE:
                     embed = self.create_embed()
                     
-                    # Add summary of all answers so far
-                    if len(self.answered_users) > 0:
-                        users = ""
-                        for i in len(self.correct_users):
-                            users += f"{i}\n"
-                        
+                    # Add summary of all correct users
+                    if len(self.correct_users) > 0:
+                        users = "\n".join(self.correct_users)
                         embed.add_field(
                             name="📊 Correct Users", 
                             value=users, 
@@ -339,4 +344,3 @@ class Trivia(commands.Cog):
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Trivia(bot))
-
