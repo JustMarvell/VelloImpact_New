@@ -18,9 +18,9 @@ def scrape_data(url : str):
     def get_name():
         try:
             res = info_board.find('h2', attrs = {'data-source' : 'name'})
-            if res != None:
+            if res is not None:
                 res = res.decode_contents(formatter = lambda x: x.replace(u'\xad', ''))
-                return f'{res}'
+            return f'{res}'
         except Exception as e:
             return None
     name = get_name()
@@ -29,7 +29,7 @@ def scrape_data(url : str):
     def get_quality():
         try: 
             res = info_board.find('td', attrs = {'data-source' : 'quality'})
-            if res != None:
+            if res is not None:
                 res = res.find('img', alt = True)['alt']
                 return f'{res[0]}'
             else:
@@ -42,7 +42,7 @@ def scrape_data(url : str):
     def get_weapon_type():
         try:
             res = info_board.find('td', attrs = {'data-source' : 'weapon'})
-            if res != None:
+            if res is not None:
                 res = res.find('a', title = True)['title']
             return f'{res}'
         except Exception as e:
@@ -53,7 +53,7 @@ def scrape_data(url : str):
     def get_element():
         try:
             res = info_board.find('td', attrs = {'data-source' : 'element'})
-            if res != None:
+            if res is not None:
                 res = res.find('a', title = True)['title']
             return f'{res}'
         except Exception as e:
@@ -64,7 +64,7 @@ def scrape_data(url : str):
     def get_constellation():
         try:
             res = info_board.find('div', attrs = {'data-source' : 'constellation'})
-            if res != None:
+            if res is not None:
                 res = res.find('div', class_ = 'pi-data-value pi-font').find('a', title = True)['title']
             return f'{res}'
         except Exception as e:
@@ -75,7 +75,7 @@ def scrape_data(url : str):
     def get_region():
         try:
             res = info_board.find('div', attrs = {'data-source' : 'region'})
-            if res != None:
+            if res is not None:
                 res = res.find('div', class_ = 'pi-data-value pi-font').find('a', title = True)['title']
             return f'{res}'
         except Exception as e:
