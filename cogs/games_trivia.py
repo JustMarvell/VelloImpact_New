@@ -26,10 +26,12 @@ class TriviaView(discord.ui.View):
         self.image_url = question_data.get("image", None)
         
         self.answered_users = set()
+        self.correct_users = []
         self.game_state = GameState.ACTIVE
         self.timer_task = None
         self.seconds_left = timeout_seconds
         self.message_ref = None
+        self.latest_user = None
 
         # Add UI components
         self.add_item(self.create_answer_select())
@@ -97,6 +99,7 @@ class TriviaView(discord.ui.View):
             return
 
         self.answered_users.add(user_id)
+        self.latest_user = interaction.user.mention
 
         try:
             selected_index = int(interaction.data["values"][0])
@@ -106,28 +109,43 @@ class TriviaView(discord.ui.View):
             return
 
         is_correct = chosen_answer == self.correct
+        if is_correct:
+            self.correct_users.add(self.latest_user)
 
-        # User feedback
-        feedback = "✅ **Correct!**" if is_correct else f"❌ **Wrong!**\nThe correct answer was: **{self.correct}**"
+        # User feedback - always send privately
+        feedback = "✅ **Correct!**" if is_correct else f"❌ **Wrong!**"
         await interaction.response.send_message(feedback, ephemeral=True)
 
-        # Create end game embed
-        embed = discord.Embed(
-            title=f"🎯 Game Win!" if is_correct else "🎯 Game Over!",
-            description=f"**{self.question}**",
-            color=discord.Color.green() if is_correct else discord.Color.red()
-        )
-        embed.add_field(name="Your Answer", value=chosen_answer, inline=True)
-        embed.add_field(name="Correct Answer", value=self.correct, inline=True)
-        embed.add_field(name="Result", value="✅ Correct!" if is_correct else "❌ Wrong!", inline=True)
-        embed.set_footer(text=f"Answered by {interaction.user.display_name}")
+        # Update embed to show player's answer and keep game going
+        await self.update_embed_with_answer(interaction, chosen_answer, is_correct)
 
-        # Add image if available
-        if self.image_url:
-            embed.set_thumbnail(url=self.image_url)
-
-        # End the game
-        await self.end_game(embed, disable_ui=True)
+    async def update_embed_with_answer(self, interaction: discord.Interaction, chosen_answer: str, is_correct: bool):
+        """Update the embed to show the latest answer and continue the game"""
+        try:
+            # Get current embed
+            embed = self.create_embed()
+            
+            # Add summary of all answers so far
+            if len(self.answered_users) > 0:
+                users = ""
+                for i in len(self.correct_users):
+                    users += f"{i}\n"
+                
+                embed.add_field(
+                    name="📊 Correct Users", 
+                    value=users, 
+                    inline=True
+                )
+            
+            # Keep the same image
+            if self.image_url:
+                embed.set_thumbnail(url=self.image_url)
+            
+            # Update the message
+            await interaction.message.edit(embed=embed, view=self)
+            
+        except Exception as e:
+            print(f"Error updating embed: {e}")
 
     async def cancel_callback(self, interaction: discord.Interaction):
         if self.game_state != GameState.ACTIVE:
@@ -141,6 +159,7 @@ class TriviaView(discord.ui.View):
         )
         embed.add_field(name="Question", value=self.question, inline=False)
         embed.add_field(name="Correct Answer", value=self.correct, inline=False)
+        embed.add_field(name="Total Participants", value=str(len(self.answered_users)), inline=True)
         
         if self.image_url:
             embed.set_thumbnail(url=self.image_url)
@@ -153,13 +172,18 @@ class TriviaView(discord.ui.View):
         if self.game_state != GameState.ACTIVE:
             return
 
+        # Count correct and incorrect answers
+        correct_count = 0
+        total_answers = len(self.answered_users)
+        
+        # For timeout, we don't have individual answers tracked, so just show the stats
         embed = discord.Embed(
             title="⏰ Time's Up!",
             description=f"**{self.question}**",
             color=discord.Color.orange()
         )
         embed.add_field(name="Correct Answer", value=f"**{self.correct}**", inline=False)
-        embed.add_field(name="Participants", value=str(len(self.answered_users)), inline=True)
+        embed.add_field(name="Total Participants", value=str(total_answers), inline=True)
         embed.add_field(name="Time Limit", value="20 seconds", inline=True)
         embed.set_footer(text="⏰ Time expired")
         
@@ -182,6 +206,19 @@ class TriviaView(discord.ui.View):
                 # Only update if game is still active
                 if self.game_state == GameState.ACTIVE:
                     embed = self.create_embed()
+                    
+                    # Add summary of all answers so far
+                    if len(self.answered_users) > 0:
+                        users = ""
+                        for i in len(self.correct_users):
+                            users += f"{i}\n"
+                        
+                        embed.add_field(
+                            name="📊 Correct Users", 
+                            value=users, 
+                            inline=True
+                        )
+                    
                     try:
                         await message.edit(embed=embed)
                     except discord.errors.NotFound:
@@ -302,3 +339,4 @@ class Trivia(commands.Cog):
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Trivia(bot))
+
