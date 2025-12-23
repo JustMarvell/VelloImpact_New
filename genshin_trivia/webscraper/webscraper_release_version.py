@@ -11,7 +11,7 @@ version_list = ''
 for i in table_1.find_all('tr'):
     f = i.find_all('td')[-1].get('data-version')
     if f is not None:
-        n = f'"{f}", '
+        n = f'"v{f}", '
         version_list += n
         
 print(version_list)
