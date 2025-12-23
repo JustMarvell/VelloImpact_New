@@ -65,6 +65,11 @@ LOGGING_CONFIG = {
             "level" : "INFO",
             "propagate" : False
         },
+        "commands" : {
+            'handlers' : ['console', "file"],
+            "level" : "INFO",
+            "propagate" : False
+        },
         "tree" : {
             'handlers' : ['console', "file"],
             "level" : "INFO",
