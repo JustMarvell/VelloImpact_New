@@ -168,22 +168,22 @@ class Christmas(commands.Cog):
             "https://i.pinimg.com/736x/67/7b/9e/677b9ed2a16304ba455b1f6b9ea92a7d.jpg"
         }
 
-        message = random.randrange(len(christmas_messages))
-        image = random.randrange(len(embed_images))
+        selected_message = random.choice(christmas_messages)
+        selected_image = random.choice(embed_images)
         
         embed_msg = discord.Embed(
             color=16253442,
             title="‧₊˚🎄✩ ₊˚⊹♡ Merry Christmas! ♡ ⊹˚₊ ✩🎄˚₊‧",
             description="────୨ৎ────────⋆꙳•❅*🎄*❆•꙳⋆────୨ৎ────",
         )
-        embed_msg.set_image(url=image)
+        embed_msg.set_image(url=selected_image)
         embed_msg.set_footer(
             text="This message is brought to you by [/] BUFF_VelloImpact Bot",
             icon_url="https://i.pinimg.com/736x/89/13/85/8913858da1aa446f87efe425e1074f16.jpg",
         )
         embed_msg.add_field(
             name=" ",
-            value=message,
+            value=selected_message,
             inline=False,
         )
         embed_msg.add_field(
@@ -197,6 +197,7 @@ class Christmas(commands.Cog):
             try:
                 await member.send(embed=embed_msg)
                 msg_sent += 1
+                asyncio.sleep(1)
             except Exception as e:
                 await ctx.send(f"Failed to send messages to {member} : {e}")
                 pass
