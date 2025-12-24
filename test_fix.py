@@ -1,9 +1,12 @@
-import ipsum
+import requests
+from PIL import Image
 
-# Load the English language model
-model = ipsum.load_model("en")
+BASE_URL = 'https://api.qrserver.com/v1/create-qr-code/'
 
-# Returns a list of 3 strings, each resembling a paragraph of English
-paragraphs = model.generate_paragraphs(9)
+data = "ExampleData"
 
-print(paragraphs)
+size = 200
+
+qr = requests.get(f"{BASE_URL}?data={data}&size={size}x{size}")
+
+print(qr.content)
