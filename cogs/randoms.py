@@ -349,4 +349,46 @@ class Randoms(commands.Cog):
             await ctx.send(embed=embed)
         except Exception as e:
             await ctx.send(f"Failed when trying to sed embed message : {e}", ephemeral=True)
+            
+    @commands.hybrid_command()
+    async def random_jokes(self, ctx: commands.Context):
+        """ Get a random joke """
+        try:
+            await ctx.defer()
+        except Exception():
+            pass
         
+        BASE_URL = 'https://official-joke-api.appspot.com/random_joke'
+
+        try:
+            response = requests.get(f"{BASE_URL}")
+            
+            if response.status_code != 200:
+                await ctx.send(f"Something wrong when fetching the response! Return code : {response.status_code}")
+                return
+            
+            joke_setup = response.json().get('setup')
+            joke_punchline = response.json().get('punchline')
+            joke_id = response.json().get('id')
+            
+        except Exception as e:
+            await ctx.send(f"An error occured when getting response : {e}", ephemeral=True)
+            return
+        
+        try:
+            embed = discord.Embed(
+                color=14666772,
+                title=f"Here's a joke!",
+            )
+            embed.set_footer(
+                text=f"Jokes taken from official-joke-api.appspot.com | ID : {joke_id}",
+            )
+            embed.add_field(
+                name=f"{joke_setup}",
+                value=f"> **{joke_punchline}**",
+                inline=False,
+            )
+            
+            await ctx.send(embed=embed)
+        except Exception as e:
+            await ctx.send(f"Failed when trying to sed embed message : {e}", ephemeral=True)
