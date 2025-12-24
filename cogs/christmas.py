@@ -137,7 +137,7 @@ class Christmas(commands.Cog):
             await ctx.send(f"❌ No members found in {target_guild.name}. This might be due to privacy settings.", ephemeral=True)
             return
             
-        await ctx.send(f"Sending message to {len(target_guild.members)} members in {target_guild.name}.....")
+        await ctx.send(f"Sending message to {len(target_guild.members)} members in {target_guild.name}.....", ephemeral=True)
         
         christmas_messages = [
             'Wishing you all the magic and joy this season brings—Merry Christmas!',
