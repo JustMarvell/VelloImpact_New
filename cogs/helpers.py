@@ -2,6 +2,7 @@ import ipsum
 import discord
 from discord.ext import  commands
 from controllers import character_chunk
+import asyncio
 
 model = ipsum.load_model("en")
 
@@ -25,10 +26,10 @@ class Helper(commands.Cog):
             await ctx.send(f"Error when generating the paragraph : {e}")
             return
         
-        chunked_paragraph = character_chunk.get_chunk(paragraph_result)
-        for p in chunked_paragraph:
+        for p in paragraph_result:
             try:
                 await ctx.send(f"{p}")
+                await asyncio.sleep(0.5)
             except Exception as e:
                 await ctx.send(f"Error when sending the next paragraph, canceling proses : {e}")
                 break
