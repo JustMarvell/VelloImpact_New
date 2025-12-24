@@ -300,7 +300,7 @@ class Client(commands.Bot):
         """Track command usage for statistics"""
         self._command_stats[str(ctx.command)] += 1
         
-    async def on_command_error(self, ctx, error):
+    async def on_command_error(self, ctx: commands.Context, error):
         """Handle command errors with logging"""
         command_name = str(ctx.command) if ctx.command else "unknown"
         self._error_counts[command_name] += 1
@@ -310,7 +310,7 @@ class Client(commands.Bot):
         
         # Send user-friendly error message
         try:
-            await ctx.send(f"An error occurred while executing the command: {str(error)}")
+            await ctx.send(f"An error occurred while executing the command. Please try again later..", ephemeral=True)
         except:
             pass  # Ignore if user can't receive messages
         
