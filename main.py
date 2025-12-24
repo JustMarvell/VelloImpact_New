@@ -32,9 +32,9 @@ class Client(commands.Bot):
         intents = discord.Intents.default()
         intents.message_content = True
         intents.voice_states = True
-        intents.presences = False
+        intents.presences = True
         intents.guilds = True
-        intents.members = False
+        intents.members = True
         
         super().__init__(
             command_prefix="!",
@@ -365,9 +365,9 @@ async def load_cogs():
 intents = discord.Intents.default()
 intents.message_content = True
 intents.voice_states = True
-intents.presences = False
+intents.presences = True
 intents.guilds = True
-intents.members = False
+intents.members = True
 client = Client()
 
 # Base client commands
@@ -658,7 +658,7 @@ except Exception as e:
 if __name__ == "__main__":
     try:
         logger.info("Starting VelloImpact Discord Bot...")
-        client.run(settings.DISCORD_API_SECRET, root_logger=True)
+        client.run(settings.DISCORD_API_SECRET, root_logger=True, reconnect=True)
     except KeyboardInterrupt:
         logger.info("Bot shutdown requested by user")
     except Exception as e:
