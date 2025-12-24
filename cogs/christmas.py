@@ -27,7 +27,7 @@ async def setup(bot: commands.Bot) :
 
 class Christmas(commands.Cog):
     
-    def __init__(self, bot):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.channel = None
         self.autoplay = {}
@@ -126,11 +126,18 @@ class Christmas(commands.Cog):
             await ctx.send(f"Sent a Merry Christmas message in {channel.mention}!", ephemeral=True, delete_after=5)
         except Exception as e:
             await ctx.send(f"Failed to send message in {channel.mention}: {str(e)}", ephemeral=True, delete_after=5)
-            
-    @commands.hybrid_command()
+         
+    # TODO : make this command only available in this guild : 1386246390900068464
+    @commands.hybrid_command(guild=discord.Object(id=1386246390900068464))
     async def send_private_christmas_message(self, ctx: commands.Context, *, guild: discord.Guild):
         """ Send a Merry Christmas message to all member of a guild """
-        await ctx.send(f"Sending message to {guild.member_count} members in {guild.name}.....")
+        target_guild = guild
+        
+        if not target_guild.members:
+            await ctx.send(f"❌ No members found in {target_guild.name}. This might be due to privacy settings.", ephemeral=True)
+            return
+            
+        await ctx.send(f"Sending message to {len(target_guild.members)} members in {target_guild.name}.....")
         
         christmas_messages = [
             'Wishing you all the magic and joy this season brings—Merry Christmas!',
@@ -167,45 +174,74 @@ class Christmas(commands.Cog):
             "https://i.pinimg.com/736x/10/87/6d/10876dfa73d7a870042b5159aaea416c.jpg",
             "https://i.pinimg.com/736x/67/7b/9e/677b9ed2a16304ba455b1f6b9ea92a7d.jpg"
         ]
-
-        selected_message = random.choice(christmas_messages)
-        selected_image = random.choice(embed_images)
-        
-        embed_msg = discord.Embed(
-            color=16253442,
-            title="‧₊˚🎄✩ ₊˚⊹♡ Merry Christmas! ♡ ⊹˚₊ ✩🎄˚₊‧",
-            description="────୨ৎ────────⋆꙳•❅*🎄*❆•꙳⋆────୨ৎ────",
-        )
-        embed_msg.set_image(url=selected_image)
-        embed_msg.set_footer(
-            text="This message is brought to you by [/] BUFF_VelloImpact Bot",
-            icon_url="https://i.pinimg.com/736x/89/13/85/8913858da1aa446f87efe425e1074f16.jpg",
-        )
-        embed_msg.add_field(
-            name=" ",
-            value=selected_message,
-            inline=False,
-        )
-        embed_msg.add_field(
-            name=" ",
-            value=" ",
-            inline=False,
-        )
         msg_sent = 0
         msg_failed = 0
         
-        for member in guild.members:
-            try:
-                await member.send(embed=embed_msg)
-                msg_sent += 1
-                await asyncio.sleep(1)  # Add delay to avoid rate limiting
-                await ctx.send(f"Message sent to {member.name}")
-            except discord.Forbidden:
-                # User has disabled DMs from bots - this is normal
-                msg_failed += 1
-            except Exception as e:
-                # Other errors - log them but don't spam the channel
-                cogs_logger.warning(f"Failed to send Christmas message to {member}: {str(e)}")
-                msg_failed += 1
+        # Filter out bots and the bot itself
+        valid_members = [member for member in target_guild.members if not member.bot or member != self.bot.user]
+        
+        if not valid_members:
+            await ctx.send(f"❌ No valid members found in {target_guild.name} to send messages to.", ephemeral=True)
+            return
+        
+        # Process members in smaller batches to avoid rate limiting
+        batch_size = 10
+        for i in range(0, len(valid_members), batch_size):
+            batch = valid_members[i:i + batch_size]
+            
+            for member in batch:
+                try:
+                    # Create a fresh embed for each member with random content
+                    selected_message = random.choice(christmas_messages)
+                    selected_image = random.choice(embed_images)
+                    
+                    embed_msg = discord.Embed(
+                        color=16253442,
+                        title="‧₊˚🎄✩ ₊˚⊹♡ Merry Christmas! ♡ ⊹˚₊ ✩🎄˚₊‧",
+                        description="────୨ৎ────────⋆꙳•❅*🎄*❆•꙳⋆────୨ৎ────",
+                    )
+                    embed_msg.set_image(url=selected_image)
+                    embed_msg.set_footer(
+                        text="This message is brought to you by [/] BUFF_VelloImpact Bot",
+                        icon_url="https://i.pinimg.com/736x/89/13/85/8913858da1aa446f87efe425e1074f16.jpg",
+                    )
+                    embed_msg.add_field(
+                        name=" ",
+                        value=selected_message,
+                        inline=False,
+                    )
+                    embed_msg.add_field(
+                        name=" ",
+                        value=" ",
+                        inline=False,
+                    )
+                    
+                    # Try to send DM
+                    await member.send(embed=embed_msg)
+                    msg_sent += 1
+                    
+                    # Rate limiting
+                    await asyncio.sleep(2)  # 2 second delay between messages
+                    
+                except discord.Forbidden:
+                    # User has DMs disabled or blocked the bot
+                    msg_failed += 1
+                    cogs_logger.debug(f"Cannot send DM to {member} - likely has DMs disabled")
+                except discord.HTTPException as e:
+                    # Rate limit or other HTTP error
+                    if e.status == 429:  # Rate limited
+                        await asyncio.sleep(60)  # Wait 1 minute for rate limit
+                        msg_failed += 1
+                    else:
+                        msg_failed += 1
+                        cogs_logger.warning(f"HTTP error sending DM to {member}: {str(e)}")
+                except Exception as e:
+                    # Other errors
+                    msg_failed += 1
+                    cogs_logger.warning(f"Failed to send Christmas message to {member}: {str(e)}")
+            
+            # Longer delay between batches
+            if i + batch_size < len(valid_members):
+                await asyncio.sleep(10)  # 10 second delay between batches
                 
-        await ctx.send(f"Messages sent to {msg_sent} members in {guild.name}. {msg_failed} members couldn't receive messages (likely due to privacy settings). Merry Christmas!")
+        await ctx.send(f"✅ **Christmas Messages Sent!**\n📨 **Successful:** {msg_sent} members\n❌ **Failed:** {msg_failed} members\n📍 **Guild:** {target_guild.name}\n\n🎄 **Merry Christmas!** 🎁", ephemeral=True)
