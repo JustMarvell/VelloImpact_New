@@ -132,7 +132,7 @@ class Christmas(commands.Cog):
         """ Send a Merry Christmas message to all member of a guild """
         await ctx.send(f"Sending message to {guild.member_count} members in {guild.name}.....")
         
-        christmas_messages = {
+        christmas_messages = [
             'Wishing you all the magic and joy this season brings—Merry Christmas!',
             'Merry Christmas my friend! Wishing you a day full of love, peace, and happiness!',
             'Wishing you a season that\'s merry and bright with the light of God\'s love.',
@@ -158,15 +158,15 @@ class Christmas(commands.Cog):
             'Christmas gives us the perfect excuse to stop for a moment and appreciate what we have. May this festive season find us grateful and generous.',
             'Happy Holidays! I hope the new year comes with many good things for you and your family',
             'Merry Christmas. I hope you spend a peaceful and pleasant holiday season with your loved ones'
-        }
+        ]
         
-        embed_images = {
+        embed_images = [
             "https://i.pinimg.com/1200x/d0/4f/c2/d04fc2d1ae9a518aeb3660a80c68dec3.jpg",
             "https://i.pinimg.com/1200x/a8/df/f7/a8dff76f274d71d663180999ff26db8f.jpg",
             "https://i.pinimg.com/736x/01/38/31/013831bb17f4fe32dcac0510cddc1e4b.jpg",
             "https://i.pinimg.com/736x/10/87/6d/10876dfa73d7a870042b5159aaea416c.jpg",
             "https://i.pinimg.com/736x/67/7b/9e/677b9ed2a16304ba455b1f6b9ea92a7d.jpg"
-        }
+        ]
 
         selected_message = random.choice(christmas_messages)
         selected_image = random.choice(embed_images)
@@ -192,14 +192,19 @@ class Christmas(commands.Cog):
             inline=False,
         )
         msg_sent = 0
+        msg_failed = 0
         
         for member in guild.members:
             try:
                 await member.send(embed=embed_msg)
                 msg_sent += 1
-                asyncio.sleep(1)
+                await asyncio.sleep(1)  # Add delay to avoid rate limiting
+            except discord.Forbidden:
+                # User has disabled DMs from bots - this is normal
+                msg_failed += 1
             except Exception as e:
-                await ctx.send(f"Failed to send messages to {member} : {e}")
-                pass
+                # Other errors - log them but don't spam the channel
+                cogs_logger.warning(f"Failed to send Christmas message to {member}: {str(e)}")
+                msg_failed += 1
                 
-        await ctx.send(f"Messages sent to {msg_sent} members in {guild.name}. Merry Christmas!")
+        await ctx.send(f"Messages sent to {msg_sent} members in {guild.name}. {msg_failed} members couldn't receive messages (likely due to privacy settings). Merry Christmas!")
