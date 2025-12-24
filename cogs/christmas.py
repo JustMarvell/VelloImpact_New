@@ -9,6 +9,7 @@ import controllers.character_chunk as character_chunk
 import yt_dlp
 import settings
 import time
+import random
 import concurrent.futures
 
 # Add this at the top with other imports
@@ -125,3 +126,79 @@ class Christmas(commands.Cog):
             await ctx.send(f"Sent a Merry Christmas message in {channel.mention}!", ephemeral=True, delete_after=5)
         except Exception as e:
             await ctx.send(f"Failed to send message in {channel.mention}: {str(e)}", ephemeral=True, delete_after=5)
+            
+    @commands.hybrid_command()
+    async def send_private_christmas_message(self, ctx: commands.Context, *, guild: discord.Guild):
+        """ Send a Merry Christmas message to all member of a guild """
+        await ctx.send(f"Sending message to {guild.member_count} members in {guild.name}.....")
+        
+        christmas_messages = {
+            'Wishing you all the magic and joy this season brings—Merry Christmas!',
+            'Merry Christmas my friend! Wishing you a day full of love, peace, and happiness!',
+            'Wishing you a season that\'s merry and bright with the light of God\'s love.',
+            'May God fill your life with love, joy, and peace this Christmas and throughout the New Year.',
+            'Thank you for everything you\'ve done for me this year. Here\'s to more friendship next year!',
+            'The best gift is having you for a friend. Happy Holidays!',
+            'Looking forward to many more adventures with you in the New Year, my friend!',
+            'May the magic of Christmas fill your home with joy and your heart with love. ',
+            'May you find yourself surrounded by moments that remind you how loved you are.',
+            'May this season remind you that joy isn\'t found — it\'s made.',
+            'Wishing you a Christmas that feels like coming home — no matter where you are.',
+            'Wishing you laughter that echoes, peace that abides, and love that never fades.',
+            'May the Christmas season bring you and your family only happiness and joy.',
+            'May all that is beautiful, meaningful, and brings you joy be yours this holiday season and throughout the coming year!',
+            'Merry Christmas! I hope you receive one blessing after another this coming year.',
+            'Though you\'re walking a challenging road, may this Christmas bring you friends who carry part of the load.',
+            'Wishing you the gentleness of friends, the warmth of memories, and the promise of brighter days.',
+            'Through the darkest of winters, may the light of hope shine for you this Christmas.',
+            'You\'ve had more than your share of challenges this year. Wishing you peace and hope at Christmas and a new year full of better days.',
+            '"Christmas will always be as long as we stand heart to heart and hand in hand." —Dr. Seuss' ,
+            'This Christmas is a good time to remember that what really matters is the people next to us. That we don\'t need big things to be happy, just good times.',
+            'Sometimes we forget, but the real magic of these holidays is in those small gestures that don\'t cost money: a phone call, a visit, a smile.',
+            'Christmas gives us the perfect excuse to stop for a moment and appreciate what we have. May this festive season find us grateful and generous.',
+            'Happy Holidays! I hope the new year comes with many good things for you and your family',
+            'Merry Christmas. I hope you spend a peaceful and pleasant holiday season with your loved ones'
+        }
+        
+        embed_images = {
+            "https://i.pinimg.com/1200x/d0/4f/c2/d04fc2d1ae9a518aeb3660a80c68dec3.jpg",
+            "https://i.pinimg.com/1200x/a8/df/f7/a8dff76f274d71d663180999ff26db8f.jpg",
+            "https://i.pinimg.com/736x/01/38/31/013831bb17f4fe32dcac0510cddc1e4b.jpg",
+            "https://i.pinimg.com/736x/10/87/6d/10876dfa73d7a870042b5159aaea416c.jpg",
+            "https://i.pinimg.com/736x/67/7b/9e/677b9ed2a16304ba455b1f6b9ea92a7d.jpg"
+        }
+
+        message = random.randrange(len(christmas_messages))
+        image = random.randrange(len(embed_images))
+        
+        embed_msg = discord.Embed(
+            color=16253442,
+            title="‧₊˚🎄✩ ₊˚⊹♡ Merry Christmas! ♡ ⊹˚₊ ✩🎄˚₊‧",
+            description="────୨ৎ────────⋆꙳•❅*🎄*❆•꙳⋆────୨ৎ────",
+        )
+        embed_msg.set_image(url=image)
+        embed_msg.set_footer(
+            text="This message is brought to you by [/] BUFF_VelloImpact Bot",
+            icon_url="https://i.pinimg.com/736x/89/13/85/8913858da1aa446f87efe425e1074f16.jpg",
+        )
+        embed_msg.add_field(
+            name=" ",
+            value=message,
+            inline=False,
+        )
+        embed_msg.add_field(
+            name=" ",
+            value=" ",
+            inline=False,
+        )
+        msg_sent = 0
+        
+        for member in guild.members:
+            try:
+                await member.send(embed=embed_msg)
+                msg_sent += 1
+            except Exception as e:
+                await ctx.send(f"Failed to send messages to {member} : {e}")
+                pass
+                
+        await ctx.send(f"Messages sent to {msg_sent} members in {guild.name}. Merry Christmas!")
