@@ -10,6 +10,15 @@ model = ipsum.load_model("en")
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Helper(bot))
+    
+class DictionaryHelperUI(discord.ui.View):
+    def __init__(self, cog: commands.Cog):
+        super().__init__(timeout=None)
+        self.cog = cog
+        
+    @discord.ui.button(label="Source", emoji="📖", style=discord.ButtonStyle.link)
+    async def audio_link_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        print("pressed")
 
 class Helper(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -80,7 +89,83 @@ class Helper(commands.Cog):
             
         except Exception as e:
             await ctx.send(f"An error occurred while generating the QR code: {e}", ephemeral=True)
+            
+    @commands.hybrid_command()
+    async def dictionary(self, ctx: commands.Context, *, word: str | None):
+        """ Find the meaning of the word in the dictionary 
+        Args:
+            word: The specified word
+        """
+        try:
+            await ctx.defer()
+        except Exception:
+            pass
+        
+        if not word or word.strip() == "":
+            await ctx.send("Please provide a word!", ephemeral=True)
+            return
 
+        BASE_URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
+        
+        try:
+            response = requests.get(f"{BASE_URL}{word}")
+            
+            if response.status_code == 404:
+                await ctx.send(f"{word} is not a valid word!")
+                return
+            elif response.status_code != 200:
+                await ctx.send(f"Something wrong when fetching the response! Return Code : {response.status_code}")
+                return
+            
+        except Exception as e:
+            await ctx.send(f"An error occured when getting response : {e}", ephemeral=True)
+            return
+        
+        result = response.json()[0]
+        res_word = result.get('word')
+        res_phonetic = result.get('phonetic')
+        res_meanings = result.get('meanings')
+        res_source_url = result.get('sourceUrls')[0]
+        # prioritize us version (1 : us, 0 : uk)
+        try:
+            try:
+                res_phonetic_sound = result.get('phonetics')[1]['sourceUrl']
+            except Exception:
+                res_phonetic_sound = result.get('phonetics')[0]['sourceUrl']
+        except Exception:
+            res_phonetic_sound = None
+        try:
+            embed = discord.Embed(
+                color=2925340,
+                title="Here's a definition for that word!",
+                description=f"**Word** : {res_word}\n**Phonetic** : {res_phonetic}",
+            )
+            embed.set_footer(
+                text="Response provided by dictionaryapi.dev",
+            )
+            
+            def_text = ""
+            for meanings in res_meanings:
+                for definition in meanings['definitions'][0:2]:
+                    def_text += definition['definition']
+                embed.add_field(
+                    name=f"{meanings['partOfSpeech'].capitalize()} : ",
+                    value=f"> - {def_text}",
+                    inline=False,
+                )
+            
+            view = discord.ui.View(timeout=None)
+            
+            url_source_button = discord.ui.Button(label="Source", style=discord.ButtonStyle.link, emoji="📖", url=res_source_url)
+            audio_source_button = discord.ui.Button(label="Pronounciations", style=discord.ButtonStyle.link, emoji="🔈", url=res_phonetic_sound)
+            view.add_item(url_source_button)
+            if res_phonetic_sound is not None:
+                view.add_item(audio_source_button)
+            
+            await ctx.send(embed=embed, view=view)
+            
+        except Exception as e:
+            await ctx.send(f"An error occured when sending embed: {e}", ephemeral=True)
         
 
         
