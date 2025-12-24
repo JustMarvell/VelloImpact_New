@@ -37,7 +37,7 @@ class Client(commands.Bot):
         intents.members = True
         
         super().__init__(
-            command_prefix="!",
+            command_prefix="'",
             intents=intents,
             help_command=None,
             case_insensitive=True,
@@ -372,23 +372,13 @@ client = Client()
 
 # Base client commands
 
-@client.tree.command(name = "reload_commands", description = "Reload all commands (rate limited)")
-async def reload_commands(interaction: discord.Interaction):
+@client.command(name = "rc", description = "Reload all commands (rate limited)", guild=discord.Object(id=1453320275864322171))
+async def reload_commands(interaction):
     """Reload all cogs"""
     try:
-        # Check permissions
-        if not interaction.user.guild_permissions.administrator:
-            await interaction.response.send_message(
-                "You need administrator permissions to use this command.",
-                ephemeral=True
-            )
-            return
-        
         # Rate limiting
         if not await client._rate_limited_command(interaction):
             return
-        
-        await interaction.response.defer()
         
         reloaded_cogs = 0
         reload_results = []
@@ -416,45 +406,32 @@ async def reload_commands(interaction: discord.Interaction):
         if len(reload_results) > 10:
             result_text += f"\n... and {len(reload_results) - 10} more"
         
-        await interaction.edit_original_response(
-            content=f"Successfully reloaded {len(reload_results)} cogs!",
+        await interaction.send(
+            f"Successfully reloaded {len(reload_results)} cogs!",
         )
         
-        await interaction.followup.send(
-            content=result_text,
-            ephemeral=True,
+        await interaction.send(
+            content=result_text
         )
         
         await asyncio.sleep(3)
-        await interaction.delete_original_response()
         
     except Exception as e:
         error_msg = f"Error reloading cogs: {str(e)}"
         cogs_logger.error(error_msg)
         cogs_logger.error(traceback.format_exc())
         
-        await interaction.followup.send(
-            f"Error: {str(e)}",
-            ephemeral=True
+        await interaction.send(
+            f"Error: {str(e)}"
         )
         
-@client.tree.command(name = "sync_commands", description = "Sync all commands")
-async def sync_commands(interaction: discord.Interaction):
+@client.command(name = "sc", description = "Sync all commands", guild=discord.Object(id=1453320275864322171))
+async def sync_commands(interaction):
     """Sync all commands"""
-    try:
-        # Check permissions
-        if not interaction.user.guild_permissions.administrator:
-            await interaction.response.send_message(
-                "You need administrator permissions to use this command.",
-                ephemeral=True
-            )
-            return
-        
+    try:        
         # Rate limiting
         if not await client._rate_limited_command(interaction):
             return
-        
-        await interaction.response.defer()
         
         tree_logger.info("Syncing commands...")
         start_time = time.time()
@@ -465,20 +442,18 @@ async def sync_commands(interaction: discord.Interaction):
         
         tree_logger.info(f"Synced {len(synced)} commands to global ({sync_time:.2f}s)")
         
-        await interaction.edit_original_response(
-            content=f'Synced {len(synced)} commands. ({sync_time:.2f}s)'
+        await interaction.send(
+            f'Synced {len(synced)} commands. ({sync_time:.2f}s)'
         )
         
         await asyncio.sleep(5)
-        await interaction.delete_original_response()
         
     except Exception as e:
         error_msg = f"Error syncing commands: {str(e)}"
         tree_logger.error(error_msg)
         
-        await interaction.followup.send(
-            f"Error: {str(e)}",
-            ephemeral=True
+        await interaction.send(
+            f"Error: {str(e)}"
         )
         
 @client.tree.command(name="bot_stats", description="Show bot performance statistics")

@@ -127,8 +127,8 @@ class Christmas(commands.Cog):
         except Exception as e:
             await ctx.send(f"Failed to send message in {channel.mention}: {str(e)}", ephemeral=True, delete_after=5)
          
-    # TODO : make this command only available in this guild : 1386246390900068464
-    @commands.hybrid_command(guild=discord.Object(id=1386246390900068464))
+    # TODO : make this command only available in this guild : 1453320275864322171
+    @commands.command(guild=discord.Object(id=1453320275864322171))
     async def send_private_christmas_message(self, ctx: commands.Context, *, guild: discord.Guild):
         """ Send a Merry Christmas message to all member of a guild """
         target_guild = guild
@@ -202,7 +202,7 @@ class Christmas(commands.Cog):
                     )
                     embed_msg.set_image(url=selected_image)
                     embed_msg.set_footer(
-                        text="This message is brought to you by [/] BUFF_VelloImpact Bot",
+                        text="This automated message is brought to you by [/] BUFF_VelloImpact Bot",
                         icon_url="https://i.pinimg.com/736x/89/13/85/8913858da1aa446f87efe425e1074f16.jpg",
                     )
                     embed_msg.add_field(
