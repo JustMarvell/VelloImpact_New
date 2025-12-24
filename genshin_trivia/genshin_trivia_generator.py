@@ -58,10 +58,7 @@ def get_field_value(detail, field):
 
 def get_character_image(char_id):
     """Fetch character icon/splash from genshin.jmp.blue"""
-    image_url = f"{IMAGE_API_BASE}/characters/{char_id}/gacha-splash"
-    
-    # Optional: use /portrait for full splash art instead
-    # image_url = f"{IMAGE_API_BASE}/characters/{char_id}/portrait"
+    image_url = f"{IMAGE_API_BASE}/characters/{char_id}/icon"
     
     # Quick existence check (optional but recommended)
     try:
@@ -69,22 +66,120 @@ def get_character_image(char_id):
         if response.status_code == 200:
             return image_url
         else:
-            print(f"Image not found for {char_id}")
-            return ""
+            print(f"Image not found for {char_id} using default image")
+            return "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Icon_Archon_Quest.png/revision/latest?cb=20210615060053"
     except:
-        return ""
+        print(f"Failed when getting image for {char_id} using default image")
+        return "https://static.wikia.nocookie.net/gensin-impact/images/c/cf/Icon_Archon_Quest.png/revision/latest?cb=20210615060053"
 
+
+def normalize_text(text):
+    """Normalize text for comparison by trimming and standardizing case"""
+    if not isinstance(text, str):
+        return str(text)
+    return text.strip()
 
 def generate_options(correct, pool=None, count=3):
+    """
+    Generate multiple choice options ensuring no duplicates.
+    
+    Args:
+        correct: The correct answer
+        pool: List of possible distractors
+        count: Number of distractor options needed
+    
+    Returns:
+        List of shuffled options with correct answer included
+    """
+    # Normalize the correct answer for comparison
+    correct_normalized = normalize_text(correct)
+    
     if pool:
-        distractors = [x for x in pool if x != correct]
-        selected = random.sample(distractors, min(count, len(distractors)))
+        # Filter out the correct answer with normalization
+        distractors = []
+        for option in pool:
+            option_normalized = normalize_text(option)
+            if option_normalized != correct_normalized:
+                distractors.append(option)
+        
+        # Ensure we have enough distractors
+        if len(distractors) < count:
+            print(f"Warning: Only {len(distractors)} unique distractors available for '{correct}', "
+                  f"need {count}. Generating fallback options.")
+            # Add fallback options if pool is too small
+            fallback_count = count - len(distractors)
+            fallback_start = len(distractors) + 1
+            fallback_options = [f"Option {fallback_start + i}" for i in range(fallback_count)]
+            distractors.extend(fallback_options)
+        
+        # Select unique distractors
+        selected_distractors = random.sample(distractors, min(count, len(distractors)))
     else:
         # Fallback generic distractors for fields without pool
-        selected = [f"Unknown {i}" for i in range(1, count+1)]
-    options = [correct] + selected
-    random.shuffle(options)
-    return options
+        selected_distractors = [f"Unknown {i}" for i in range(1, count+1)]
+    
+    # Combine correct answer with distractors
+    options = [correct] + selected_distractors
+    
+    # Final validation: ensure all options are unique
+    unique_options = []
+    seen = set()
+    
+    for option in options:
+        option_normalized = normalize_text(option)
+        if option_normalized not in seen:
+            unique_options.append(option)
+            seen.add(option_normalized)
+        else:
+            # If we encounter a duplicate, try to find a replacement
+            if pool:
+                # Try to find another unique option from the pool
+                for replacement in pool:
+                    replacement_normalized = normalize_text(replacement)
+                    if (replacement_normalized != option_normalized and 
+                        replacement_normalized not in seen):
+                        unique_options.append(replacement)
+                        seen.add(replacement_normalized)
+                        break
+    
+    # Shuffle the final options
+    random.shuffle(unique_options)
+    return unique_options
+
+
+def test_option_generation():
+    """Test function to verify duplicate answer prevention works"""
+    print("Testing option generation...")
+    
+    # Test case 1: Normal case
+    correct = "Pyro"
+    pool = ["Pyro", "Hydro", "Electro", "Anemo", "Geo"]
+    options = generate_options(correct, pool, 3)
+    print(f"Test 1 - Correct: {correct}")
+    print(f"Options: {options}")
+    print(f"All unique: {len(options) == len(set(options))}")
+    print(f"Contains correct: {correct in options}")
+    print()
+    
+    # Test case 2: Case sensitivity issue
+    correct = "pyro"  # lowercase
+    pool = ["Pyro", "Hydro", "Electro"]  # different case
+    options = generate_options(correct, pool, 2)
+    print(f"Test 2 - Correct: {correct}")
+    print(f"Options: {options}")
+    print(f"All unique: {len(options) == len(set(options))}")
+    print(f"Contains correct: {correct in options}")
+    print()
+    
+    # Test case 3: Small pool
+    correct = "Sword"
+    pool = ["Sword", "Claymore"]  # Only 1 distractor available
+    options = generate_options(correct, pool, 3)  # Need 3 distractors
+    print(f"Test 3 - Correct: {correct}")
+    print(f"Options: {options}")
+    print(f"All unique: {len(options) == len(set(options))}")
+    print(f"Contains correct: {correct in options}")
+    print()
 
 
 def create_questions_for_character(character, max_per_char=4):
