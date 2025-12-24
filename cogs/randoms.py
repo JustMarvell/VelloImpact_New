@@ -35,6 +35,18 @@ roasts = {
         'img' : ['https://i.pinimg.com/736x/65/b9/c9/65b9c99b7e8ed3662a4bdf8f25789096.jpg', 'https://i.pinimg.com/736x/8a/a8/fa/8aa8faa0054b45fd580383e46ff0823d.jpg', 'https://i.pinimg.com/736x/23/e5/15/23e515519a1f2787573bf3677aa35d35.jpg']
     }
 }
+
+gender_data = {
+    'male' : {
+        'color' : 162022,
+        'img' : 'https://i.pinimg.com/736x/b6/d0/4a/b6d04af994a3e975b3b6c05783d44c14.jpg'
+    },
+    'female' : {
+        'color' : 14821763,
+        'img' : 'https://i.pinimg.com/1200x/b6/46/af/b646af421324ccb832445a908de41da8.jpg'
+    }
+}
+
 async def setup(bot : commands.Bot):
     await bot.add_cog(Randoms(bot))
 
@@ -227,3 +239,114 @@ class Randoms(commands.Cog):
             await ctx.send(embed=embed)
         except Exception as e:
             await ctx.send(f"Failed when trying to sed embed message : {e}", ephemeral=True)
+            
+    @commands.hybrid_command()
+    async def guess_gender(self, ctx: commands.Context, *, name: str | None):
+        """ Guess the gender of the specified name 
+        Args:
+            name : The name that want to be guessed
+        """
+        try:
+            await ctx.defer()
+        except Exception:
+            pass
+        
+        if not name or name is None:
+            await ctx.send(f"Please provide a valid name!", ephemeral=True)
+            return
+        
+        BASE_URL = 'https://api.genderize.io'
+        
+        try:
+            response = requests.get(f"{BASE_URL}?name={name}")
+            
+            if response.status_code != 200:
+                await ctx.send(f"Something wrong when fetching the response! Return code : {response.status_code}")
+                return
+        except Exception as e:
+            await ctx.send(f"An error occured when getting response : {e}", ephemeral=True)
+            return
+        
+        gender = response.json().get('gender')
+        probability = response.json().get('probability')
+        
+        if gender is None:
+            await ctx.send(f"{name} is not a valid name, please try again with a different name!")
+            return
+        elif gender == 'male':
+            img = gender_data.get('male').get('img')
+            color = gender_data.get('male').get('color')
+        elif gender == 'female':
+            img = gender_data.get('female').get('img')
+            color = gender_data.get('female').get('color')
+        
+        try:
+            embed = discord.Embed(
+                color=color,
+                title="Based on your name, Here's my prediction!"
+            )
+            embed.set_image(url=img)
+            embed.add_field(
+                name="Name :",
+                value=f"{name}",
+                inline=False,
+            )
+            embed.add_field(
+                name="Gender :",
+                value=f"{gender.capitalize()}",
+                inline=False,
+            )
+            embed.add_field(
+                name="Probability : ",
+                value=f"{probability * 100}%",
+                inline=False,
+            )
+            embed.set_footer(
+                text="Gender prediction by genderize.io",
+            )
+            
+            await ctx.send(embed=embed)
+        except Exception as e:
+            await ctx.send(f"Failed when trying to sed embed message : {e}", ephemeral=True)
+            
+    @commands.hybrid_command()
+    async def get_random_dog_image(self, ctx: commands.Context):
+        """ Get a random dog image """
+        try:
+            await ctx.defer()
+        except Exception():
+            pass
+        
+        BASE_URL = 'https://dog.ceo/api/breeds/image/random'
+
+        try:
+            response = requests.get(f"{BASE_URL}")
+            
+            if response.status_code != 200:
+                await ctx.send(f"Something wrong when fetching the response! Return code : {response.status_code}")
+                return
+            
+            status = response.json().get('status')
+            img = response.json().get('message')
+            
+            if status != 'success':
+                await ctx.send(f"Something wrong when fetching the response! Status : {status}")
+                return
+        except Exception as e:
+            await ctx.send(f"An error occured when getting response : {e}", ephemeral=True)
+            return
+        
+        try:
+            embed = discord.Embed(
+                color=1349855,
+                title="Here's an image of a dog!",
+            )
+            embed.set_image(url=img)
+            embed.set_footer(
+                text="Image provided by dog.ceo",
+                icon_url="https://dog.ceo/img/dog-api-logo.svg",
+            )
+            await ctx.send(embed=embed)
+        except Exception as e:
+            await ctx.send(f"Failed when trying to sed embed message : {e}", ephemeral=True)
+        
