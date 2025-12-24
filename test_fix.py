@@ -1,12 +1,72 @@
 import requests
 from PIL import Image
+import random
 
-BASE_URL = 'https://api.qrserver.com/v1/create-qr-code/'
+# BASE_URL = 'https://api.agify.io'
 
-data = "ExampleData"
+# data = "marvel"
 
-size = 200
+# size = 200
 
-qr = requests.get(f"{BASE_URL}?data={data}&size={size}x{size}")
+# qr = requests.get(f"{BASE_URL}?name={data}")
 
-print(qr.content)
+# print(qr.json().get('age'))
+
+roasts = {
+    '0-9' : {
+        'roasts' : ['"bro is literally on toddler negative aura"', '"skill issue + bottle dependency"', '"ratio\'d by nap time"'],
+        'img' : ['https://i.pinimg.com/736x/73/24/e1/7324e1fe9919215d264f12e4753a549b.jpg', 'https://i.pinimg.com/736x/1c/97/a4/1c97a450c8b2bca9b10b80c92d1bfef3.jpg', 'https://i.pinimg.com/736x/e5/a1/c0/e5a1c0a655bf08bedb23e96010ef7e67.jpg']
+    },
+    '10-17' : {
+        'roasts' : ['"you peaked in roblox 2020 and never recovered"', '"your aura is 2019 TikTok dance energy"', '"homework merchant 😭"', '"talks like they discovered sarcasm yesterday"'],
+        'img' : ['https://i.pinimg.com/736x/aa/5a/e0/aa5ae0092a9818d3b616caca940a19ed.jpg', 'https://i.pinimg.com/736x/e6/d1/2a/e6d12adc8c5b7f46f636d2a9a9e53378.jpg', 'https://i.pinimg.com/736x/14/ca/2a/14ca2aac31f3ec59ceef221a159251de.jpg']
+    },
+    '18-25' : {
+        'roasts' : ['"your entire personality is a Pinterest board from 2021"', '"broke philosophy major energy"', '"still romanticizing 3am waffle house"', '"job application speedrun any%"', '"crypto bagholder survivor"'],
+        'img' : ['https://i.pinimg.com/736x/03/74/41/0374414cbd9ae9d706ea7a0c93b2ee79.jpg', 'https://i.pinimg.com/736x/48/2d/21/482d21bb0771bc92d5fa3ebfdda9114e.jpg', 'https://i.pinimg.com/736x/f2/d3/7a/f2d37ab310e7fa353dda476cff35a3f3.jpg']
+    },
+    '26-39' : {
+        'roasts' : ['"you\'re basically just adult Pokémon now… still collecting debt"', '"your vibe is \'I have a 401k and trauma\'"', '"mid-life crisis loading… (0%)"', '"unironically says \'back in my day\' about 2017"', '"group chat owner, life avoider"'],
+        'img' : ['https://i.pinimg.com/736x/5a/01/f1/5a01f1b639b02860f35a2a4b399a7e4d.jpg', 'https://i.pinimg.com/736x/45/8e/7b/458e7b3b0ea86fc89a1673226a9c42e2.jpg', 'https://i.pinimg.com/736x/c1/bf/32/c1bf3232084ac94a0f776323af2023be.jpg']
+    },
+    '40-60' : {
+        'roasts' : ['"Facebook comment section final boss"', '"your humor got stuck in 2009 chain email"', '"\'I\'m not old I\' vintage\' cope"', '"still fighting the war against autocorrect"', '"dad joke dps merchant"'],
+        'img' : ['https://i.pinimg.com/736x/65/b9/c9/65b9c99b7e8ed3662a4bdf8f25789096.jpg', 'https://i.pinimg.com/736x/38/8e/fc/388efcee47d59cafe1d92cbf4bab022f.jpg', 'https://i.pinimg.com/736x/0c/bf/89/0cbf89438d9280747d31cc71e2b7f7c8.jpg']
+    },
+    '61-75' : {
+        'roasts' : ['"you\'re on legendary difficulty life mode"', '"boomer but make it slay"', '"your clapback latency is 3 business days"', '"still calls group texts \'the group message\'"', '"retired but still ratio-ing politicians on Facebook"'],
+        'img' : ['https://i.pinimg.com/736x/65/b9/c9/65b9c99b7e8ed3662a4bdf8f25789096.jpg', 'https://i.pinimg.com/736x/f7/5d/76/f75d76626d0e20b5d5ae4342baed0deb.jpg', 'https://i.pinimg.com/736x/8f/61/97/8f61979e578e3b4a1ec76804df206868.jpg']
+    },
+    '76-100' : {
+        'roasts' : ['"you\'ve been on this server longer than the server has existed"', '"OG of the planet fr"', '"your lore is multiple DLCs deep"', '"you\'ve seen more plot twists than the Bible"', '"respectfully… you\'re built different (and ancient)"', '"final form unlocked, no continues left"'],
+        'img' : ['https://i.pinimg.com/736x/65/b9/c9/65b9c99b7e8ed3662a4bdf8f25789096.jpg', 'https://i.pinimg.com/736x/8a/a8/fa/8aa8faa0054b45fd580383e46ff0823d.jpg', 'https://i.pinimg.com/736x/23/e5/15/23e515519a1f2787573bf3677aa35d35.jpg']
+    }
+}
+
+# age = qr.json().get('age')
+age = 25
+
+if age >= 76:
+    roast = random.choice(roasts.get('76-100').get('roasts'))
+    img = random.choice(roasts.get('76-100').get('img'))
+elif age >= 61:
+    roast = random.choice(roasts.get('61-75').get('roasts'))
+    img = random.choice(roasts.get('61-75').get('img'))
+elif age >= 40:
+    roast = random.choice(roasts.get('40-60').get('roasts'))
+    img = random.choice(roasts.get('40-60').get('img'))
+elif age >= 26:
+    roast = random.choice(roasts.get('26-39').get('roasts'))
+    img = random.choice(roasts.get('26-39').get('img'))
+elif age >= 18:
+    roast = random.choice(roasts.get('18-25').get('roasts'))
+    img = random.choice(roasts.get('18-25').get('img'))
+elif age >= 10:
+    roast = random.choice(roasts.get('10-17').get('roasts'))
+    img = random.choice(roasts.get('10-17').get('img'))
+else:
+    roast = random.choice(roasts.get('0-9').get('roasts'))
+    img = random.choice(roasts.get('0-9').get('img'))
+
+print(roast)
+print(img)
