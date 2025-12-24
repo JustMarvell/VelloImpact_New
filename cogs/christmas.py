@@ -199,6 +199,7 @@ class Christmas(commands.Cog):
                 await member.send(embed=embed_msg)
                 msg_sent += 1
                 await asyncio.sleep(1)  # Add delay to avoid rate limiting
+                await ctx.send(f"Message sent to {member.name}")
             except discord.Forbidden:
                 # User has disabled DMs from bots - this is normal
                 msg_failed += 1
