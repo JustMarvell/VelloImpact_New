@@ -1,6 +1,6 @@
 MAX_FIELD_LENGTH = 1024
 
-def get_chunk(text: str):
+def get_chunk(text: str) -> list:
     chunks = []
     current_chunk = ""
 
