@@ -43,6 +43,12 @@ class Helper(commands.Cog):
             content (text) : The content for the QR code (can be a text or a link)
             size (100 - 600): The size of the QR code image. (default = 200)
         """
+        
+        try:
+            await ctx.defer()
+        except Exception:
+            pass
+        
         if not content or content.strip() == "":
             await ctx.send("Please provide a text for the QR code!", ephemeral=True)
             return
