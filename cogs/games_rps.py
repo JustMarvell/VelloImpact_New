@@ -304,7 +304,7 @@ class Rps(commands.Cog):
         self.bot = bot
         self.active_games = set()  # Track active games to prevent conflicts
 
-    @app_commands.command(name="rock paper scisors", description="Start a Rock, Paper, Scissors game")
+    @app_commands.command(name="rock_paper_scissor", description="Start a Rock, Paper, Scissors game")
     async def rock_paper_scisors(self, interaction: discord.Interaction):
         """Start a Rock Paper Scissors game"""
         # Check if there's already an active game in this channel
