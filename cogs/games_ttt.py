@@ -458,6 +458,9 @@ class TickTackToe(commands.Cog):
         self.active_games = {}
         
     @app_commands.command(name="tick_tack_toe", description="Start a Tic-Tac-Toe game. Mention a user or the bot to play against them!")
+    @app_commands.describe(
+        opponent = "Member to be opponent (Mention the bot to play against the bot)"
+    )
     async def tick_tack_toe(self, interaction: discord.Interaction, opponent: discord.Member):
         """Start a Tic-Tac-Toe game against a player or the bot"""
         user_id = interaction.user.id
