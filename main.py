@@ -1,7 +1,7 @@
 import asyncio
 import settings
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 import connections.firebase as fb
 import time
 import weakref
@@ -10,6 +10,7 @@ from collections import defaultdict, deque
 import logging
 import traceback
 import threading
+import datetime
 
 
 # logger setup
@@ -77,6 +78,9 @@ class Client(commands.Bot):
             
             # Start background tasks
             await self._start_background_tasks()
+
+            # start the restart timer
+            await self.restart_checker.start()
             
             tree_logger.info("Bot is Ready!")
             
@@ -313,6 +317,20 @@ class Client(commands.Bot):
             await ctx.send(f"An error occurred while executing the command. Please try again later..", ephemeral=True)
         except:
             pass  # Ignore if user can't receive messages
+
+    @tasks.loop(minutes=1)
+    async def restart_checker(self):
+        now = datetime.datetime.now()
+
+        if now.hour == 4 and now.minute == 0:
+            try:
+                logger.info("Restarting bot...")
+                await self.close()
+            except Exception as e:
+                error_msg = f"Error when automatically restarting the bot: {str(e)}"
+                cogs_logger.error(error_msg)
+                cogs_logger.error(traceback.format_exc())
+        
         
     async def close(self):
         """Clean shutdown"""
@@ -371,6 +389,21 @@ intents.members = True
 client = Client()
 
 # Base client commands
+
+@client.command(name = "rst", description = "Shutdown the bot and then let the hosting provider handle the rest", guild=discord.Object(id=1453320275864322171))
+async def restart(interaction):
+    """Restart the bot"""
+    try:
+        client.close()
+    except Exception as e:
+        error_msg = f"Failed to restart the bot: {str(e)}"
+        cogs_logger.error(error_msg)
+        cogs_logger.error(traceback.format_exc())
+        
+        await interaction.send(
+            f"Error: {str(e)}"
+        )
+    
 
 @client.command(name = "rc", description = "Reload all commands (rate limited)", guild=discord.Object(id=1453320275864322171))
 async def reload_commands(interaction):
